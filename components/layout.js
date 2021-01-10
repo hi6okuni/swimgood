@@ -19,9 +19,11 @@ export default function Layout({ children, home }) {
   }
 
   return (
-    <Box bg='gray.800' color="white" minH="100vh" fontFamily="mono">
+    <Box bg='gray.800' color="white" minH="100vh">
       <Head>
         <link rel="icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.gstatic.com"/>
+        <link href="https://fonts.googleapis.com/css2?family=Mukta&family=Pacifico&display=swap" rel="stylesheet"/>
         <meta
           name="description"
           content="Learn how to build a personal website using Next.js"

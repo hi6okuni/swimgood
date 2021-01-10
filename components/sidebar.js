@@ -1,7 +1,7 @@
 import {useState, useContext} from 'react'
 import { useRouter } from 'next/router'
 import { useAppContext } from '../lib/context/state'
-import { Box, Heading, Flex, Center, Img } from "@chakra-ui/react"
+import { Box, Heading, Flex, Center, Img, Text } from "@chakra-ui/react"
 import Link from 'next/link'
 import Image from 'next/image'
 import Search from './search'
@@ -55,7 +55,6 @@ export default function SideBar(props) {
       align="center"
       pos="sticky" 
       top="40px"
-      fontFamily="mono"
     >
       <Flex 
         h="30%"
@@ -63,11 +62,14 @@ export default function SideBar(props) {
         align="center" 
         fontSize="md"
       >
-        <Center fontWeight="bold" onClick={() => resetSymbol()}>
+        <Box fontWeight="bold" fontSize="2xl" fontFamily="Pacifico" onClick={() => resetSymbol()}>
           <Link href="/">
-            <a>makeMoneyBig(🔥)</a>
+            <a>$Cashmere🐐</a>
           </Link>
-        </Center>
+        </Box>
+        <Box fontSize="xs">
+          <Text color="teal.200">Visuals instantly inspire you</Text>
+        </Box>
         <Center mt="10%">
           <Search getSymbol={getSymbol}/>
         </Center>
@@ -83,7 +85,7 @@ export default function SideBar(props) {
         {menuTitles.map((e) => {
           return(
             <Center 
-              fontSize="calc(6px + 1vmin)" 
+              fontSize="calc(8px + 1vmin)" 
               w="100%"
             >
             {menu == e.url ? 
@@ -92,7 +94,6 @@ export default function SideBar(props) {
                 borderRadius="2xl"
                 m="2%"
                 p="3%"
-                fontWeight="bold"
                 color='teal.200'
                 transition="all 0.3s ease-in-out"
                 _hover={{ bg: 'gray.800'}}
@@ -109,7 +110,6 @@ export default function SideBar(props) {
                 borderRadius="2xl"
                 m="2%"
                 p="3%"
-                fontWeight="bold"
                 _hover={{ bg: 'gray.800' , color: 'teal.200' }}
                 _activeLink
                 transition="all 0.3s ease-in-out"
