@@ -4,6 +4,8 @@ import { Box, Heading, Flex } from "@chakra-ui/react"
 import { useAppContext } from '../lib/context/state'
 import SideBar from './sidebar'
 import Overview from './overview'
+import Footer from './footer'
+
 
 const name = 'Your Name'
 export const siteTitle = 'Make Money Big.'
@@ -53,6 +55,7 @@ export default function Layout({ children, home }) {
             </Box>
           )}
           <main>{children}</main>
+          <Footer/>
         </Box>
       </Flex>
     </Box>

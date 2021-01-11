@@ -64,7 +64,7 @@ export default function SideBar(props) {
       >
         <Box fontWeight="bold" fontSize="2xl" fontFamily="Pacifico" onClick={() => resetSymbol()}>
           <Link href="/">
-            <a>$Cashmere🐐</a>
+            <a>Cashmere🐐</a>
           </Link>
         </Box>
         <Box fontSize="xs">
@@ -74,6 +74,7 @@ export default function SideBar(props) {
           <Search getSymbol={getSymbol}/>
         </Center>
       </Flex>
+
       <Flex
         direction="column"
         justify="space-around"
@@ -99,11 +100,18 @@ export default function SideBar(props) {
                 _hover={{ bg: 'gray.800'}}
                 onClick={() => setMenu(e.url)}
               >
-                <Link 
-                  href={`/${value}/${e.url}`}
-                >
-                  {e.title}
-                </Link>
+                { value ? 
+                  <Link 
+                    href={`/${value}/${e.url}`}
+                  >
+                    {e.title}
+                  </Link> :
+                  <Link 
+                    href={`/about`}
+                  >
+                    {e.title}
+                  </Link> 
+                }
               </Center> :  
               <Center
                 w="80%"
@@ -115,11 +123,18 @@ export default function SideBar(props) {
                 transition="all 0.3s ease-in-out"
                 onClick={() => setMenu(e.url)}
               >
-                <Link 
-                  href={`/${value}/${e.url}`}
-                >
-                  {e.title}
-                </Link>
+                { value ? 
+                  <Link 
+                    href={`/${value}/${e.url}`}
+                  >
+                    {e.title}
+                  </Link> :
+                  <Link 
+                    href={`/about`}
+                  >
+                    {e.title}
+                  </Link> 
+                }
               </Center>
               }
             </Center>
@@ -176,6 +191,7 @@ export default function SideBar(props) {
           }
         </Center>
       </Flex>
+
     </Flex>
   )
 };

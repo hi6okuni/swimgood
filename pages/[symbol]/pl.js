@@ -27,6 +27,7 @@ import {
 
 export async function getServerSideProps({params}) {
   // Fetch data from external API
+  const apikey = process.env.FMP_API_KEY;
 
   var yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
@@ -38,11 +39,11 @@ export async function getServerSideProps({params}) {
     
   const symbol = params.symbol
   const [res1, res2, res3, res4, res5] = await Promise.all([
-    fetch(`https://financialmodelingprep.com/api/v3/income-statement/${symbol}?limit=10&apikey=fea107802693a9f21cc94def10b870da`).then(response => response.json()),
-    fetch(`https://financialmodelingprep.com/api/v3/key-metrics/${symbol}?limit=10&apikey=fea107802693a9f21cc94def10b870da`).then(response => response.json()),
-    fetch(`https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?from=${fiveYearsAgoForApi}&to=${yesterdayForApi}&apikey=fea107802693a9f21cc94def10b870da`).then(response => response.json()),
-    fetch(`https://financialmodelingprep.com/api/v3/quote/${symbol}?apikey=fea107802693a9f21cc94def10b870da`).then(response => response.json()),
-    fetch(`https://financialmodelingprep.com/api/v3/income-statement/${symbol}?period=quarter&limit=10&apikey=fea107802693a9f21cc94def10b870da`).then(response => response.json()),
+    fetch(`https://financialmodelingprep.com/api/v3/income-statement/${symbol}?limit=10&apikey=${apikey}`).then(response => response.json()),
+    fetch(`https://financialmodelingprep.com/api/v3/key-metrics/${symbol}?limit=10&apikey=${apikey}`).then(response => response.json()),
+    fetch(`https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?from=${fiveYearsAgoForApi}&to=${yesterdayForApi}&apikey=${apikey}`).then(response => response.json()),
+    fetch(`https://financialmodelingprep.com/api/v3/quote/${symbol}?apikey=${apikey}`).then(response => response.json()),
+    fetch(`https://financialmodelingprep.com/api/v3/income-statement/${symbol}?period=quarter&limit=10&apikey=${apikey}`).then(response => response.json()),
   ]);
 
   const plData = res1.map((each) => ({
