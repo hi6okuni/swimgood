@@ -21,9 +21,6 @@ import {
   FormErrorMessage,
   FormHelperText,
 } from "@chakra-ui/react"
-import { Search2Icon } from '@chakra-ui/icons'
-import { Formik, Field, Form} from 'formik'
-import IncomeStatement from './[symbol]/pl';
 
 
 export async function getStaticProps() {
@@ -57,15 +54,14 @@ export default function Home ({ allPostsData }) {
         m="3%"
       >
         <section className={utilStyles.headingMd}>
-          <p>[Your Self Introduction]</p>
+          <p>Cashmere🐐へようこそ！</p>
           <p>
-            (This is a sample website - you’ll be building a site like this on{' '}
-            <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
+            米国企業の決算情報を即ビジュアル化！
           </p>
         </section>
 
         <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-          <h2 className={utilStyles.headingLg}>Blog</h2>
+          <h2 className={utilStyles.headingLg}>記事</h2>
           <ul className={utilStyles.list}>
             {allPostsData.map(({ id, date, title }) => (
               <li className={utilStyles.listItem} key={id}>

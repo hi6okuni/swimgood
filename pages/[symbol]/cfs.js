@@ -30,7 +30,8 @@ import {
 
 export async function getServerSideProps({params}) {
   // Fetch data from external API    
-    const symbol = params.symbol
+    const symbol = params.symbol;
+    const apikey = process.env.FMP_API_KEY;
     var yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
     var yesterdayForApi = yesterday.getFullYear() + "-" +  (yesterday.getMonth()+ 1) + "-" + yesterday.getDate();
@@ -39,12 +40,12 @@ export async function getServerSideProps({params}) {
     fiveYearsAgo.setDate(fiveYearsAgo.getDate() - 1824);
     var fiveYearsAgoForApi = fiveYearsAgo.getFullYear() + "-" +  (fiveYearsAgo.getMonth()+ 1) + "-" + fiveYearsAgo.getDate();
     const [res1, res2, res3, res4, res5, res6] = await Promise.all([
-      fetch(`https://financialmodelingprep.com/api/v3/cash-flow-statement/${symbol}?limit=10&apikey=fea107802693a9f21cc94def10b870da`).then(response => response.json()),
-      fetch(`https://financialmodelingprep.com/api/v3/income-statement/${symbol}?limit=10&apikey=fea107802693a9f21cc94def10b870da`).then(response => response.json()),
-      fetch(`https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?from=${fiveYearsAgoForApi}&to=${yesterdayForApi}&apikey=fea107802693a9f21cc94def10b870da`).then(response => response.json()),
-      fetch(`https://financialmodelingprep.com/api/v3/quote/${symbol}?apikey=fea107802693a9f21cc94def10b870da`).then(response => response.json()),
-      fetch(`https://financialmodelingprep.com/api/v3/cash-flow-statement/${symbol}?period=quarter&limit=10&apikey=fea107802693a9f21cc94def10b870da`).then(response => response.json()),
-      fetch(`https://financialmodelingprep.com/api/v3/income-statement/${symbol}?period=quarter&limit=10&apikey=fea107802693a9f21cc94def10b870da`).then(response => response.json()),
+      fetch(`https://financialmodelingprep.com/api/v3/cash-flow-statement/${symbol}?limit=10&apikey=${apikey}`).then(response => response.json()),
+      fetch(`https://financialmodelingprep.com/api/v3/income-statement/${symbol}?limit=10&apikey=${apikey}`).then(response => response.json()),
+      fetch(`https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?from=${fiveYearsAgoForApi}&to=${yesterdayForApi}&apikey=${apikey}`).then(response => response.json()),
+      fetch(`https://financialmodelingprep.com/api/v3/quote/${symbol}?apikey=${apikey}`).then(response => response.json()),
+      fetch(`https://financialmodelingprep.com/api/v3/cash-flow-statement/${symbol}?period=quarter&limit=10&apikey=${apikey}`).then(response => response.json()),
+      fetch(`https://financialmodelingprep.com/api/v3/income-statement/${symbol}?period=quarter&limit=10&apikey=${apikey}`).then(response => response.json()),
     ]);
   
     const cfs = res1.map((cfsInfo) => ({

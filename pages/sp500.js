@@ -6,8 +6,10 @@ import Link from 'next/link'
 
 export async function getStaticProps() {
   // Fetch data from external API
+  const apikey = process.env.FMP_API_KEY;
+
   const [res1] = await Promise.all([
-    fetch(`https://financialmodelingprep.com/api/v3/sp500_constituent?apikey=fea107802693a9f21cc94def10b870da`).then(response => response.json()),
+    fetch(`https://financialmodelingprep.com/api/v3/sp500_constituent?apikey=${apikey}`).then(response => response.json()),
   ]);
 
   const Lists = res1.map((list) => ({
