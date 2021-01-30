@@ -59,8 +59,9 @@ export default function Search (props) {
                         id="name" 
                         borderColor="transparent"
                         backgroundColor="gray.800"
+                        color="white"
                         placeholder="ex.AAPL" 
-                        focusBorderColor="teal.400"
+                        focusBorderColor="#ffafbd"
                         onChange={handleChange}
                         value={ticker}
                         fontSize="sm"
@@ -71,10 +72,12 @@ export default function Search (props) {
                 )}
               </Field>
               <Button
-                colorScheme="teal"
+                bg="#ffe1e7"
+                _hover={{ bg: "linear-gradient(to right top , #ffafbd,  #ffc3a0 )" }}
+                color="#3f3356"
                 isLoading={props.isSubmitting}
                 type="submit"
-                fontSize="sm"
+                fontSize="xs"
               >
                 Search
               </Button>

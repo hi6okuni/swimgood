@@ -129,7 +129,7 @@ export default function Sp500 ({ sp500Stocks }) {
           <Flex direction="column" >
             {sp500Stocks.map((stocks) => {
               return (
-                <Box bg="gray.700" p="3%" m="2%">
+                <Box bg="gray.700" p="3%" m="2%" borderRadius="2xl" bg="#c5e1de">
                   <Text fontSize="lg" fontWeight="bold">■&nbsp;{stocks[0].sector}</Text>
                   <Flex justify="space-between" wrap="wrap">
                     {stocks.map((e) => {
@@ -138,22 +138,22 @@ export default function Sp500 ({ sp500Stocks }) {
                           href={`/${e.symbol}/pl`}
                         >
                           <Flex 
-                            bg="gray.800" 
+                            bg="white" 
                             m="1%" 
                             px="1.5%" 
                             py="0.5%" 
                             w="46%"
                             align="baseline" 
-                            boxShadow="md" 
                             borderRadius="md"
-                            _hover={{ bg: 'teal.700'}}
+                            _hover={{ bg: "linear-gradient(to right top , #ffafbd,  #ffc3a0 )"}}
                             transition="all 0.3s ease-in-out"
+                            boxShadow="xl"
                             direction="column"
                             onClick={() => jumpToPage(e.symbol)}
                           >
                             <Box>
                               <Text fontWeight="bold" fontSize="sm" display="inline">{e.symbol}&nbsp;</Text>
-                              <Text color="teal.300" fontSize="xs" display="inline">{e.name}</Text>
+                              <Text color="#488c89" fontSize="xs" display="inline">{e.name}</Text>
                             </Box>
                             <Box>
                               <Text fontSize="xs">‐&nbsp;{e.subSector}</Text>

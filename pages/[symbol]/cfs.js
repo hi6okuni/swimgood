@@ -83,6 +83,7 @@ export async function getServerSideProps({params}) {
       exchange: Info.exchange,
       eps: Math.round(Info.eps * 100) / 100,
       pe: Math.round(Info.pe * 100) / 100,
+      psr: Math.round((Info.marketCap / (pl[0].revenue * 1000000) * 100)) / 100
     }))
 
     const cfsQ = res5.map((cfsInfo) => ({

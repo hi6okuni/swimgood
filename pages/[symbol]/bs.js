@@ -71,7 +71,13 @@ export async function getServerSideProps({params}) {
       date: dailyPrice.date.split('-'),
       volume: dailyPrice.volume,
     }));
-  
+
+    const pl = res4.map((each) => ({
+      revenue: each.revenue /1000000,
+      date: each.date.split('-'),
+      costOfRevenue: each.costOfRevenue /1000000,
+    }));
+
     const basicInfo = res3.map((Info) => ({
       symbol: Info.symbol,
       name: Info.name,
@@ -84,13 +90,8 @@ export async function getServerSideProps({params}) {
       exchange: Info.exchange,
       eps: Math.round(Info.eps * 100) / 100,
       pe: Math.round(Info.pe * 100) / 100,
+      psr: Math.round((Info.marketCap / (pl[0].revenue * 1000000) * 100)) / 100
     }))
-
-    const pl = res4.map((each) => ({
-      revenue: each.revenue /1000000,
-      date: each.date.split('-'),
-      costOfRevenue: each.costOfRevenue /1000000,
-    }));
   
     return { 
       props: { 
@@ -192,15 +193,16 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
         <Flex
           direction="column"
           w="100%"
-          h="50vh"
-          p="1.5%"
-          mt="2%"
+          h="60vh"
+          p="2%"
           pt="1%"
+          mt="4%"
           justify="space-between"
-          bg='gray.700'
+          bg="#ffecf6"
+          color="#3f3356"
           borderRadius="lg"
         >
-          <Flex h="5%" fontWeight="bold" fontSize="sm">
+          <Flex h="5%" fontSize="sm">
             <Text>&nbsp;&nbsp;■ Debit Side</Text>
           </Flex>
           <Flex
@@ -209,7 +211,6 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
             bg='transparent'
             wrap="nowrap"
             justify="space-around"
-            fontWeight="bold"
             fontSize="xs"
           >
             <Flex w="39%">
@@ -217,8 +218,8 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
                 direction="column"
                 h="100%"
                 w="100%"
-                bg="gray.800"
-                borderRadius="lg"
+                bg="white"
+                borderRadius="2xl"
                 boxShadow="md"
               >
                 <Center><Text fontSize="xs" mt="2%">B/S Overview</Text></Center>
@@ -232,12 +233,13 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
             >
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
+                h="47%"
+                w="47%"
+                bg="#ffffff"
+                color="#000000"                
+                borderRadius="2xl"
                 boxShadow="md"
-                m="0.4"
+                m="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">Cash & Cash Equivalents </Text>
@@ -249,12 +251,13 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
               </Flex>
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
+                h="47%"
+                w="47%"
+                bg="#ffffff"
+                color="#000000"                
+                borderRadius="2xl"
                 boxShadow="md"
-                m="0.4"
+                m="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">Account Receivables</Text>
@@ -266,12 +269,13 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
               </Flex>
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
+                h="47%"
+                w="47%"
+                bg="#ffffff"
+                color="#000000"                
+                borderRadius="2xl"
                 boxShadow="md"
-                m="0.4"
+                m="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">Inventory</Text>
@@ -283,12 +287,13 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
               </Flex>
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
+                h="47%"
+                w="47%"
+                bg="#ffffff"
+                color="#000000"                
+                borderRadius="2xl"
                 boxShadow="md"
-                m="0.4"
+                m="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">PP&E</Text>
@@ -305,15 +310,16 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
         <Flex
           direction="column"
           w="100%"
-          h="50vh"
-          p="1.5%"
-          mt="2%"
+          h="60vh"
+          p="2%"
           pt="1%"
+          mt="4%"
           justify="space-between"
-          bg='gray.700'
+          bg="#ffecf6"
+          color="#3f3356"
           borderRadius="lg"
         >
-          <Flex h="5%" fontWeight="bold" fontSize="sm">
+          <Flex h="5%" fontSize="sm">
             <Text>&nbsp;&nbsp;■ Cash Conversion Cycle</Text>
           </Flex>
           <Flex
@@ -322,17 +328,16 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
             bg='transparent'
             wrap="nowrap"
             justify="space-around"
-            fontWeight="bold"
             fontSize="xs"
           >
             <Flex w="39%">
               <Flex
-                direction="column"
-                h="100%"
-                w="100%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
+               direction="column"
+               h="100%"
+               w="100%"
+               bg="white"
+               borderRadius="2xl"
+               boxShadow="md"
               >
                 <Center><Text fontSize="xs" mt="2%">CCC</Text></Center>
                 <VerticalBarRechart data={cccData} color={[colorPallet.bs.green, colorPallet.bs.purple, colorPallet.bs.pink, colorPallet.bs.blue]}/>
@@ -345,12 +350,13 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
             >
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
+                h="47%"
+                w="47%"
+                bg="#ffffff"
+                color="#000000"                
+                borderRadius="2xl"
                 boxShadow="md"
-                m="0.4"
+                m="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">DIO </Text>
@@ -358,12 +364,13 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
               </Flex>
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
+                h="47%"
+                w="47%"
+                bg="#ffffff"
+                color="#000000"                
+                borderRadius="2xl"
                 boxShadow="md"
-                m="0.4"
+                m="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">DSO</Text>
@@ -371,12 +378,13 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
               </Flex>
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
+                h="47%"
+                w="47%"
+                bg="#ffffff"
+                color="#000000"                
+                borderRadius="2xl"
                 boxShadow="md"
-                m="0.4"
+                m="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">DPO </Text>
@@ -384,12 +392,13 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
               </Flex>
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
+                h="47%"
+                w="47%"
+                bg="#ffffff"
+                color="#000000"                
+                borderRadius="2xl"
                 boxShadow="md"
-                m="0.4"
+                m="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">CCC</Text>
