@@ -103,6 +103,7 @@ export async function getServerSideProps({params}) {
     exchange: Info.exchange,
     eps: Math.round(Info.eps * 100) / 100,
     pe: Math.round(Info.pe * 100) / 100,
+    psr: Math.round((Info.marketCap / plData[0].revenue) * 100) / 100
   }))
 
   const plDataQ = res5.map((each) => ({
@@ -241,83 +242,89 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
       </Head>
       <Flex
         direction="column"
-        m="3%"
+        my="3%"
       >
-        <Flex direction="row">
-          <Stack align="center" direction="row" mx="2%">
+        <Flex direction={["column", "row"]}>
+          <Stack fontSize={["xs", "lg"]}  align="center" direction="row" m="2%">
             <Text>Annual</Text>
             <Switch size="md" colorScheme="teal"  onChange={() => setIsAnnual(!isAnnual)}/>
             <Text>Quarterly</Text>
           </Stack>
-          <Stack align="center" direction="row" mx="2%">
+          <Stack fontSize={["xs", "lg"]}  align="center" direction="row" m="2%">
             <Text>$</Text>
             <Switch size="md" onChange={() => setIsPercent(!isPercent)}/>
             <Text>%</Text>
           </Stack>
-          <Text fontSize="xs" mx="2%">In Millions of USD except per share items</Text>
+          <Text fontSize="xs" m="2%" align="center">In Millions of USD except per share items</Text>
         </Flex>
+
         <Flex
           direction="column"
           w="100%"
-          h="50vh"
-          p="1.5%"
+          h={["960px", "960px", "60vh"]} 
+          p={["4%","4%","2%"]} 
           mt="2%"
           pt="1%"
-          justify="space-between"
-          bg='gray.700'
+          bg="#c5e1de"
+          color="#3f3356"
+          justify="space-around"
           borderRadius="lg"
+          z-index="5"
         >
-          <Flex h="5%" fontWeight="bold" fontSize="sm">
+          <Flex textAlign="center" fontSize="sm">
             <Text>&nbsp;&nbsp;■ Revenue and Income</Text>
           </Flex>
           <Flex
             h="92.5%"
             w="100%"
-            bg='transparent'
-            wrap="nowrap"
             justify="space-around"
-            fontWeight="bold"
             fontSize="xs"
+            direction={["column","column", "row"]}
           >
-            <Flex w="39%">
+            <Flex h={["25%","25%", "100%"]} w={["100%","100%", "39%"]}>
               <Flex
                 direction="column"
                 h="100%"
                 w="100%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
+                borderRadius="2xl"
+                boxShadow="xl"
+                bg="#ffffff"
+                color="#000000"
               >
                 <Center><Text fontSize="xs" mt="2%">Profit Structure</Text></Center>
                 <AreaRechart data={profitData} keyword={profitStructureKeyword} color={chartColor.rev}/>
               </Flex>
             </Flex>
             <Flex 
-              w="59%" 
+              h={["75%","75%", "100%"]} 
+              w={["100%","100%", "59%"]}
               wrap="wrap"
               justify="space-around"
+              direction="column"
             >
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
-                m="0.4"
+                h={["22%", "44%","47%"]} 
+                w={["100%", "47%","47%"]} 
+                borderRadius="2xl"
+                boxShadow="xl"
+                my="1"
                 align="center"
+                bg="#ffffff"
+                color="#000000"
               >
                 <Text fontSize="xs" mt="2%">Revenue</Text>
                 <BarRechart data={profitData} title={["revenue"]} color={[chartColor.rev[0]]}/>
               </Flex>
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
-                m="0.4"
+                h={["22%", "44%","47%"]} 
+                w={["100%", "47%","47%"]} 
+                bg="#ffffff"
+                color="#000000"                
+                borderRadius="2xl"
+                boxShadow="xl"
+                my="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">Gross Profit</Text>
@@ -329,12 +336,13 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
               </Flex>
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
-                m="0.4"
+                h={["22%", "44%","47%"]} 
+                w={["100%", "47%","47%"]}  
+                bg="#ffffff"
+                color="#000000"
+                borderRadius="2xl"
+                boxShadow="xl"
+                my="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">Operating Income</Text>
@@ -346,12 +354,13 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
               </Flex>
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
-                m="0.4"
+                h={["22%", "44%","47%"]} 
+                w={["100%", "47%","47%"]} 
+                bg="#ffffff"
+                color="#000000"
+                borderRadius="2xl"
+                boxShadow="xl"
+                my="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">Net Income</Text>
@@ -368,24 +377,23 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
         <Flex
           direction="column"
           w="100%"
-          h="50vh"
-          p="1.5%"
+          h="60vh"
+          p="2%"
           pt="1%"
           mt="4%"
           justify="space-between"
-          bg='gray.700'
+          bg="#c5e1de"
+          color="#3f3356"
           borderRadius="lg"
         >
-          <Flex h="5%" fontWeight="bold" fontSize="sm">
+          <Flex h="5%" fontSize="sm">
             <Text>&nbsp;&nbsp;■ Operating Expenses</Text>
           </Flex>
           <Flex
             h="92.5%"
             w="100%"
-            bg='transparent'
             wrap="nowrap"
             justify="space-around"
-            fontWeight="bold"
             fontSize="xs"
           >
             <Flex w="39%">
@@ -393,9 +401,9 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 direction="column"
                 h="100%"
                 w="100%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
+                bg="white"
+                borderRadius="2xl"
+                boxShadow="xl"
               >
                 <Center><Text fontSize="xs" mt="2%">Operating Expenses Structure</Text></Center>
                 <AreaRechart data={profitData} keyword="expense" color={chartColor.expense}/>
@@ -408,25 +416,27 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
             >
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
-                m="0.4"
+                h="47%"
+                w="47%"
+                bg="#ffffff"
+                color="#000000"                
+                borderRadius="2xl"
+                boxShadow="xl"
+                m="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">Operating Expenses / Revenue</Text>
-                <LineRechart data={profitData} title={["operatingExpenseR"]} color={[chartColor.expense]}/>
+                <LineRechart data={profitData} title={["operatingExpenseR"]} color={[chartColor.expense[0]]}/>
               </Flex>
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
-                m="0.4"
+                h="47%"
+                w="47%"
+                bg="#ffffff"
+                color="#000000"                
+                borderRadius="2xl"
+                boxShadow="xl"
+                m="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">R&D</Text>
@@ -434,12 +444,13 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
               </Flex>
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
-                m="0.4"
+                h="47%"
+                w="47%"
+                bg="#ffffff"
+                color="#000000"                
+                borderRadius="2xl"
+                boxShadow="xl"
+                m="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">SG&A</Text>
@@ -447,16 +458,17 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
               </Flex>
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
-                m="0.4"
+                h="47%"
+                w="47%"
+                bg="#ffffff"
+                color="#000000"                
+                borderRadius="2xl"
+                boxShadow="xl"
+                m="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">Depreciation and Amortization</Text>
-                <BarRechart data={profitData} title={["da"]} color={[chartColor[3]]}/>
+                <BarRechart data={profitData} title={["da"]} color={[chartColor.ebitda[0]]}/>
               </Flex>
             </Flex>
           </Flex>
@@ -465,24 +477,23 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
         <Flex
           direction="column"
           w="100%"
-          h="50vh"
-          p="1.5%"
+          h="60vh"
+          p="2%"
           pt="1%"
           mt="4%"
           justify="space-between"
-          bg='gray.700'
+          bg="#c5e1de"
+          color="#3f3356"
           borderRadius="lg"
         >
-          <Flex h="5%" fontWeight="bold" fontSize="sm">
+          <Flex h="5%" fontSize="sm">
             <Text>&nbsp;&nbsp;■ Ebitda</Text>
           </Flex>
           <Flex
             h="92.5%"
             w="100%"
-            bg='transparent'
             wrap="nowrap"
             justify="space-around"
-            fontWeight="bold"
             fontSize="xs"
           >
             <Flex w="39%">
@@ -490,9 +501,9 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 direction="column"
                 h="100%"
                 w="100%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
+                bg="#ffffff"
+                borderRadius="2xl"
+                boxShadow="xl"
               >
                 <Center><Text fontSize="xs" mt="2%">From Net Income to EBITDA</Text></Center>
                 <AreaRechart data={profitData} keyword="ebitda" color={chartColor.ebitda}/>
@@ -505,12 +516,13 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
             >
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
-                m="0.4"
+                h="47%"
+                w="47%"
+                bg="#ffffff"
+                color="#000000"                
+                borderRadius="2xl"
+                boxShadow="xl"
+                m="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">EBITDA Margin</Text>
@@ -518,12 +530,13 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
               </Flex>
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
-                m="0.4"
+                h="47%"
+                w="47%"
+                bg="#ffffff"
+                color="#000000"                
+                borderRadius="2xl"
+                boxShadow="xl"
+                m="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">Depreciation and Amortization</Text>
@@ -531,12 +544,13 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
               </Flex>
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
-                m="0.4"
+                h="47%"
+                w="47%"
+                bg="#ffffff"
+                color="#000000"                
+                borderRadius="2xl"
+                boxShadow="xl"
+                m="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">Interest Expense</Text>
@@ -544,12 +558,13 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
               </Flex>
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
-                m="0.4"
+                h="47%"
+                w="47%"
+                bg="#ffffff"
+                color="#000000"                
+                borderRadius="2xl"
+                boxShadow="xl"
+                m="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">Income Tax Expense</Text>
@@ -562,15 +577,16 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
         <Flex
           direction="column"
           w="100%"
-          h="50vh"
-          p="1.5%"
+          h="60vh"
+          p="2%"
           pt="1%"
           mt="4%"
           justify="space-between"
-          bg='gray.700'
+          bg="#c5e1de"
+          color="#3f3356"
           borderRadius="lg"
         >
-          <Flex h="5%" fontWeight="bold" fontSize="sm">
+          <Flex h="5%" fontSize="sm">
             <Text>&nbsp;&nbsp;■ EPS & other Per Share items</Text>
           </Flex>
           <Flex
@@ -579,7 +595,6 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
             bg='transparent'
             wrap="nowrap"
             justify="space-around"
-            fontWeight="bold"
             fontSize="xs"
           >
             <Flex w="39%">
@@ -587,9 +602,9 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 direction="column"
                 h="100%"
                 w="100%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
+                bg="white"
+                borderRadius="2xl"
+                boxShadow="xl"
               >
                 <Center><Text fontSize="xs" mt="2%">Diluted Weighted Average Shares Outst.</Text></Center>
                 <BarRechart data={profitData} title={["weightedAverageShsOutDil"]} color={[chartColor.perShare[0]]}/>
@@ -602,12 +617,13 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
             >
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
-                m="0.4"
+                h="47%"
+                w="47%"
+                bg="#ffffff"
+                color="#000000"                
+                borderRadius="2xl"
+                boxShadow="xl"
+                m="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">Diluted EPS</Text>
@@ -615,12 +631,13 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
               </Flex>
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
-                m="0.4"
+                h="47%"
+                w="47%"
+                bg="#ffffff"
+                color="#000000"                
+                borderRadius="2xl"
+                boxShadow="xl"
+                m="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">Revenue Per Share</Text>
@@ -628,26 +645,28 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
               </Flex>
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
-                m="0.4"
+                h="47%"
+                w="47%"
+                bg="#ffffff"
+                color="#000000"                
+                borderRadius="2xl"
+                boxShadow="xl"
+                m="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">Operating Cash From Per Share</Text>
                 <BarRechart data={profitData} title={["operatingCashFlowPerShare"]} color={[chartColor.perShare[2]]}/>
               </Flex>
               <Flex
-                direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
-                m="0.4"
-                align="center"
+               direction="column"
+               h="47%"
+               w="47%"
+               bg="#ffffff"
+               color="#000000"                
+               borderRadius="2xl"
+               boxShadow="xl"
+               m="1"
+               align="center"
               >
                 <Text fontSize="xs" mt="2%">Free Cash From Per Share</Text>
                 <BarRechart data={profitData} title={["freeCashFlowPerShare"]} color={[chartColor.perShare[3]]}/>

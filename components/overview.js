@@ -40,6 +40,7 @@ export default function Overview() {
           exchange: Info.exchange,
           eps: Math.round(Info.eps * 100) / 100,
           pe: Math.round(Info.pe * 100) / 100,
+          psr: Info.psr,
         }
       )
     })
@@ -49,12 +50,12 @@ export default function Overview() {
   return (
     stockInfoData.length
     ? (
-      <Flex h="30vh" w="95%">
-        <Flex　flexBasis="60%" direction="column" p="2%">
+      <Flex h={["50vh", "50vh","30vh"]} w="100%" direction={{ base: "column", md: "row" }} >
+        <Flex　flexBasis={["40%", "60%"]} direction="column" p="2%">
           <Flex direction="column" flexBasis="50%">
             <Flex flexBasis="50%" align="baseline">
-              <Text fontSize="3xl" display="inline" fontWeight="bold">{stockInfoData[0].symbol}&nbsp;</Text>
-              <Text color="teal.300" fontSize="lg" display="inline" fontWeight="bold">{stockInfoData[0].name}&nbsp;|&nbsp;{stockInfoData[0].exchange}</Text>
+              <Text fontSize={["2xl", "3xl"]} display="inline" fontWeight="bold">{stockInfoData[0].symbol}&nbsp;</Text>
+              <Text color="#488c89" fontSize={["md", "lg"]} display="inline" fontWeight="bold">{stockInfoData[0].name}&nbsp;|&nbsp;{stockInfoData[0].exchange}</Text>
             </Flex>
             <Flex flexBasis="50%">
               {stockInfoData[0].change > 0 ?
@@ -69,7 +70,7 @@ export default function Overview() {
               }
             </Flex>
           </Flex>
-          <Flex flexBasis="50%">
+          <Flex flexBasis="50%" fontSize="calc(4px + 2vmin)">
             <Flex flexBasis="50%" direction="column" mx="3%">
               <Flex justify="space-between">
                 <Text>year-high</Text><Text>${stockInfoData[0].yearHigh}</Text>
@@ -89,12 +90,12 @@ export default function Overview() {
                 <Text>PER</Text><Text>×{stockInfoData[0].pe}</Text>
               </Flex>
               <Flex justify="space-between">
-                <Text>EV/EBITDA</Text><Text>abc</Text>
+                <Text>PSR</Text><Text>×{stockInfoData[0].psr}</Text>
               </Flex>
             </Flex>
           </Flex>
         </Flex>
-        <Flex　flexBasis="40%">
+        <Flex flexBasis={["60%", "40%"]}  p={["4%", "0"]} >
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart
               data={priceData}
@@ -102,11 +103,11 @@ export default function Overview() {
                 top: 0, right: 0, left: -20, bottom: 0,
               }}
             >
-              <XAxis dataKey="date" tick={{ fill: 'white' , fontSize: 10}}/>
-              <YAxis  color="white" tick={{ fill: 'white' , fontSize: 10}} tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
+              <XAxis dataKey="date" tick={{ fontSize: 10}}/>
+              <YAxis  tick={{ fontSize: 10}} tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
               <Tooltip formatter={(value) => new Intl.NumberFormat('en').format(value)} />
-              <Area dataKey="price" dot={false} type="monotone" fillOpacity="0.8" stroke="#4FD1C5" fill="#4FD1C5"/>
-              <Brush dataKey="date" height={15} stroke="#38B2AC"/>
+              <Area dataKey="price" dot={false} type="monotone" fillOpacity="0.8" stroke="#ffafbd" fill="#ffafbd"/>
+              <Brush dataKey="date" height={15} stroke="#ffafbd"/>
             </AreaChart>
           </ResponsiveContainer>
         </Flex>
