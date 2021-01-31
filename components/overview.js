@@ -51,21 +51,21 @@ export default function Overview() {
     stockInfoData.length
     ? (
       <Flex h={["50vh", "50vh","30vh"]} w="100%" direction={{ base: "column", md: "row" }} >
-        <Flex　flexBasis={["40%", "60%"]} direction="column" p="2%">
+        <Flex　flexBasis={["50%", "60%"]} direction="column" p="2%">
           <Flex direction="column" flexBasis="50%">
             <Flex flexBasis="50%" align="baseline">
-              <Text fontSize={["2xl", "3xl"]} display="inline" fontWeight="bold">{stockInfoData[0].symbol}&nbsp;</Text>
-              <Text color="#488c89" fontSize={["md", "lg"]} display="inline" fontWeight="bold">{stockInfoData[0].name}&nbsp;|&nbsp;{stockInfoData[0].exchange}</Text>
+              <Text fontSize={["2xl", "2xl", "3xl"]} display="inline" fontWeight="bold">{stockInfoData[0].symbol}&nbsp;</Text>
+              <Text color="#488c89" fontSize={["sm", "md", "lg"]} display="inline" fontWeight="bold">{stockInfoData[0].name}&nbsp;|&nbsp;{stockInfoData[0].exchange}</Text>
             </Flex>
             <Flex flexBasis="50%">
               {stockInfoData[0].change > 0 ?
               <Box>
-                <Text fontSize="md" display="inline" fontWeight="bold">${stockInfoData[0].price}</Text>&nbsp;&nbsp;
-                <Text color="#00e7c3" fontSize="md" display="inline" fontWeight="bold">▲{stockInfoData[0].change}&nbsp;({stockInfoData[0].changesPercentage}%)</Text>
+                <Text fontSize={["sm", "md", "lg"]} display="inline" fontWeight="bold">${stockInfoData[0].price}</Text>&nbsp;&nbsp;
+                <Text color="#00e7c3" fontSize={["sm", "md", "lg"]} display="inline" fontWeight="bold">▲{stockInfoData[0].change}&nbsp;({stockInfoData[0].changesPercentage}%)</Text>
               </Box> :
               <Box>
-                <Text fontSize="md" display="inline" fontWeight="bold">${stockInfoData[0].price}</Text>&nbsp;&nbsp;
-                <Text color="#f8485f" fontSize="md" display="inline" fontWeight="bold">▼{Math.abs(stockInfoData[0].change)}&nbsp;({stockInfoData[0].changesPercentage}%)</Text>
+                <Text fontSize={["sm", "md", "lg"]} display="inline" fontWeight="bold">${stockInfoData[0].price}</Text>&nbsp;&nbsp;
+                <Text color="#f8485f" fontSize={["sm", "md", "lg"]} display="inline" fontWeight="bold">▼{Math.abs(stockInfoData[0].change)}&nbsp;({stockInfoData[0].changesPercentage}%)</Text>
               </Box> 
               }
             </Flex>
@@ -95,7 +95,7 @@ export default function Overview() {
             </Flex>
           </Flex>
         </Flex>
-        <Flex flexBasis={["60%", "40%"]}  p={["4%", "0"]} >
+        <Flex flexBasis={["50%", "40%"]}  p={["4%", "0"]} >
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart
               data={priceData}

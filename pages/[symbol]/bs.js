@@ -176,71 +176,75 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
         direction="column"
         m="3%"
       >
-        <Flex direction="row">
-          <Stack align="center" direction="row" mx="2%">
-            <Text>Annual</Text>
+        <Flex direction={["column", "row"]}>
+          <Center fontSize={["xs", "lg"]}  align="center" direction="row" m="2%">
+            <Text>Annual&nbsp;</Text>
             <Switch size="md" colorScheme="teal"  onChange={() => setIsAnnual(!isAnnual)}/>
-            <Text>Quarterly</Text>
-          </Stack>
-          <Stack align="center" direction="row" mx="2%">
-            <Text>$</Text>
+            <Text>&nbsp;Quarterly</Text>
+          </Center>
+          <Center fontSize={["xs", "lg"]}  align="center" direction="row" m="2%">
+            <Text>$&nbsp;</Text>
             <Switch size="md" onChange={() => setIsPercent(!isPercent)}/>
-            <Text>%</Text>
-          </Stack>
-          <Text fontSize="xs" mx="2%">In Millions of USD except per share items</Text>
+            <Text>&nbsp;%</Text>
+          </Center>
+          <Text fontSize="xs" m="2%" align="center">In Millions of USD except per share items</Text>
         </Flex>
 
+        {/* Debit Side */}
         <Flex
           direction="column"
           w="100%"
-          h="60vh"
-          p="2%"
+          h={["960px", "960px", "60vh"]} 
+          p={["4%","4%","2%"]} 
+          my="4%"
           pt="1%"
-          mt="4%"
-          justify="space-between"
-          bg="#ffecf6"
+          bg="#c5e1de"
           color="#3f3356"
+          justify="space-around"
           borderRadius="lg"
+          z-index="5"
         >
-          <Flex h="5%" fontSize="sm">
+          <Flex textAlign="center" fontSize="sm">
             <Text>&nbsp;&nbsp;■ Debit Side</Text>
           </Flex>
           <Flex
-            h="92.5%"
+            h={["96%","96%","92.5%"]} 
             w="100%"
-            bg='transparent'
-            wrap="nowrap"
             justify="space-around"
             fontSize="xs"
+            direction={["column","column", "row"]}
           >
-            <Flex w="39%">
+            <Flex h={["25%","25%", "100%"]} w={["100%","100%", "39%"]}>
               <Flex
                 direction="column"
                 h="100%"
                 w="100%"
-                bg="white"
                 borderRadius="2xl"
-                boxShadow="md"
+                boxShadow="xl"
+                bg="#ffffff"
+                color="#000000"
               >
-                <Center><Text fontSize="xs" mt="2%">B/S Overview</Text></Center>
+                 <Center><Text fontSize="xs" mt="2%">B/S Overview</Text></Center>
                 <ComposedRechart data={bsData} keyword={bsDebitKeyword} color={colorPallet.bs}/>
               </Flex>
             </Flex>
             <Flex 
-              w="59%" 
+              h={["75%","75%", "100%"]} 
+              w={["100%","100%", "59%"]}
               wrap="wrap"
               justify="space-around"
+              direction="column"
             >
               <Flex
                 direction="column"
-                h="47%"
-                w="47%"
-                bg="#ffffff"
-                color="#000000"                
+                h={["22%", "44%","47%"]} 
+                w={["100%", "47%","47%"]} 
                 borderRadius="2xl"
-                boxShadow="md"
-                m="1"
+                boxShadow="xl"
+                my="1"
                 align="center"
+                bg="#ffffff"
+                color="#000000"
               >
                 <Text fontSize="xs" mt="2%">Cash & Cash Equivalents </Text>
                 { isPercent === true ? 
@@ -251,13 +255,13 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
               </Flex>
               <Flex
                 direction="column"
-                h="47%"
-                w="47%"
+                h={["22%", "44%","47%"]} 
+                w={["100%", "47%","47%"]} 
                 bg="#ffffff"
                 color="#000000"                
                 borderRadius="2xl"
-                boxShadow="md"
-                m="1"
+                boxShadow="xl"
+                my="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">Account Receivables</Text>
@@ -269,16 +273,16 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
               </Flex>
               <Flex
                 direction="column"
-                h="47%"
-                w="47%"
+                h={["22%", "44%","47%"]} 
+                w={["100%", "47%","47%"]}  
                 bg="#ffffff"
-                color="#000000"                
+                color="#000000"
                 borderRadius="2xl"
-                boxShadow="md"
-                m="1"
+                boxShadow="xl"
+                my="1"
                 align="center"
               >
-                <Text fontSize="xs" mt="2%">Inventory</Text>
+                 <Text fontSize="xs" mt="2%">Inventory</Text>
                 { isPercent === true ? 
                   <LineRechart  data={bsData} title={["inventoryR"]} color={[colorPallet.bs.light_green]}/> 
                   : 
@@ -287,13 +291,13 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
               </Flex>
               <Flex
                 direction="column"
-                h="47%"
-                w="47%"
+                h={["22%", "44%","47%"]} 
+                w={["100%", "47%","47%"]} 
                 bg="#ffffff"
-                color="#000000"                
+                color="#000000"
                 borderRadius="2xl"
-                boxShadow="md"
-                m="1"
+                boxShadow="xl"
+                my="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">PP&E</Text>
@@ -307,70 +311,74 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
           </Flex>
         </Flex>
 
+        {/* Cash Conversion Cycle */}
         <Flex
           direction="column"
           w="100%"
-          h="60vh"
-          p="2%"
+          h={["960px", "960px", "60vh"]} 
+          p={["4%","4%","2%"]} 
+          my="4%"
           pt="1%"
-          mt="4%"
-          justify="space-between"
-          bg="#ffecf6"
+          bg="#c5e1de"
           color="#3f3356"
+          justify="space-around"
           borderRadius="lg"
+          z-index="5"
         >
-          <Flex h="5%" fontSize="sm">
+          <Flex textAlign="center" fontSize="sm">
             <Text>&nbsp;&nbsp;■ Cash Conversion Cycle</Text>
           </Flex>
           <Flex
-            h="92.5%"
+            h={["96%","96%","92.5%"]} 
             w="100%"
-            bg='transparent'
-            wrap="nowrap"
             justify="space-around"
             fontSize="xs"
+            direction={["column","column", "row"]}
           >
-            <Flex w="39%">
+            <Flex h={["25%","25%", "100%"]} w={["100%","100%", "39%"]}>
               <Flex
-               direction="column"
-               h="100%"
-               w="100%"
-               bg="white"
-               borderRadius="2xl"
-               boxShadow="md"
+                direction="column"
+                h="100%"
+                w="100%"
+                borderRadius="2xl"
+                boxShadow="xl"
+                bg="#ffffff"
+                color="#000000"
               >
                 <Center><Text fontSize="xs" mt="2%">CCC</Text></Center>
                 <VerticalBarRechart data={cccData} color={[colorPallet.bs.green, colorPallet.bs.purple, colorPallet.bs.pink, colorPallet.bs.blue]}/>
               </Flex>
             </Flex>
             <Flex 
-              w="59%" 
+              h={["75%","75%", "100%"]} 
+              w={["100%","100%", "59%"]}
               wrap="wrap"
               justify="space-around"
+              direction="column"
             >
               <Flex
                 direction="column"
-                h="47%"
-                w="47%"
-                bg="#ffffff"
-                color="#000000"                
+                h={["22%", "44%","47%"]} 
+                w={["100%", "47%","47%"]} 
                 borderRadius="2xl"
-                boxShadow="md"
-                m="1"
+                boxShadow="xl"
+                my="1"
                 align="center"
+                bg="#ffffff"
+                color="#000000"
               >
                 <Text fontSize="xs" mt="2%">DIO </Text>
                 <BarRechart data={cccData} title={["dio"]} color={[colorPallet.bs.green]}/>
               </Flex>
               <Flex
                 direction="column"
-                h="47%"
-                w="47%"
+                h={["22%", "44%","47%"]} 
+                w={["100%", "47%","47%"]} 
                 bg="#ffffff"
                 color="#000000"                
                 borderRadius="2xl"
-                boxShadow="md"
-                m="1"
+                boxShadow="xl"
+                my="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">DSO</Text>
@@ -378,13 +386,13 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
               </Flex>
               <Flex
                 direction="column"
-                h="47%"
-                w="47%"
+                h={["22%", "44%","47%"]} 
+                w={["100%", "47%","47%"]}  
                 bg="#ffffff"
-                color="#000000"                
+                color="#000000"
                 borderRadius="2xl"
-                boxShadow="md"
-                m="1"
+                boxShadow="xl"
+                my="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">DPO </Text>
@@ -392,13 +400,13 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
               </Flex>
               <Flex
                 direction="column"
-                h="47%"
-                w="47%"
+                h={["22%", "44%","47%"]} 
+                w={["100%", "47%","47%"]} 
                 bg="#ffffff"
-                color="#000000"                
+                color="#000000"
                 borderRadius="2xl"
-                boxShadow="md"
-                m="1"
+                boxShadow="xl"
+                my="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">CCC</Text>
@@ -407,6 +415,7 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
             </Flex>
           </Flex>
         </Flex>
+
       </Flex>
     </Layout>
   )

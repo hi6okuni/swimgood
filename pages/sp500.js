@@ -129,8 +129,8 @@ export default function Sp500 ({ sp500Stocks }) {
           <Flex direction="column" >
             {sp500Stocks.map((stocks) => {
               return (
-                <Box bg="gray.700" p="3%" m="2%" borderRadius="2xl" bg="#c5e1de">
-                  <Text fontSize="lg" fontWeight="bold">■&nbsp;{stocks[0].sector}</Text>
+                <Box p="3%" mx="2%" my={["5%","4%","2%"]} borderRadius="2xl" bg="#c5e1de">
+                  <Text fontSize={["xs","md","lg"]} fontWeight="bold">■&nbsp;{stocks[0].sector}</Text>
                   <Flex justify="space-between" wrap="wrap">
                     {stocks.map((e) => {
                       return (
@@ -139,10 +139,10 @@ export default function Sp500 ({ sp500Stocks }) {
                         >
                           <Flex 
                             bg="white" 
-                            m="1%" 
-                            px="1.5%" 
-                            py="0.5%" 
-                            w="46%"
+                            m={["2%","2%","1%"]}
+                            px={["5%","3%","1.5%"]}
+                            py={["1%","2%","0.5%"]}
+                            w={["92%","46%","46%"]}
                             align="baseline" 
                             borderRadius="md"
                             _hover={{ bg: "linear-gradient(to right top , #ffafbd,  #ffc3a0 )"}}
@@ -152,11 +152,11 @@ export default function Sp500 ({ sp500Stocks }) {
                             onClick={() => jumpToPage(e.symbol)}
                           >
                             <Box>
-                              <Text fontWeight="bold" fontSize="sm" display="inline">{e.symbol}&nbsp;</Text>
-                              <Text color="#488c89" fontSize="xs" display="inline">{e.name}</Text>
+                              <Text fontWeight="bold" fontSize={["xs","xs","sm"]} >{e.symbol}&nbsp;</Text>
+                              <Text color="#488c89" fontSize={["calc(4px + 2vmin)","xs","xs"]} >{e.name}</Text>
                             </Box>
                             <Box>
-                              <Text fontSize="xs">‐&nbsp;{e.subSector}</Text>
+                              <Text fontSize={["calc(4px + 2vmin)","xs","xs"]}>‐&nbsp;{e.subSector}</Text>
                             </Box>
                           </Flex>
                         </Link>
