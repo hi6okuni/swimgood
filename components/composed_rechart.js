@@ -14,7 +14,7 @@ export default function ComposedRechart({ data, color, keyword}) {
               <ResponsiveContainer width="95%" height="95%">
                 <ComposedChart 
                   data={data}
-                  margin={{top: 5, right: 0, left: 0, bottom: 10,}}
+                  margin={{top: 5, right: 0, left: 0, bottom: 10}}
                 >
                   <XAxis dataKey="date" tick={{ fontSize: 11}}/>
                   <YAxis tick={{ fontSize: 11}} tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
@@ -35,13 +35,11 @@ export default function ComposedRechart({ data, color, keyword}) {
             <ResponsiveContainer width="90%" height="90%">
               <BarChart
                 data={data}
-                margin={{
-                  top: 5, right: 0, left: 0, bottom: 5,
-                }}
+                margin={{top: 5, right: 0, left: 0, bottom: 10}}
               >
                 <XAxis dataKey="date" tick={{ fill: 'white' , fontSize: 11}}/>
                 <YAxis  tick={{ fill: 'white' , fontSize: 11}} tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
-                <Legend align="center"/>
+                <Legend align="center" wrapperStyle={{ fontSize: 9}}/>
                 <Bar dataKey="totalStockholdersEquity" stackId="a" fill={color.green} />
                 <Bar dataKey="totalLiabilities"  stackId="a" fill={color.dark_green} />
                 <Bar dataKey="netIncome" stackId="b" fill={color.purple} />
@@ -61,7 +59,7 @@ export default function ComposedRechart({ data, color, keyword}) {
               >
                 <XAxis dataKey="date" tick={{ fill: 'white' , fontSize: 11}}/>
                 <YAxis  tick={{ fill: 'white' , fontSize: 11}} tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
-                <Legend align="center"/>
+                <Legend align="center" margin={{top: 0, right: 10, left: 10, bottom: 0}} wrapperStyle={{ fontSize: 9}}/>
                 <Bar dataKey="otherNonCurrentAssets"  stackId="a" fill={color.dark_red} />
                 <Bar dataKey="propertyPlantEquipmentNet"  stackId="a" fill={color.light_red} />
                 <Bar dataKey="otherCurrentAssets" stackId="a" fill={color.gray} />
