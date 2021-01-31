@@ -50,7 +50,7 @@ export default function Overview() {
   return (
     stockInfoData.length
     ? (
-      <Flex h={["50vh", "50vh","30vh"]} w="100%" direction={{ base: "column", md: "row" }} >
+      <Flex h={["360px", "50vh","30vh"]} w="100%" direction={{ base: "column", md: "row" }} >
         <Flex　flexBasis={["50%", "60%"]} direction="column" p="2%">
           <Flex direction="column">
             <Flex flexBasis="50%" align="baseline">
