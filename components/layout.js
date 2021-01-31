@@ -19,7 +19,7 @@ export default function Layout({ children, home }) {
   }
 
   return (
-    <Box bg="#edf6f5" color="#3f3356" minH="100vh" minW="100%">
+    <Box bg="#f7f8fd" color="#3f3356" minH="100vh" minW="100%">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.gstatic.com"/>

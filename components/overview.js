@@ -55,7 +55,7 @@ export default function Overview() {
           <Flex direction="column" flexBasis="50%">
             <Flex flexBasis="50%" align="baseline">
               <Text fontSize={["2xl", "2xl", "3xl"]} display="inline" fontWeight="bold">{stockInfoData[0].symbol}&nbsp;</Text>
-              <Text color="#488c89" fontSize={["sm", "md", "lg"]} display="inline" fontWeight="bold">{stockInfoData[0].name}&nbsp;|&nbsp;{stockInfoData[0].exchange}</Text>
+              <Text color="#6263fb" fontSize={["sm", "md", "lg"]} display="inline" fontWeight="bold">{stockInfoData[0].name}&nbsp;|&nbsp;{stockInfoData[0].exchange}</Text>
             </Flex>
             <Flex flexBasis="50%">
               {stockInfoData[0].change > 0 ?
@@ -95,7 +95,7 @@ export default function Overview() {
             </Flex>
           </Flex>
         </Flex>
-        <Flex flexBasis={["50%", "40%"]}  p={["4%", "0"]} >
+        <Flex flexBasis={["250px", "40%"]}  p={["4%", "0"]} >
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart
               data={priceData}
@@ -106,7 +106,7 @@ export default function Overview() {
               <XAxis dataKey="date" tick={{ fontSize: 10}}/>
               <YAxis  tick={{ fontSize: 10}} tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
               <Tooltip formatter={(value) => new Intl.NumberFormat('en').format(value)} />
-              <Area dataKey="price" dot={false} type="monotone" fillOpacity="0.8" stroke="#ffafbd" fill="#ffafbd"/>
+              <Area dataKey="price" dot={false} type="monotone" fillOpacity="0.8" stroke="#6263fb" fill="#6263fb"/>
               <Brush dataKey="date" height={15} stroke="#ffafbd"/>
             </AreaChart>
           </ResponsiveContainer>

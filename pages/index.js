@@ -64,7 +64,7 @@ export default function Home ({ allPostsData }) {
         >
         <section>
           <Box position="relative" zIndex="2">
-            <Text fontSize="calc(2px + 12vmin)" color="#488c89" lineHeight="100%" fontWeight="bold">Broaden<br></br>Your Insight</Text>
+            <Text fontSize="calc(2px + 12vmin)" color="#6263fb" lineHeight="100%" fontWeight="bold">Broaden<br></br>Your Insight</Text>
             <Box className="gradient" mb="6%">
               <span className="gradient-text">into U.S. Stocks</span><br></br>
               <span className="gradient-text">with Beautiful Visuals</span>

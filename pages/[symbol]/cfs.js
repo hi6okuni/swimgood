@@ -191,7 +191,7 @@ export default function CashFlowStatement ({ cfs, pl, historicalPrice, basicInfo
           p={["4%","4%","2%"]} 
           my="4%"
           pt="1%"
-          bg="#c5e1de"
+          bg="#e4e9fb"
           color="#3f3356"
           justify="space-around"
           borderRadius="lg"
@@ -240,7 +240,7 @@ export default function CashFlowStatement ({ cfs, pl, historicalPrice, basicInfo
                 color="#000000"
               >
                 <Text fontSize="xs" mt="2%">Margins</Text>
-                <LineRechart data={cfsData} title={["operatingCashFlowRatio", "netIncomeRatio"]} color={[colorPallet.cfs.pink, colorPallet.cfs.white]}/>
+                <LineRechart data={cfsData} title={["operatingCashFlowRatio", "netIncomeRatio"]} color={[colorPallet.cfs.pink, colorPallet.cfs.blue]}/>
               </Flex>
               <Flex
                 direction="column"
@@ -253,7 +253,7 @@ export default function CashFlowStatement ({ cfs, pl, historicalPrice, basicInfo
                 my="1"
                 align="center"
               >
-                <Text fontSize="xs" mt="2%">Capex + Free Cash Flow = Cash from Operations</Text>
+                <Text fontSize="xs" mt="2%">Cash from Operations</Text>
                 <BarRechart data={cfsData} title={["capitalExpenditure", "freeCashFlow"]} color={[colorPallet.cfs.pink, colorPallet.cfs.blue]}/>
               </Flex>
               <Flex
@@ -287,7 +287,7 @@ export default function CashFlowStatement ({ cfs, pl, historicalPrice, basicInfo
             </Flex>
           </Flex>
         </Flex>
-        
+
       </Flex>
     </Layout>
   )

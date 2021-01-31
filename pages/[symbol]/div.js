@@ -142,7 +142,7 @@ export default function Dividends ({ div, keyMetrics, historicalPrice, basicInfo
           p={["4%","4%","2%"]} 
           my="4%"
           pt="1%"
-          bg="#c5e1de"
+          bg="#e4e9fb"
           color="#3f3356"
           justify="space-around"
           borderRadius="lg"
