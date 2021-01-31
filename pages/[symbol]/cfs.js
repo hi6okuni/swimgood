@@ -174,76 +174,83 @@ export default function CashFlowStatement ({ cfs, pl, historicalPrice, basicInfo
         direction="column"
         m="3%"
       >
-        <Flex direction="row">
-          <Stack align="center" direction="row" mx="2%">
-            <Text>Annual</Text>
+        <Flex direction={["column", "row"]}>
+          <Center fontSize={["xs", "lg"]}  align="center" direction="row" m="2%">
+            <Text>Annual&nbsp;</Text>
             <Switch size="md" colorScheme="teal"  onChange={() => setIsAnnual(!isAnnual)}/>
-            <Text>Quarterly</Text>
-          </Stack>
-          <Text fontSize="xs" mx="2%">In Millions of USD except per share items</Text>
+            <Text>&nbsp;Quarterly</Text>
+          </Center>
+          <Text fontSize="xs" m="2%" align="center">In Millions of USD except per share items</Text>
         </Flex>
 
-        <Flex
+         {/* Capital Allocation */}
+         <Flex
           direction="column"
           w="100%"
-          h="50vh"
-          p="1.5%"
-          mt="2%"
+          h={["960px", "960px", "60vh"]} 
+          p={["4%","4%","2%"]} 
+          my="4%"
           pt="1%"
-          justify="space-between"
-          bg='gray.700'
+          bg="#c5e1de"
+          color="#3f3356"
+          justify="space-around"
           borderRadius="lg"
+          z-index="5"
         >
-          <Flex h="5%" fontWeight="bold" fontSize="sm">
+          <Flex textAlign="center" fontSize="sm">
             <Text>&nbsp;&nbsp;■ Capital Allocation</Text>
           </Flex>
           <Flex
-            h="92.5%"
+            h={["96%","96%","92.5%"]} 
             w="100%"
-            bg='transparent'
-            wrap="nowrap"
             justify="space-around"
             fontSize="xs"
+            direction={["column","column", "row"]}
           >
-            <Flex w="39%">
+            <Flex h={["25%","25%", "100%"]} w={["100%","100%", "39%"]}>
               <Flex
                 direction="column"
                 h="100%"
                 w="100%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
+                borderRadius="2xl"
+                boxShadow="xl"
+                bg="#ffffff"
+                color="#000000"
               >
                 <Center><Text fontSize="xs" mt="2%">How to Use Cash</Text></Center>
                 <ComposedRechart data={cfsData} color={colorPallet.cfs} keyword="cfs" />
               </Flex>
             </Flex>
             <Flex 
-              w="59%" 
+              h={["75%","75%", "100%"]} 
+              w={["100%","100%", "59%"]}
               wrap="wrap"
               justify="space-around"
+              direction="column"
             >
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
-                m="0.4"
+                h={["22%", "44%","47%"]} 
+                w={["100%", "47%","47%"]} 
+                borderRadius="2xl"
+                boxShadow="xl"
+                my="1"
                 align="center"
+                bg="#ffffff"
+                color="#000000"
               >
                 <Text fontSize="xs" mt="2%">Margins</Text>
                 <LineRechart data={cfsData} title={["operatingCashFlowRatio", "netIncomeRatio"]} color={[colorPallet.cfs.pink, colorPallet.cfs.white]}/>
               </Flex>
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
-                m="0.4"
+                h={["22%", "44%","47%"]} 
+                w={["100%", "47%","47%"]} 
+                bg="#ffffff"
+                color="#000000"                
+                borderRadius="2xl"
+                boxShadow="xl"
+                my="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">Capex + Free Cash Flow = Cash from Operations</Text>
@@ -251,12 +258,13 @@ export default function CashFlowStatement ({ cfs, pl, historicalPrice, basicInfo
               </Flex>
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
-                m="0.4"
+                h={["22%", "44%","47%"]} 
+                w={["100%", "47%","47%"]}  
+                bg="#ffffff"
+                color="#000000"
+                borderRadius="2xl"
+                boxShadow="xl"
+                my="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">Return to Shareholders</Text>
@@ -264,12 +272,13 @@ export default function CashFlowStatement ({ cfs, pl, historicalPrice, basicInfo
               </Flex>
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
-                m="0.4"
+                h={["22%", "44%","47%"]} 
+                w={["100%", "47%","47%"]} 
+                bg="#ffffff"
+                color="#000000"
+                borderRadius="2xl"
+                boxShadow="xl"
+                my="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">Long-Term Debt Repaid</Text>
@@ -278,6 +287,7 @@ export default function CashFlowStatement ({ cfs, pl, historicalPrice, basicInfo
             </Flex>
           </Flex>
         </Flex>
+        
       </Flex>
     </Layout>
   )

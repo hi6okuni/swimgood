@@ -134,173 +134,81 @@ export default function Dividends ({ div, keyMetrics, historicalPrice, basicInfo
           <Text fontSize="xs" mx="2%">In Millions of USD except per share items</Text>
         </Flex>
 
-        {/* <Flex
+         {/* Dividends */}
+         <Flex
           direction="column"
           w="100%"
-          h="30vh"
-          p="1.5%"
-          mt="2%"
-          justify="space-around"
-          bg='gray.700'
-          borderRadius="lg"
-        >
-          <Flex
-            h="92.5%"
-            w="100%"
-            p="2%"
-            bg="gray.800"
-            wrap="nowrap"
-            justify="space-between"
-            fontSize="sm"
-            borderRadius="lg"
-            boxShadow="md"
-          >
-            <Flex w="30%" justify="space-between" p="2%" direction="column">
-              <Flex justify="center">
-                <Text color="teal.300">Margin Metrics</Text>
-              </Flex>
-              <Flex justify="space-between">
-                <Text>Gross Profit Margin</Text>
-                <Text>{`${profitData[profitData.length - 1].grossProfitR}%`}</Text>
-              </Flex>
-              <Flex justify="space-between">
-                <Text>EBITDA Margin</Text>
-                <Text>{`${profitData[profitData.length - 1].ebitdaR}%`}</Text>
-              </Flex>
-              <Flex justify="space-between">
-                <Text>Net Profit Margin</Text>
-                <Text>{`${profitData[profitData.length - 1].netIncomeR}%`}</Text>
-              </Flex>
-            </Flex>
-            <Flex w="30%" justify="space-between" p="2%" direction="column">
-              <Flex justify="center">
-                <Text color="teal.300">Return Metrics</Text>
-              </Flex>
-              <Flex justify="space-between">
-                <Text>ROE</Text>
-                <Text>{`${profitData[profitData.length - 1].roe}%`}</Text>
-              </Flex>
-              <Flex justify="space-between">
-                <Text>ROIC</Text>
-                <Text>{`${profitData[profitData.length - 1].roic}%`}</Text>
-              </Flex>
-              <Flex justify="space-between">
-                <Text>ROA</Text>
-                <Text>{`${profitData[profitData.length - 1].roa}%`}</Text>
-              </Flex>
-            </Flex>
-            <Flex w="30%" justify="space-between" p="2%" direction="column">
-              <Flex justify="center">
-                <Text color="teal.300">DuPont Analysis</Text>
-              </Flex>
-              <Flex justify="space-between">
-                <Text>Net Profit Margin</Text>
-                <Text>{`${profitData[profitData.length - 1].netIncomeR}%`}</Text>
-              </Flex>
-              <Flex justify="space-between">
-                <Text>Asset Turnover</Text>
-                <Text>{`${profitData[profitData.length - 1].totalAssetTurnover}%`}</Text>
-              </Flex>
-              <Flex justify="space-between">
-                <Text>Equity Multiplier</Text>
-                <Text>{`x${profitData[profitData.length - 1].equityMultiplier}`}</Text>
-              </Flex>
-            </Flex>
-          </Flex>
-        </Flex> */}
-
-        <Flex
-          direction="column"
-          w="100%"
-          h="50vh"
-          p="1.5%"
-          mt="2%"
+          h={["960px", "960px", "60vh"]} 
+          p={["4%","4%","2%"]} 
+          my="4%"
           pt="1%"
-          justify="space-between"
-          bg='gray.700'
+          bg="#c5e1de"
+          color="#3f3356"
+          justify="space-around"
           borderRadius="lg"
+          z-index="5"
         >
-          <Flex h="5%" fontWeight="bold" fontSize="sm">
+          <Flex textAlign="center" fontSize="sm">
             <Text>&nbsp;&nbsp;■ Dividends</Text>
           </Flex>
           <Flex
-            h="92.5%"
+            h={["96%","96%","92.5%"]} 
             w="100%"
-            bg='transparent'
-            wrap="nowrap"
             justify="space-around"
             fontSize="xs"
+            direction={["column","column", "row"]}
           >
-            <Flex w="39%">
+            <Flex h={["25%","25%", "100%"]} w={["100%","100%", "39%"]}>
               <Flex
                 direction="column"
                 h="100%"
                 w="100%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
+                borderRadius="2xl"
+                boxShadow="xl"
+                bg="#ffffff"
+                color="#000000"
               >
                 <Center><Text fontSize="xs" mt="2%">Dividends History</Text></Center>
                 <BarRechart data={divHistory} title={["adjDividend"]} color={[colorPallet.profit.green]}/>
               </Flex>
             </Flex>
             <Flex 
-              w="59%" 
+              h={["75%","75%", "100%"]} 
+              w={["100%","100%", "59%"]}
               wrap="wrap"
-              justify="space-around"
+              direction="column"
+              justify={["flex-start","flex-start", "space-around"]} 
+              my={["4%","4%", "0%"]}
             >
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
-                m="0.4"
+                h={["22%", "44%","47%"]} 
+                w={["100%", "47%","47%"]} 
+                borderRadius="2xl"
+                boxShadow="xl"
+                my="1"
                 align="center"
+                bg="#ffffff"
+                color="#000000"
               >
                 <Text fontSize="xs" mt="2%">Dividends Yield</Text>
                 <LineRechart data={divData} title={["dividendYield"]} color={[colorPallet.profit.pink]}/>
               </Flex>
               <Flex
                 direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
-                m="0.4"
+                h={["22%", "44%","47%"]} 
+                w={["100%", "47%","47%"]} 
+                bg="#ffffff"
+                color="#000000"                
+                borderRadius="2xl"
+                boxShadow="xl"
+                my="1"
                 align="center"
               >
                 <Text fontSize="xs" mt="2%">Payout Ratio</Text>
                 <LineRechart data={divData} title={["payoutRatio"]} color={[colorPallet.profit.green]}/>
               </Flex>
-              {/* <Flex
-                direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
-                m="0.4"
-                align="center"
-              >
-                <Text fontSize="xs" mt="2%">Asset Turnover</Text>
-                <LineRechart data={profitData} title={["totalAssetTurnover"]} color={[colorPallet.profit.orange]}/>
-              </Flex>
-              <Flex
-                direction="column"
-                h="49%"
-                w="49%"
-                bg="gray.800"
-                borderRadius="lg"
-                boxShadow="md"
-                m="0.4"
-                align="center"
-              >
-                <Text fontSize="xs" mt="2%">Equity Multiplier</Text>
-                <BarRechart data={profitData} title={["equityMultiplier"]} color={[colorPallet.profit.green]}/>
-              </Flex> */}
+        
             </Flex>
           </Flex>
         </Flex>

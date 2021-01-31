@@ -78,7 +78,7 @@ export default function SideBar(props) {
       <Box>
         <Box color="#2f706b" fontWeight="bold" fontSize="sm" fontFamily="Pacifico" onClick={() => resetSymbol()}>
           <Link href="/">
-            <a>Vanilla🍦</a>
+            <a>Swim 🏊‍</a>
           </Link>
         </Box>
         <Box fontSize="calc(4px + 1vmin)">
@@ -320,7 +320,7 @@ export default function SideBar(props) {
       >
         <Box color="#2f706b" fontWeight="bold" fontSize="2xl" fontFamily="Pacifico" onClick={() => resetSymbol()}>
           <Link href="/">
-            <a>Swimgood</a>
+            <a>Swim 🏊‍</a>
           </Link>
         </Box>
         <Box fontSize="calc(4px + 1vmin)">
