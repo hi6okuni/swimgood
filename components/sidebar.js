@@ -76,12 +76,12 @@ export default function SideBar(props) {
       onClick={() => navSlide()}
     >
       <Box>
-        <Box color="#2f706b" fontWeight="bold" fontSize="sm" fontFamily="Pacifico" onClick={() => resetSymbol()}>
+        <Box color="#2f706b" fontWeight="bold" fontSize="md" fontFamily="Pacifico" onClick={() => resetSymbol()}>
           <Link href="/">
-            <a>Swim 🏊‍</a>
+            <a>Swimgood 🏊‍</a>
           </Link>
         </Box>
-        <Box fontSize="calc(4px + 1vmin)">
+        <Box fontSize="calc(6px + 1vmin)">
           <Text>Visuals instantly inspire you</Text>
         </Box>
       </Box>
@@ -320,7 +320,7 @@ export default function SideBar(props) {
       >
         <Box color="#2f706b" fontWeight="bold" fontSize="2xl" fontFamily="Pacifico" onClick={() => resetSymbol()}>
           <Link href="/">
-            <a>Swim 🏊‍</a>
+            <a>Swimgood 🏊‍</a>
           </Link>
         </Box>
         <Box fontSize="calc(4px + 1vmin)">
