@@ -52,12 +52,12 @@ export default function Overview() {
     ? (
       <Flex h={["50vh", "50vh","30vh"]} w="100%" direction={{ base: "column", md: "row" }} >
         <Flex　flexBasis={["50%", "60%"]} direction="column" p="2%">
-          <Flex direction="column" flexBasis="50%">
+          <Flex direction="column">
             <Flex flexBasis="50%" align="baseline">
               <Text fontSize={["2xl", "2xl", "3xl"]} display="inline" fontWeight="bold">{stockInfoData[0].symbol}&nbsp;</Text>
               <Text color="#6263fb" fontSize={["sm", "md", "lg"]} display="inline" fontWeight="bold">{stockInfoData[0].name}&nbsp;|&nbsp;{stockInfoData[0].exchange}</Text>
             </Flex>
-            <Flex flexBasis="50%">
+            <Flex>
               {stockInfoData[0].change > 0 ?
               <Box>
                 <Text fontSize={["sm", "md", "lg"]} display="inline" fontWeight="bold">${stockInfoData[0].price}</Text>&nbsp;&nbsp;
@@ -95,7 +95,7 @@ export default function Overview() {
             </Flex>
           </Flex>
         </Flex>
-        <Flex flexBasis={["250px", "40%"]}  p={["4%", "0"]} >
+        <Flex flexBasis={["250px", "40%"]}  p={["4%", "0"]} h={["180px", "100%"]}>
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart
               data={priceData}
