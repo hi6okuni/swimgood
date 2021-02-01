@@ -30,7 +30,7 @@ export default function About () {
   return (
     <Layout>
       <Box position="relative" zIndex="2" my="8%">
-        <Text fontSize="calc(2px + 6vmin)" color="#488c89" lineHeight="100%" fontWeight="bold">Oops! <br></br>First Search Symbol.</Text>
+        <Text fontSize="calc(2px + 6vmin)" color="#6263fb" lineHeight="100%" fontWeight="bold">Oops! <br></br>First Search Symbol.</Text>
         <Box my="3%" w="70%" >
           <Search getSymbol={getSymbol}/>
         </Box>

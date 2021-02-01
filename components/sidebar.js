@@ -76,7 +76,7 @@ export default function SideBar(props) {
       onClick={() => navSlide()}
     >
       <Box>
-        <Box color="#6263fb" fontWeight="bold" fontSize="md" fontFamily="Pacifico" onClick={() => resetSymbol()}>
+        <Box color="#6263fb" fontSize="md" fontFamily="Pacifico, cursive" onClick={() => resetSymbol()}>
           <Link href="/">
             <a>Swimgood 🏊‍</a>
           </Link>
@@ -305,12 +305,14 @@ export default function SideBar(props) {
     <Flex 
       display={{ base: "none", md: "flex" }}
       minH="100vh"
-      mt="20%"
       direction={{ base: "row", md: "column" }}
+      pt="20%"
       wrap="nowrap"
       align="center"
       pos="sticky" 
-      top="40px"
+      top="0px"
+      boxShadow="xl"
+      bg="white"
     >
       <Flex 
         h="30%"
@@ -318,7 +320,7 @@ export default function SideBar(props) {
         align="center" 
         fontSize="md"
       >
-        <Box color="#6263fb" fontWeight="bold" fontSize="2xl" fontFamily="Pacifico" onClick={() => resetSymbol()}>
+        <Box color="#6263fb" fontSize="2xl" fontFamily="Pacifico" onClick={() => resetSymbol()}>
           <Link href="/">
             <a>Swimgood 🏊‍</a>
           </Link>
@@ -350,8 +352,7 @@ export default function SideBar(props) {
               <Center
                 w="80%"
                 borderRadius="lg"
-                bg="linear-gradient(to right top , #ffafbd,  #ffc3a0 )"
-                color="#3f3356"
+                bg="#e4eafb"
                 m="2%"
                 p="3%"
                 transition="all .2s ease-in-out"
@@ -379,9 +380,10 @@ export default function SideBar(props) {
                 borderRadius="lg"
                 m="2%"
                 p="3%"
-                _hover={{ bg: "linear-gradient(to right top , #ffafbd,  #ffc3a0 )", color: "#3f3356" }}
+                color="gray.500"
+                _hover={{ bg: "#e4eafb", color: "#3f3356"}}
                 _activeLink
-                transition="all .2s ease-in-out"
+                transition="all 0.3s ease-in-out"
                 onClick={() => setMenu(e.url)}
               >
                 { value ? 
@@ -424,9 +426,8 @@ export default function SideBar(props) {
             borderRadius="lg"
             m="2%"
             p="3%"
-            bg="linear-gradient(to right top , #ffafbd,  #ffc3a0 )"
+            bg="#e4eafb"
             color="#3f3356"
-            fontWeight="500"
             transition="all 0.3s ease-in-out"
             onClick={() => setMenuSp500()}
           >
@@ -443,8 +444,8 @@ export default function SideBar(props) {
             borderRadius="lg"
             m="2%"
             p="3%"
-            fontWeight="500"
-            _hover={{ bg: "linear-gradient(to right top , #ffafbd,  #ffc3a0 )", color: "#3f3356" }}
+            color="gray.500"
+            _hover={{ bg: "#e4eafb", color: "#3f3356"}}
             _activeLink
             transition="all 0.3s ease-in-out"
             onClick={() => setMenuSp500()}
@@ -471,7 +472,7 @@ export default function SideBar(props) {
             m="2%"
             p="3%"
             fontWeight="500"
-            bg="linear-gradient(to right top , #ffafbd,  #ffc3a0 )"
+            bg="#e4eafb"
             color="#3f3356"
             transition="all 0.3s ease-in-out"
             onClick={() => setMenuDjia()}
@@ -489,8 +490,8 @@ export default function SideBar(props) {
             borderRadius="lg"
             m="2%"
             p="3%"
-            fontWeight="500"
-            _hover={{ bg: "linear-gradient(to right top , #ffafbd,  #ffc3a0 )", color: "#3f3356" }}
+            color="gray.500"
+            _hover={{ bg: "#e4eafb", color: "#3f3356"}}
             _activeLink
             transition="all 0.3s ease-in-out"
             onClick={() => setMenuDjia()}

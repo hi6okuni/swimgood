@@ -6,7 +6,7 @@ import SideBar from './sidebar'
 import Overview from './overview'
 import Footer from './footer'
 
-export const siteTitle = 'Cashmere💰 | U.S. Stock Charts'
+export const siteTitle = 'Swimgood🏊‍| U.S. Stock Visualizer'
 
 export default function Layout({ children, home }) {
 
@@ -63,3 +63,4 @@ export default function Layout({ children, home }) {
     </Box>
   )
 }
+

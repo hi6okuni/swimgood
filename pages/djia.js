@@ -66,7 +66,7 @@ export default function Djia ({ editedLists }) {
             <Text>Dow Jones Industorial Average List</Text>
           </Flex>
           <Flex direction="column" zIndex="2">
-            <Box p="3%" mx="2%" my={["5%","4%","2%"]} borderRadius="2xl" bg="#c5e1de">
+            <Box p="3%" mx="2%" my={["5%","4%","2%"]} borderRadius="2xl" bg="#e4eafb">
               <Flex justify="space-between" wrap="wrap">
                 {editedLists.map((e) => {
                   return (
@@ -74,22 +74,24 @@ export default function Djia ({ editedLists }) {
                       href={`/${e.symbol}/pl`}
                     >
                       <Flex 
-                        bg="white" 
+                        bg="#6369f7"
+                        color="white"
                         m={["2%","2%","1%"]}
                         px={["5%","3%","1.5%"]}
                         py={["1%","2%","0.5%"]}
                         w={["92%","46%","46%"]}
                         align="baseline" 
                         borderRadius="md"
-                        _hover={{ bg: "linear-gradient(to right top , #ffafbd,  #ffc3a0 )"}}
+                        _hover={{ bg:"#fd8db9"}}
                         transition="all 0.3s ease-in-out"
                         boxShadow="xl"
                         direction="column"
                         onClick={() => jumpToPage(e.symbol)}
+                        cursor="pointer"
                       >
                         <Box>
                           <Text fontWeight="bold" fontSize={["xs","xs","sm"]}>{e.symbol}&nbsp;</Text>
-                          <Text color="#488c89" fontSize={["calc(4px + 2vmin)","xs","xs"]}>{e.name}</Text>
+                          <Text fontSize={["calc(4px + 2vmin)","xs","xs"]}>{e.name}</Text>
                         </Box>
                         <Box>
                           <Text fontSize={["calc(4px + 2vmin)","xs","xs"]} >‐&nbsp;{e.subSector}</Text>
