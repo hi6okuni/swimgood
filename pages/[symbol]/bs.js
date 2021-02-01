@@ -1,10 +1,8 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
 import { useAppContext } from '../../lib/context/state'
 import Layout, { siteTitle } from '../../components/layout'
 import colorPallet from '../../lib/color-pallet'
-import AreaRechart from '../../components/area_rechart'
 import BarRechart from '../../components/bar_rechart'
 import VerticalBarRechart from '../../components/vertical_bar_rechart'
 import LineRechart from '../../components/line_rechart'
@@ -14,17 +12,7 @@ import {
   Flex,
   Center,
   Text,
-  Heading,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  Button,
-  Stack,
   Switch,
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
 } from "@chakra-ui/react"
 
 export async function getServerSideProps({params}) {

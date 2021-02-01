@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
 import { useAppContext } from '../../lib/context/state'
 import Layout, { siteTitle } from '../../components/layout'
 import AreaRechart from '../../components/area_rechart'
@@ -11,17 +10,7 @@ import {
   Flex,
   Center,
   Text,
-  Heading,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  Button,
-  Stack,
   Switch,
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
 } from "@chakra-ui/react"
 
 
@@ -293,7 +282,8 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 bg="#ffffff"
                 color="#000000"
               >
-                <Center><Text fontSize="xs" mt="2%">Profit Structure</Text></Center>
+                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
+                <Center><Text fontSize="xs">Profit Structure</Text></Center>
                 <AreaRechart data={profitData} keyword={profitStructureKeyword} color={chartColor.rev}/>
               </Flex>
             </Flex>
@@ -302,7 +292,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
               w={["100%","100%", "59%"]}
               wrap="wrap"
               justify="space-around"
-              direction="column"
+              direction={["column","colmn", "row"]}
             >
               <Flex
                 direction="column"
@@ -311,11 +301,11 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 borderRadius="2xl"
                 boxShadow="xl"
                 my="1"
-                align="center"
                 bg="#ffffff"
                 color="#000000"
               >
-                <Text fontSize="xs" mt="2%">Revenue</Text>
+                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
+                <Center><Text fontSize="xs">Revenue</Text></Center>
                 <BarRechart data={profitData} title={["revenue"]} color={[chartColor.rev[0]]}/>
               </Flex>
               <Flex
@@ -327,9 +317,9 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 borderRadius="2xl"
                 boxShadow="xl"
                 my="1"
-                align="center"
               >
-                <Text fontSize="xs" mt="2%">Gross Profit</Text>
+                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
+                <Center><Text fontSize="xs">Gross Profit</Text></Center>
                 { isPercent === true ? 
                   <LineRechart data={profitData} title={["grossProfitR"]} color={[chartColor.rev[1]]}/> 
                   : 
@@ -345,9 +335,9 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 borderRadius="2xl"
                 boxShadow="xl"
                 my="1"
-                align="center"
               >
-                <Text fontSize="xs" mt="2%">Operating Income</Text>
+                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
+                <Center><Text fontSize="xs">Operating Income</Text></Center>
                 { isPercent === true ? 
                   <LineRechart data={profitData} title={["operatingIncomeR"]} color={[chartColor.rev[2]]}/> 
                   : 
@@ -363,9 +353,9 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 borderRadius="2xl"
                 boxShadow="xl"
                 my="1"
-                align="center"
               >
-                <Text fontSize="xs" mt="2%">Net Income</Text>
+                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
+                <Center><Text fontSize="xs">Net Income</Text></Center>
                 { isPercent === true ? 
                   <LineRechart data={profitData} title={["netIncomeR"]} color={[chartColor.rev[3]]}/> 
                   : 
@@ -410,7 +400,8 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 bg="#ffffff"
                 color="#000000"
               >
-                <Center><Text fontSize="xs" mt="2%">Operating Expenses Structure</Text></Center>
+                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
+                <Center><Text fontSize="xs">Operating Expenses Structure</Text></Center>
                 <AreaRechart data={profitData} keyword="expense" color={chartColor.expense}/>
               </Flex>
             </Flex>
@@ -419,7 +410,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
               w={["100%","100%", "59%"]}
               wrap="wrap"
               justify="space-around"
-              direction="column"
+              direction={["column","colmn", "row"]}
             >
               <Flex
                 direction="column"
@@ -428,11 +419,11 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 borderRadius="2xl"
                 boxShadow="xl"
                 my="1"
-                align="center"
                 bg="#ffffff"
                 color="#000000"
               >
-                <Text fontSize="xs" mt="2%">Operating Expenses / Revenue</Text>
+                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
+                <Center><Text fontSize="xs">Operating Expenses / Revenue</Text></Center>
                 <LineRechart data={profitData} title={["operatingExpenseR"]} color={[chartColor.expense[0]]}/>
               </Flex>
               <Flex
@@ -444,9 +435,9 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 borderRadius="2xl"
                 boxShadow="xl"
                 my="1"
-                align="center"
               >
-                <Text fontSize="xs" mt="2%">R&D</Text>
+                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
+                <Center><Text fontSize="xs">R&D</Text></Center>
                 <BarRechart data={profitData} title={["rd"]} color={[chartColor.expense[0]]}/>
               </Flex>
               <Flex
@@ -458,9 +449,9 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 borderRadius="2xl"
                 boxShadow="xl"
                 my="1"
-                align="center"
               >
-                <Text fontSize="xs" mt="2%">SG&A</Text>
+                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
+                <Center><Text fontSize="xs">SG&A</Text></Center>
                 <BarRechart data={profitData} title={["sga"]} color={[chartColor.expense[1]]}/>
               </Flex>
               <Flex
@@ -472,9 +463,9 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 borderRadius="2xl"
                 boxShadow="xl"
                 my="1"
-                align="center"
               >
-                <Text fontSize="xs" mt="2%">Depreciation and Amortization</Text>
+                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
+                <Center><Text fontSize="xs">Depreciation and Amortization</Text></Center>
                 <BarRechart data={profitData} title={["da"]} color={[chartColor.ebitda[0]]}/>
               </Flex>
             </Flex>
@@ -515,7 +506,8 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 bg="#ffffff"
                 color="#000000"
               >
-                <Center><Text fontSize="xs" mt="2%">From Net Income to EBITDA</Text></Center>
+                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
+                <Center><Text fontSize="xs">From Net Income to EBITDA</Text></Center>
                 <AreaRechart data={profitData} keyword="ebitda" color={chartColor.ebitda}/>
               </Flex>
             </Flex>
@@ -524,7 +516,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
               w={["100%","100%", "59%"]}
               wrap="wrap"
               justify="space-around"
-              direction="column"
+              direction={["column","colmn", "row"]}
             >
               <Flex
                 direction="column"
@@ -533,11 +525,11 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 borderRadius="2xl"
                 boxShadow="xl"
                 my="1"
-                align="center"
                 bg="#ffffff"
                 color="#000000"
               >
-                <Text fontSize="xs" mt="2%">EBITDA Margin</Text>
+                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
+                <Center><Text fontSize="xs">EBITDA Margin</Text></Center>
                 <LineRechart data={profitData} title={["ebitdaR"]} color={[chartColor.ebitda[0]]}/>
               </Flex>
               <Flex
@@ -549,9 +541,9 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 borderRadius="2xl"
                 boxShadow="xl"
                 my="1"
-                align="center"
               >
-                <Text fontSize="xs" mt="2%">Depreciation and Amortization</Text>
+                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
+                <Center><Text fontSize="xs">Depreciation and Amortization</Text></Center>
                 <BarRechart data={profitData} title={["da"]} color={[chartColor.ebitda[0]]}/>
               </Flex>
               <Flex
@@ -563,9 +555,9 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 borderRadius="2xl"
                 boxShadow="xl"
                 my="1"
-                align="center"
               >
-                <Text fontSize="xs" mt="2%">Interest Expense</Text>
+                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
+                <Center><Text fontSize="xs">Interest Expense</Text></Center>
                 <BarRechart data={profitData} title={["interestExpense"]} color={[chartColor.ebitda[1]]}/>
               </Flex>
               <Flex
@@ -577,9 +569,9 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 borderRadius="2xl"
                 boxShadow="xl"
                 my="1"
-                align="center"
               >
-                <Text fontSize="xs" mt="2%">Income Tax Expense</Text>
+                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
+                <Center><Text fontSize="xs">Income Tax Expense</Text></Center>
                 <BarRechart data={profitData} title={["incomeTaxExpense"]} color={[chartColor.ebitda[2]]}/>
               </Flex>
             </Flex>
@@ -619,7 +611,8 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 bg="#ffffff"
                 color="#000000"
               >
-                <Center><Text fontSize="xs" mt="2%">Diluted Weighted Average Shares Outst.</Text></Center>
+                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
+                <Center><Text fontSize="xs">Diluted Weighted Average Shares Outst.</Text></Center>
                 <BarRechart data={profitData} title={["weightedAverageShsOutDil"]} color={[chartColor.perShare[0]]}/>
               </Flex>
             </Flex>
@@ -628,7 +621,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
               w={["100%","100%", "59%"]}
               wrap="wrap"
               justify="space-around"
-              direction="column"
+              direction={["column","colmn", "row"]}
             >
               <Flex
                 direction="column"
@@ -637,11 +630,11 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 borderRadius="2xl"
                 boxShadow="xl"
                 my="1"
-                align="center"
                 bg="#ffffff"
                 color="#000000"
               >
-                <Text fontSize="xs" mt="2%">Diluted EPS</Text>
+                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
+                <Center><Text fontSize="xs">Diluted EPS</Text></Center>
                 <BarRechart data={profitData} title={["eps"]} color={[chartColor.perShare[0]]}/>
               </Flex>
               <Flex
@@ -653,9 +646,9 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 borderRadius="2xl"
                 boxShadow="xl"
                 my="1"
-                align="center"
               >
-                <Text fontSize="xs" mt="2%">Revenue Per Share</Text>
+                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
+                <Center><Text fontSize="xs">Revenue Per Share</Text></Center>
                 <BarRechart data={profitData} title={["revenuePerShare"]} color={[chartColor.perShare[1]]}/>
               </Flex>
               <Flex
@@ -667,9 +660,9 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 borderRadius="2xl"
                 boxShadow="xl"
                 my="1"
-                align="center"
               >
-                <Text fontSize="xs" mt="2%">Operating Cash From Per Share</Text>
+                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
+                <Center><Text fontSize="xs">Operating Cash From Per Share</Text></Center>
                 <BarRechart data={profitData} title={["operatingCashFlowPerShare"]} color={[chartColor.perShare[2]]}/>
               </Flex>
               <Flex
@@ -681,9 +674,9 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 borderRadius="2xl"
                 boxShadow="xl"
                 my="1"
-                align="center"
               >
-                <Text fontSize="xs" mt="2%">Free Cash From Per Share</Text>
+                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
+                <Center><Text fontSize="xs">Free Cash From Per Share</Text></Center>
                 <BarRechart data={profitData} title={["freeCashFlowPerShare"]} color={[chartColor.perShare[3]]}/>
               </Flex>
             </Flex>

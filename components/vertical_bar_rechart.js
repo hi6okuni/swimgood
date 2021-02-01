@@ -1,5 +1,5 @@
 import {
-  XAxis, YAxis, BarChart, Bar, CartesianGrid, Tooltip, Legend, ResponsiveContainer
+  XAxis, YAxis, BarChart, Bar, Tooltip, Legend, ResponsiveContainer
 } from 'recharts'
 
 

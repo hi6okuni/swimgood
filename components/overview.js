@@ -1,12 +1,9 @@
-import {useState, useContext} from 'react'
-import { useRouter } from 'next/router'
 import {
-  LineChart, Line, BarChart, Bar, AreaChart, Area, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Brush, ResponsiveContainer
+  AreaChart, Area, XAxis, YAxis, Tooltip, Brush, ResponsiveContainer
 } from 'recharts';
 import { useAppContext } from '../lib/context/state'
-import { Box, Heading, Flex, Center, Text } from "@chakra-ui/react"
-import Link from 'next/link'
-import Search from './search'
+import { Box, Flex, Center, Text } from "@chakra-ui/react"
+
 
 export default function Overview() {
 
