@@ -1,10 +1,6 @@
-import Head from 'next/head'
 import { useRouter } from 'next/router'
-import Layout, { siteTitle } from '../components/layout'
-import { Box, Heading, Flex, Center, Img, Text } from "@chakra-ui/react"
-import utilStyles from '../styles/utils.module.css'
-import Link from 'next/link'
-import Date from '../components/date'
+import Layout from '../components/layout'
+import { Box, Text } from "@chakra-ui/react"
 import { useAppContext } from '../lib/context/state'
 import Search from '../components/search'
 

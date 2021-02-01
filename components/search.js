@@ -6,11 +6,8 @@ import {
   InputGroup,
   InputLeftElement,
   Button,
-  BeatLoader,
   FormControl,
-  FormLabel,
   FormErrorMessage,
-  FormHelperText,
 } from "@chakra-ui/react"
 import { Search2Icon } from '@chakra-ui/icons'
 import { Formik, Field, Form} from 'formik'

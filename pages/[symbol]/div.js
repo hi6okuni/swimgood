@@ -1,30 +1,16 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
 import { useAppContext } from '../../lib/context/state'
 import colorPallet from '../../lib/color-pallet'
 import Layout, { siteTitle } from '../../components/layout'
-import AreaRechart from '../../components/area_rechart'
 import BarRechart from '../../components/bar_rechart'
 import LineRechart from '../../components/line_rechart'
-import ComposedRechart from '../../components/composed_rechart'
 
 import { 
   Box,
   Flex,
   Center,
   Text,
-  Heading,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  Button,
-  Stack,
-  Switch,
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
 } from "@chakra-ui/react"
 
 
