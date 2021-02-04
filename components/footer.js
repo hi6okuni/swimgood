@@ -13,7 +13,8 @@ export default function Footer() {
       >
         <Text fontSize="xs">
         * This site is for informational purposes only. It is not intended to serve as investment advice.<br></br>
-        * All data is sourced from <a href="https://financialmodelingprep.com/">FMP</a> via a public API.
+        * All data is sourced from <a href="https://financialmodelingprep.com/">FMP</a> via a public API.<br></br>
+        * And sadly some data seem not accurate😢. You must check out primary sources before making any decision.
         </Text>
       </Flex>
 

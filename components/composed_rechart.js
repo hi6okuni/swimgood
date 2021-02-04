@@ -37,8 +37,8 @@ export default function ComposedRechart({ data, color, keyword}) {
                 data={data}
                 margin={{top: 5, right: 0, left: 0, bottom: 10}}
               >
-                <XAxis dataKey="date" tick={{ fill: 'white' , fontSize: 11}}/>
-                <YAxis  tick={{ fill: 'white' , fontSize: 11}} tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
+                <XAxis dataKey="date" tick={{ fontSize: 11}}/>
+                <YAxis  tick={{ fontSize: 11}} tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
                 <Legend align="center" wrapperStyle={{ fontSize: 9}}/>
                 <Bar dataKey="totalStockholdersEquity" stackId="a" fill={color.green} />
                 <Bar dataKey="totalLiabilities"  stackId="a" fill={color.dark_green} />
