@@ -91,7 +91,7 @@ export default function Home ({ allPostsData }) {
           </Box>
         </section>
 
-        <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        {/* <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
           <h2 className={utilStyles.headingLg}>記事</h2>
           <ul className={utilStyles.list}>
             {allPostsData.map(({ id, date, title }) => (
@@ -106,7 +106,7 @@ export default function Home ({ allPostsData }) {
               </li>
             ))}
           </ul>
-        </section>
+        </section> */}
       </Flex>
     </Layout>
   )
