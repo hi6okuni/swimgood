@@ -55,7 +55,7 @@ export default function Home ({ allPostsData, hotStocks }) {
   }
 
   const goToHotStockPage = (e) => {
-    setValue(e);
+    setValue(e.symbol);
     setMenu("pl");
   }
 
