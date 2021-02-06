@@ -42,6 +42,8 @@ export default function Home ({ allPostsData, hotStocks }) {
 
   const router = useRouter()
 
+  const hotStocks_15 = hotStocks.slice(0,15);
+
   const getSymbol = (e) => {
     setValue(e);
     if (menu == "") {
@@ -69,7 +71,7 @@ export default function Home ({ allPostsData, hotStocks }) {
         m="3%"
         >
         <section>
-          <Box my="40px">
+          <Box my="50px">
             <Box position="relative" zIndex="2" >
               <Text fontSize="calc(2px + 12vmin)" color="#6263fb" lineHeight="100%" fontWeight="bold">Broaden<br></br>Your Insight</Text>
               <Box className="gradient" mb="6%">
@@ -114,23 +116,24 @@ export default function Home ({ allPostsData, hotStocks }) {
               direction="column"
               justify="space-around"
             >
-              <Box>
-                <Text fontWeight="bold" fontSize="calc(2px + 4vmin)">🔥 HOT STOCK</Text>
+              <Box mb="2%">
+                <Text fontWeight="bold" fontSize="calc(6px + 5vmin)">🌋 HOT Pick Up</Text>
               </Box>
               <Flex wrap="wrap">
-                {hotStocks.map((e) => {
+                {hotStocks_15.map((e) => {
                   return(
                     <Box
-                      bg="#fd8db9"
-                      color="white"
-                      my="1%"
+                      bg="#ffe1e7"
+                      color="#3f3356"
+                      border="1px solid #3f3356"
+                      _hover={{ bg: "linear-gradient(to right top , #ffafbd,  #ffc3a0 )" }}
+                      my="1.5%"
                       mx="1%"
-                      px="3%"
-                      py="0.5%"
-                      borderRadius="2xl"
-                      fontSize="calc(2px + 2vmin)"
+                      px="4%"
+                      py="0.8%"
+                      borderRadius="3xl"
+                      fontSize="calc(6px + 2vmin)"
                       cursor="pointer"
-                      boxShadow="xl"
                       onClick={() => goToHotStockPage(e)}
                     >
                       <Link href={`/${e.symbol}/pl`}>
