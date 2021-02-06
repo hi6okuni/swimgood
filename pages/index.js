@@ -16,16 +16,27 @@ import {
 
 
 export async function getStaticProps() {
+  const apikey = process.env.FMP_API_KEY;
+
   const allPostsData = getSortedPostsData()
+  const [res1] = await Promise.all([
+    fetch(`https://financialmodelingprep.com/api/v3/actives?apikey=${apikey}`).then(response => response.json()),
+  ]);
+  const hotStocks = res1.map((stock) => ({
+    symbol: stock.ticker,
+    changesPercentage: stock.changesPercentage,
+  }));
+
   return {
     props: {
-      allPostsData
+      allPostsData,
+      hotStocks
     }
   }
 }
 
 
-export default function Home ({ allPostsData }) {
+export default function Home ({ allPostsData, hotStocks }) {
 
   const { setValue, menu, setMenu } = useAppContext();
 
@@ -47,8 +58,6 @@ export default function Home ({ allPostsData }) {
     setValue(e);
     setMenu("pl");
   }
-
-  const hotStocks = ["AAPL", "AMZN", "GOOGL", "FB", "SHOP", "TWTR", "PYPL", "GME","COST", "SNAP", "ZM", "ETSY", "CHWY"]
 
   return (
     <Layout home>
@@ -73,7 +82,7 @@ export default function Home ({ allPostsData }) {
             </Box>
             <Box
               className="circle"
-              top="5%"
+              top={["12%", "8%", "5%"]}
               right="20%"
               h={[100, 200, 300]}
               w={[100, 200, 300]}
@@ -85,7 +94,7 @@ export default function Home ({ allPostsData }) {
             </Box>
             <Box
               className="circle2"
-              top="6%"
+              top={["14%", "9%", "6%"]}
               right="18%"
               h={[90, 180, 270]}
               w={[90, 180, 270]}
@@ -100,13 +109,13 @@ export default function Home ({ allPostsData }) {
         </section>
 
         <section>
-          <Box my="15%">
-            <Flex
+          <Box my="15%" mx="4%">
+          <Flex
               direction="column"
               justify="space-around"
             >
               <Box>
-                <Text fontWeight="bold" fontSize="calc(2px + 4vmin)">🔥HOT STOCKS</Text>
+                <Text fontWeight="bold" fontSize="calc(2px + 4vmin)">🔥 HOT STOCK</Text>
               </Box>
               <Flex wrap="wrap">
                 {hotStocks.map((e) => {
@@ -116,15 +125,16 @@ export default function Home ({ allPostsData }) {
                       color="white"
                       my="1%"
                       mx="1%"
-                      px="2%"
+                      px="3%"
+                      py="0.5%"
                       borderRadius="2xl"
-                      fontSize="calc(2px + 3vmin)"
+                      fontSize="calc(2px + 2vmin)"
                       cursor="pointer"
                       boxShadow="xl"
                       onClick={() => goToHotStockPage(e)}
                     >
-                      <Link href={`/${e}/pl`}>
-                        {e}
+                      <Link href={`/${e.symbol}/pl`}>
+                        <span>{e.symbol}&nbsp;{e.changesPercentage}</span>
                       </Link>
                     </Box>
                   )
