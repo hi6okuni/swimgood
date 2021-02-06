@@ -30,7 +30,9 @@ export default function Footer() {
             <Image 
               boxSize="20px"
               src='/images/twitter.svg' 
-              alt="twitter" 
+              alt="twitter_icon" 
+              w="20px"
+              h="20px"
             />
           </a>
         </Box>

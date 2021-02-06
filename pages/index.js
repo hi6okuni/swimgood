@@ -1,12 +1,11 @@
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
 import { getSortedPostsData } from '../lib/posts'
 import { useAppContext } from '../lib/context/state'
-import Link from 'next/link'
-import Date from '../components/date'
 import Search from '../components/search'
+import Link from 'next/link'
+
 
 import { 
   Box,
@@ -28,7 +27,7 @@ export async function getStaticProps() {
 
 export default function Home ({ allPostsData }) {
 
-  const {value, setValue, menu, setMenu, setStockInfo} = useAppContext();
+  const { setValue, menu, setMenu } = useAppContext();
 
   const router = useRouter()
 
@@ -44,6 +43,13 @@ export default function Home ({ allPostsData }) {
     }
   }
 
+  const goToHotStockPage = (e) => {
+    setValue(e);
+    setMenu("pl");
+  }
+
+  const hotStocks = ["AAPL", "AMZN", "GOOGL", "FB", "SHOP", "TWTR", "PYPL", "GME","COST", "SNAP", "ZM", "ETSY", "CHWY"]
+
   return (
     <Layout home>
       <Head>
@@ -54,40 +60,77 @@ export default function Home ({ allPostsData }) {
         m="3%"
         >
         <section>
-          <Box position="relative" zIndex="2">
-            <Text fontSize="calc(2px + 12vmin)" color="#6263fb" lineHeight="100%" fontWeight="bold">Broaden<br></br>Your Insight</Text>
-            <Box className="gradient" mb="6%">
-              <span className="gradient-text">into U.S. Stocks</span><br></br>
-              <span className="gradient-text">with Beautiful Visuals</span>
+          <Box my="40px">
+            <Box position="relative" zIndex="2" >
+              <Text fontSize="calc(2px + 12vmin)" color="#6263fb" lineHeight="100%" fontWeight="bold">Broaden<br></br>Your Insight</Text>
+              <Box className="gradient" mb="6%">
+                <span className="gradient-text">into U.S. Stocks</span><br></br>
+                <span className="gradient-text">with Beautiful Visuals</span>
+              </Box>
+              <Box my="3%" w={["100%", "90%", "70%"]} >
+                <Search getSymbol={getSymbol}/>
+              </Box>
             </Box>
-            <Box my="3%" w={["100%", "90%", "70%"]} >
-              <Search getSymbol={getSymbol}/>
+            <Box
+              className="circle"
+              top="5%"
+              right="20%"
+              h={[100, 200, 300]}
+              w={[100, 200, 300]}
+              position="absolute"
+              borderRadius="50%"
+              bg="linear-gradient(to right top , #ffafbd,  #ffc3a0 )"
+              zIndex="1"
+            >
+            </Box>
+            <Box
+              className="circle2"
+              top="6%"
+              right="18%"
+              h={[90, 180, 270]}
+              w={[90, 180, 270]}
+              position="absolute"
+              borderRadius="50%"
+              border="solid 3px #3f3356"
+              bg="transparent"
+              zIndex="1"
+            >
             </Box>
           </Box>
-          <Box
-            className="circle"
-            top="5%"
-            right="20%"
-            h={[100, 200, 300]}
-            w={[100, 200, 300]}
-            position="absolute"
-            borderRadius="50%"
-            bg="linear-gradient(to right top , #ffafbd,  #ffc3a0 )"
-            zIndex="1"
-          >
-          </Box>
-          <Box
-            className="circle2"
-            top="6%"
-            right="18%"
-            h={[90, 180, 270]}
-            w={[90, 180, 270]}
-            position="absolute"
-            borderRadius="50%"
-            border="solid 3px #3f3356"
-            bg="transparent"
-            zIndex="1"
-          >
+        </section>
+
+        <section>
+          <Box my="15%">
+            <Flex
+              direction="column"
+              justify="space-around"
+            >
+              <Box>
+                <Text fontWeight="bold" fontSize="calc(2px + 4vmin)">🔥HOT STOCKS</Text>
+              </Box>
+              <Flex wrap="wrap">
+                {hotStocks.map((e) => {
+                  return(
+                    <Box
+                      bg="#fd8db9"
+                      color="white"
+                      my="1%"
+                      mx="1%"
+                      px="2%"
+                      borderRadius="2xl"
+                      fontSize="calc(2px + 3vmin)"
+                      cursor="pointer"
+                      boxShadow="xl"
+                      onClick={() => goToHotStockPage(e)}
+                    >
+                      <Link href={`/${e}/pl`}>
+                        {e}
+                      </Link>
+                    </Box>
+                  )
+                })}
+              </Flex>
+            </Flex>
           </Box>
         </section>
 

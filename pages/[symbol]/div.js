@@ -33,10 +33,11 @@ export async function getServerSideProps({params}) {
       fetch(`https://financialmodelingprep.com/api/v3/quote/${symbol}?apikey=${apikey}`).then(response => response.json()),
     ]);
     
-    const div = res1.historical.slice(0,39).map((divInfo) => ({
+    const div = res1.length ? 
+      res1.historical.slice(0,39).map((divInfo) => ({
       date: divInfo.date.split('-'),
       adjDividend: divInfo.adjDividend,
-    }));
+    })) : [];
 
     const keyMetrics = res2.map((keyMetric) => ({
       date: keyMetric.date.split('-'),
@@ -72,7 +73,7 @@ export async function getServerSideProps({params}) {
         basicInfo,
       } 
     }
-  }
+}
 
 
 export default function Dividends ({ div, keyMetrics, historicalPrice, basicInfo }) {
@@ -105,8 +106,8 @@ export default function Dividends ({ div, keyMetrics, historicalPrice, basicInfo
           adjDividend: each.adjDividend,
         }
       )
-    }).reverse(): [];
-
+    }).reverse(): null;
+  
   return (
     <Layout>
       <Head>
@@ -121,83 +122,90 @@ export default function Dividends ({ div, keyMetrics, historicalPrice, basicInfo
         </Flex>
 
          {/* Dividends */}
-         <Flex
-          direction="column"
-          w="100%"
-          h={["960px", "960px", "60vh"]} 
-          p={["4%","4%","2%"]} 
-          my="4%"
-          pt="1%"
-          bg="#e4e9fb"
-          color="#3f3356"
-          justify="space-around"
-          borderRadius="lg"
-          z-index="5"
-        >
-          <Flex textAlign="center" fontSize="sm">
-            <Text>&nbsp;&nbsp;■ Dividends</Text>
-          </Flex>
-          <Flex
-            h={["96%","96%","92.5%"]} 
-            w="100%"
-            justify="space-around"
-            fontSize="xs"
-            direction={["column","column", "row"]}
-          >
-            <Flex h={["25%","25%", "100%"]} w={["100%","100%", "39%"]}>
-              <Flex
-                direction="column"
-                h="100%"
-                w="100%"
-                borderRadius="2xl"
-                boxShadow="xl"
-                bg="#ffffff"
-                color="#000000"
-              >
-                <Center><Text fontSize="xs" mt="2%">Dividends History</Text></Center>
-                <BarRechart data={divHistory} title={["adjDividend"]} color={[colorPallet.profit.green]}/>
-              </Flex>
-            </Flex>
-            <Flex 
-              h={["75%","75%", "100%"]} 
-              w={["100%","100%", "59%"]}
-              wrap="wrap"
+         { div.length ? 
+            (<Flex
               direction="column"
-              justify={["flex-start","flex-start", "space-around"]} 
-              my={["4%","4%", "0%"]}
-            >
-              <Flex
-                direction="column"
-                h={["22%", "44%","47%"]} 
-                w={["100%", "47%","47%"]} 
-                borderRadius="2xl"
-                boxShadow="xl"
-                my="1"
-                align="center"
-                bg="#ffffff"
-                color="#000000"
+              w="100%"
+              h={["960px", "960px", "60vh"]} 
+              p={["4%","4%","2%"]} 
+              my="4%"
+              pt="1%"
+              bg="#e4e9fb"
+              color="#3f3356"
+              justify="space-around"
+              borderRadius="lg"
+              z-index="5"
               >
-                <Text fontSize="xs" mt="2%">Dividends Yield</Text>
-                <LineRechart data={divData} title={["dividendYield"]} color={[colorPallet.profit.pink]}/>
-              </Flex>
-              <Flex
-                direction="column"
-                h={["22%", "44%","47%"]} 
-                w={["100%", "47%","47%"]} 
-                bg="#ffffff"
-                color="#000000"                
-                borderRadius="2xl"
-                boxShadow="xl"
-                my="1"
-                align="center"
-              >
-                <Text fontSize="xs" mt="2%">Payout Ratio</Text>
-                <LineRechart data={divData} title={["payoutRatio"]} color={[colorPallet.profit.green]}/>
-              </Flex>
-        
-            </Flex>
-          </Flex>
-        </Flex>
+                <Flex textAlign="center" fontSize="sm">
+                  <Text>&nbsp;&nbsp;■ Dividends</Text>
+                </Flex>
+                <Flex
+                  h={["96%","96%","92.5%"]} 
+                  w="100%"
+                  justify="space-around"
+                  fontSize="xs"
+                  direction={["column","column", "row"]}
+                >
+                  <Flex h={["25%","25%", "100%"]} w={["100%","100%", "39%"]}>
+                    <Flex
+                      direction="column"
+                      h="100%"
+                      w="100%"
+                      borderRadius="2xl"
+                      boxShadow="xl"
+                      bg="#ffffff"
+                      color="#000000"
+                    >
+                      <Center><Text fontSize="xs" mt="2%">Dividends History</Text></Center>
+                      <BarRechart data={divHistory} title={["adjDividend"]} color={[colorPallet.profit.green]}/>
+                    </Flex>
+                  </Flex>
+                  <Flex 
+                    h={["75%","75%", "100%"]} 
+                    w={["100%","100%", "59%"]}
+                    wrap="wrap"
+                    direction="column"
+                    justify={["flex-start","flex-start", "space-around"]} 
+                    my={["4%","4%", "0%"]}
+                  >
+                    <Flex
+                      direction="column"
+                      h={["22%", "44%","47%"]} 
+                      w={["100%", "47%","47%"]} 
+                      borderRadius="2xl"
+                      boxShadow="xl"
+                      my="1"
+                      align="center"
+                      bg="#ffffff"
+                      color="#000000"
+                    >
+                      <Text fontSize="xs" mt="2%">Dividends Yield</Text>
+                      <LineRechart data={divData} title={["dividendYield"]} color={[colorPallet.profit.pink]}/>
+                    </Flex>
+                    <Flex
+                      direction="column"
+                      h={["22%", "44%","47%"]} 
+                      w={["100%", "47%","47%"]} 
+                      bg="#ffffff"
+                      color="#000000"                
+                      borderRadius="2xl"
+                      boxShadow="xl"
+                      my="1"
+                      align="center"
+                    >
+                      <Text fontSize="xs" mt="2%">Payout Ratio</Text>
+                      <LineRechart data={divData} title={["payoutRatio"]} color={[colorPallet.profit.green]}/>
+                    </Flex>
+                  </Flex>
+                </Flex>
+              </Flex>) : 
+              ( <Box m="4%">
+                  <Text>
+                    The company pays no dividends.
+                  </Text>
+                </Box>
+              )
+            }
       </Flex>
     </Layout>
   )
