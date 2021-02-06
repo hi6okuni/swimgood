@@ -139,6 +139,7 @@ export default function SideBar(props) {
             fontWeight="500"
             direction="row"
             w="40%"
+            key={e.url}
           >
           {menu == e.url ? 
             <Center
@@ -328,7 +329,7 @@ export default function SideBar(props) {
           <Text>Visuals instantly inspire you</Text>
         </Box>
         <Center mt="10%">
-          <Search getSymbol={getSymbol}/>
+          <Search key="search" getSymbol={getSymbol}/>
         </Center>
       </Flex>
 
@@ -346,6 +347,7 @@ export default function SideBar(props) {
               fontSize="calc(6px + 1vmin)" 
               fontWeight="500"
               w="100%"
+              key={e.url}
             >
             {menu == e.url ? 
               <Center

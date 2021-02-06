@@ -1,12 +1,11 @@
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
 import { getSortedPostsData } from '../lib/posts'
 import { useAppContext } from '../lib/context/state'
-import Link from 'next/link'
-import Date from '../components/date'
 import Search from '../components/search'
+import Link from 'next/link'
+
 
 import { 
   Box,
@@ -28,7 +27,7 @@ export async function getStaticProps() {
 
 export default function Home ({ allPostsData }) {
 
-  const {value, setValue, menu, setMenu, setStockInfo} = useAppContext();
+  const { setValue, menu, setMenu } = useAppContext();
 
   const router = useRouter()
 
@@ -43,6 +42,13 @@ export default function Home ({ allPostsData }) {
       router.push(`/${e}/${menu}`);
     }
   }
+
+  const goToHotStockPage = (e) => {
+    setValue(e);
+    setMenu("pl");
+  }
+
+  const hotStocks = ["AAPL", "AMZN", "GOOGL", "FB", "SHOP", "TWTR", "PYPL", "GME","COST", "SNAP", "ZM", "ETSY", "CHWY"]
 
   return (
     <Layout home>
@@ -88,6 +94,40 @@ export default function Home ({ allPostsData }) {
             bg="transparent"
             zIndex="1"
           >
+          </Box>
+        </section>
+
+        <section>
+          <Box my="6%">
+            <Flex
+              direction="column"
+              justify="space-around"
+            >
+              <Box>
+                <Text fontWeight="bold" fontSize="calc(2px + 4vmin)">🔥HOT STOCKS</Text>
+              </Box>
+              <Flex wrap="wrap">
+                {hotStocks.map((e) => {
+                  return(
+                    <Box
+                      bg="#fd8db9"
+                      color="white"
+                      my="1%"
+                      mx="1%"
+                      px="2%"
+                      borderRadius="2xl"
+                      cursor="pointer"
+                      boxShadow="xl"
+                      onClick={() => goToHotStockPage(e)}
+                    >
+                      <Link href={`${e}/pl`}>
+                        {e}
+                      </Link>
+                    </Box>
+                  )
+                })}
+              </Flex>
+            </Flex>
           </Box>
         </section>
 
