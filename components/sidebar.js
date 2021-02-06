@@ -194,7 +194,7 @@ export default function SideBar(props) {
         my="3%"
         w="80%"
         borderBottom="2px"
-        color="gray.800"
+        color="gray.400"
       >
       </Center>
 
@@ -411,7 +411,7 @@ export default function SideBar(props) {
           my="3%"
           w="80%"
           borderBottom="2px"
-          color="gray.800"
+          color="gray.400"
         >
         </Center>
 
