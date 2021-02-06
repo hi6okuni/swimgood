@@ -53,15 +53,14 @@ export default function SideBar(props) {
   }
 
   const navSlide = () => {
-    setToggleMenuBar(!toggleMenuBar);
-    const burgers = document.querySelectorAll('.burger')
-    burgers.forEach((burger) => {
-      if (burger.style.animation) {
-        burger.style.animation = '';
-      } else {
-        burger.style.animation = 'Rotate 0.6s ease forwards';
-      }
-    });
+    const menuBtn = document.querySelector(".menu-btn");
+    if (!toggleMenuBar) {
+      menuBtn.classList.add('open');
+      setToggleMenuBar(true);
+    } else {
+      menuBtn.classList.remove('open');
+      setToggleMenuBar(false);
+    }
   };
 
   return (
@@ -72,7 +71,6 @@ export default function SideBar(props) {
       cursor="pointer"
       direction="row"
       justify="space-between"
-      onClick={() => navSlide()}
     >
       <Box>
         <Box color="#6263fb" fontSize="md" fontFamily="Pacifico, cursive" onClick={() => resetSymbol()}>
@@ -84,61 +82,51 @@ export default function SideBar(props) {
           <Text>Visuals instantly inspire you</Text>
         </Box>
       </Box>
-      <Box
-        zIndex="5"
-        position="relative"
+      <Flex
+        className="menu-btn"
+        onClick={() => navSlide()}
       >
-        <Box 
-          w="25px"
-          h="3px"
-          bg="black"
-          m="5px"
+        <Box
           className="burger"
         >
         </Box>
-        <Box 
-          w="25px"
-          h="3px"
-          bg="black"
-          m="5px"
-          className="burger"
-        >
-        </Box>
-        <Box 
-          w="25px"
-          h="3px"
-          bg="black"
-          m="5px"
-          className="burger"
-        >
-        </Box>
-      </Box>
+      </Flex>
     </Flex>
 
     { toggleMenuBar ? 
     <Flex
       align="center"
       w="100%"
+      h="500px"
       p="3%"
       direction="column"
       position="absolute"
       top="0%"
       zIndex="4"
-      bg="#2f706b"
+      bg="#6369f7"
       color="white"
       opacity="0.95"
     >
       <Flex
+        justify="center"
+        mt="15%"
+        mb="5%"
+        px="10%"
+      >
+        <Search key="search" getSymbol={getSymbol}/>
+      </Flex>
+      <Flex
         justify="space-around"
         wrap="wrap"
+        mx="5%"
       >
       {menuTitles.map((e) => {
         return(
           <Center
-            fontSize="calc(6px + 1vmin)" 
+            fontSize="calc(6px + 2vmin)" 
             fontWeight="500"
-            direction="row"
-            w="40%"
+            direction="column"
+            w="80%"
             key={e.url}
           >
           {menu == e.url ? 
@@ -202,14 +190,23 @@ export default function SideBar(props) {
       })}
       </Flex>
 
+      <Center 
+        my="3%"
+        w="80%"
+        borderBottom="2px"
+        color="gray.800"
+      >
+      </Center>
+
       <Flex
         justify="space-around"
         wrap="wrap"
         w="100%"
       >
         <Center
-          fontSize="calc(6px + 1vmin)" 
-          w="40%"
+          fontSize="calc(6px + 2vmin)" 
+          mx="5%"
+          w="80%"
         >
           {menu == "sp500" ? 
           <Center
@@ -254,8 +251,9 @@ export default function SideBar(props) {
         </Center>
 
         <Center
-          fontSize="calc(6px + 1vmin)" 
-          w="40%"
+          fontSize="calc(6px + 2vmin)" 
+          mx="5%"
+          w="80%"
         >
           {menu == "djia" ? 
           <Center
