@@ -53,6 +53,11 @@ export default function SideBar(props) {
     setStockInfo("");
   }
 
+  const setMenuTerms = () => {
+    setMenu("terms");
+    setStockInfo("");
+  }
+
   const navSlide = () => {
     const menuBtn = document.querySelector(".menu-btn");
     if (!toggleMenuBar) {
@@ -506,8 +511,63 @@ export default function SideBar(props) {
           </Center>
           }
         </Center>
-      </Flex>
 
+        <Center 
+          my="3%"
+          w="80%"
+          borderBottom="2px"
+          color="gray.400"
+        >
+        </Center>
+
+        {/* TERMS OF USE */}
+        <Center
+          fontSize="calc(6px + 1vmin)" 
+          w="100%"
+        >
+          {menu == "terms" ? 
+          <Center
+            w="80%"
+            borderRadius="lg"
+            m="2%"
+            p="3%"
+            fontWeight="500"
+            bg="#e4eafb"
+            color="#3f3356"
+            transition="all 0.3s ease-in-out"
+            onClick={() => setMenuTerms()}
+          >
+            <Center w="100%">
+              <Link 
+                href={`/terms`}
+              >
+                <a>Terms of Use</a>
+              </Link>
+            </Center>
+          </Center> :  
+          <Center
+            w="80%"
+            borderRadius="lg"
+            m="2%"
+            p="3%"
+            color="gray.500"
+            _hover={{ bg: "#e4eafb", color: "#3f3356"}}
+            _activeLink
+            transition="all 0.3s ease-in-out"
+            onClick={() => setMenuTerms()}
+          >
+            <Center w="100%">
+              <Link 
+                href={`/terms`}
+              >
+                <a>Terms of Use</a>
+              </Link>
+            </Center>
+          </Center>
+          }
+        </Center>
+
+      </Flex>
     </Flex>
     </React.Fragment>
   )

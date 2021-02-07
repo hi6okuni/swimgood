@@ -1,11 +1,6 @@
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
-import { useAppContext } from '../../lib/context/state'
-import colorPallet from '../../lib/color-pallet'
 import Layout, { siteTitle } from '../../components/layout'
-import BarRechart from '../../components/bar_rechart'
-import LineRechart from '../../components/line_rechart'
-import ComposedRechart from '../../components/composed_rechart'
+
 
 import { 
   Box,
