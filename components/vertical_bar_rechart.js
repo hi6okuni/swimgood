@@ -10,8 +10,8 @@ export default function VerticalBarRechart({ data, color}) {
         data={data}
         margin={{left: 0, top: 5, right: 0, bottom: 5}}
       >
-        <YAxis tick={{ fill: 'white' , fontSize: 10}} tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
-        <XAxis dataKey="date" tick={{ fill: 'white' , fontSize: 10}}/>
+        <YAxis tick={{ fontSize: 10}} tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
+        <XAxis dataKey="date" tick={{ fontSize: 10}}/>
         <Tooltip formatter={(value) => new Intl.NumberFormat('en').format(value)} />
         <Legend align="center"/>
         <Bar type="monotone" fillOpacity="1" dataKey="dio" stackId="1" stroke={color[0]} fill={color[0]} />

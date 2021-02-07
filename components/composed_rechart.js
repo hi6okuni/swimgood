@@ -57,15 +57,15 @@ export default function ComposedRechart({ data, color, keyword}) {
                 }}
                 barGap={0}
               >
-                <XAxis dataKey="date" tick={{ fill: 'white' , fontSize: 11}}/>
-                <YAxis  tick={{ fill: 'white' , fontSize: 11}} tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
+                <XAxis dataKey="date" tick={{ fontSize: 11}}/>
+                <YAxis  tick={{ fontSize: 11}} tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
                 <Legend align="center" margin={{top: 0, right: 10, left: 10, bottom: 0}} wrapperStyle={{ fontSize: 9}}/>
-                <Bar dataKey="otherNonCurrentAssets"  stackId="a" fill={color.dark_red} />
-                <Bar dataKey="propertyPlantEquipmentNet"  stackId="a" fill={color.light_red} />
-                <Bar dataKey="otherCurrentAssets" stackId="a" fill={color.gray} />
-                <Bar dataKey="inventory"  stackId="a" fill={color.light_green} />
-                <Bar dataKey="netReceivables"  stackId="a" fill={color.dark_green} />
-                <Bar dataKey="cashAndCashEquivalents" stackId="a" fill={color.blue} />
+                <Bar dataKey="otherNonCurrentAssets"  stackId="a" fill={color.debit6} />
+                <Bar dataKey="propertyPlantEquipmentNet"  stackId="a" fill={color.debit5} />
+                <Bar dataKey="otherCurrentAssets" stackId="a" fill={color.debit4} />
+                <Bar dataKey="inventory"  stackId="a" fill={color.debit3} />
+                <Bar dataKey="netReceivables"  stackId="a" fill={color.debit2} />
+                <Bar dataKey="cashAndCashEquivalents" stackId="a" fill={color.debit1} />
               </BarChart>
             </ResponsiveContainer>
           );
@@ -79,15 +79,15 @@ export default function ComposedRechart({ data, color, keyword}) {
                 }}
                 barGap={0}
               >
-                <XAxis dataKey="date" tick={{ fill: 'white' , fontSize: 11}}/>
-                <YAxis  tick={{ fill: 'white' , fontSize: 11}} tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
+                <XAxis dataKey="date" tick={{ fontSize: 11}}/>
+                <YAxis  tick={{ fontSize: 11}} tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
                 <Legend align="center"/>
-                <Bar dataKey="otherNonCurrentAssetsR"  stackId="a" fill={color.dark_red} />
-                <Bar dataKey="propertyPlantEquipmentNetR"  stackId="a" fill={color.light_red} />
-                <Bar dataKey="otherCurrentAssetsR" stackId="a" fill={color.gray} />
-                <Bar dataKey="inventoryR"  stackId="a" fill={color.light_green} />
-                <Bar dataKey="netReceivablesR"  stackId="a" fill={color.dark_green} />
-                <Bar dataKey="cashAndCashEquivalentsR" stackId="a" fill={color.blue} />
+                <Bar dataKey="otherNonCurrentAssetsR"  stackId="a" fill={color.debit6} />
+                <Bar dataKey="propertyPlantEquipmentNetR"  stackId="a" fill={color.debit5} />
+                <Bar dataKey="otherCurrentAssetsR" stackId="a" fill={color.debit4} />
+                <Bar dataKey="inventoryR"  stackId="a" fill={color.debit3} />
+                <Bar dataKey="netReceivablesR"  stackId="a" fill={color.debit2} />
+                <Bar dataKey="cashAndCashEquivalentsR" stackId="a" fill={color.debit1} />
               </BarChart>
             </ResponsiveContainer>
           );
