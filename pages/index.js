@@ -134,6 +134,7 @@ export default function Home ({ allPostsData, hotStocks }) {
                       borderRadius="3xl"
                       fontSize="calc(6px + 2vmin)"
                       cursor="pointer"
+                      key={e.symbol}
                       onClick={() => goToHotStockPage(e)}
                     >
                       <Link href={`/${e.symbol}/pl`}>

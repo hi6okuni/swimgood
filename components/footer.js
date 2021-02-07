@@ -1,4 +1,4 @@
-
+import Link from 'next/link'
 import { Box, Flex, Center, Image, Text } from "@chakra-ui/react"
 
 export default function Footer() {
@@ -25,7 +25,7 @@ export default function Footer() {
         <Text fontSize="xs">
         © 2021-present&nbsp;<strong>Swimgood</strong>&nbsp;All Rights Reserved.
         </Text>
-        <Box mr="0.5%" ml="1%">
+        <Box mr="0.5%" mx="2%">
           <a target="_blank" href="https://twitter.com/swimgood_io">
             <Image 
               boxSize="20px"
@@ -36,6 +36,17 @@ export default function Footer() {
             />
           </a>
         </Box>
+        <Center>
+          <a href='https://ko-fi.com/P5P23KJ4R' target='_blank'>
+              <Image 
+                h='24px' 
+                src='https://cdn.ko-fi.com/cdn/kofi5.png?v=2' 
+                b='0' 
+                alt='Buy Me a Coffee at ko-fi.com' 
+
+              />
+          </a>
+        </Center>
         {/* <Box mr="0.5%" ml="1%">
           <a target="_blank" href="https://github.com/hiropalla1692/">
             <Image 
