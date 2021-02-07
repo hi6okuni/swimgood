@@ -13,6 +13,7 @@ const menuTitles =
     { title: "Balance Sheet", url: "bs"},
     { title: "Cash Flow Statement", url: "cfs"},
     { title: "Dividends", url: "div"},
+    { title: "Growth", url: "growth"},
     { title: "Metrics", url: "metric"},
   ]
 
