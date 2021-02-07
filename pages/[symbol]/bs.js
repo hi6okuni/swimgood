@@ -221,7 +221,7 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
               w={["100%","100%", "59%"]}
               wrap="wrap"
               justify="space-around"
-              direction="column"
+              direction={["column","column", "row"]}
             >
               <Flex
                 direction="column"
@@ -236,9 +236,9 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
               >
                 <Text fontSize="xs" mt="2%">Cash & Cash Equivalents </Text>
                 { isPercent === true ? 
-                  <LineRechart  data={bsData} title={["cashAndCashEquivalentsR"]} color={[colorPallet.bs.blue]}/> 
+                  <LineRechart  data={bsData} title={["cashAndCashEquivalentsR"]} color={[colorPallet.bs.debit1]}/> 
                   : 
-                  <BarRechart  data={bsData} title={["cashAndCashEquivalents"]} color={[colorPallet.bs.blue]}/>
+                  <BarRechart  data={bsData} title={["cashAndCashEquivalents"]} color={[colorPallet.bs.debit1]}/>
                 }
               </Flex>
               <Flex
@@ -254,9 +254,9 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
               >
                 <Text fontSize="xs" mt="2%">Account Receivables</Text>
                 { isPercent === true ? 
-                  <LineRechart  data={bsData} title={["netReceivablesR"]} color={[colorPallet.bs.dark_green]}/> 
+                  <LineRechart  data={bsData} title={["netReceivablesR"]} color={[colorPallet.bs.debit2]}/> 
                   : 
-                  <BarRechart  data={bsData} title={["netReceivables"]} color={[colorPallet.bs.dark_green]}/>
+                  <BarRechart  data={bsData} title={["netReceivables"]} color={[colorPallet.bs.debit2]}/>
                 }
               </Flex>
               <Flex
@@ -272,9 +272,9 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
               >
                  <Text fontSize="xs" mt="2%">Inventory</Text>
                 { isPercent === true ? 
-                  <LineRechart  data={bsData} title={["inventoryR"]} color={[colorPallet.bs.light_green]}/> 
+                  <LineRechart  data={bsData} title={["inventoryR"]} color={[colorPallet.bs.debit3]}/> 
                   : 
-                  <BarRechart  data={bsData} title={["inventory"]} color={[colorPallet.bs.light_green]}/>
+                  <BarRechart  data={bsData} title={["inventory"]} color={[colorPallet.bs.debit3]}/>
                 }
               </Flex>
               <Flex
@@ -290,12 +290,41 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
               >
                 <Text fontSize="xs" mt="2%">PP&E</Text>
                 { isPercent === true ? 
-                  <LineRechart  data={bsData} title={["propertyPlantEquipmentNetR"]} color={[colorPallet.bs.light_red]}/> 
+                  <LineRechart  data={bsData} title={["propertyPlantEquipmentNetR"]} color={[colorPallet.bs.debit5]}/> 
                   : 
-                  <BarRechart  data={bsData} title={["propertyPlantEquipmentNet"]} color={[colorPallet.bs.light_red]}/>
+                  <BarRechart  data={bsData} title={["propertyPlantEquipmentNet"]} color={[colorPallet.bs.debit5]}/>
                 }
               </Flex>
             </Flex>
+          </Flex>
+        </Flex>
+
+        {/* Debit Side */}
+        <Flex
+          direction="column"
+          w="100%"
+          h={["960px", "960px", "60vh"]} 
+          p={["4%","4%","2%"]} 
+          my="4%"
+          pt="1%"
+          bg="#e4e9fb"
+          color="#3f3356"
+          justify="space-around"
+          borderRadius="lg"
+          z-index="5"
+        >
+          <Flex textAlign="center" fontSize="sm">
+            <Text>&nbsp;&nbsp;■ Debit Side</Text>
+          </Flex>
+          <Flex
+            h={["96%","96%","92.5%"]} 
+            w="100%"
+            justify="space-around"
+            fontSize="xs"
+            align="center"
+            direction={["column","column", "row"]}
+          >
+            <Text align="center" fontSize="md">🏕Under Development</Text>
           </Flex>
         </Flex>
 
@@ -333,8 +362,8 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
                 bg="#ffffff"
                 color="#000000"
               >
-                <Center><Text fontSize="xs" mt="2%">CCC</Text></Center>
-                <VerticalBarRechart data={cccData} color={[colorPallet.bs.green, colorPallet.bs.purple, colorPallet.bs.pink, colorPallet.bs.blue]}/>
+                <Center><Text fontSize="xs" mt="2%"> Sales Cycle</Text></Center>
+                <VerticalBarRechart data={cccData} color={[colorPallet.bs.pink, colorPallet.bs.orange, colorPallet.bs.purple, colorPallet.bs.green]}/>
               </Flex>
             </Flex>
             <Flex 
@@ -342,7 +371,7 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
               w={["100%","100%", "59%"]}
               wrap="wrap"
               justify="space-around"
-              direction="column"
+              direction={["column","colmn", "row"]}
             >
               <Flex
                 direction="column"
@@ -355,8 +384,8 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
                 bg="#ffffff"
                 color="#000000"
               >
-                <Text fontSize="xs" mt="2%">DIO </Text>
-                <BarRechart data={cccData} title={["dio"]} color={[colorPallet.bs.green]}/>
+                <Text fontSize="xs" mt="2%">DIO/棚卸資産回転日数 </Text>
+                <BarRechart data={cccData} title={["dio"]} color={[colorPallet.bs.pink]}/>
               </Flex>
               <Flex
                 direction="column"
@@ -369,8 +398,8 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
                 my="1"
                 align="center"
               >
-                <Text fontSize="xs" mt="2%">DSO</Text>
-                <BarRechart data={cccData} title={["dso"]} color={[colorPallet.bs.green]}/>
+                <Text fontSize="xs" mt="2%">DSO/売上債権回転日数</Text>
+                <BarRechart data={cccData} title={["dso"]} color={[colorPallet.bs.orange]}/>
               </Flex>
               <Flex
                 direction="column"
@@ -383,8 +412,8 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
                 my="1"
                 align="center"
               >
-                <Text fontSize="xs" mt="2%">DPO </Text>
-                <BarRechart data={cccData} title={["dpo"]} color={[colorPallet.bs.green]}/>
+                <Text fontSize="xs" mt="2%">DPO/支払債務回転日数</Text>
+                <BarRechart data={cccData} title={["dpo"]} color={[colorPallet.bs.purple]}/>
               </Flex>
               <Flex
                 direction="column"

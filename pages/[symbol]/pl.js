@@ -215,10 +215,26 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
     }).reverse();
 
   const chartColor = {
-      rev: ["#7827e6","#8d39ec","#aa4ff6","#ea80fc"],
+      rev: [
+              "hsla(222, 80%, 30%, 100%)",
+              "hsla(222, 80%, 40%, 100%)",
+              "hsla(222, 80%, 55%, 100%)",
+              "hsla(222, 80%, 70%, 100%)"
+            ],
       expense: ["#E53E3E", "#FC8181"],
-      ebitda: ["#2e9684","#5ab6a8","#87cbc1","#b5dfd9"],
-      perShare: ["#D69E2E","#ECC94B", "#FAF089", "#FEFCBF"]
+      ebitda: [
+                "hsla(160, 70%, 30%, 100%)",
+                "hsla(160, 70%, 40%, 100%)",
+                "hsla(160, 70%, 55%, 100%)",
+                "hsla(160, 70%, 70%, 100%)",
+              ],
+
+      perShare: [
+                  "hsl(270, 70%, 30%, 100%)", 
+                  "hsl(270, 70%, 40%, 100%)", 
+                  "hsl(270, 70%, 55%, 100%)", 
+                  "hsl(270, 70%, 70%, 100%)", 
+                ]
   }
 
   const profitStructureKeyword = 
