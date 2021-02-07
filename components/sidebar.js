@@ -1,7 +1,7 @@
 import {useState } from 'react'
 import { useRouter } from 'next/router'
 import { useAppContext } from '../lib/context/state'
-import { Box, Flex, Center, Text } from "@chakra-ui/react"
+import { Box, Flex, Center, Text, Image } from "@chakra-ui/react"
 import Link from 'next/link'
 import Search from './search'
 
