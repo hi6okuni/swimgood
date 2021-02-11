@@ -264,12 +264,11 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
           <Text fontSize="12px" m="2%" align="center">In Millions of USD except per share items</Text>
         </Flex>
 
-
         {/* Revenue and Income */}
         <Flex
           direction="column"
           w="100%"
-          h={["960px", "960px", "60vh"]} 
+          h={["1260px", "1260px", "75vh"]} 
           p={["4%","4%","2%"]} 
           my="4%"
           pt="1%"
@@ -283,101 +282,110 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
             <Text>&nbsp;&nbsp;■ Revenue and Income</Text>
           </Flex>
           <Flex
-            h={["96%","96%","92.5%"]} 
+            h={["96%","96%","95%"]} 
             w="100%"
-            justify="space-around"
-            fontSize="12px"
+            justify="space-between"
+            fontSize="xs"
             direction={["column","column", "row"]}
           >
-            <Flex h={["25%","25%", "100%"]} w={["100%","100%", "39%"]}>
+            <Flex h={["40%","40%", "100%"]} w={["100%","100%", "39%"]}  direction="column" justify="space-between">
+              <Flex
+                h="29%"
+                w="100%"
+                borderRadius="2xl"
+                boxShadow="xl"
+                bg="#ffffff"
+                color="#000000"
+                justify="center"
+                align="center"
+              >
+              🏕Under Development
+              </Flex>
               <Flex
                 direction="column"
-                h="100%"
+                h="69%"
                 w="100%"
                 borderRadius="2xl"
                 boxShadow="xl"
                 bg="#ffffff"
                 color="#000000"
               >
-                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
-                <Center><Text fontSize="12px">${value}&nbsp;Profit Structure</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Profit Structure</Text></Center>
                 <AreaRechart data={profitData} keyword={profitStructureKeyword} color={chartColor.rev}/>
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
             </Flex>
             <Flex 
-              h={["75%","75%", "100%"]} 
-              w={["100%","100%", "59%"]}
+              h={["60%","60%", "100%"]} 
+              w={["100%","100%", "60%"]}
               wrap="wrap"
-              justify="space-around"
+              justify={["space-around","space-around", "space-between"]}
               direction={["column","colmn", "row"]}
+              alignContent="space-between"
             >
               <Flex
                 direction="column"
-                h={["22%", "44%","47%"]} 
-                w={["100%", "47%","47%"]} 
+                h={["23%", "44%","49%"]} 
+                w={["100%", "47%","49%"]} 
                 borderRadius="2xl"
                 boxShadow="xl"
-                my="1"
                 bg="#ffffff"
                 color="#000000"
               >
-                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
-                <Center><Text fontSize="12px">${value}&nbsp;Revenue</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Revenue</Text></Center>
                 <BarRechart data={profitData} title={["revenue"]} color={[chartColor.rev[0]]}/>
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
               <Flex
                 direction="column"
-                h={["22%", "44%","47%"]} 
-                w={["100%", "47%","47%"]} 
+                h={["23%", "44%","49%"]} 
+                w={["100%", "47%","49%"]} 
                 bg="#ffffff"
                 color="#000000"                
                 borderRadius="2xl"
                 boxShadow="xl"
-                my="1"
               >
-                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
-                <Center><Text fontSize="12px">${value}&nbsp;Gross Profit</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Gross Profit</Text></Center>
                 { isPercent === true ? 
                   <LineRechart data={profitData} title={["grossProfitR"]} color={[chartColor.rev[1]]}/> 
                   : 
                   <BarRechart data={profitData} title={["grossProfit"]} color={[chartColor.rev[1]]}/>
                 }
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
               <Flex
                 direction="column"
-                h={["22%", "44%","47%"]} 
-                w={["100%", "47%","47%"]}  
+                h={["23%", "44%","49%"]} 
+                w={["100%", "47%","49%"]}  
                 bg="#ffffff"
                 color="#000000"
                 borderRadius="2xl"
                 boxShadow="xl"
-                my="1"
               >
-                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
-                <Center><Text fontSize="12px">${value}&nbsp;Operating Income</Text></Center>
+                 <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Operating Income</Text></Center>
                 { isPercent === true ? 
                   <LineRechart data={profitData} title={["operatingIncomeR"]} color={[chartColor.rev[2]]}/> 
                   : 
                   <BarRechart data={profitData} title={["operatingIncome"]} color={[chartColor.rev[2]]}/>
                 }
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
               <Flex
                 direction="column"
-                h={["22%", "44%","47%"]} 
-                w={["100%", "47%","47%"]} 
+                h={["23%", "44%","49%"]} 
+                w={["100%", "47%","49%"]} 
                 bg="#ffffff"
                 color="#000000"
                 borderRadius="2xl"
                 boxShadow="xl"
-                my="1"
               >
-                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
-                <Center><Text fontSize="12px">${value}&nbsp;Net Income</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Net Income</Text></Center>
                 { isPercent === true ? 
                   <LineRechart data={profitData} title={["netIncomeR"]} color={[chartColor.rev[3]]}/> 
                   : 
                   <BarRechart data={profitData} title={["netIncome"]} color={[chartColor.rev[3]]}/>
                 }
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
             </Flex>
           </Flex>
@@ -387,7 +395,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
         <Flex
           direction="column"
           w="100%"
-          h={["960px", "960px", "60vh"]} 
+          h={["1260px", "1260px", "75vh"]} 
           p={["4%","4%","2%"]} 
           my="4%"
           pt="1%"
@@ -401,102 +409,111 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
             <Text>&nbsp;&nbsp;■ Operating Expenses</Text>
           </Flex>
           <Flex
-            h={["96%","96%","92.5%"]} 
+            h={["96%","96%","95%"]} 
             w="100%"
-            justify="space-around"
-            fontSize="12px"
+            justify="space-between"
+            fontSize="xs"
             direction={["column","column", "row"]}
           >
-            <Flex h={["25%","25%", "100%"]} w={["100%","100%", "39%"]}>
+            <Flex h={["40%","40%", "100%"]} w={["100%","100%", "39%"]}  direction="column" justify="space-between">
+              <Flex
+                h="29%"
+                w="100%"
+                borderRadius="2xl"
+                boxShadow="xl"
+                bg="#ffffff"
+                color="#000000"
+                justify="center"
+                align="center"
+              >
+              🏕Under Development
+              </Flex>
               <Flex
                 direction="column"
-                h="100%"
+                h="69%"
                 w="100%"
                 borderRadius="2xl"
                 boxShadow="xl"
                 bg="#ffffff"
                 color="#000000"
               >
-                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
-                <Center><Text fontSize="12px">${value}&nbsp;Operating Expenses Structure</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Operating Expenses Structure</Text></Center>
                 <AreaRechart data={profitData} keyword="expense" color={chartColor.expense}/>
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
             </Flex>
             <Flex 
-              h={["75%","75%", "100%"]} 
-              w={["100%","100%", "59%"]}
+              h={["60%","60%", "100%"]} 
+              w={["100%","100%", "60%"]}
               wrap="wrap"
-              justify="space-around"
+              justify={["space-around","space-around", "space-between"]}
               direction={["column","colmn", "row"]}
+              alignContent="space-between"
             >
               <Flex
                 direction="column"
-                h={["22%", "44%","47%"]} 
-                w={["100%", "47%","47%"]} 
+                h={["23%", "44%","49%"]} 
+                w={["100%", "47%","49%"]} 
                 borderRadius="2xl"
                 boxShadow="xl"
-                my="1"
                 bg="#ffffff"
                 color="#000000"
               >
-                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
-                <Center><Text fontSize="12px" ml="4%">${value}&nbsp;Operating Expenses / Revenue</Text></Center>
+                <Center pt="2%"><Text fontSize="12px" ml="4%">${value}&nbsp;Operating Expenses / Revenue</Text></Center>
                 <LineRechart data={profitData} title={["operatingExpenseR"]} color={[chartColor.expense[0]]}/>
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
               <Flex
                 direction="column"
-                h={["22%", "44%","47%"]} 
-                w={["100%", "47%","47%"]} 
+                h={["23%", "44%","49%"]} 
+                w={["100%", "47%","49%"]} 
                 bg="#ffffff"
                 color="#000000"                
                 borderRadius="2xl"
                 boxShadow="xl"
-                my="1"
               >
-                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
-                <Center><Text fontSize="12px">${value}&nbsp;R&D</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;R&D</Text></Center>
                 <BarRechart data={profitData} title={["rd"]} color={[chartColor.expense[0]]}/>
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
               <Flex
                 direction="column"
-                h={["22%", "44%","47%"]} 
-                w={["100%", "47%","47%"]}  
+                h={["23%", "44%","49%"]} 
+                w={["100%", "47%","49%"]}  
                 bg="#ffffff"
                 color="#000000"
                 borderRadius="2xl"
                 boxShadow="xl"
-                my="1"
               >
-                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
-                <Center><Text fontSize="12px">${value}&nbsp;SG&A</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;SG&A</Text></Center>
                 <BarRechart data={profitData} title={["sga"]} color={[chartColor.expense[1]]}/>
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
               <Flex
                 direction="column"
-                h={["22%", "44%","47%"]} 
-                w={["100%", "47%","47%"]} 
+                h={["23%", "44%","49%"]} 
+                w={["100%", "47%","49%"]} 
                 bg="#ffffff"
                 color="#000000"
                 borderRadius="2xl"
                 boxShadow="xl"
-                my="1"
               >
-                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
-                <Center><Text fontSize="12px" ml="4%">${value}&nbsp;Depreciation and Amortization</Text></Center>
+                <Center pt="2%"><Text fontSize="12px" ml="4%">${value}&nbsp;Depreciation and Amortization</Text></Center>
                 <BarRechart data={profitData} title={["da"]} color={[chartColor.ebitda[0]]}/>
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
             </Flex>
           </Flex>
         </Flex>
 
-
         {/* Ebitda */}
         <Flex
           direction="column"
           w="100%"
-          h={["960px", "960px", "60vh"]} 
+          h={["1260px", "1260px", "75vh"]} 
           p={["4%","4%","2%"]} 
           my="4%"
+          pt="1%"
           bg="#e4e9fb"
           color="#3f3356"
           justify="space-around"
@@ -507,101 +524,111 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
             <Text>&nbsp;&nbsp;■ Ebitda</Text>
           </Flex>
           <Flex
-            h={["96%","96%","92.5%"]} 
+            h={["96%","96%","95%"]} 
             w="100%"
-            justify="space-around"
-            fontSize="12px"
+            justify="space-between"
+            fontSize="xs"
             direction={["column","column", "row"]}
           >
-            <Flex h={["25%","25%", "100%"]} w={["100%","100%", "39%"]}>
+            <Flex h={["40%","40%", "100%"]} w={["100%","100%", "39%"]}  direction="column" justify="space-between">
+              <Flex
+                h="29%"
+                w="100%"
+                borderRadius="2xl"
+                boxShadow="xl"
+                bg="#ffffff"
+                color="#000000"
+                justify="center"
+                align="center"
+              >
+              🏕Under Development
+              </Flex>
               <Flex
                 direction="column"
-                h="100%"
+                h="69%"
                 w="100%"
                 borderRadius="2xl"
                 boxShadow="xl"
                 bg="#ffffff"
                 color="#000000"
               >
-                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
-                <Center><Text fontSize="12px">${value}&nbsp;From Net Income to EBITDA</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;From Net Income to EBITDA</Text></Center>
                 <AreaRechart data={profitData} keyword="ebitda" color={chartColor.ebitda}/>
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
             </Flex>
             <Flex 
-              h={["75%","75%", "100%"]} 
-              w={["100%","100%", "59%"]}
+              h={["60%","60%", "100%"]} 
+              w={["100%","100%", "60%"]}
               wrap="wrap"
-              justify="space-around"
+              justify={["space-around","space-around", "space-between"]}
               direction={["column","colmn", "row"]}
+              alignContent="space-between"
             >
               <Flex
                 direction="column"
-                h={["22%", "44%","47%"]} 
-                w={["100%", "47%","47%"]} 
+                h={["23%", "44%","49%"]} 
+                w={["100%", "47%","49%"]} 
                 borderRadius="2xl"
                 boxShadow="xl"
-                my="1"
                 bg="#ffffff"
                 color="#000000"
               >
-                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
-                <Center><Text fontSize="12px">${value}&nbsp;EBITDA Margin</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;EBITDA Margin</Text></Center>
                 <LineRechart data={profitData} title={["ebitdaR"]} color={[chartColor.ebitda[0]]}/>
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
               <Flex
                 direction="column"
-                h={["22%", "44%","47%"]} 
-                w={["100%", "47%","47%"]} 
+                h={["23%", "44%","49%"]} 
+                w={["100%", "47%","49%"]} 
                 bg="#ffffff"
                 color="#000000"                
                 borderRadius="2xl"
                 boxShadow="xl"
-                my="1"
               >
-                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
-                <Center><Text fontSize="12px" ml="4%">${value}&nbsp;Depreciation and Amortization</Text></Center>
+                <Center pt="2%"><Text fontSize="12px" ml="4%">${value}&nbsp;Depreciation and Amortization</Text></Center>
                 <BarRechart data={profitData} title={["da"]} color={[chartColor.ebitda[0]]}/>
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
               <Flex
                 direction="column"
-                h={["22%", "44%","47%"]} 
-                w={["100%", "47%","47%"]}  
+                h={["23%", "44%","49%"]} 
+                w={["100%", "47%","49%"]}  
                 bg="#ffffff"
                 color="#000000"
                 borderRadius="2xl"
                 boxShadow="xl"
-                my="1"
               >
-                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
-                <Center><Text fontSize="12px">${value}&nbsp;Interest Expense</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Interest Expense</Text></Center>
                 <BarRechart data={profitData} title={["interestExpense"]} color={[chartColor.ebitda[1]]}/>
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
               <Flex
                 direction="column"
-                h={["22%", "44%","47%"]} 
-                w={["100%", "47%","47%"]} 
+                h={["23%", "44%","49%"]} 
+                w={["100%", "47%","49%"]} 
                 bg="#ffffff"
                 color="#000000"
                 borderRadius="2xl"
                 boxShadow="xl"
-                my="1"
               >
-                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
-                <Center><Text fontSize="12px">${value}&nbsp;Income Tax Expense</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Income Tax Expense</Text></Center>
                 <BarRechart data={profitData} title={["incomeTaxExpense"]} color={[chartColor.ebitda[2]]}/>
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
             </Flex>
           </Flex>
         </Flex>
-
+        
         {/* EPS & other Per Share items */}
         <Flex
           direction="column"
           w="100%"
-          h={["960px", "960px", "60vh"]} 
+          h={["1260px", "1260px", "75vh"]} 
           p={["4%","4%","2%"]} 
           my="4%"
+          pt="1%"
           bg="#e4e9fb"
           color="#3f3356"
           justify="space-around"
@@ -612,89 +639,98 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
             <Text>&nbsp;&nbsp;■ EPS & other Per Share items</Text>
           </Flex>
           <Flex
-            h={["96%","96%","92.5%"]} 
+            h={["96%","96%","95%"]} 
             w="100%"
-            justify="space-around"
-            fontSize="12px"
+            justify="space-between"
+            fontSize="xs"
             direction={["column","column", "row"]}
           >
-            <Flex h={["25%","25%", "100%"]} w={["100%","100%", "39%"]}>
+            <Flex h={["40%","40%", "100%"]} w={["100%","100%", "39%"]}  direction="column" justify="space-between">
+              <Flex
+                h="29%"
+                w="100%"
+                borderRadius="2xl"
+                boxShadow="xl"
+                bg="#ffffff"
+                color="#000000"
+                justify="center"
+                align="center"
+              >
+              🏕Under Development
+              </Flex>
               <Flex
                 direction="column"
-                h="100%"
+                h="69%"
                 w="100%"
                 borderRadius="2xl"
                 boxShadow="xl"
                 bg="#ffffff"
                 color="#000000"
               >
-                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
-                <Center><Text fontSize="12px">${value}&nbsp;Diluted Weighted Average Shares Outst.</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Diluted Weighted Average Shares Outst.</Text></Center>
                 <BarRechart data={profitData} title={["weightedAverageShsOutDil"]} color={[chartColor.perShare[0]]}/>
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
             </Flex>
             <Flex 
-              h={["75%","75%", "100%"]} 
-              w={["100%","100%", "59%"]}
+              h={["60%","60%", "100%"]} 
+              w={["100%","100%", "60%"]}
               wrap="wrap"
-              justify="space-around"
+              justify={["space-around","space-around", "space-between"]}
               direction={["column","colmn", "row"]}
+              alignContent="space-between"
             >
               <Flex
                 direction="column"
-                h={["22%", "44%","47%"]} 
-                w={["100%", "47%","47%"]} 
+                h={["23%", "44%","49%"]} 
+                w={["100%", "47%","49%"]} 
                 borderRadius="2xl"
                 boxShadow="xl"
-                my="1"
                 bg="#ffffff"
                 color="#000000"
               >
-                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
-                <Center><Text fontSize="12px">${value}&nbsp;Diluted EPS</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Diluted EPS</Text></Center>
                 <BarRechart data={profitData} title={["eps"]} color={[chartColor.perShare[0]]}/>
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
               <Flex
                 direction="column"
-                h={["22%", "44%","47%"]} 
-                w={["100%", "47%","47%"]} 
+                h={["23%", "44%","49%"]} 
+                w={["100%", "47%","49%"]} 
                 bg="#ffffff"
                 color="#000000"                
                 borderRadius="2xl"
                 boxShadow="xl"
-                my="1"
               >
-                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
-                <Center><Text fontSize="12px">${value}&nbsp;Revenue Per Share</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Revenue Per Share</Text></Center>
                 <BarRechart data={profitData} title={["revenuePerShare"]} color={[chartColor.perShare[1]]}/>
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
               <Flex
                 direction="column"
-                h={["22%", "44%","47%"]} 
-                w={["100%", "47%","47%"]}  
+                h={["23%", "44%","49%"]} 
+                w={["100%", "47%","49%"]}  
                 bg="#ffffff"
                 color="#000000"
                 borderRadius="2xl"
                 boxShadow="xl"
-                my="1"
               >
-                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
-                <Center><Text fontSize="12px">${value}&nbsp;Operating Cash Flow Per Share</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Operating Cash Flow Per Share</Text></Center>
                 <BarRechart data={profitData} title={["operatingCashFlowPerShare"]} color={[chartColor.perShare[2]]}/>
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
               <Flex
                 direction="column"
-                h={["22%", "44%","47%"]} 
-                w={["100%", "47%","47%"]} 
+                h={["23%", "44%","49%"]} 
+                w={["100%", "47%","49%"]} 
                 bg="#ffffff"
                 color="#000000"
                 borderRadius="2xl"
                 boxShadow="xl"
-                my="1"
               >
-                <Text fontSize="calc(2px + 1vmin)" mt="2%" ml="4%" color="gray.400">swimgood.io</Text>
-                <Center><Text fontSize="12px">${value}&nbsp;Free Cash Flow Per Share</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Free Cash Flow Per Share</Text></Center>
                 <BarRechart data={profitData} title={["freeCashFlowPerShare"]} color={[chartColor.perShare[3]]}/>
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
             </Flex>
           </Flex>
