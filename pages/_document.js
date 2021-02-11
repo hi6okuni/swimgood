@@ -1,6 +1,5 @@
 import { Fragment } from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
-import FavIcon from '../public/images/favicon.ico'
 
 import { GA_TRACKING_ID } from '../lib/gtag'
 
@@ -26,7 +25,6 @@ export default class CustomDocument extends Document {
     return (
       <html lang="en">
         <Head>
-          <link rel="shortcut icon" type="image/x-icon" href={FavIcon} />
 
           {/* We only want to add the scripts if in production */}
           {isProduction && (
