@@ -116,7 +116,7 @@ export async function getServerSideProps({params}) {
 
 export default function Dividends ({ div, keyMetrics, historicalPrice, basicInfo }) {
 
-  const {setStockPrice, setStockInfo} = useAppContext();
+  const {value, setStockPrice, setStockInfo} = useAppContext();
 
   useEffect(() => {
     setStockPrice(historicalPrice);
@@ -159,12 +159,12 @@ export default function Dividends ({ div, keyMetrics, historicalPrice, basicInfo
           <Flex direction="row">
             <Text fontSize="xs" mx="2%">In Millions of USD except per share items</Text>
           </Flex>
-  
-           {/* Dividends */}
+
+          {/* Dividends */}
           <Flex
             direction="column"
             w="100%"
-            h={["960px", "960px", "60vh"]} 
+            h={["1260px", "1260px", "75vh"]} 
             p={["4%","4%","2%"]} 
             my="4%"
             pt="1%"
@@ -178,65 +178,103 @@ export default function Dividends ({ div, keyMetrics, historicalPrice, basicInfo
               <Text>&nbsp;&nbsp;■ Dividends</Text>
             </Flex>
             <Flex
-              h={["96%","96%","92.5%"]} 
+              h={["96%","96%","95%"]} 
               w="100%"
-              justify="space-around"
+              justify="space-between"
               fontSize="xs"
               direction={["column","column", "row"]}
             >
-              <Flex h={["25%","25%", "100%"]} w={["100%","100%", "39%"]}>
+              <Flex h={["40%","40%", "100%"]} w={["100%","100%", "39%"]}  direction="column" justify="space-between">
+                <Flex
+                  h="29%"
+                  w="100%"
+                  borderRadius="2xl"
+                  boxShadow="xl"
+                  bg="#ffffff"
+                  color="#000000"
+                  justify="center"
+                  align="center"
+                >
+                🏕Under Development
+                </Flex>
                 <Flex
                   direction="column"
-                  h="100%"
+                  h="69%"
                   w="100%"
                   borderRadius="2xl"
                   boxShadow="xl"
                   bg="#ffffff"
                   color="#000000"
                 >
-                  <Center><Text fontSize="xs" mt="2%">Dividends History</Text></Center>
+                  <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Dividends History</Text></Center>
                   <BarRechart data={divHistory} title={["adjDividend"]} color={[colorPallet.profit.green]}/>
+                  <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
                 </Flex>
               </Flex>
               <Flex 
-                h={["75%","75%", "100%"]} 
-                w={["100%","100%", "59%"]}
+                h={["60%","60%", "100%"]} 
+                w={["100%","100%", "60%"]}
                 wrap="wrap"
-                direction="column"
-                justify={["flex-start","flex-start", "space-around"]} 
-                my={["4%","4%", "0%"]}
+                justify={["space-around","space-around", "space-between"]}
+                direction={["column","colmn", "row"]}
+                alignContent="space-between"
               >
                 <Flex
                   direction="column"
-                  h={["22%", "44%","47%"]} 
-                  w={["100%", "47%","47%"]} 
+                  h={["23%", "44%","49%"]} 
+                  w={["100%", "47%","49%"]} 
                   borderRadius="2xl"
                   boxShadow="xl"
-                  my="1"
-                  align="center"
                   bg="#ffffff"
                   color="#000000"
                 >
-                  <Text fontSize="xs" mt="2%">Dividends Yield</Text>
+                  <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Dividends Yield</Text></Center>
                   <LineRechart data={divData} title={["dividendYield"]} color={[colorPallet.profit.pink]}/>
+                  <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
                 </Flex>
                 <Flex
                   direction="column"
-                  h={["22%", "44%","47%"]} 
-                  w={["100%", "47%","47%"]} 
+                  h={["23%", "44%","49%"]} 
+                  w={["100%", "47%","49%"]} 
                   bg="#ffffff"
                   color="#000000"                
                   borderRadius="2xl"
                   boxShadow="xl"
-                  my="1"
+                >
+                  <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Payout Ratio</Text></Center>
+                  <LineRechart data={divData} title={["payoutRatio"]} color={[colorPallet.profit.green]}/>
+                  <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
+                </Flex>
+                <Flex
+                  direction="column"
+                  h={["23%", "44%","49%"]} 
+                  w={["100%", "47%","49%"]}  
+                  bg="#ffffff"
+                  color="#000000"
+                  borderRadius="2xl"
+                  boxShadow="xl"
+                  justify="center"
                   align="center"
                 >
-                  <Text fontSize="xs" mt="2%">Payout Ratio</Text>
-                  <LineRechart data={divData} title={["payoutRatio"]} color={[colorPallet.profit.green]}/>
+                🏕Under Development
+                </Flex>
+                <Flex
+                  direction="column"
+                  h={["23%", "44%","49%"]} 
+                  w={["100%", "47%","49%"]} 
+                  bg="#ffffff"
+                  color="#000000"
+                  borderRadius="2xl"
+                  boxShadow="xl"
+                  justify="center"
+                  align="center"
+                >
+                🏕Under Development
                 </Flex>
               </Flex>
             </Flex>
           </Flex>
+
         </Flex>
       </Layout>
     )

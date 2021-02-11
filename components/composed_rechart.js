@@ -21,9 +21,9 @@ export default function ComposedRechart({ data, color, keyword}) {
                   <Tooltip formatter={(value) => new Intl.NumberFormat('en').format(value)} />
                   <Legend align="center" wrapperStyle={{ fontSize: 9}}/>
                   <Area type="monotone" dataKey="operatingCashFlow"  fillOpacity="0.4" stroke={color.yellow} fill={color.yellow} />
-                  <Bar dataKey="capitalExpenditure" stackId="1"  fill={color.pink} />
-                  <Bar dataKey="acquisitionsNet" stackId="1"  fill={color.white_pink} />
-                  <Bar dataKey="debtRepayment" stackId="1"  fill={color.white} />
+                  <Bar dataKey="capitalExpenditure" stackId="1"  fill={color.pink3} />
+                  <Bar dataKey="acquisitionsNet" stackId="1"  fill={color.pink2} />
+                  <Bar dataKey="debtRepayment" stackId="1"  fill={color.pink1} />
                   <Bar dataKey="returnToShareholders" stackId="1"  fill={color.blue} />
                   <Brush dataKey="name" height={10} stroke="#656565"/>
                 </ComposedChart>
@@ -32,13 +32,14 @@ export default function ComposedRechart({ data, color, keyword}) {
           );
         } else if ( keyword.length && keyword === "profit") {
           return(
-            <ResponsiveContainer width="90%" height="90%">
+            <ResponsiveContainer width="95%" height="95%">
               <BarChart
                 data={data}
                 margin={{top: 5, right: 0, left: 0, bottom: 10}}
               >
                 <XAxis dataKey="date" tick={{ fontSize: 11}}/>
                 <YAxis  tick={{ fontSize: 11}} tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
+                <Tooltip formatter={(value) => new Intl.NumberFormat('en').format(value)} />
                 <Legend align="center" wrapperStyle={{ fontSize: 9}}/>
                 <Bar dataKey="totalStockholdersEquity" stackId="a" fill={color.green} />
                 <Bar dataKey="totalLiabilities"  stackId="a" fill={color.dark_green} />

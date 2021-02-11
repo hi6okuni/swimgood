@@ -182,7 +182,7 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
         <Flex
           direction="column"
           w="100%"
-          h={["960px", "960px", "60vh"]} 
+          h={["1260px", "1260px", "75vh"]} 
           p={["4%","4%","2%"]} 
           my="4%"
           pt="1%"
@@ -196,110 +196,121 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
             <Text>&nbsp;&nbsp;■ Debit Side</Text>
           </Flex>
           <Flex
-            h={["96%","96%","92.5%"]} 
+            h={["96%","96%","95%"]} 
             w="100%"
-            justify="space-around"
+            justify="space-between"
             fontSize="xs"
             direction={["column","column", "row"]}
           >
-            <Flex h={["25%","25%", "100%"]} w={["100%","100%", "39%"]}>
+            <Flex h={["40%","40%", "100%"]} w={["100%","100%", "39%"]}  direction="column" justify="space-between">
+              <Flex
+                h="29%"
+                w="100%"
+                borderRadius="2xl"
+                boxShadow="xl"
+                bg="#ffffff"
+                color="#000000"
+                justify="center"
+                align="center"
+              >
+              🏕Under Development
+              </Flex>
               <Flex
                 direction="column"
-                h="100%"
+                h="69%"
                 w="100%"
                 borderRadius="2xl"
                 boxShadow="xl"
                 bg="#ffffff"
                 color="#000000"
               >
-                 <Center><Text fontSize="xs" mt="2%">B/S Overview</Text></Center>
+                <Center><Text fontSize="xs" mt="2%">B/S Overview</Text></Center>
                 <ComposedRechart data={bsData} keyword={bsDebitKeyword} color={colorPallet.bs}/>
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
             </Flex>
             <Flex 
-              h={["75%","75%", "100%"]} 
-              w={["100%","100%", "59%"]}
+              h={["60%","60%", "100%"]} 
+              w={["100%","100%", "60%"]}
               wrap="wrap"
-              justify="space-around"
-              direction={["column","column", "row"]}
+              justify={["space-around","space-around", "space-between"]}
+              direction={["column","colmn", "row"]}
+              alignContent="space-between"
             >
               <Flex
                 direction="column"
-                h={["22%", "44%","47%"]} 
-                w={["100%", "47%","47%"]} 
+                h={["23%", "44%","49%"]} 
+                w={["100%", "47%","49%"]} 
                 borderRadius="2xl"
                 boxShadow="xl"
-                my="1"
-                align="center"
                 bg="#ffffff"
                 color="#000000"
               >
-                <Text fontSize="xs" mt="2%">Cash & Cash Equivalents </Text>
+                <Center><Text fontSize="xs" mt="2%">Cash & Cash Equivalents </Text></Center>
                 { isPercent === true ? 
                   <LineRechart  data={bsData} title={["cashAndCashEquivalentsR"]} color={[colorPallet.bs.debit1]}/> 
                   : 
                   <BarRechart  data={bsData} title={["cashAndCashEquivalents"]} color={[colorPallet.bs.debit1]}/>
                 }
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
               <Flex
                 direction="column"
-                h={["22%", "44%","47%"]} 
-                w={["100%", "47%","47%"]} 
+                h={["23%", "44%","49%"]} 
+                w={["100%", "47%","49%"]} 
                 bg="#ffffff"
                 color="#000000"                
                 borderRadius="2xl"
                 boxShadow="xl"
-                my="1"
-                align="center"
               >
-                <Text fontSize="xs" mt="2%">Account Receivables</Text>
+                <Center><Text fontSize="xs" mt="2%">Account Receivables</Text></Center>
                 { isPercent === true ? 
                   <LineRechart  data={bsData} title={["netReceivablesR"]} color={[colorPallet.bs.debit2]}/> 
                   : 
                   <BarRechart  data={bsData} title={["netReceivables"]} color={[colorPallet.bs.debit2]}/>
                 }
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
               <Flex
                 direction="column"
-                h={["22%", "44%","47%"]} 
-                w={["100%", "47%","47%"]}  
+                h={["23%", "44%","49%"]} 
+                w={["100%", "47%","49%"]}  
                 bg="#ffffff"
                 color="#000000"
                 borderRadius="2xl"
                 boxShadow="xl"
-                my="1"
-                align="center"
               >
-                 <Text fontSize="xs" mt="2%">Inventory</Text>
+                <Center><Text fontSize="xs" mt="2%">Inventory</Text></Center>
                 { isPercent === true ? 
                   <LineRechart  data={bsData} title={["inventoryR"]} color={[colorPallet.bs.debit3]}/> 
                   : 
                   <BarRechart  data={bsData} title={["inventory"]} color={[colorPallet.bs.debit3]}/>
                 }
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
               <Flex
                 direction="column"
-                h={["22%", "44%","47%"]} 
-                w={["100%", "47%","47%"]} 
+                h={["23%", "44%","49%"]} 
+                w={["100%", "47%","49%"]} 
                 bg="#ffffff"
                 color="#000000"
                 borderRadius="2xl"
                 boxShadow="xl"
-                my="1"
-                align="center"
               >
-                <Text fontSize="xs" mt="2%">PP&E</Text>
+                <Center><Text fontSize="xs" mt="2%">PP&E</Text></Center>
                 { isPercent === true ? 
                   <LineRechart  data={bsData} title={["propertyPlantEquipmentNetR"]} color={[colorPallet.bs.debit5]}/> 
                   : 
                   <BarRechart  data={bsData} title={["propertyPlantEquipmentNet"]} color={[colorPallet.bs.debit5]}/>
                 }
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
             </Flex>
           </Flex>
         </Flex>
 
-        {/* Debit Side */}
+
+        {/* Credit Side */}
         <Flex
           direction="column"
           w="100%"
@@ -332,7 +343,7 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
         <Flex
           direction="column"
           w="100%"
-          h={["960px", "960px", "60vh"]} 
+          h={["1260px", "1260px", "75vh"]} 
           p={["4%","4%","2%"]} 
           my="4%"
           pt="1%"
@@ -346,16 +357,28 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
             <Text>&nbsp;&nbsp;■ Cash Conversion Cycle</Text>
           </Flex>
           <Flex
-            h={["96%","96%","92.5%"]} 
+            h={["96%","96%","95%"]} 
             w="100%"
-            justify="space-around"
+            justify="space-between"
             fontSize="xs"
             direction={["column","column", "row"]}
           >
-            <Flex h={["25%","25%", "100%"]} w={["100%","100%", "39%"]}>
+            <Flex h={["40%","40%", "100%"]} w={["100%","100%", "39%"]}  direction="column" justify="space-between">
+              <Flex
+                h="29%"
+                w="100%"
+                borderRadius="2xl"
+                boxShadow="xl"
+                bg="#ffffff"
+                color="#000000"
+                justify="center"
+                align="center"
+              >
+              🏕Under Development
+              </Flex>
               <Flex
                 direction="column"
-                h="100%"
+                h="69%"
                 w="100%"
                 borderRadius="2xl"
                 boxShadow="xl"
@@ -364,70 +387,68 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
               >
                 <Center><Text fontSize="xs" mt="2%"> Sales Cycle</Text></Center>
                 <VerticalBarRechart data={cccData} color={[colorPallet.bs.pink, colorPallet.bs.orange, colorPallet.bs.purple, colorPallet.bs.green]}/>
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
             </Flex>
             <Flex 
-              h={["75%","75%", "100%"]} 
-              w={["100%","100%", "59%"]}
+              h={["60%","60%", "100%"]} 
+              w={["100%","100%", "60%"]}
               wrap="wrap"
-              justify="space-around"
+              justify={["space-around","space-around", "space-between"]}
               direction={["column","colmn", "row"]}
+              alignContent="space-between"
             >
               <Flex
                 direction="column"
-                h={["22%", "44%","47%"]} 
-                w={["100%", "47%","47%"]} 
+                h={["23%", "44%","49%"]} 
+                w={["100%", "47%","49%"]} 
                 borderRadius="2xl"
                 boxShadow="xl"
-                my="1"
-                align="center"
                 bg="#ffffff"
                 color="#000000"
               >
-                <Text fontSize="xs" mt="2%">DIO/棚卸資産回転日数 </Text>
+                <Center><Text fontSize="xs" mt="2%">DIO/棚卸資産回転日数 </Text></Center>
                 <BarRechart data={cccData} title={["dio"]} color={[colorPallet.bs.pink]}/>
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
               <Flex
                 direction="column"
-                h={["22%", "44%","47%"]} 
-                w={["100%", "47%","47%"]} 
+                h={["23%", "44%","49%"]} 
+                w={["100%", "47%","49%"]} 
                 bg="#ffffff"
                 color="#000000"                
                 borderRadius="2xl"
                 boxShadow="xl"
-                my="1"
-                align="center"
               >
-                <Text fontSize="xs" mt="2%">DSO/売上債権回転日数</Text>
+                <Center><Text fontSize="xs" mt="2%">DSO/売上債権回転日数</Text></Center>
                 <BarRechart data={cccData} title={["dso"]} color={[colorPallet.bs.orange]}/>
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
               <Flex
                 direction="column"
-                h={["22%", "44%","47%"]} 
-                w={["100%", "47%","47%"]}  
+                h={["23%", "44%","49%"]} 
+                w={["100%", "47%","49%"]}  
                 bg="#ffffff"
                 color="#000000"
                 borderRadius="2xl"
                 boxShadow="xl"
-                my="1"
-                align="center"
               >
-                <Text fontSize="xs" mt="2%">DPO/支払債務回転日数</Text>
+                <Center><Text fontSize="xs" mt="2%">DPO/支払債務回転日数</Text></Center>
                 <BarRechart data={cccData} title={["dpo"]} color={[colorPallet.bs.purple]}/>
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
               <Flex
                 direction="column"
-                h={["22%", "44%","47%"]} 
-                w={["100%", "47%","47%"]} 
+                h={["23%", "44%","49%"]} 
+                w={["100%", "47%","49%"]} 
                 bg="#ffffff"
                 color="#000000"
                 borderRadius="2xl"
                 boxShadow="xl"
-                my="1"
-                align="center"
               >
-                <Text fontSize="xs" mt="2%">CCC</Text>
+                <Center><Text fontSize="xs" mt="2%">CCC</Text></Center>
                 <BarRechart data={cccData} title={["ccc"]} color={[colorPallet.bs.green]}/>
+                <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
             </Flex>
           </Flex>
