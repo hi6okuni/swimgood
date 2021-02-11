@@ -1,18 +1,29 @@
-import React, { Fragment } from 'react'
-import Router from 'next/router'
+import router from 'next/router'
+import { useEffect } from 'react'
 import * as gtag from '../lib/gtag'
-
 import { ChakraProvider, extendTheme } from "@chakra-ui/react"
 import { AppWrapper } from '../lib/context/state'; // import based on where you put it
 import '../styles/global.scss'
 
-// Notice how we track pageview when route is changed
-Router.events.on('routeChangeComplete', (url) => gtag.pageview(url))
-
 
 export default function App({ Component, pageProps }) {
+
+  useEffect(() => {
+    if (!gtag.existsGaId) {
+      return
+    }
+
+    const handleRouteChange = (path) => {
+      gtag.pageview(path)
+    }
+
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
+
   return (
-    <Fragment>
       <ChakraProvider resetCSS theme={extendTheme({
         fonts: {
           body: "Poppins"
@@ -22,6 +33,5 @@ export default function App({ Component, pageProps }) {
           <Component {...pageProps} />
         </AppWrapper>
       </ChakraProvider>
-    </Fragment>
   )
 }
