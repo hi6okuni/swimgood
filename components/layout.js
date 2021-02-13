@@ -10,7 +10,7 @@ export const siteTitle = 'Swimgood🏊‍| U.S. Stock Visualizer'
 
 export default function Layout({ children, home }) {
 
-  const {setValue, menu, setMenu, setStockInfo} = useAppContext();
+  const {setValue, menu, setMenu, setStockInfo, stockPrice} = useAppContext();
 
   const resetSymbol = () => {
     setValue("");

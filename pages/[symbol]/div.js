@@ -291,7 +291,9 @@ export default function Dividends ({ div, keyMetrics, historicalPrice, basicInfo
           <Flex direction="row">
             <Text fontSize="xs" mx="2%">In Millions of USD except per share items</Text>
           </Flex>
-          <Text>no dividend</Text>
+          <Flex direction="column" mx ="2%" my="8%">
+            <Text fontWeight="bold" fontSize="calc(6px + 3vmin)"> ${value} pay no dividends</Text>
+          </Flex>
         </Flex>
       </Layout>
     )

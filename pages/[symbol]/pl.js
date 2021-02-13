@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { useAppContext } from '../../lib/context/state'
 import Layout, { siteTitle } from '../../components/layout'
@@ -28,121 +29,128 @@ export async function getServerSideProps({params}) {
     
   const symbol = params.symbol
   const [res1, res2, res3, res4, res5] = await Promise.all([
-    fetch(`https://financialmodelingprep.com/api/v3/income-statement/${symbol}?limit=10&apikey=${apikey}`).then(response => response.json()),
-    fetch(`https://financialmodelingprep.com/api/v3/key-metrics/${symbol}?limit=10&apikey=${apikey}`).then(response => response.json()),
-    fetch(`https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?from=${fiveYearsAgoForApi}&to=${yesterdayForApi}&apikey=${apikey}`).then(response => response.json()),
-    fetch(`https://financialmodelingprep.com/api/v3/quote/${symbol}?apikey=${apikey}`).then(response => response.json()),
-    fetch(`https://financialmodelingprep.com/api/v3/income-statement/${symbol}?period=quarter&limit=10&apikey=${apikey}`).then(response => response.json()),
-  ]);
+    fetch(`https://financialmodelingprep.com/api/v3/income-statement/${symbol}?limit=10&apikey=${apikey}`),
+    fetch(`https://financialmodelingprep.com/api/v3/key-metrics/${symbol}?limit=10&apikey=${apikey}`),
+    fetch(`https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?from=${fiveYearsAgoForApi}&to=${yesterdayForApi}&apikey=${apikey}`),
+    fetch(`https://financialmodelingprep.com/api/v3/quote/${symbol}?apikey=${apikey}`),
+    fetch(`https://financialmodelingprep.com/api/v3/income-statement/${symbol}?period=quarter&limit=10&apikey=${apikey}`),
+  ]).then( responses => {
+    return Promise.all(responses.map((response) => { 
+      return response.json();
+    }));
+  }).catch(function (error) {
+    // if there's an error, log it
+    console.log(error);
+  });
+  
+    const plData = res1.length ? res1.map((each) => ({
+      revenue: each.revenue,
+      date: each.date.split('-'),
+      costOfRevenue: each.costOfRevenue,
+      costOfRevenueR: (each.costOfRevenue*100) / each.revenue,
+      operatingExpense: each.revenue - each.costOfRevenue - each.operatingIncome,
+      operatingExpenseR: (each.revenue - each.costOfRevenue - each.operatingIncome)*100 / each.revenue,
+      nonOperatingExpense: each.operatingIncome - each.netIncome,
+      nonOperatingExpenseR: (each.operatingIncome - each.netIncome)*100 / each.revenue,
+      grossProfit: each.revenue - each.costOfRevenue,
+      grossProfitR: (each.revenue - each.costOfRevenue)*100 /each.revenue,
+      operatingIncome: each.operatingIncome,
+      operatingIncomeR: each.operatingIncome*100 /each.revenue,
+      netIncome: each.netIncome,
+      netIncomeR: each.netIncome*100 /each.revenue,
+      eps: each.eps,
+      weightedAverageShsOutDil: each.weightedAverageShsOutDil,
+      revenuePerShare: each.revenue / each.weightedAverageShsOutDil,
+      sellingAndMarketingExpenses: each.sellingAndMarketingExpenses,
+      sellingAndMarketingExpensesR: each.sellingAndMarketingExpenses*100 / each.operatingExpenses,
+      rd: each.researchAndDevelopmentExpenses,
+      rdR: each.researchAndDevelopmentExpenses*100 / each.operatingExpenses,
+      sga: each.operatingExpenses - each.researchAndDevelopmentExpenses,
+      sgaR: (each.operatingExpenses - each.researchAndDevelopmentExpenses )*100 / each.operatingExpenses,
+      da: each.depreciationAndAmortization,
+      daR: each.depreciationAndAmortization*100 / each.operatingExpenses,
+      interestExpense: each.interestExpense,
+      incomeTaxExpense: each.incomeTaxExpense,
+      ebitdaR: (each.netIncome + each.incomeTaxExpense + each.interestExpense + each.depreciationAndAmortization)*100 / each.revenue,
+    })) : null ;
+  
+    const keyMetrics = res2.length ? res2.map((keyMetric) => ({
+      date: keyMetric.date.split('-'),
+      dividendYield: Math.round(keyMetric.dividendYield*100 * 100) / 100,
+      payoutRatio: Math.round(keyMetric.payoutRatio*100 * 100) / 100,
+      operatingCashFlowPerShare: Math.round(keyMetric.operatingCashFlowPerShare * 100) / 100,
+      freeCashFlowPerShare: Math.round(keyMetric.freeCashFlowPerShare * 100) / 100,
+    })): null ;
+  
+    const historicalPrice = res3.symbol ? res3.historical.map((dailyPrice) => ({
+      price: dailyPrice.close,
+      date: dailyPrice.date.split('-'),
+      volume: dailyPrice.volume,
+    })) : null;
+  
+    const basicInfo = res4.length ? res4.map((Info) => ({
+      symbol: Info.symbol,
+      name: Info.name,
+      price: Info.price,
+      marketCap: Info.marketCap,
+      changesPercentage: Info.changesPercentage,
+      change: Info.change,
+      yearHigh: Info.yearHigh,
+      yearLow: Info.yearLow,
+      exchange: Info.exchange,
+      eps: Math.round(Info.eps * 100) / 100,
+      pe: Math.round(Info.pe * 100) / 100,
+      psr: Math.round((Info.marketCap / plData[0].revenue) * 100) / 100
+    })) : null;
+  
+    const plDataQ = res5.length ? res5.map((each) => ({
+      revenue: each.revenue,
+      date: each.date.split('-'),
+      costOfRevenue: each.costOfRevenue,
+      operatingExpense: each.revenue - each.costOfRevenue - each.operatingIncome,
+      nonOperatingExpense: each.operatingIncome - each.netIncome,
+      grossProfit: each.revenue - each.costOfRevenue,
+      grossProfitR: (each.revenue - each.costOfRevenue)*100 /each.revenue,
+      operatingIncome: each.operatingIncome,
+      operatingIncomeR: each.operatingIncome*100 /each.revenue,
+      netIncome: each.netIncome,
+      netIncomeR: each.netIncome*100 /each.revenue,
+      eps: each.eps,
+      weightedAverageShsOutDil: each.weightedAverageShsOutDil,
+      revenuePerShare: each.revenue / each.weightedAverageShsOutDil,
+      costOfRevenueR: (each.costOfRevenue*100) / each.revenue,
+      operatingExpenseR: (each.revenue - each.costOfRevenue - each.operatingIncome)*100 / each.revenue,
+      nonOperatingExpenseR: (each.operatingIncome - each.netIncome)*100 / each.revenue,
+      sellingAndMarketingExpenses: each.sellingAndMarketingExpenses,
+      sellingAndMarketingExpensesR: each.sellingAndMarketingExpenses*100 / each.operatingExpenses,
+      rd: each.researchAndDevelopmentExpenses,
+      rdR: each.researchAndDevelopmentExpenses*100 / each.operatingExpenses,
+      sga: each.operatingExpenses - each.researchAndDevelopmentExpenses,
+      sgaR: (each.operatingExpenses - each.researchAndDevelopmentExpenses )*100 / each.operatingExpenses,
+      da: each.depreciationAndAmortization,
+      daR: each.depreciationAndAmortization*100 / each.operatingExpenses,
+      interestExpense: each.interestExpense,
+      incomeTaxExpense: each.incomeTaxExpense,
+      ebitdaR: (each.netIncome + each.incomeTaxExpense + each.interestExpense + each.depreciationAndAmortization)*100 / each.revenue,
+    })) : null ;
 
-  const plData = res1.map((each) => ({
-    revenue: each.revenue,
-    date: each.date.split('-'),
-    costOfRevenue: each.costOfRevenue,
-    costOfRevenueR: (each.costOfRevenue*100) / each.revenue,
-    operatingExpense: each.revenue - each.costOfRevenue - each.operatingIncome,
-    operatingExpenseR: (each.revenue - each.costOfRevenue - each.operatingIncome)*100 / each.revenue,
-    nonOperatingExpense: each.operatingIncome - each.netIncome,
-    nonOperatingExpenseR: (each.operatingIncome - each.netIncome)*100 / each.revenue,
-    grossProfit: each.revenue - each.costOfRevenue,
-    grossProfitR: (each.revenue - each.costOfRevenue)*100 /each.revenue,
-    operatingIncome: each.operatingIncome,
-    operatingIncomeR: each.operatingIncome*100 /each.revenue,
-    netIncome: each.netIncome,
-    netIncomeR: each.netIncome*100 /each.revenue,
-    eps: each.eps,
-    weightedAverageShsOutDil: each.weightedAverageShsOutDil,
-    revenuePerShare: each.revenue / each.weightedAverageShsOutDil,
-    sellingAndMarketingExpenses: each.sellingAndMarketingExpenses,
-    sellingAndMarketingExpensesR: each.sellingAndMarketingExpenses*100 / each.operatingExpenses,
-    rd: each.researchAndDevelopmentExpenses,
-    rdR: each.researchAndDevelopmentExpenses*100 / each.operatingExpenses,
-    sga: each.operatingExpenses - each.researchAndDevelopmentExpenses,
-    sgaR: (each.operatingExpenses - each.researchAndDevelopmentExpenses )*100 / each.operatingExpenses,
-    da: each.depreciationAndAmortization,
-    daR: each.depreciationAndAmortization*100 / each.operatingExpenses,
-    interestExpense: each.interestExpense,
-    incomeTaxExpense: each.incomeTaxExpense,
-    ebitdaR: (each.netIncome + each.incomeTaxExpense + each.interestExpense + each.depreciationAndAmortization)*100 / each.revenue,
-  }));
-
-  const keyMetrics = res2.map((keyMetric) => ({
-    date: keyMetric.date.split('-'),
-    dividendYield: Math.round(keyMetric.dividendYield*100 * 100) / 100,
-    payoutRatio: Math.round(keyMetric.payoutRatio*100 * 100) / 100,
-    operatingCashFlowPerShare: Math.round(keyMetric.operatingCashFlowPerShare * 100) / 100,
-    freeCashFlowPerShare: Math.round(keyMetric.freeCashFlowPerShare * 100) / 100,
-  }));
-
-  const historicalPrice = res3.historical.map((dailyPrice) => ({
-    price: dailyPrice.close,
-    date: dailyPrice.date.split('-'),
-    volume: dailyPrice.volume,
-  }));
-
-  const basicInfo = res4.map((Info) => ({
-    symbol: Info.symbol,
-    name: Info.name,
-    price: Info.price,
-    marketCap: Info.marketCap,
-    changesPercentage: Info.changesPercentage,
-    change: Info.change,
-    yearHigh: Info.yearHigh,
-    yearLow: Info.yearLow,
-    exchange: Info.exchange,
-    eps: Math.round(Info.eps * 100) / 100,
-    pe: Math.round(Info.pe * 100) / 100,
-    psr: Math.round((Info.marketCap / plData[0].revenue) * 100) / 100
-  }))
-
-  const plDataQ = res5.map((each) => ({
-    revenue: each.revenue,
-    date: each.date.split('-'),
-    costOfRevenue: each.costOfRevenue,
-    operatingExpense: each.revenue - each.costOfRevenue - each.operatingIncome,
-    nonOperatingExpense: each.operatingIncome - each.netIncome,
-    grossProfit: each.revenue - each.costOfRevenue,
-    grossProfitR: (each.revenue - each.costOfRevenue)*100 /each.revenue,
-    operatingIncome: each.operatingIncome,
-    operatingIncomeR: each.operatingIncome*100 /each.revenue,
-    netIncome: each.netIncome,
-    netIncomeR: each.netIncome*100 /each.revenue,
-    eps: each.eps,
-    weightedAverageShsOutDil: each.weightedAverageShsOutDil,
-    revenuePerShare: each.revenue / each.weightedAverageShsOutDil,
-    costOfRevenueR: (each.costOfRevenue*100) / each.revenue,
-    operatingExpenseR: (each.revenue - each.costOfRevenue - each.operatingIncome)*100 / each.revenue,
-    nonOperatingExpenseR: (each.operatingIncome - each.netIncome)*100 / each.revenue,
-    sellingAndMarketingExpenses: each.sellingAndMarketingExpenses,
-    sellingAndMarketingExpensesR: each.sellingAndMarketingExpenses*100 / each.operatingExpenses,
-    rd: each.researchAndDevelopmentExpenses,
-    rdR: each.researchAndDevelopmentExpenses*100 / each.operatingExpenses,
-    sga: each.operatingExpenses - each.researchAndDevelopmentExpenses,
-    sgaR: (each.operatingExpenses - each.researchAndDevelopmentExpenses )*100 / each.operatingExpenses,
-    da: each.depreciationAndAmortization,
-    daR: each.depreciationAndAmortization*100 / each.operatingExpenses,
-    interestExpense: each.interestExpense,
-    incomeTaxExpense: each.incomeTaxExpense,
-    ebitdaR: (each.netIncome + each.incomeTaxExpense + each.interestExpense + each.depreciationAndAmortization)*100 / each.revenue,
-  }));
-
-  // Pass data to the page via props
-  return { 
-    props: { 
-      plData,
-      keyMetrics,
-      historicalPrice,
-      basicInfo,
-      plDataQ
-    } 
-  }
+  
+    // Pass data to the page via props
+    return { 
+      props: { 
+        plData,
+        keyMetrics,
+        historicalPrice,
+        basicInfo,
+        plDataQ,
+      } 
+    }
 }
 
 
 export default function IncomeStatement ({ plData, keyMetrics, basicInfo, historicalPrice, plDataQ }) {
 
   const {value, setStockPrice, setStockInfo} = useAppContext();
-
   const [isPercent, setIsPercent] = useState(false);
   const [isAnnual, setIsAnnual] = useState(true);
 
@@ -150,6 +158,23 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
     setStockPrice(historicalPrice);
     setStockInfo(basicInfo);
   }, [basicInfo]);
+
+
+  if (plData == null && plDataQ == null) {
+    return (
+      <Layout>
+      <Head>
+        <title>{siteTitle}</title>
+      </Head>
+        <Flex direction="column" mx ="2%" my="8%">
+          <Text fontWeight="bold" fontSize="calc(6px + 4vmin)">🙇‍ Sorry, No Data...</Text>
+          <Text fontSize="calc(6px + 2vmin)" m="1%">・ 入力したシンボルは間違えていないですか？(ex. ”APPL")</Text>
+          <Text fontSize="calc(6px + 2vmin)" m="1%">・ 個別銘柄以外のETF等は現状対応していません。</Text>
+          <Text fontSize="calc(6px + 2vmin)" m="1%">・ 上場直後で決算データが揃っていない銘柄は表示されない場合があります。</Text>
+        </Flex>
+      </Layout>
+    )
+  } else {
 
   const profitData = 
   (plData.length && plDataQ.length && keyMetrics.length == plData.length  && isAnnual === true)
@@ -739,4 +764,5 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
       </Flex>
     </Layout>
   )
+  }
 }

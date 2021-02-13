@@ -27,16 +27,24 @@ export async function getServerSideProps({params}) {
     var fiveYearsAgo = new Date();
     fiveYearsAgo.setDate(fiveYearsAgo.getDate() - 1824);
     var fiveYearsAgoForApi = fiveYearsAgo.getFullYear() + "-" +  (fiveYearsAgo.getMonth()+ 1) + "-" + fiveYearsAgo.getDate();
+
     const [res1, res2, res3, res4, res5, res6] = await Promise.all([
-      fetch(`https://financialmodelingprep.com/api/v3/cash-flow-statement/${symbol}?limit=10&apikey=${apikey}`).then(response => response.json()),
-      fetch(`https://financialmodelingprep.com/api/v3/income-statement/${symbol}?limit=10&apikey=${apikey}`).then(response => response.json()),
-      fetch(`https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?from=${fiveYearsAgoForApi}&to=${yesterdayForApi}&apikey=${apikey}`).then(response => response.json()),
-      fetch(`https://financialmodelingprep.com/api/v3/quote/${symbol}?apikey=${apikey}`).then(response => response.json()),
-      fetch(`https://financialmodelingprep.com/api/v3/cash-flow-statement/${symbol}?period=quarter&limit=10&apikey=${apikey}`).then(response => response.json()),
-      fetch(`https://financialmodelingprep.com/api/v3/income-statement/${symbol}?period=quarter&limit=10&apikey=${apikey}`).then(response => response.json()),
-    ]);
+      fetch(`https://financialmodelingprep.com/api/v3/cash-flow-statement/${symbol}?limit=10&apikey=${apikey}`),
+      fetch(`https://financialmodelingprep.com/api/v3/income-statement/${symbol}?limit=10&apikey=${apikey}`),
+      fetch(`https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?from=${fiveYearsAgoForApi}&to=${yesterdayForApi}&apikey=${apikey}`),
+      fetch(`https://financialmodelingprep.com/api/v3/quote/${symbol}?apikey=${apikey}`),
+      fetch(`https://financialmodelingprep.com/api/v3/cash-flow-statement/${symbol}?period=quarter&limit=10&apikey=${apikey}`),
+      fetch(`https://financialmodelingprep.com/api/v3/income-statement/${symbol}?period=quarter&limit=10&apikey=${apikey}`),
+    ]).then( responses => {
+      return Promise.all(responses.map((response) => { 
+        return response.json();
+      }));
+    }).catch(function (error) {
+      // if there's an error, log it
+      console.log(error);
+    });
   
-    const cfs = res1.map((cfsInfo) => ({
+    const cfs = res1.length ? res1.map((cfsInfo) => ({
       date: cfsInfo.date.split('-'),
       operatingCashFlow: cfsInfo.operatingCashFlow/1000000,
       capitalExpenditure: Math.abs(cfsInfo.capitalExpenditure/1000000),
@@ -45,21 +53,21 @@ export async function getServerSideProps({params}) {
       debtRepayment: - cfsInfo.debtRepayment/1000000,
       commonStockRepurchased: - cfsInfo.commonStockRepurchased/1000000,
       dividendsPaid: - cfsInfo.dividendsPaid/1000000,
-    }))
+    })) : null;
   
-    const pl = res2.map((plInfo) => ({
+    const pl = res2.length ? res2.map((plInfo) => ({
       revenue: plInfo.revenue/1000000,
       netIncome: plInfo.netIncome/1000000,
       eps: plInfo.eps,
-    }))
+    })) : null;
 
-    const historicalPrice = res3.historical.map((dailyPrice) => ({
+    const historicalPrice = res3.symbol ? res3.historical.map((dailyPrice) => ({
       price: dailyPrice.close,
       date: dailyPrice.date.split('-'),
       volume: dailyPrice.volume,
-    }));
+    })) : null;
   
-    const basicInfo = res4.map((Info) => ({
+    const basicInfo = res4.length ? res4.map((Info) => ({
       symbol: Info.symbol,
       name: Info.name,
       price: Info.price,
@@ -72,9 +80,9 @@ export async function getServerSideProps({params}) {
       eps: Math.round(Info.eps * 100) / 100,
       pe: Math.round(Info.pe * 100) / 100,
       psr: Math.round((Info.marketCap / (pl[0].revenue * 1000000) * 100)) / 100
-    }))
+    })) : null;
 
-    const cfsQ = res5.map((cfsInfo) => ({
+    const cfsQ = res5.length ? res5.map((cfsInfo) => ({
       date: cfsInfo.date.split('-'),
       operatingCashFlow: cfsInfo.operatingCashFlow/1000000,
       capitalExpenditure: Math.abs(cfsInfo.capitalExpenditure/1000000),
@@ -83,13 +91,13 @@ export async function getServerSideProps({params}) {
       debtRepayment: - cfsInfo.debtRepayment/1000000,
       commonStockRepurchased: - cfsInfo.commonStockRepurchased/1000000,
       dividendsPaid: - cfsInfo.dividendsPaid/1000000,
-    }))
+    })) : null;
 
-    const plQ = res6.map((plInfo) => ({
+    const plQ = res6.length ? res6.map((plInfo) => ({
       revenue: plInfo.revenue/1000000,
       netIncome: plInfo.netIncome/1000000,
       eps: plInfo.eps,
-    }))
+    })) : null;
   
     return { 
       props: { 
@@ -113,6 +121,22 @@ export default function CashFlowStatement ({ cfs, pl, historicalPrice, basicInfo
     setStockPrice(historicalPrice);
     setStockInfo(basicInfo);
   }, [basicInfo])
+
+  if (cfs == null) {
+    return (
+      <Layout>
+      <Head>
+        <title>{siteTitle}</title>
+      </Head>
+        <Flex direction="column" mx ="2%" my="8%">
+          <Text fontWeight="bold" fontSize="calc(6px + 4vmin)">🙇‍ Sorry, No Data...</Text>
+          <Text fontSize="calc(6px + 2vmin)" m="1%">・ 入力したシンボルは間違えていないですか？(ex. ”APPL")</Text>
+          <Text fontSize="calc(6px + 2vmin)" m="1%">・ 個別銘柄以外のETF等は現状対応していません。</Text>
+          <Text fontSize="calc(6px + 2vmin)" m="1%">・ 上場直後で決算データが揃っていない銘柄は表示されない場合があります。</Text>
+        </Flex>
+      </Layout>
+    )
+  } else {
 
   const cfsData = 
   (cfs.length && cfsQ.length && isAnnual === true)
@@ -290,4 +314,5 @@ export default function CashFlowStatement ({ cfs, pl, historicalPrice, basicInfo
       </Flex>
     </Layout>
   )
+  }
 }

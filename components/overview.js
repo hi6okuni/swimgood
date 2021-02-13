@@ -10,7 +10,7 @@ export default function Overview() {
   const {stockPrice, stockInfo } = useAppContext();
 
   const priceData = 
-  stockPrice.length 
+  stockPrice 
     ? stockPrice.map((each) => {
       return (
         {
@@ -22,7 +22,7 @@ export default function Overview() {
     : [];
   
   const stockInfoData = 
-  stockInfo.length 
+  stockInfo
     ? stockInfo.map((Info) => {
       return (
         {

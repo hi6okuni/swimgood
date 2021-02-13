@@ -26,14 +26,22 @@ export async function getServerSideProps({params}) {
     var fiveYearsAgo = new Date();
     fiveYearsAgo.setDate(fiveYearsAgo.getDate() - 1824);
     var fiveYearsAgoForApi = fiveYearsAgo.getFullYear() + "-" +  (fiveYearsAgo.getMonth()+ 1) + "-" + fiveYearsAgo.getDate();
+
     const [res1, res2, res3, res4] = await Promise.all([
-      fetch(`https://financialmodelingprep.com/api/v3/balance-sheet-statement/${symbol}?limit=10&apikey=${apikey}`).then(response => response.json()),
-      fetch(`https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?from=${fiveYearsAgoForApi}&to=${yesterdayForApi}&apikey=${apikey}`).then(response => response.json()),
-      fetch(`https://financialmodelingprep.com/api/v3/quote/${symbol}?apikey=${apikey}`).then(response => response.json()),
-      fetch(`https://financialmodelingprep.com/api/v3/income-statement/${symbol}?limit=10&apikey=${apikey}`).then(response => response.json()),
-    ]);
+      fetch(`https://financialmodelingprep.com/api/v3/balance-sheet-statement/${symbol}?limit=10&apikey=${apikey}`),
+      fetch(`https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?from=${fiveYearsAgoForApi}&to=${yesterdayForApi}&apikey=${apikey}`),
+      fetch(`https://financialmodelingprep.com/api/v3/quote/${symbol}?apikey=${apikey}`),
+      fetch(`https://financialmodelingprep.com/api/v3/income-statement/${symbol}?limit=10&apikey=${apikey}`),
+    ]).then( responses => {
+      return Promise.all(responses.map((response) => { 
+        return response.json();
+      }));
+    }).catch(function (error) {
+      // if there's an error, log it
+      console.log(error);
+    });
     
-    const bs = res1.map((bsInfo) => ({
+    const bs = res1.length ? res1.map((bsInfo) => ({
       date: bsInfo.date.split('-'),
       cashAndCashEquivalents: bsInfo.cashAndCashEquivalents /1000000,
       inventory: bsInfo.inventory /1000000,
@@ -52,21 +60,21 @@ export async function getServerSideProps({params}) {
       retainedEarnings: bsInfo.retainedEarnings/1000000,
       totalStockholdersEquity: bsInfo.totalStockholdersEquity/1000000,
       finalLink: bsInfo.finalLink
-    }));
+    })) : null ;
 
-    const historicalPrice = res2.historical.map((dailyPrice) => ({
+    const historicalPrice = res2.symbol ? res2.historical.map((dailyPrice) => ({
       price: dailyPrice.close,
       date: dailyPrice.date.split('-'),
       volume: dailyPrice.volume,
-    }));
+    })) : null ;
 
-    const pl = res4.map((each) => ({
+    const pl = res4.length ? res4.map((each) => ({
       revenue: each.revenue /1000000,
       date: each.date.split('-'),
       costOfRevenue: each.costOfRevenue /1000000,
-    }));
+    })) : null;
 
-    const basicInfo = res3.map((Info) => ({
+    const basicInfo = res3.length ? res3.map((Info) => ({
       symbol: Info.symbol,
       name: Info.name,
       price: Info.price,
@@ -79,7 +87,7 @@ export async function getServerSideProps({params}) {
       eps: Math.round(Info.eps * 100) / 100,
       pe: Math.round(Info.pe * 100) / 100,
       psr: Math.round((Info.marketCap / (pl[0].revenue * 1000000) * 100)) / 100
-    }))
+    })) :null
   
     return { 
       props: { 
@@ -101,6 +109,22 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
     setStockPrice(historicalPrice);
     setStockInfo(basicInfo);
   }, [basicInfo])
+
+  if (bs == null) {
+    return (
+      <Layout>
+      <Head>
+        <title>{siteTitle}</title>
+      </Head>
+        <Flex direction="column" mx ="2%" my="8%">
+          <Text fontWeight="bold" fontSize="calc(6px + 4vmin)">🙇‍ Sorry, No Data...</Text>
+          <Text fontSize="calc(6px + 2vmin)" m="1%">・ 入力したシンボルは間違えていないですか？(ex. ”APPL")</Text>
+          <Text fontSize="calc(6px + 2vmin)" m="1%">・ 個別銘柄以外のETF等は現状対応していません。</Text>
+          <Text fontSize="calc(6px + 2vmin)" m="1%">・ 上場直後で決算データが揃っていない銘柄は表示されない場合があります。</Text>
+        </Flex>
+      </Layout>
+    )
+  } else {
 
   const bsData = 
   (bs.length) ? 
@@ -153,6 +177,7 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
   const bsDebitKeyword = 
   (isPercent === true) 
   ? "bsDebitR" : "bsDebit";
+
 
   return (
     <Layout>
@@ -457,4 +482,5 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
       </Flex>
     </Layout>
   )
+  }
 }
