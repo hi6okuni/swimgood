@@ -160,7 +160,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
   }, [basicInfo]);
 
 
-  if (plDataQ == null ) {
+  if (plDataQ == null || keyMetrics == null ) {
     return (
       <Layout>
       <Head>
