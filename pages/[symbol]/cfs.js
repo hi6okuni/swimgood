@@ -67,7 +67,7 @@ export async function getServerSideProps({params}) {
       volume: dailyPrice.volume,
     })) : null;
   
-    const basicInfo = res4.length ? res4.map((Info) => ({
+    const basicInfo = res2.length && res4.length ? res4.map((Info) => ({
       symbol: Info.symbol,
       name: Info.name,
       price: Info.price,

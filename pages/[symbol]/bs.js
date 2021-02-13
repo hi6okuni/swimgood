@@ -74,7 +74,8 @@ export async function getServerSideProps({params}) {
       costOfRevenue: each.costOfRevenue /1000000,
     })) : null;
 
-    const basicInfo = res3.length ? res3.map((Info) => ({
+
+    const basicInfo = res4.length && res3.length ? res3.map((Info) => ({
       symbol: Info.symbol,
       name: Info.name,
       price: Info.price,
