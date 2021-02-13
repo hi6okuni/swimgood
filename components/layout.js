@@ -26,7 +26,7 @@ export default function Layout({ children, home }) {
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&family=Pacifico&display=swap" rel="stylesheet"/>
         <meta
           name="description"
-          content="Learn how to build a personal website using Next.js"
+          content="Visualize U.S Stock. INSTANTLY. "
         />
         <meta
           property="og:image"
