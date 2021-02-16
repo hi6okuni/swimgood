@@ -130,7 +130,7 @@ export default function CashFlowStatement ({ cfs, pl, historicalPrice, basicInfo
       </Head>
         <Flex direction="column" mx ="2%" my="8%">
           <Text fontWeight="bold" fontSize="calc(6px + 4vmin)">🙇‍ Sorry, No Data...</Text>
-          <Text fontSize="calc(6px + 2vmin)" m="1%">・ 入力したシンボルは間違えていないですか？(ex. ”APPL")</Text>
+          <Text fontSize="calc(6px + 2vmin)" m="1%">・ 入力したティッカーに間違いは無いですか？(ex. ”APPL")</Text>
           <Text fontSize="calc(6px + 2vmin)" m="1%">・ 個別銘柄以外のETF等は現状対応していません。</Text>
           <Text fontSize="calc(6px + 2vmin)" m="1%">・ 上場直後で決算データが揃っていない銘柄は表示されない場合があります。</Text>
         </Flex>

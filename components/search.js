@@ -57,7 +57,7 @@ export default function Search (props) {
                         borderColor="transparent"
                         backgroundColor="gray.800"
                         color="white"
-                        placeholder="ex.AAPL" 
+                        placeholder="ex.AAPL | ティッカーシンボルで検索!" 
                         focusBorderColor="#ffafbd"
                         onChange={handleChange}
                         value={ticker}

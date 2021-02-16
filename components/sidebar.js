@@ -103,7 +103,7 @@ export default function SideBar(props) {
     <Flex
       align="center"
       w="100%"
-      h="500px"
+      h="600px"
       p="3%"
       direction="column"
       position="absolute"
