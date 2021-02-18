@@ -79,10 +79,10 @@ export default function Home ({ allPostsData, hotStocks }) {
                 <span className="gradient-text">with Beautiful Visuals</span>
               </Box>
               <Box my="3%" w={["100%", "90%", "70%"]} >
-                {/* <Search getSymbol={getSymbol}/> */}
-                <Flex direction="column" mx ="2%" my="8%">
+                <Search getSymbol={getSymbol}/>
+                {/* <Flex direction="column" mx ="2%" my="8%">
                   <Text fontWeight="bold" fontSize="calc(6px + 4vmin)">🙇‍ メンテナンス中...</Text>
-                </Flex>
+                </Flex> */}
               </Box>
             </Box>
             <Box
