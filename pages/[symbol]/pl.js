@@ -28,20 +28,28 @@ export async function getServerSideProps({params}) {
   var fiveYearsAgoForApi = fiveYearsAgo.getFullYear() + "-" +  (fiveYearsAgo.getMonth()+ 1) + "-" + fiveYearsAgo.getDate();
     
   const symbol = params.symbol
+  // const [res1, res2, res3, res4, res5] = await Promise.all([
+  //   fetch(`https://financialmodelingprep.com/api/v3/income-statement/${symbol}?limit=10&apikey=${apikey}`),
+  //   fetch(`https://financialmodelingprep.com/api/v3/key-metrics/${symbol}?limit=10&apikey=${apikey}`),
+  //   fetch(`https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?from=${fiveYearsAgoForApi}&to=${yesterdayForApi}&apikey=${apikey}`),
+  //   fetch(`https://financialmodelingprep.com/api/v3/quote/${symbol}?apikey=${apikey}`),
+  //   fetch(`https://financialmodelingprep.com/api/v3/income-statement/${symbol}?period=quarter&limit=10&apikey=${apikey}`),
+  // ]).then( responses => {
+  //   return Promise.all(responses.map((response) => { 
+  //     return response.json();
+  //   }));
+  // }).catch(function (error) {
+  //   // if there's an error, log it
+  //   console.log(error);
+  // });
+
   const [res1, res2, res3, res4, res5] = await Promise.all([
-    fetch(`https://financialmodelingprep.com/api/v3/income-statement/${symbol}?limit=10&apikey=${apikey}`),
-    fetch(`https://financialmodelingprep.com/api/v3/key-metrics/${symbol}?limit=10&apikey=${apikey}`),
-    fetch(`https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?from=${fiveYearsAgoForApi}&to=${yesterdayForApi}&apikey=${apikey}`),
-    fetch(`https://financialmodelingprep.com/api/v3/quote/${symbol}?apikey=${apikey}`),
-    fetch(`https://financialmodelingprep.com/api/v3/income-statement/${symbol}?period=quarter&limit=10&apikey=${apikey}`),
-  ]).then( responses => {
-    return Promise.all(responses.map((response) => { 
-      return response.json();
-    }));
-  }).catch(function (error) {
-    // if there's an error, log it
-    console.log(error);
-  });
+    fetch(`https://financialmodelingprep.com/api/v3/income-statement/${symbol}?limit=10&apikey=${apikey}`).then(response => response.json()),
+    fetch(`https://financialmodelingprep.com/api/v3/key-metrics/${symbol}?limit=10&apikey=${apikey}`).then(response => response.json()),
+    fetch(`https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?from=${fiveYearsAgoForApi}&to=${yesterdayForApi}&apikey=${apikey}`).then(response => response.json()),
+    fetch(`https://financialmodelingprep.com/api/v3/quote/${symbol}?apikey=${apikey}`).then(response => response.json()),
+    fetch(`https://financialmodelingprep.com/api/v3/income-statement/${symbol}?period=quarter&limit=10&apikey=${apikey}`).then(response => response.json()),
+  ]);
   
     const plData = res1.length ? res1.map((each) => ({
       revenue: each.revenue,
