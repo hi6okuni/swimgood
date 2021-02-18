@@ -117,7 +117,7 @@ export default function Home ({ allPostsData, hotStocks }) {
               justify="space-around"
             >
               <Box mb="2%">
-                <Text fontWeight="bold" fontSize="calc(6px + 5vmin)">🌋 HOT Pick Up</Text>
+                <Text fontWeight="bold" fontSize="calc(6px + 5vmin)">🌋 HOT PICK UP</Text>
               </Box>
               <Flex wrap="wrap">
                 {hotStocks_15.map((e) => {
