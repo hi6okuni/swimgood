@@ -271,6 +271,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
       <Head>
         <title>{siteTitle}</title>
       </Head>
+
       <Flex
         direction="column"
         my="3%"

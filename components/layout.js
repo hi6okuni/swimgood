@@ -37,7 +37,6 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
-        <script data-ad-client="ca-pub-5934737933948157" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       </Head>
       <Flex direction={{ base: "column", md: "row" }} justify="space-around">
         <Box flexBasis={{ base: "10%", md: "20%" }}>
