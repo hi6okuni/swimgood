@@ -219,13 +219,13 @@ export default function CashFlowStatement ({ cfs, pl, historicalPrice, basicInfo
         direction="column"
         m="3%"
       >
-        <Flex direction={["column", "row"]}>
-          <Center fontSize={["xs", "lg"]}  align="center" direction="row" m="2%">
-            <Text>Annual&nbsp;</Text>
-            <Switch size="md" colorScheme="teal"  onChange={() => setIsAnnual(!isAnnual)}/>
-            <Text>&nbsp;Quarterly</Text>
-          </Center>
-          <Text fontSize="xs" m="2%" align="center">In Millions of USD except per share items</Text>
+
+        <Flex direction={["column","column","row"]} align="center">
+          <Flex fontSize={["xs", "sm"]} direction="row" my="1%" w="70%">
+            <Switch size="md" colorScheme="pink"  onChange={() => setIsAnnual(!isAnnual)}/>
+            <Text px="2%">Annual ⇄ Quarterly</Text>
+          </Flex>
+          <Text fontSize="10px">In Millions of USD except per share items</Text>
         </Flex>
 
          {/* Capital Allocation */}

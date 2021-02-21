@@ -83,6 +83,7 @@ export async function getServerSideProps({params}) {
       incomeTaxExpense: each.incomeTaxExpense,
       ebitda: each.ebitda,
       ebitdaR: (each.netIncome + each.incomeTaxExpense + each.interestExpense + each.depreciationAndAmortization)*100 / each.revenue,
+      annualReport: each.finalLink,
     })) : null ;
   
     const keyMetrics = res2.length ? res2.map((keyMetric) => ({
@@ -142,6 +143,7 @@ export async function getServerSideProps({params}) {
       incomeTaxExpense: each.incomeTaxExpense,
       ebitda: each.ebitda,
       ebitdaR: (each.netIncome + each.incomeTaxExpense + each.interestExpense + each.depreciationAndAmortization)*100 / each.revenue,
+      quarterlyReport: each.finalLink
     })) : null ;
 
     const keyMetricsQ = res6.length ? res6.map((keyMetric) => ({
@@ -192,6 +194,28 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
       </Layout>
     )
   } else {
+
+  const secData =
+  plData.length ?
+  plData.slice(0,5).map((each) => {
+    return (
+      {
+        data: each.date[0],
+        annualReport: each.annualReport,
+      }
+    )
+  }) : null ;
+
+  const secDataQ =
+  plDataQ.length ?
+  plDataQ.slice(0,5).map((each) => {
+    return (
+      {
+        data: each.date[1] + "-" + each.date[0],
+        quarterlyReport: each.quarterlyReport,
+      }
+    )
+  }) : null ;
 
   const profitData = 
   (plData.length && plDataQ.length && keyMetrics.length == plData.length && isAnnual === true)
@@ -348,31 +372,6 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
     ]
   } : null;
 
-  const highlightData_expense = profitData ? {
-    symbol: value,
-    period: profitData[profitData.length - 1].date,
-    data: [
-      {
-        title: "Operating Expense",
-        value: profitData[profitData.length - 1].operatingExpense.toLocaleString(),
-        unit_forth: "$",
-        unit_back: ""
-      },
-      {
-        title: "R&D",
-        value: profitData[profitData.length - 1].rd.toLocaleString(),
-        unit_forth: "$",
-        unit_back: ""
-      },
-      {
-        title: "SG&A",
-        value: profitData[profitData.length - 1].sga.toLocaleString(),
-        unit_forth: "$",
-        unit_back: ""
-      },
-    ]
-  } : null;
-
   const highlightData_ebitda = profitData ? {
     symbol: value,
     period: profitData[profitData.length - 1].date,
@@ -448,18 +447,74 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
         direction="column"
         my="3%"
       >
-        <Flex direction={["column", "row"]}>
-          <Center fontSize={["xs", "lg"]}  align="center" direction="row" m="2%">
-            <Text>Annual&nbsp;</Text>
-            <Switch size="md" colorScheme="teal"  onChange={() => setIsAnnual(!isAnnual)}/>
-            <Text>&nbsp;Quarterly</Text>
-          </Center>
-          <Center fontSize={["xs", "lg"]}  align="center" direction="row" m="2%">
-            <Text>$&nbsp;</Text>
-            <Switch size="md" onChange={() => setIsPercent(!isPercent)}/>
-            <Text>&nbsp;%</Text>
-          </Center>
-          <Text fontSize="12px" m="2%" align="center">In Millions of USD except per share items</Text>
+        <Flex direction="column" w="100%" mt="3%">
+          <Flex fontSize={["xs", "sm"]} mx="4%" my="0.5%" w="80%" >
+            <Switch size="md" colorScheme="pink"  onChange={() => setIsAnnual(!isAnnual)}/>
+            <Text px="2%">Annual ⇄ Quarterly</Text>
+          </Flex>
+          <Flex fontSize={["xs", "sm"]} mx="4%" my="0.5%" w="80%" >
+            <Switch size="md" colorScheme="green" onChange={() => setIsPercent(!isPercent)}/>
+            <Text px="2%">$ ⇄ %</Text>
+          </Flex>
+          <Text fontSize="10px" align="right">In Millions of USD except per share items</Text>
+        </Flex>
+
+        <Flex
+          direction="column"
+          w="100%"
+          h={["150px", "180px", "20vh"]} 
+          p={["4%","4%","2%"]} 
+          my="1%"
+          pt="1%"
+          bg="#e4e9fb"
+          color="#3f3356"
+          justify="space-around"
+          borderRadius="lg"
+          z-index="5"
+        >
+          <Flex>
+            <Text align="center" w="15%">10-K</Text>
+            <Flex w="85%" wrap="wrap" >
+              {secData.map((e) => {
+                return (
+                  <Flex 
+                    mx="1.5%" 
+                    my="0.5%"px="2%" 
+                    align="center" 
+                    fontSize="14px" 
+                    color="white" 
+                    bg="#6369f7" 
+                    borderRadius="2xl"
+                    _hover={{ bg: "linear-gradient(to right top , #ffafbd,  #ffc3a0 )" }}
+                  >
+                    <a href={e.annualReport} target='_blank' >{e.data}</a>
+                  </Flex>
+                )
+              })}
+            </Flex>
+          </Flex>
+          <Flex>
+            <Text align="center" w="15%">10-Q</Text>
+            <Flex w="85%" wrap="wrap" >
+              {secDataQ.map((e) => {
+                return (
+                  <Flex 
+                    mx="1.5%" 
+                    my="0.5%" 
+                    px="2%" 
+                    align="center" 
+                    fontSize="14px" 
+                    color="white" 
+                    bg="#6369f7" 
+                    borderRadius="2xl"
+                    _hover={{ bg: "linear-gradient(to right top , #ffafbd,  #ffc3a0 )" }}
+                  >
+                    <a href={e.quarterlyReport} target='_blank' >{e.data}</a>
+                  </Flex>
+                )
+              })}
+            </Flex>
+          </Flex>
         </Flex>
 
         {/* Revenue and Income */}
