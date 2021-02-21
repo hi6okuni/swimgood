@@ -5,6 +5,7 @@ import colorPallet from '../../lib/color-pallet'
 import Layout, { siteTitle } from '../../components/layout'
 import BarRechart from '../../components/bar_rechart'
 import LineRechart from '../../components/line_rechart'
+import Highlight from '../../components/highlight'
 import ComposedRechart from '../../components/composed_rechart'
 
 import { 
@@ -174,6 +175,31 @@ export default function Metrics ({ pl, bs, historicalPrice, basicInfo }) {
       )
     }).reverse(): [];
 
+    const highlightData = {
+      symbol: value,
+      period: profitData[profitData.length - 1].date,
+      data: [
+        {
+          title: "ROE",
+          value: profitData[profitData.length - 1].roe,
+          unit_forth: "",
+          unit_back: "%"
+        },
+        {
+          title: "ROIC",
+          value: profitData[profitData.length - 1].roic,
+          unit_forth: "",
+          unit_back: "%"
+        },
+        {
+          title: "ROA",
+          value: profitData[profitData.length - 1].roa,
+          unit_forth: "",
+          unit_back: "%"
+        },
+      ]
+    }
+
   return (
     <Layout>
       <Head>
@@ -295,18 +321,7 @@ export default function Metrics ({ pl, bs, historicalPrice, basicInfo }) {
             direction={["column","column", "row"]}
           >
             <Flex h={["40%","40%", "100%"]} w={["100%","100%", "39%"]}  direction="column" justify="space-between">
-              <Flex
-                h="29%"
-                w="100%"
-                borderRadius="2xl"
-                boxShadow="xl"
-                bg="#ffffff"
-                color="#000000"
-                justify="center"
-                align="center"
-              >
-              🏕Under Development
-              </Flex>
+              <Highlight highlightData={highlightData}/>
               <Flex
                 direction="column"
                 h="69%"
