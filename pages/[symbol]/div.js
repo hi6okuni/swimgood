@@ -5,6 +5,7 @@ import colorPallet from '../../lib/color-pallet'
 import Layout, { siteTitle } from '../../components/layout'
 import BarRechart from '../../components/bar_rechart'
 import LineRechart from '../../components/line_rechart'
+import Highlight from '../../components/highlight'
 
 import { 
   Box,
@@ -146,6 +147,31 @@ export default function Dividends ({ div, keyMetrics, historicalPrice, basicInfo
         )
       }).reverse(): null;
   
+  const highlightData = div ? {
+    symbol: value,
+    period: divData[divData.length - 1].date,
+    data: [
+      {
+        title: "Last Quarterly Amount",
+        value: divHistory[divHistory.length - 1].adjDividend.toLocaleString(),
+        unit_forth: "$",
+        unit_back: ""
+      },
+      {
+        title: "Div Yield",
+        value: divData[divData.length - 1].dividendYield.toLocaleString(),
+        unit_forth: "",
+        unit_back: "%"
+      },
+      {
+        title: "Payout Ratio",
+        value: divData[divData.length - 1].payoutRatio.toLocaleString(),
+        unit_forth: "",
+        unit_back: "%"
+      },
+    ]
+  } : null;
+  
   if (divHistory) {
     return (
       <Layout>
@@ -185,18 +211,7 @@ export default function Dividends ({ div, keyMetrics, historicalPrice, basicInfo
               direction={["column","column", "row"]}
             >
               <Flex h={["40%","40%", "100%"]} w={["100%","100%", "39%"]}  direction="column" justify="space-between">
-                <Flex
-                  h="29%"
-                  w="100%"
-                  borderRadius="2xl"
-                  boxShadow="xl"
-                  bg="#ffffff"
-                  color="#000000"
-                  justify="center"
-                  align="center"
-                >
-                🏕Under Development
-                </Flex>
+                <Highlight highlightData={highlightData}/>
                 <Flex
                   direction="column"
                   h="69%"

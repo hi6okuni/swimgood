@@ -5,6 +5,7 @@ import colorPallet from '../../lib/color-pallet'
 import Layout, { siteTitle } from '../../components/layout'
 import BarRechart from '../../components/bar_rechart'
 import LineRechart from '../../components/line_rechart'
+import Highlight from '../../components/highlight'
 import ComposedRechart from '../../components/composed_rechart'
 
 import { 
@@ -46,13 +47,13 @@ export async function getServerSideProps({params}) {
   
     const cfs = res1.length ? res1.map((cfsInfo) => ({
       date: cfsInfo.date.split('-'),
-      operatingCashFlow: cfsInfo.operatingCashFlow/1000000,
+      operatingCashFlow: Math.round((cfsInfo.operatingCashFlow/1000000) * 10) / 10,
       capitalExpenditure: Math.abs(cfsInfo.capitalExpenditure/1000000),
-      freeCashFlow: cfsInfo.freeCashFlow/1000000,
-      acquisitionsNet: - cfsInfo.acquisitionsNet/1000000,
-      debtRepayment: - cfsInfo.debtRepayment/1000000,
-      commonStockRepurchased: - cfsInfo.commonStockRepurchased/1000000,
-      dividendsPaid: - cfsInfo.dividendsPaid/1000000,
+      freeCashFlow: Math.round((cfsInfo.freeCashFlow/1000000) * 10) / 10,
+      acquisitionsNet: - Math.round((cfsInfo.acquisitionsNet/1000000) * 10) / 10,
+      debtRepayment: - Math.round((cfsInfo.debtRepayment/1000000) * 10) / 10,
+      commonStockRepurchased: - Math.round((cfsInfo.commonStockRepurchased/1000000) * 10) / 10,
+      dividendsPaid: - Math.round((cfsInfo.dividendsPaid/1000000) * 10) / 10,
     })) : null;
   
     const pl = res2.length ? res2.map((plInfo) => ({
@@ -84,13 +85,13 @@ export async function getServerSideProps({params}) {
 
     const cfsQ = res5.length ? res5.map((cfsInfo) => ({
       date: cfsInfo.date.split('-'),
-      operatingCashFlow: cfsInfo.operatingCashFlow/1000000,
+      operatingCashFlow: Math.round((cfsInfo.operatingCashFlow/1000000) * 10) / 10,
       capitalExpenditure: Math.abs(cfsInfo.capitalExpenditure/1000000),
-      freeCashFlow: cfsInfo.freeCashFlow/1000000,
-      acquisitionsNet: - cfsInfo.acquisitionsNet/1000000,
-      debtRepayment: - cfsInfo.debtRepayment/1000000,
-      commonStockRepurchased: - cfsInfo.commonStockRepurchased/1000000,
-      dividendsPaid: - cfsInfo.dividendsPaid/1000000,
+      freeCashFlow: Math.round((cfsInfo.freeCashFlow/1000000) * 10) / 10,
+      acquisitionsNet: - Math.round((cfsInfo.acquisitionsNet/1000000) * 10) / 10,
+      debtRepayment: - Math.round((cfsInfo.debtRepayment/1000000) * 10) / 10,
+      commonStockRepurchased: - Math.round((cfsInfo.commonStockRepurchased/1000000) * 10) / 10,
+      dividendsPaid: - Math.round((cfsInfo.dividendsPaid/1000000) * 10) / 10,
     })) : null;
 
     const plQ = res6.length ? res6.map((plInfo) => ({
@@ -176,6 +177,37 @@ export default function CashFlowStatement ({ cfs, pl, historicalPrice, basicInfo
         }
       )
     }).reverse();
+
+    const highlightData = cfsData ? {
+      symbol: value,
+      period: cfsData[cfsData.length - 1].date,
+      data: [
+        {
+          title: "Operating Cash Flow",
+          value: cfsData[cfsData.length - 1].operatingCashFlow.toLocaleString(),
+          unit_forth: "$",
+          unit_back: ""
+        },
+        {
+          title: "Free Cash Flow",
+          value: cfsData[cfsData.length - 1].freeCashFlow.toLocaleString(),
+          unit_forth: "$",
+          unit_back: ""
+        },
+        {
+          title: "Share Buy-back",
+          value: cfsData[cfsData.length - 1].commonStockRepurchased.toLocaleString(),
+          unit_forth: "$",
+          unit_back: ""
+        },
+        {
+          title: "Dividend Paid",
+          value: cfsData[cfsData.length - 1].dividendsPaid.toLocaleString(),
+          unit_forth: "$",
+          unit_back: ""
+        },
+      ]
+    } : null;
   
 
   return (
@@ -221,18 +253,7 @@ export default function CashFlowStatement ({ cfs, pl, historicalPrice, basicInfo
             direction={["column","column", "row"]}
           >
             <Flex h={["40%","40%", "100%"]} w={["100%","100%", "39%"]}  direction="column" justify="space-between">
-              <Flex
-                h="29%"
-                w="100%"
-                borderRadius="2xl"
-                boxShadow="xl"
-                bg="#ffffff"
-                color="#000000"
-                justify="center"
-                align="center"
-              >
-              🏕Under Development
-              </Flex>
+              <Highlight highlightData={highlightData}/>
               <Flex
                 direction="column"
                 h="69%"

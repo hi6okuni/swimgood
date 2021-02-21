@@ -6,6 +6,7 @@ import Layout, { siteTitle } from '../../components/layout'
 import AreaRechart from '../../components/area_rechart'
 import BarRechart from '../../components/bar_rechart'
 import LineRechart from '../../components/line_rechart'
+import Highlight from '../../components/highlight'
 import { 
   Box,
   Flex,
@@ -43,12 +44,13 @@ export async function getServerSideProps({params}) {
   //   console.log(error);
   // });
 
-  const [res1, res2, res3, res4, res5] = await Promise.all([
+  const [res1, res2, res3, res4, res5, res6] = await Promise.all([
     fetch(`https://financialmodelingprep.com/api/v3/income-statement/${symbol}?limit=10&apikey=${apikey}`).then(response => response.json()),
     fetch(`https://financialmodelingprep.com/api/v3/key-metrics/${symbol}?limit=10&apikey=${apikey}`).then(response => response.json()),
     fetch(`https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?from=${fiveYearsAgoForApi}&to=${yesterdayForApi}&apikey=${apikey}`).then(response => response.json()),
     fetch(`https://financialmodelingprep.com/api/v3/quote/${symbol}?apikey=${apikey}`).then(response => response.json()),
     fetch(`https://financialmodelingprep.com/api/v3/income-statement/${symbol}?period=quarter&limit=10&apikey=${apikey}`).then(response => response.json()),
+    fetch(`https://financialmodelingprep.com/api/v3/key-metrics/${symbol}?period=quarter&limit=10&apikey=${apikey}`).then(response => response.json()),
   ]);
   
     const plData = res1.length ? res1.map((each) => ({
@@ -79,13 +81,12 @@ export async function getServerSideProps({params}) {
       daR: each.depreciationAndAmortization*100 / each.operatingExpenses,
       interestExpense: each.interestExpense,
       incomeTaxExpense: each.incomeTaxExpense,
+      ebitda: each.ebitda,
       ebitdaR: (each.netIncome + each.incomeTaxExpense + each.interestExpense + each.depreciationAndAmortization)*100 / each.revenue,
     })) : null ;
   
     const keyMetrics = res2.length ? res2.map((keyMetric) => ({
       date: keyMetric.date.split('-'),
-      dividendYield: Math.round(keyMetric.dividendYield*100 * 100) / 100,
-      payoutRatio: Math.round(keyMetric.payoutRatio*100 * 100) / 100,
       operatingCashFlowPerShare: Math.round(keyMetric.operatingCashFlowPerShare * 100) / 100,
       freeCashFlowPerShare: Math.round(keyMetric.freeCashFlowPerShare * 100) / 100,
     })): null ;
@@ -139,8 +140,15 @@ export async function getServerSideProps({params}) {
       daR: each.depreciationAndAmortization*100 / each.operatingExpenses,
       interestExpense: each.interestExpense,
       incomeTaxExpense: each.incomeTaxExpense,
+      ebitda: each.ebitda,
       ebitdaR: (each.netIncome + each.incomeTaxExpense + each.interestExpense + each.depreciationAndAmortization)*100 / each.revenue,
     })) : null ;
+
+    const keyMetricsQ = res6.length ? res6.map((keyMetric) => ({
+      date: keyMetric.date.split('-'),
+      operatingCashFlowPerShare: Math.round(keyMetric.operatingCashFlowPerShare * 100) / 100,
+      freeCashFlowPerShare: Math.round(keyMetric.freeCashFlowPerShare * 100) / 100,
+    })): null ;
 
   
     // Pass data to the page via props
@@ -151,12 +159,13 @@ export async function getServerSideProps({params}) {
         historicalPrice,
         basicInfo,
         plDataQ,
+        keyMetricsQ
       } 
     }
 }
 
 
-export default function IncomeStatement ({ plData, keyMetrics, basicInfo, historicalPrice, plDataQ }) {
+export default function IncomeStatement ({ plData, keyMetrics, basicInfo, historicalPrice, plDataQ, keyMetricsQ }) {
 
   const {value, setStockPrice, setStockInfo} = useAppContext();
   const [isPercent, setIsPercent] = useState(false);
@@ -185,15 +194,15 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
   } else {
 
   const profitData = 
-  (plData.length && plDataQ.length && keyMetrics.length == plData.length  && isAnnual === true)
+  (plData.length && plDataQ.length && keyMetrics.length == plData.length && isAnnual === true)
   ? plData.map((each, index) => {
       return(
         {
           date: each.date[0],
-          revenue: each.revenue/1000000,
-          grossProfit: each.grossProfit/1000000,
+          revenue: Math.round((each.revenue/1000000) * 10) / 10,
+          grossProfit: Math.round((each.grossProfit/1000000) * 10) / 10,
           grossProfitR: Math.round(each.grossProfitR * 10) / 10,
-          operatingIncome: each.operatingIncome/1000000,
+          operatingIncome: Math.round((each.operatingIncome/1000000) * 10) / 10,
           operatingIncomeR: Math.round(each.operatingIncomeR * 10) / 10,
           costOfRevenue: each.costOfRevenue/1000000,
           costOfRevenueR: Math.round(each.costOfRevenueR * 10) / 10,
@@ -201,50 +210,84 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
           operatingExpenseR: Math.round(each.operatingExpenseR * 10) / 10,
           nonOperatingExpense: each.nonOperatingExpense/1000000,
           nonOperatingExpenseR: Math.round(each.nonOperatingExpenseR * 10) / 10,
-          netIncome: each.netIncome/1000000,
+          netIncome: Math.round((each.netIncome/1000000) * 10) / 10,
           netIncomeR: Math.round(each.netIncomeR * 10) / 10,
           rd: each.rd/1000000,
           sga: each.sga/1000000,
           incomeTaxExpense: each.incomeTaxExpense/1000000,
           interestExpense: each.interestExpense/1000000,
           da: each.da/1000000,
+          ebitda: each.ebitda/1000000,
           ebitdaR: each.ebitdaR,
           weightedAverageShsOutDil: each.weightedAverageShsOutDil/1000000,
-          eps: each.eps,
-          revenuePerShare: each.revenuePerShare,
-          operatingCashFlowPerShare: keyMetrics[index].operatingCashFlowPerShare,
-          freeCashFlowPerShare: keyMetrics[index].freeCashFlowPerShare,
+          eps: Math.round((each.eps) * 100) / 100,
+          revenuePerShare: Math.round((each.revenuePerShare) * 100) / 100,
+          operatingCashFlowPerShare: Math.round((keyMetrics[index].operatingCashFlowPerShare) * 100) / 100,
+          freeCashFlowPerShare: Math.round((keyMetrics[index].freeCashFlowPerShare) * 100) / 100,
         }
       )
     }).reverse(): 
     plDataQ.map((each, index) => {
+      if (keyMetricsQ.length == plDataQ.length) {
       return(
         {
           date: each.date[1] + "-" + each.date[0],
-          revenue: each.revenue/1000000,
-          grossProfit: each.grossProfit/1000000,
+          revenue: Math.round((each.revenue/1000000) * 10) / 10,
+          grossProfit: Math.round((each.grossProfit/1000000) * 10) / 10,
           grossProfitR: Math.round(each.grossProfitR * 10) / 10,
-          operatingIncome: each.operatingIncome/1000000,
+          operatingIncome: Math.round((each.operatingIncome/1000000) * 10) / 10,
           operatingIncomeR: Math.round(each.operatingIncomeR * 10) / 10,
-          costOfRevenue: each.costOfRevenue/1000000,
+          costOfRevenue: Math.round((each.costOfRevenue/1000000) * 10) / 10,
           costOfRevenueR: Math.round(each.costOfRevenueR * 10) / 10,
           operatingExpense: each.operatingExpense/1000000,
           operatingExpenseR: Math.round(each.operatingExpenseR * 10) / 10,
           nonOperatingExpense: each.nonOperatingExpense/1000000,
           nonOperatingExpenseR: Math.round(each.nonOperatingExpenseR * 10) / 10,
-          netIncome: each.netIncome/1000000,
+          netIncome: Math.round((each.netIncome/1000000) * 10) / 10,
           netIncomeR: Math.round(each.netIncomeR * 10) / 10,
           rd: each.rd/1000000,
           sga: each.sga/1000000,
           incomeTaxExpense: each.incomeTaxExpense/1000000,
           interestExpense: each.interestExpense/1000000,
           da: each.da/1000000,
+          ebitda: each.ebitda/1000000,
           ebitdaR: each.ebitdaR,
           weightedAverageShsOutDil: each.weightedAverageShsOutDil/1000000,
-          eps: each.eps,
-          revenuePerShare: each.revenuePerShare,
+          eps: Math.round((each.eps) * 100) / 100,
+          revenuePerShare: Math.round((each.revenuePerShare) * 100) / 100,
+          operatingCashFlowPerShare: Math.round((keyMetricsQ[index].operatingCashFlowPerShare) * 100) / 100,
+          freeCashFlowPerShare: Math.round((keyMetricsQ[index].freeCashFlowPerShare) * 100) / 100,
         }
-      )
+      ) } else {
+        return(
+          {
+            date: each.date[1] + "-" + each.date[0],
+            revenue: each.revenue/1000000,
+            grossProfit: each.grossProfit/1000000,
+            grossProfitR: Math.round(each.grossProfitR * 10) / 10,
+            operatingIncome: each.operatingIncome/1000000,
+            operatingIncomeR: Math.round(each.operatingIncomeR * 10) / 10,
+            costOfRevenue: each.costOfRevenue/1000000,
+            costOfRevenueR: Math.round(each.costOfRevenueR * 10) / 10,
+            operatingExpense: each.operatingExpense/1000000,
+            operatingExpenseR: Math.round(each.operatingExpenseR * 10) / 10,
+            nonOperatingExpense: each.nonOperatingExpense/1000000,
+            nonOperatingExpenseR: Math.round(each.nonOperatingExpenseR * 10) / 10,
+            netIncome: each.netIncome/1000000,
+            netIncomeR: Math.round(each.netIncomeR * 10) / 10,
+            rd: each.rd/1000000,
+            sga: each.sga/1000000,
+            incomeTaxExpense: each.incomeTaxExpense/1000000,
+            interestExpense: each.interestExpense/1000000,
+            da: each.da/1000000,
+            ebitda: each.ebitda/1000000,
+            ebitdaR: each.ebitdaR,
+            weightedAverageShsOutDil: each.weightedAverageShsOutDil/1000000,
+            eps: each.eps,
+            revenuePerShare: each.revenuePerShare,
+          }
+        )
+      }
     }).reverse();
 
   const chartColor = {
@@ -273,6 +316,127 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
   const profitStructureKeyword = 
   (isPercent === true) 
   ? "profitR" : "profit";
+
+  const highlightData_sales = profitData ? {
+    symbol: value,
+    period: profitData[profitData.length - 1].date,
+    data: [
+      {
+        title: "Revenue",
+        value: profitData[profitData.length - 1].revenue.toLocaleString(),
+        unit_forth: "$",
+        unit_back: ""
+      },
+      {
+        title: "Gross Profit",
+        value: profitData[profitData.length - 1].grossProfit.toLocaleString(),
+        unit_forth: "$",
+        unit_back: ""
+      },
+      {
+        title: "Operating Income",
+        value: profitData[profitData.length - 1].operatingIncome.toLocaleString(),
+        unit_forth: "$",
+        unit_back: ""
+      },
+      {
+        title: "Net Income",
+        value: profitData[profitData.length - 1].netIncome.toLocaleString(),
+        unit_forth: "$",
+        unit_back: ""
+      },
+    ]
+  } : null;
+
+  const highlightData_expense = profitData ? {
+    symbol: value,
+    period: profitData[profitData.length - 1].date,
+    data: [
+      {
+        title: "Operating Expense",
+        value: profitData[profitData.length - 1].operatingExpense.toLocaleString(),
+        unit_forth: "$",
+        unit_back: ""
+      },
+      {
+        title: "R&D",
+        value: profitData[profitData.length - 1].rd.toLocaleString(),
+        unit_forth: "$",
+        unit_back: ""
+      },
+      {
+        title: "SG&A",
+        value: profitData[profitData.length - 1].sga.toLocaleString(),
+        unit_forth: "$",
+        unit_back: ""
+      },
+    ]
+  } : null;
+
+  const highlightData_ebitda = profitData ? {
+    symbol: value,
+    period: profitData[profitData.length - 1].date,
+    data: [
+      {
+        title: "EBITDA",
+        value: profitData[profitData.length - 1].ebitda.toLocaleString(),
+        unit_forth: "$",
+        unit_back: ""
+      },
+      {
+        title: "EBITDA Margin",
+        value: profitData[profitData.length - 1].ebitdaR.toLocaleString(),
+        unit_forth: "",
+        unit_back: "%"
+      },
+      {
+        title: "D&A",
+        value: profitData[profitData.length - 1].da.toLocaleString(),
+        unit_forth: "$",
+        unit_back: ""
+      },
+    ]
+  } : null;
+
+
+  const operatingCashFlowPerShare_highlight = profitData[profitData.length - 1].operatingCashFlowPerShare ?
+  profitData[profitData.length - 1].operatingCashFlowPerShare.toLocaleString() : 
+  keyMetricsQ[keyMetricsQ.length - 1].operatingCashFlowPerShare.toLocaleString();
+
+  const freeCashFlowPerShare_highlight = profitData[profitData.length - 1].freeCashFlowPerShare ?
+  profitData[profitData.length - 1].freeCashFlowPerShare.toLocaleString() : 
+  keyMetricsQ[keyMetricsQ.length - 1].freeCashFlowPerShare.toLocaleString();
+
+  const highlightData_pershare = profitData ? {
+    symbol: value,
+    period: profitData[profitData.length - 1].date,
+    data: [
+      {
+        title: "EPS",
+        value: profitData[profitData.length - 1].eps.toLocaleString(),
+        unit_forth: "$",
+        unit_back: ""
+      },
+      {
+        title: "Revenue",
+        value: profitData[profitData.length - 1].revenuePerShare.toLocaleString(),
+        unit_forth: "$",
+        unit_back: ""
+      },
+      {
+        title: "Operating Cash Flow",
+        value: operatingCashFlowPerShare_highlight,
+        unit_forth: "$",
+        unit_back: ""
+      },
+      {
+        title: "Free Cash Flow",
+        value: freeCashFlowPerShare_highlight,
+        unit_forth: "$",
+        unit_back: ""
+      },
+    ]
+  } : null;
 
   return (
     <Layout>
@@ -323,18 +487,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
             direction={["column","column", "row"]}
           >
             <Flex h={["40%","40%", "100%"]} w={["100%","100%", "39%"]}  direction="column" justify="space-between">
-              <Flex
-                h="29%"
-                w="100%"
-                borderRadius="2xl"
-                boxShadow="xl"
-                bg="#ffffff"
-                color="#000000"
-                justify="center"
-                align="center"
-              >
-              🏕Under Development
-              </Flex>
+              <Highlight highlightData={highlightData_sales}/>
               <Flex
                 direction="column"
                 h="69%"
@@ -426,7 +579,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
         </Flex>
 
         {/* Operating Expenses */}
-        <Flex
+        {/* <Flex
           direction="column"
           w="100%"
           h={["1260px", "1260px", "75vh"]} 
@@ -450,18 +603,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
             direction={["column","column", "row"]}
           >
             <Flex h={["40%","40%", "100%"]} w={["100%","100%", "39%"]}  direction="column" justify="space-between">
-              <Flex
-                h="29%"
-                w="100%"
-                borderRadius="2xl"
-                boxShadow="xl"
-                bg="#ffffff"
-                color="#000000"
-                justify="center"
-                align="center"
-              >
-              🏕Under Development
-              </Flex>
+              <Highlight highlightData={highlightData_expense}/>
               <Flex
                 direction="column"
                 h="69%"
@@ -538,7 +680,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
               </Flex>
             </Flex>
           </Flex>
-        </Flex>
+        </Flex> */}
 
         {/* Ebitda */}
         <Flex
@@ -565,18 +707,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
             direction={["column","column", "row"]}
           >
             <Flex h={["40%","40%", "100%"]} w={["100%","100%", "39%"]}  direction="column" justify="space-between">
-              <Flex
-                h="29%"
-                w="100%"
-                borderRadius="2xl"
-                boxShadow="xl"
-                bg="#ffffff"
-                color="#000000"
-                justify="center"
-                align="center"
-              >
-              🏕Under Development
-              </Flex>
+              <Highlight highlightData={highlightData_ebitda}/>
               <Flex
                 direction="column"
                 h="69%"
@@ -680,18 +811,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
             direction={["column","column", "row"]}
           >
             <Flex h={["40%","40%", "100%"]} w={["100%","100%", "39%"]}  direction="column" justify="space-between">
-              <Flex
-                h="29%"
-                w="100%"
-                borderRadius="2xl"
-                boxShadow="xl"
-                bg="#ffffff"
-                color="#000000"
-                justify="center"
-                align="center"
-              >
-              🏕Under Development
-              </Flex>
+              <Highlight highlightData={highlightData_pershare}/>
               <Flex
                 direction="column"
                 h="69%"
@@ -723,7 +843,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 bg="#ffffff"
                 color="#000000"
               >
-                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Diluted EPS</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;EPS</Text></Center>
                 <BarRechart data={profitData} title={["eps"]} color={[chartColor.perShare[0]]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
