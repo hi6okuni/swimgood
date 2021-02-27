@@ -14,7 +14,7 @@ const menuTitles =
     { title: "Cash Flow Statement", url: "cfs"},
     { title: "Dividends", url: "div"},
     { title: "Growth", url: "growth"},
-    { title: "Metrics", url: "metric"},
+    { title: "Profitability", url: "profit"},
   ]
 
 
@@ -50,6 +50,11 @@ export default function SideBar(props) {
 
   const setMenuDjia = () => {
     setMenu("djia");
+    setStockInfo("");
+  }
+
+  const setMenuIntro = () => {
+    setMenu("intro");
     setStockInfo("");
   }
 
@@ -302,6 +307,54 @@ export default function SideBar(props) {
           </Center>
           }
         </Center>
+
+        <Center
+          fontSize="calc(6px + 2vmin)" 
+          mx="5%"
+          w="80%"
+        >
+          {menu == "intro" ? 
+          <Center
+            w="80%"
+            borderRadius="lg"
+            m="2%"
+            p="3%"
+            bg="linear-gradient(to right top , #ffafbd,  #ffc3a0 )"
+            color="#3f3356"
+            fontWeight="500"
+            transition="all 0.3s ease-in-out"
+            onClick={() => setMenuIntro()}
+          >
+            <Center w="100%">
+              <Link 
+                href={`/posts/introduction`}
+              >
+                <a>使い方</a>
+              </Link>
+            </Center>
+          </Center> :  
+          <Center
+            w="80%"
+            borderRadius="lg"
+            m="2%"
+            p="3%"
+            fontWeight="500"
+            _hover={{ bg: "linear-gradient(to right top , #ffafbd,  #ffc3a0 )", color: "#3f3356" }}
+            _activeLink
+            transition="all 0.3s ease-in-out"
+            onClick={() => setMenuIntro()}
+          >
+            <Center w="100%">
+              <Link 
+                href={`/posts/introduction`}
+              >
+                <a>使い方</a>
+              </Link>
+            </Center>
+          </Center>
+          }
+        </Center>
+
       </Flex>
     </Flex>
     : null }
@@ -310,7 +363,7 @@ export default function SideBar(props) {
       display={{ base: "none", md: "flex" }}
       minH="100vh"
       direction={{ base: "row", md: "column" }}
-      pt="20%"
+      pt="15%"
       wrap="nowrap"
       align="center"
       pos="sticky" 
@@ -518,6 +571,52 @@ export default function SideBar(props) {
           borderBottom="2px"
           color="gray.400"
         >
+        </Center>
+        
+        {/* INTRODUCTION */}
+        <Center
+          fontSize="calc(6px + 1vmin)" 
+          w="100%"
+        >
+          {menu == "intro" ? 
+          <Center
+            w="80%"
+            borderRadius="lg"
+            m="2%"
+            p="3%"
+            bg="#e4eafb"
+            color="#3f3356"
+            transition="all 0.3s ease-in-out"
+            onClick={() => setMenuIntro()}
+          >
+            <Center w="100%">
+              <Link 
+                href={`/posts/introduction`}
+              >
+                <a>使い方</a>
+              </Link>
+            </Center>
+          </Center> :  
+          <Center
+            w="80%"
+            borderRadius="lg"
+            m="2%"
+            p="3%"
+            color="gray.500"
+            _hover={{ bg: "#e4eafb", color: "#3f3356"}}
+            _activeLink
+            transition="all 0.3s ease-in-out"
+            onClick={() => setMenuIntro()}
+          >
+            <Center w="100%">
+              <Link 
+                href={`/posts/introduction`}
+              >
+                <a>使い方</a>
+              </Link>
+            </Center>
+          </Center>
+          }
         </Center>
 
         {/* TERMS OF USE */}

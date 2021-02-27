@@ -140,7 +140,7 @@ export default function CashFlowStatement ({ cfs, pl, historicalPrice, basicInfo
   } else {
 
   const cfsData = 
-  (cfs.length && cfsQ.length && isAnnual === true)
+  (cfs.length && cfsQ.length && cfs.length == pl.length && isAnnual === true)
   ? cfs.map((each, index) => {
       return(
         {
