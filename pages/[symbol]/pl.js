@@ -90,7 +90,7 @@ export async function getServerSideProps({params}) {
       date: keyMetric.date.split('-'),
       operatingCashFlowPerShare: Math.round(keyMetric.operatingCashFlowPerShare * 100) / 100,
       freeCashFlowPerShare: Math.round(keyMetric.freeCashFlowPerShare * 100) / 100,
-    })): null ;
+    })): [] ;
   
     const historicalPrice = res3.symbol ? res3.historical.map((dailyPrice) => ({
       price: dailyPrice.close,
@@ -150,7 +150,7 @@ export async function getServerSideProps({params}) {
       date: keyMetric.date.split('-'),
       operatingCashFlowPerShare: Math.round(keyMetric.operatingCashFlowPerShare * 100) / 100,
       freeCashFlowPerShare: Math.round(keyMetric.freeCashFlowPerShare * 100) / 100,
-    })): null ;
+    })): [] ;
 
   
     // Pass data to the page via props
@@ -196,7 +196,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
   } else {
 
   const secData =
-  plData.length ?
+  plData.length && plData[plData.length - 1].annualReport !== "" ?
   plData.slice(0,5).map((each) => {
     return (
       {
@@ -204,10 +204,10 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
         annualReport: each.annualReport,
       }
     )
-  }) : null ;
+  }) : [] ;
 
   const secDataQ =
-  plDataQ.length ?
+  plDataQ.length && plDataQ[plDataQ.length - 1].quarterlyReport !== "" ?
   plDataQ.slice(0,5).map((each) => {
     return (
       {
@@ -215,7 +215,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
         quarterlyReport: each.quarterlyReport,
       }
     )
-  }) : null ;
+  }) : [] ;
 
   const profitData = 
   (plData.length && plDataQ.length && keyMetrics.length == plData.length && isAnnual === true)
@@ -398,15 +398,17 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
   } : null;
 
 
-  const operatingCashFlowPerShare_highlight = profitData[profitData.length - 1].operatingCashFlowPerShare ?
-  profitData[profitData.length - 1].operatingCashFlowPerShare.toLocaleString() : 
-  keyMetricsQ[keyMetricsQ.length - 1].operatingCashFlowPerShare.toLocaleString();
+  const operatingCashFlowPerShare_highlight = 
+  profitData[profitData.length - 1].operatingCashFlowPerShare  ?
+  profitData[profitData.length - 1].operatingCashFlowPerShare.toLocaleString() 
+  : "";
 
-  const freeCashFlowPerShare_highlight = profitData[profitData.length - 1].freeCashFlowPerShare ?
-  profitData[profitData.length - 1].freeCashFlowPerShare.toLocaleString() : 
-  keyMetricsQ[keyMetricsQ.length - 1].freeCashFlowPerShare.toLocaleString();
+  const freeCashFlowPerShare_highlight = 
+  profitData[profitData.length - 1].freeCashFlowPerShare  ?
+  profitData[profitData.length - 1].freeCashFlowPerShare.toLocaleString() 
+  : "";
 
-  const highlightData_pershare = profitData ? {
+  const highlightData_pershare = profitData[profitData.length - 1].revenuePerShare ? {
     symbol: value,
     period: profitData[profitData.length - 1].date,
     data: [
@@ -435,7 +437,11 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
         unit_back: ""
       },
     ]
-  } : null;
+  } : 
+  {
+    symbol: value,
+    period: profitData[profitData.length - 1].date,
+  };
 
   return (
     <Layout>
@@ -464,7 +470,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
           w="100%"
           h={["150px", "180px", "20vh"]} 
           p={["4%","4%","2%"]} 
-          my="1%"
+          my="2%"
           pt="1%"
           bg="#e4e9fb"
           color="#3f3356"
@@ -517,13 +523,17 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
           </Flex>
         </Flex>
 
+        {profitData.length < 3 ? 
+        <Text m="2%" color="#fb8fb9" fontSize="sm">⚠️Sorry, the number of data may be not plenty enough to research⚠️</Text>
+          : null }
+
         {/* Revenue and Income */}
         <Flex
           direction="column"
           w="100%"
           h={["1260px", "1260px", "75vh"]} 
           p={["4%","4%","2%"]} 
-          my="4%"
+          my="2%"
           pt="1%"
           bg="#e4e9fb"
           color="#3f3356"

@@ -17,14 +17,14 @@ export default function Highlight( {highlightData} ) {
       fontSize={["calc(6px + 2vmin)","xs", "xs" ]}
     >
       <Text textAlign="center" fontWeight="bold">💫 Summary&nbsp;&nbsp;&nbsp;&nbsp;${highlightData.symbol}&nbsp;&nbsp;{highlightData.period}</Text>
-      {highlightData.data.map((e) => {
+      {highlightData.data ? highlightData.data.map((e) => {
         return (
           <Flex w={["70%","70%", "80%" ]} justify="space-between" >
             <Text>{e.title}</Text>
             <Text>{e.unit_forth}{e.value}{e.unit_back}</Text>
           </Flex>
         )
-      })}
+      }) : null}
     </Flex>
   )
 };
