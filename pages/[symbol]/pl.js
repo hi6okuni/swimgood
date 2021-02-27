@@ -524,7 +524,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
         </Flex>
 
         {profitData.length < 3 ? 
-        <Text m="2%" color="#fb8fb9" fontSize="sm">⚠️Sorry, the number of data may be not plenty enough to research⚠️</Text>
+        <Text m="2%" color="#fb8fb9" fontSize="sm">⚠️Sorry, the number of data may not be plenty enough to research⚠️</Text>
           : null }
 
         {/* Revenue and Income */}
