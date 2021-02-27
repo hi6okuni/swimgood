@@ -108,7 +108,7 @@ export default function SideBar(props) {
     <Flex
       align="center"
       w="100%"
-      h="600px"
+      h={["600px","1000px","1000px"]}
       p="3%"
       direction="column"
       position="absolute"
@@ -134,7 +134,7 @@ export default function SideBar(props) {
       {menuTitles.map((e) => {
         return(
           <Center
-            fontSize="calc(6px + 2vmin)" 
+            fontSize="calc(5px + 2vmin)" 
             fontWeight="500"
             direction="column"
             w="80%"
@@ -215,7 +215,7 @@ export default function SideBar(props) {
         w="100%"
       >
         <Center
-          fontSize="calc(6px + 2vmin)" 
+          fontSize="calc(5px + 2vmin)" 
           mx="5%"
           w="80%"
         >
@@ -262,7 +262,7 @@ export default function SideBar(props) {
         </Center>
 
         <Center
-          fontSize="calc(6px + 2vmin)" 
+          fontSize="calc(5px + 2vmin)" 
           mx="5%"
           w="80%"
         >
@@ -309,7 +309,7 @@ export default function SideBar(props) {
         </Center>
 
         <Center
-          fontSize="calc(6px + 2vmin)" 
+          fontSize="calc(5px + 2vmin)" 
           mx="5%"
           w="80%"
         >
