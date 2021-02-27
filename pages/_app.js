@@ -26,7 +26,7 @@ export default function App({ Component, pageProps }) {
     return <Error statusCode={pageProps.error.statusCode} title={pageProps.error.message} />;
   }
   return (
-      <ChakraProvider resetCSS theme={extendTheme({
+      <ChakraProvider theme={extendTheme({
         fonts: {
           body: "Poppins"
         }

@@ -115,7 +115,7 @@ export async function getServerSideProps({params}) {
   }
 
 
-export default function Metrics ({ pl, bs, historicalPrice, basicInfo }) {
+export default function Profitability ({ pl, bs, historicalPrice, basicInfo }) {
 
   const {value, setStockPrice, setStockInfo} = useAppContext();
 
@@ -238,7 +238,7 @@ export default function Metrics ({ pl, bs, historicalPrice, basicInfo }) {
           >
             <Flex w={["100%", "30%", "30%"]} justify={["flex-start", "space-between", "space-between"]} p="2%" direction={["row", "column", "column"]}>
               <Flex justify="center" align="center" mr={["5%",0,0]} w={["40%", "100%", "100%"]}>
-                <Text fontWeight="bold">Margin Metrics</Text>
+                <Text fontWeight="bold">Margin</Text>
               </Flex>
               <Flex direction="column" w={["60%", "100%", "100%"]}>
                 <Flex justify="space-between">
@@ -257,7 +257,7 @@ export default function Metrics ({ pl, bs, historicalPrice, basicInfo }) {
             </Flex>
             <Flex w={["100%", "30%", "30%"]} justify={["flex-start", "space-between", "space-between"]} p="2%" direction={["row", "column", "column"]}>
               <Flex justify="center" align="center" mr={["5%",0,0]} w={["40%", "100%", "100%"]}>
-                <Text fontWeight="bold" >Return Metrics</Text>
+                <Text fontWeight="bold" >Return</Text>
               </Flex>
               <Flex direction="column" w={["60%", "100%", "100%"]}>
                 <Flex justify="space-between">

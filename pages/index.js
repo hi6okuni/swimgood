@@ -151,6 +151,23 @@ export default function Home ({ allPostsData, hotStocks }) {
           </Box>
         </section>
 
+        {/* <section>
+          <h2>記事</h2>
+          <ul>
+            {allPostsData.map(({ id, date, title }) => (
+              <li key={id}>
+                <Link href={`/posts/${id}`}>
+                  <a>{title}</a>
+                </Link>
+                <br />
+                <small>
+                  <Date dateString={date} />
+                </small>
+              </li>
+            ))}
+          </ul>
+        </section> */}
+
         <section>
           <Box my="8%" mx="4%">
             <Box mb="2%">
@@ -169,23 +186,6 @@ export default function Home ({ allPostsData, hotStocks }) {
             </Flex>
           </Box>
         </section>
-
-        {/* <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-          <h2 className={utilStyles.headingLg}>記事</h2>
-          <ul className={utilStyles.list}>
-            {allPostsData.map(({ id, date, title }) => (
-              <li className={utilStyles.listItem} key={id}>
-                <Link href={`/posts/${id}`}>
-                  <a>{title}</a>
-                </Link>
-                <br />
-                <small className={utilStyles.lightText}>
-                  <Date dateString={date} />
-                </small>
-              </li>
-            ))}
-          </ul>
-        </section> */}
       </Flex>
     </Layout>
   )

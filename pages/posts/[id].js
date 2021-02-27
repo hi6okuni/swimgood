@@ -2,7 +2,16 @@ import Layout from '../../components/layout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 import Head from 'next/head'
 import Date from '../../components/date'
-import utilStyles from '../../styles/utils.module.css'
+import ReactMarkdown from 'react-markdown'
+import ChakraUIRenderer from 'chakra-ui-markdown-renderer';
+
+import { 
+  Box,
+  Flex,
+  Center,
+  Text,
+  Switch,
+} from "@chakra-ui/react"
 
 
 
@@ -29,13 +38,25 @@ export default function Post({postData}) {
       <Head>
         <title>{postData.title}</title>
       </Head>
-      <article>
-        <h1 className={utilStyles.headingXl}>{postData.title}</h1>
-        <div className={utilStyles.lightText}>
-          <Date dateString={postData.date} />
-        </div>
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-      </article>
+      <Box m="6%">
+        <article>
+          <Box mb="4%">
+            <Text fontSize={["md", "md" , "xl"]} fontWeight="bold">{postData.title}</Text>
+            <div>
+              <Date dateString={postData.date} />
+            </div>
+          </Box>
+          <Box fontSize="xs">
+            {/* <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }}/> */}
+            <ReactMarkdown 
+              skipHtml={true}
+              renderers={ChakraUIRenderer()}
+            >
+              {postData.contents}
+            </ReactMarkdown>
+          </Box>
+        </article>
+      </Box>
     </Layout>
   )
 }
