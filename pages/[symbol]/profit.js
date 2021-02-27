@@ -124,7 +124,7 @@ export default function Profitability ({ pl, bs, historicalPrice, basicInfo }) {
     setStockInfo(basicInfo);
   }, [basicInfo])
 
-  if (pl == null) {
+  if (pl == null || bs == null ) {
     return (
       <Layout>
       <Head>
@@ -141,7 +141,7 @@ export default function Profitability ({ pl, bs, historicalPrice, basicInfo }) {
   } else {
 
   const profitData = 
-  (pl.length && bs.length)
+  (pl.length && bs.length && pl.length == bs.length)
   ? pl.map((each, index) => {
       return(
         {
@@ -173,9 +173,9 @@ export default function Profitability ({ pl, bs, historicalPrice, basicInfo }) {
           roic: Math.round((each.ebit*(1 - each.taxRate)*100 / bs[index].investedCapital)*100) / 100,
         }
       )
-    }).reverse(): [];
+    }).reverse(): [] ;
 
-    const highlightData = {
+    const highlightData = profitData.length > 1 ? {
       symbol: value,
       period: profitData[profitData.length - 1].date,
       data: [
@@ -198,7 +198,10 @@ export default function Profitability ({ pl, bs, historicalPrice, basicInfo }) {
           unit_back: "%"
         },
       ]
-    }
+    } : 
+    {
+      symbol: value,
+    };
 
   return (
     <Layout>
@@ -223,19 +226,20 @@ export default function Profitability ({ pl, bs, historicalPrice, basicInfo }) {
           bg='#e4e9fb'
           borderRadius="lg"
         >
-          <Flex
-            h="92.5%"
-            w="100%"
-            p="2%"
-            bg="#6369f7"
-            direction={["column", "row", "row"]}
-            wrap="nowrap"
-            justify={["center", "space-between", "space-between"]}
-            fontSize={["calc(5px + 2vmin)", "sm", "sm"]}
-            borderRadius="lg"
-            boxShadow="2xl"
-            color="white"
-          >
+            { profitData.length > 1 ? 
+            <Flex
+              h="92.5%"
+              w="100%"
+              p="2%"
+              bg="#6369f7"
+              direction={["column", "row", "row"]}
+              wrap="nowrap"
+              justify={["center", "space-between", "space-between"]}
+              fontSize={["calc(5px + 2vmin)", "sm", "sm"]}
+              borderRadius="lg"
+              boxShadow="2xl"
+              color="white"
+            >
             <Flex w={["100%", "30%", "30%"]} justify={["flex-start", "space-between", "space-between"]} p="2%" direction={["row", "column", "column"]}>
               <Flex justify="center" align="center" mr={["5%",0,0]} w={["40%", "100%", "100%"]}>
                 <Text fontWeight="bold">Margin</Text>
@@ -293,7 +297,7 @@ export default function Profitability ({ pl, bs, historicalPrice, basicInfo }) {
                 </Flex>
               </Flex>
             </Flex>
-          </Flex>
+          </Flex>  : null}
         </Flex>
 
         {/* Profitability */}
