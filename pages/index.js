@@ -5,12 +5,14 @@ import { getSortedPostsData } from '../lib/posts'
 import { useAppContext } from '../lib/context/state'
 import Search from '../components/search'
 import Link from 'next/link'
+import Toppicture from '../public/images/swimgood_top.png'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { 
   Box,
   Flex,
   Text,
   Center,
+  Image,
   Link as ChakraLink
 } from "@chakra-ui/react"
 
@@ -68,24 +70,43 @@ export default function Home ({ allPostsData, hotStocks }) {
       </Head>
       <Flex
         direction="column"
-        m="3%"
+        my="1%"
+        mx="3%"
         >
         <section>
-          <Box my="50px">
-            <Box position="relative" zIndex="2" >
-              <Text fontSize="calc(2px + 12vmin)" color="#6263fb" lineHeight="100%" fontWeight="bold">Broaden<br></br>Your Insight</Text>
-              <Box className="gradient" mb="6%">
-                <span className="gradient-text">into U.S. Stocks</span><br></br>
-                <span className="gradient-text">with Beautiful Visuals</span>
+          <Box>
+            <Flex 
+              wrap="wrap"
+              zIndex="2" 
+            >
+              <Box 
+                mt="10%"
+                w="35%" 
+                className="gradient"
+              >
+                <span className="gradient-text">米国株の</span><br></br>
+                <span className="gradient-text">財務諸表を</span><br></br>
+                <span className="gradient-text">瞬時にビジュアル化</span>
               </Box>
-              <Box my="3%" w={["100%", "90%", "70%"]} >
-                <Search getSymbol={getSymbol}/>
-                {/* <Flex direction="column" mx ="2%" my="8%">
-                  <Text fontWeight="bold" fontSize="calc(6px + 4vmin)">🙇‍ メンテナンス中...</Text>
-                </Flex> */}
-              </Box>
+              <Image 
+                h="65%"
+                w="65%"
+                src={Toppicture} 
+                alt="top_picture" 
+              />
+            </Flex>
+            <Box 
+              w={["80%", "70%", "50%"]} 
+              position="absolute"
+              top={["27%", "27%", "24%"]} 
+              right={["15%", "18%", "24%"]} 
+            >
+              <Search getSymbol={getSymbol}/>
+              {/* <Flex direction="column" mx ="2%" my="8%">
+                <Text fontWeight="bold" fontSize="calc(6px + 4vmin)">🙇‍ メンテナンス中...</Text>
+              </Flex> */}
             </Box>
-            <Box
+            {/* <Box
               className="circle"
               top={["12%", "8%", "5%"]}
               right="20%"
@@ -109,12 +130,57 @@ export default function Home ({ allPostsData, hotStocks }) {
               bg="transparent"
               zIndex="1"
             >
-            </Box>
+            </Box> */}
           </Box>
         </section>
 
+        {/* <section>
+          <Flex
+            wrap="wrap"
+            justify="space-around"
+          >
+            <Flex
+              h="200px"
+              w="200px"
+              p="20px"
+              bg="#5759fb"
+              borderRadius="xl"
+              color="#fd867a"
+              fontWeight="bold"
+              fontSize="lg"
+              align="flex-end"
+              transition="transform 450ms"
+              will-change="transform"
+              _hover={{transform: "scale(1.03)", transition: "transform 150ms"}}
+              cursor="pointer"
+            >
+              <Text>S&P 500</Text>
+            </Flex>
+
+            <Flex
+              h="200px"
+              w="200px"
+              p="20px"
+              bg="#fec62e"
+              borderRadius="xl"
+              color="black"
+              fontWeight="bold"
+              fontSize="lg"
+              align="flex-end"
+              transition="transform 450ms"
+              will-change="transform"
+              _hover={{transform: "scale(1.03)", transition: "transform 150ms"}}
+              cursor="pointer"
+            >
+              <Text>Dow Jones <br></br>
+                Industrial Average
+              </Text>
+            </Flex>
+          </Flex>
+        </section> */}
+
         <section>
-          <Box my="15%" mx="4%">
+          <Box mt="30%" mx="4%">
           <Flex
               direction="column"
               justify="space-around"
