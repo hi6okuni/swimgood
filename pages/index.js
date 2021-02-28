@@ -70,14 +70,20 @@ export default function Home ({ allPostsData, hotStocks }) {
       </Head>
       <Flex
         direction="column"
-        my="1%"
+        my="2%"
         mx="3%"
-        >
+      >
         <section>
           <Box>
             <Flex 
               wrap="wrap"
               zIndex="2" 
+              bgImage="url(images/swimgood_top.png)"
+              bgRepeat="no-repeat"
+              bgSize="70%"
+              bgPosition="right top"
+              direction="column"
+              py="6%"
             >
               <Box 
                 mt="10%"
@@ -85,27 +91,24 @@ export default function Home ({ allPostsData, hotStocks }) {
                 className="gradient"
               >
                 <span className="gradient-text">米国株の</span><br></br>
-                <span className="gradient-text">財務諸表を</span><br></br>
-                <span className="gradient-text">瞬時にビジュアル化</span>
+                <span className="gradient-text">決算データを</span><br></br>
+                <span className="gradient-text">瞬時にビジュアル分析</span>
               </Box>
-              <Image 
-                h="65%"
-                w="65%"
-                src={Toppicture} 
-                alt="top_picture" 
-              />
+              <Box mt="3%" w={["80%", "70%", "60%"]} >
+                <Search getSymbol={getSymbol}/>
+              </Box>
             </Flex>
-            <Box 
+            {/* <Box 
               w={["80%", "70%", "50%"]} 
               position="absolute"
               top={["27%", "27%", "24%"]} 
               right={["15%", "18%", "24%"]} 
             >
               <Search getSymbol={getSymbol}/>
-              {/* <Flex direction="column" mx ="2%" my="8%">
+              <Flex direction="column" mx ="2%" my="8%">
                 <Text fontWeight="bold" fontSize="calc(6px + 4vmin)">🙇‍ メンテナンス中...</Text>
-              </Flex> */}
-            </Box>
+              </Flex>
+            </Box> */}
             {/* <Box
               className="circle"
               top={["12%", "8%", "5%"]}
@@ -138,6 +141,7 @@ export default function Home ({ allPostsData, hotStocks }) {
           <Flex
             wrap="wrap"
             justify="space-around"
+            my="10%"
           >
             <Flex
               h="200px"
@@ -155,6 +159,66 @@ export default function Home ({ allPostsData, hotStocks }) {
               cursor="pointer"
             >
               <Text>S&P 500</Text>
+            </Flex>
+
+            <Flex
+              h="200px"
+              w="200px"
+              p="20px"
+              bg="#fec62e"
+              borderRadius="xl"
+              color="black"
+              fontWeight="bold"
+              fontSize="lg"
+              align="flex-end"
+              transition="transform 450ms"
+              will-change="transform"
+              _hover={{transform: "scale(1.03)", transition: "transform 150ms"}}
+              cursor="pointer"
+            >
+              <Text>Dow Jones <br></br>
+                Industrial Average
+              </Text>
+            </Flex>
+
+            <Flex
+              h="200px"
+              w="200px"
+              p="20px"
+              bg="#e8f0fe"
+              borderRadius="xl"
+              color="black"
+              fontWeight="bold"
+              fontSize="lg"
+              align="flex-end"
+              transition="transform 450ms"
+              will-change="transform"
+              _hover={{transform: "scale(1.03)", transition: "transform 150ms"}}
+              cursor="pointer"
+            >
+              <Text>Dow Jones <br></br>
+                Industrial Average
+              </Text>
+            </Flex>
+
+            <Flex
+              h="200px"
+              w="200px"
+              p="20px"
+              bg="#fd867a"
+              borderRadius="xl"
+              color="white"
+              fontWeight="bold"
+              fontSize="lg"
+              align="flex-end"
+              transition="transform 450ms"
+              will-change="transform"
+              _hover={{transform: "scale(1.03)", transition: "transform 150ms"}}
+              cursor="pointer"
+            >
+              <Text>Dow Jones <br></br>
+                Industrial Average
+              </Text>
             </Flex>
 
             <Flex
