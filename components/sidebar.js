@@ -115,7 +115,6 @@ export default function SideBar(props) {
       top="0%"
       zIndex="4"
       bg="#6369f7"
-      color="white"
       opacity="0.95"
     >
       <Flex
@@ -130,6 +129,7 @@ export default function SideBar(props) {
         justify="space-around"
         wrap="wrap"
         mx="5%"
+        color="white"
       >
       {menuTitles.map((e) => {
         return(
@@ -213,6 +213,7 @@ export default function SideBar(props) {
         justify="space-around"
         wrap="wrap"
         w="100%"
+        color="white"
       >
         <Center
           fontSize="calc(5px + 2vmin)" 
@@ -401,7 +402,7 @@ export default function SideBar(props) {
         {menuTitles.map((e) => {
           return(
             <Center 
-              fontSize="calc(6px + 1vmin)" 
+              fontSize="calc(5px + 1vmin)" 
               fontWeight="500"
               w="100%"
               key={e.url}
@@ -475,7 +476,7 @@ export default function SideBar(props) {
         </Center>
 
         <Center
-          fontSize="calc(6px + 1vmin)" 
+          fontSize="calc(5px + 1vmin)" 
           w="100%"
         >
           {menu == "sp500" ? 
@@ -520,7 +521,7 @@ export default function SideBar(props) {
         </Center>
 
         <Center
-          fontSize="calc(6px + 1vmin)" 
+          fontSize="calc(5px + 1vmin)" 
           w="100%"
         >
           {menu == "djia" ? 
@@ -575,7 +576,7 @@ export default function SideBar(props) {
         
         {/* INTRODUCTION */}
         <Center
-          fontSize="calc(6px + 1vmin)" 
+          fontSize="calc(5px + 1vmin)" 
           w="100%"
         >
           {menu == "intro" ? 
@@ -621,7 +622,7 @@ export default function SideBar(props) {
 
         {/* TERMS OF USE */}
         <Center
-          fontSize="calc(6px + 1vmin)" 
+          fontSize="calc(5px + 1vmin)" 
           w="100%"
         >
           {menu == "terms" ? 

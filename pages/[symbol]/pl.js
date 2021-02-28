@@ -453,17 +453,6 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
         direction="column"
         my="3%"
       >
-        <Flex direction="column" w="100%" mt="3%">
-          <Flex fontSize={["xs", "sm"]} mx="4%" my="0.5%" w="80%" >
-            <Switch size="md" colorScheme="pink"  onChange={() => setIsAnnual(!isAnnual)}/>
-            <Text px="2%">Annual ⇄ Quarterly</Text>
-          </Flex>
-          <Flex fontSize={["xs", "sm"]} mx="4%" my="0.5%" w="80%" >
-            <Switch size="md" colorScheme="green" onChange={() => setIsPercent(!isPercent)}/>
-            <Text px="2%">$ ⇄ %</Text>
-          </Flex>
-          <Text fontSize="10px" align="right">In Millions of USD except per share items</Text>
-        </Flex>
 
         <Flex
           direction="column"
@@ -521,6 +510,18 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
               })}
             </Flex>
           </Flex>
+        </Flex>
+
+        <Flex direction="column" w="100%" mt="3%">
+          <Flex fontSize={["xs", "sm"]} mx="4%" my="0.5%" w="80%" >
+            <Switch size="md" colorScheme="pink"  onChange={() => setIsAnnual(!isAnnual)}/>
+            <Text px="2%">Annual ⇄ Quarterly</Text>
+          </Flex>
+          <Flex fontSize={["xs", "sm"]} mx="4%" my="0.5%" w="80%" >
+            <Switch size="md" colorScheme="green" onChange={() => setIsPercent(!isPercent)}/>
+            <Text px="2%">$ ⇄ %</Text>
+          </Flex>
+          <Text fontSize="10px" align="right">In Millions of USD except per share items</Text>
         </Flex>
 
         {profitData.length < 3 ? 
