@@ -30,7 +30,7 @@ export default function Layout({ children, home }) {
         />
         <meta
           property="og:image"
-          content="https://swimgood.io/public/images/twitter_card.png"
+          content="https://swimgood.io/images/twitter_card.png"
         />
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
