@@ -92,7 +92,7 @@ export default function Home ({ allPostsData, hotStocks }) {
               >
                 <span className="gradient-text">米国株の</span><br></br>
                 <span className="gradient-text">決算データを</span><br></br>
-                <span className="gradient-text">瞬時にビジュアル分析</span>
+                <span className="gradient-text">ビジュアル✨で分析</span>
               </Box>
               <Box mt="3%" w={["80%", "70%", "60%"]} >
                 <Search getSymbol={getSymbol}/>
