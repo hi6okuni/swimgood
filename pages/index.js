@@ -4,6 +4,7 @@ import Layout, { siteTitle } from '../components/layout'
 import { getSortedPostsData } from '../lib/posts'
 import { useAppContext } from '../lib/context/state'
 import Search from '../components/search'
+import Category from '../components/category'
 import Link from 'next/link'
 import Toppicture from '../public/images/swimgood_top.png'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
@@ -98,159 +99,21 @@ export default function Home ({ allPostsData, hotStocks }) {
                 <Search getSymbol={getSymbol}/>
               </Box>
             </Flex>
-            {/* <Box 
-              w={["80%", "70%", "50%"]} 
-              position="absolute"
-              top={["27%", "27%", "24%"]} 
-              right={["15%", "18%", "24%"]} 
-            >
-              <Search getSymbol={getSymbol}/>
-              <Flex direction="column" mx ="2%" my="8%">
-                <Text fontWeight="bold" fontSize="calc(6px + 4vmin)">🙇‍ メンテナンス中...</Text>
-              </Flex>
-            </Box> */}
-            {/* <Box
-              className="circle"
-              top={["12%", "8%", "5%"]}
-              right="20%"
-              h={[100, 200, 300]}
-              w={[100, 200, 300]}
-              position="absolute"
-              borderRadius="50%"
-              bg="linear-gradient(to right top , #ffafbd,  #ffc3a0 )"
-              zIndex="1"
-            >
-            </Box>
-            <Box
-              className="circle2"
-              top={["14%", "9%", "6%"]}
-              right="18%"
-              h={[90, 180, 270]}
-              w={[90, 180, 270]}
-              position="absolute"
-              borderRadius="50%"
-              border="solid 3px #3f3356"
-              bg="transparent"
-              zIndex="1"
-            >
-            </Box> */}
           </Box>
         </section>
 
-        {/* <section>
-          <Flex
-            wrap="wrap"
-            justify="space-around"
-            my="10%"
-          >
-            <Flex
-              h="200px"
-              w="200px"
-              p="20px"
-              bg="#5759fb"
-              borderRadius="xl"
-              color="#fd867a"
-              fontWeight="bold"
-              fontSize="lg"
-              align="flex-end"
-              transition="transform 450ms"
-              will-change="transform"
-              _hover={{transform: "scale(1.03)", transition: "transform 150ms"}}
-              cursor="pointer"
-            >
-              <Text>S&P 500</Text>
-            </Flex>
-
-            <Flex
-              h="200px"
-              w="200px"
-              p="20px"
-              bg="#fec62e"
-              borderRadius="xl"
-              color="black"
-              fontWeight="bold"
-              fontSize="lg"
-              align="flex-end"
-              transition="transform 450ms"
-              will-change="transform"
-              _hover={{transform: "scale(1.03)", transition: "transform 150ms"}}
-              cursor="pointer"
-            >
-              <Text>Dow Jones <br></br>
-                Industrial Average
-              </Text>
-            </Flex>
-
-            <Flex
-              h="200px"
-              w="200px"
-              p="20px"
-              bg="#e8f0fe"
-              borderRadius="xl"
-              color="black"
-              fontWeight="bold"
-              fontSize="lg"
-              align="flex-end"
-              transition="transform 450ms"
-              will-change="transform"
-              _hover={{transform: "scale(1.03)", transition: "transform 150ms"}}
-              cursor="pointer"
-            >
-              <Text>Dow Jones <br></br>
-                Industrial Average
-              </Text>
-            </Flex>
-
-            <Flex
-              h="200px"
-              w="200px"
-              p="20px"
-              bg="#fd867a"
-              borderRadius="xl"
-              color="white"
-              fontWeight="bold"
-              fontSize="lg"
-              align="flex-end"
-              transition="transform 450ms"
-              will-change="transform"
-              _hover={{transform: "scale(1.03)", transition: "transform 150ms"}}
-              cursor="pointer"
-            >
-              <Text>Dow Jones <br></br>
-                Industrial Average
-              </Text>
-            </Flex>
-
-            <Flex
-              h="200px"
-              w="200px"
-              p="20px"
-              bg="#fec62e"
-              borderRadius="xl"
-              color="black"
-              fontWeight="bold"
-              fontSize="lg"
-              align="flex-end"
-              transition="transform 450ms"
-              will-change="transform"
-              _hover={{transform: "scale(1.03)", transition: "transform 150ms"}}
-              cursor="pointer"
-            >
-              <Text>Dow Jones <br></br>
-                Industrial Average
-              </Text>
-            </Flex>
-          </Flex>
-        </section> */}
+        <section>
+          <Category/>
+        </section>
 
         <section>
-          <Box mt="30%" mx="4%">
+          <Box mt="10%">
           <Flex
               direction="column"
               justify="space-around"
             >
               <Box mb="2%">
-                <Text fontWeight="bold" fontSize="calc(6px + 5vmin)">🌋 HOT PICK UP</Text>
+                <Text fontWeight="bold" fontSize="calc(6px + 4vmin)">🌋 HOT PICK UP</Text>
               </Box>
               <Flex wrap="wrap">
                 {hotStocks_15.map((e) => {
