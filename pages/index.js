@@ -82,9 +82,9 @@ export default function Home ({ allPostsData, hotStocks }) {
               bgImage="url(images/swimgood_top.png)"
               bgRepeat="no-repeat"
               bgSize="70%"
-              bgPosition="right top"
+              bgPosition="top right"
               direction="column"
-              py="6%"
+              py="8%"
             >
               <Box 
                 mt="10%"

@@ -63,6 +63,11 @@ export default function SideBar(props) {
     setStockInfo("");
   }
 
+  const setMenuContact = () => {
+    setMenu("contact");
+    setStockInfo("");
+  }
+
   const navSlide = () => {
     const menuBtn = document.querySelector(".menu-btn");
     if (!toggleMenuBar) {
@@ -614,6 +619,53 @@ export default function SideBar(props) {
                 href={`/posts/introduction`}
               >
                 <a>使い方</a>
+              </Link>
+            </Center>
+          </Center>
+          }
+        </Center>
+
+        {/* Contact */}
+        <Center
+          fontSize="calc(5px + 1vmin)" 
+          w="100%"
+        >
+          {menu == "terms" ? 
+          <Center
+            w="80%"
+            borderRadius="lg"
+            m="2%"
+            p="3%"
+            fontWeight="500"
+            bg="#e4eafb"
+            color="#3f3356"
+            transition="all 0.3s ease-in-out"
+            onClick={() => setMenuContact()}
+          >
+            <Center w="100%">
+              <Link 
+                href={`/contact`}
+              >
+                <a>Contact</a>
+              </Link>
+            </Center>
+          </Center> :  
+          <Center
+            w="80%"
+            borderRadius="lg"
+            m="2%"
+            p="3%"
+            color="gray.500"
+            _hover={{ bg: "#e4eafb", color: "#3f3356"}}
+            _activeLink
+            transition="all 0.3s ease-in-out"
+            onClick={() => setMenuContact()}
+          >
+            <Center w="100%">
+              <Link 
+                href={`/contact`}
+              >
+                <a>Contact</a>
               </Link>
             </Center>
           </Center>
