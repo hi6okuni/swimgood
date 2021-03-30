@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { useAppContext } from '../../lib/context/state'
 import Layout, { siteTitle } from '../../components/layout'
+import AdsCard from '../../components/adscard'
 import AreaRechart from '../../components/area_rechart'
 import BarRechart from '../../components/bar_rechart'
 import LineRechart from '../../components/line_rechart'
@@ -643,6 +644,10 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
             </Flex>
           </Flex>
         </Flex>
+
+        <section>
+          <AdsCard/>
+        </section>
 
         {/* Operating Expenses */}
         {/* <Flex
