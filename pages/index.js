@@ -5,7 +5,7 @@ import { getSortedPostsData } from '../lib/posts'
 import { useAppContext } from '../lib/context/state'
 import Search from '../components/search'
 import Category from '../components/category'
-import Adcard from '../components/adcard'
+import AdsCard from '../components/adscard'
 import Link from 'next/link'
 import Toppicture from '../public/images/swimgood_top.png'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
@@ -108,7 +108,7 @@ export default function Home ({ allPostsData, hotStocks }) {
         </section>
 
         <section>
-          <Adcard/>
+          <AdsCard/>
         </section>
 
         <section>
