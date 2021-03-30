@@ -5,6 +5,7 @@ import { getSortedPostsData } from '../lib/posts'
 import { useAppContext } from '../lib/context/state'
 import Search from '../components/search'
 import Category from '../components/category'
+import Adcard from '../components/adcard'
 import Link from 'next/link'
 import Toppicture from '../public/images/swimgood_top.png'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
@@ -107,6 +108,10 @@ export default function Home ({ allPostsData, hotStocks }) {
         </section>
 
         <section>
+          <Adcard/>
+        </section>
+
+        <section>
           <Box mt="10%">
           <Flex
               direction="column"
@@ -143,23 +148,6 @@ export default function Home ({ allPostsData, hotStocks }) {
             </Flex>
           </Box>
         </section>
-
-        {/* <section>
-          <h2>記事</h2>
-          <ul>
-            {allPostsData.map(({ id, date, title }) => (
-              <li key={id}>
-                <Link href={`/posts/${id}`}>
-                  <a>{title}</a>
-                </Link>
-                <br />
-                <small>
-                  <Date dateString={date} />
-                </small>
-              </li>
-            ))}
-          </ul>
-        </section> */}
 
         <section>
           <Box my="8%" mx="4%">
