@@ -4,8 +4,16 @@ date: '2021-02-23'
 ---
 
 Swimgood.ioではデザインの統一感を優先して、英語表記を採用しています。  
-サービス内で使用されている用語の日本語は以下になります。
+サービス内で使用されている用語の日本語は以下になります。  
+<br>  
+<br>    
+
+[👉Youtubeでも使い方を解説してます！](https://www.youtube.com/channel/UCLv31S5a9moR5TUm8SMxffQ)  
+
+<br>  
 <br>
+
+*****
 
 ##### 🌀 Income Statement / 損益計算書
 

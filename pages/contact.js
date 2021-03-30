@@ -34,8 +34,9 @@ export default function Terms() {
           borderRadius="lg"
           z-index="5"
         >
-          <Text align="center" fontSize="md">TERMS OF USE</Text>
-          <Text align="center" fontSize="md">🏕Under Development</Text>
+          <Center>
+            <Text align="center" fontSize="md"><a href="mailto:swimgoodisgood@gmail.com">📩ご連絡はこちらから</a></Text>
+          </Center>
         </Flex>
 
       </Flex>
