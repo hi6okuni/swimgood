@@ -8,8 +8,8 @@ export default function AdsCard(props) {
     }, [])
 
     return (
-            <ins class="adsbygoogle"
-            style="display:block"
+            <ins className="adsbygoogle"
+            style={{ "display": "block" }}
             data-ad-client="ca-pub-5934737933948157"
             data-ad-slot="7015925131"
             data-ad-format="auto"
