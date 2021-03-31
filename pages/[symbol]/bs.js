@@ -5,6 +5,7 @@ import Layout, { siteTitle } from '../../components/layout'
 import colorPallet from '../../lib/color-pallet'
 import BarRechart from '../../components/bar_rechart'
 import VerticalBarRechart from '../../components/vertical_bar_rechart'
+import AdsCard from '../../components/adscard'
 import LineRechart from '../../components/line_rechart'
 import ComposedRechart from '../../components/composed_rechart'
 import { 
@@ -335,6 +336,9 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
           </Flex>
         </Flex>
 
+        <section>
+          <AdsCard/>
+        </section>
 
         {/* Credit Side */}
         <Flex
