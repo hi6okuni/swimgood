@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
 import { useAppContext } from '../lib/context/state'
 import { Box, Flex, Center, Text} from "@chakra-ui/react"
+import AdsCard from '../components/adscard'
 import Link from 'next/link'
 
 export async function getStaticProps() {
@@ -62,6 +63,9 @@ export default function Djia ({ editedLists }) {
           direction="column"
           m="3%"
         >
+          <section>
+            <AdsCard/>
+          </section>
           <Flex fontSize="xl">
             <Text>Dow Jones Industorial Average List</Text>
           </Flex>

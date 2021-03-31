@@ -6,6 +6,7 @@ import Layout, { siteTitle } from '../../components/layout'
 import BarRechart from '../../components/bar_rechart'
 import LineRechart from '../../components/line_rechart'
 import Highlight from '../../components/highlight'
+import AdsCard from '../../components/adscard'
 import ComposedRechart from '../../components/composed_rechart'
 
 import { 
@@ -403,7 +404,9 @@ export default function Profitability ({ pl, bs, historicalPrice, basicInfo }) {
             </Flex>
           </Flex>
         </Flex>
-
+        <section>
+          <AdsCard/>
+        </section>
       </Flex>
     </Layout>
   )

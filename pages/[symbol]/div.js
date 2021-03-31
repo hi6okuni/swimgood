@@ -6,6 +6,8 @@ import Layout, { siteTitle } from '../../components/layout'
 import BarRechart from '../../components/bar_rechart'
 import LineRechart from '../../components/line_rechart'
 import Highlight from '../../components/highlight'
+import AdsCard from '../../components/adscard'
+
 
 import { 
   Box,
@@ -289,7 +291,9 @@ export default function Dividends ({ div, keyMetrics, historicalPrice, basicInfo
               </Flex>
             </Flex>
           </Flex>
-
+          <section>
+            <AdsCard/>
+          </section>
         </Flex>
       </Layout>
     )
@@ -309,6 +313,9 @@ export default function Dividends ({ div, keyMetrics, historicalPrice, basicInfo
           <Flex direction="column" mx ="2%" my="8%">
             <Text fontWeight="bold" fontSize="calc(6px + 3vmin)"> ${value} pay no dividends</Text>
           </Flex>
+          <section>
+            <AdsCard/>
+          </section>
         </Flex>
       </Layout>
     )

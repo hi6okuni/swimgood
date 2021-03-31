@@ -5,6 +5,7 @@ import colorPallet from '../../lib/color-pallet'
 import Layout, { siteTitle } from '../../components/layout'
 import BarRechart from '../../components/bar_rechart'
 import LineRechart from '../../components/line_rechart'
+import AdsCard from '../../components/adscard'
 import Highlight from '../../components/highlight'
 import ComposedRechart from '../../components/composed_rechart'
 
@@ -331,6 +332,10 @@ export default function CashFlowStatement ({ cfs, pl, historicalPrice, basicInfo
             </Flex>
           </Flex>
         </Flex>
+
+        <section>
+          <AdsCard/>
+        </section>
 
       </Flex>
     </Layout>
