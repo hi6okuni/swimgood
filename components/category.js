@@ -71,9 +71,13 @@ import { motion, AnimateSharedLayout, AnimatePresence } from "framer-motion";
 export default function Category (props) {
 
   return (
-    <Box>
+    <Box　fontFamily='Noto Sans JP'>
       <Box mt="10%" mb="4%">
-        <Text fontWeight="bold" fontSize="calc(6px + 4vmin)">🌀カテゴリー</Text>
+        <Text 
+          fontSize="calc(6px + 4vmin)"
+        >
+          🌀テーマ別に調べる
+        </Text>
       </Box>
 
       {/* <AnimateSharedLayout>
@@ -95,18 +99,27 @@ export default function Category (props) {
             w={["120px","200px","200px"]}
             p={["10px","20px","20px"]}
             m="2%"
-            bg="#5759fb"
+            bg="white"
+            direction="column"
             borderRadius="xl"
-            color="white"
+            color="#3f3455"
+            boxShadow="lg"
             fontWeight="bold"
             fontSize={["xs","sm","lg"]}
-            align="flex-end"
             transition="transform 450ms"
+            justify="center"
+            align="center"
             will-change="transform"
             _hover={{transform: "scale(1.03)", transition: "transform 150ms"}}
             cursor="pointer"
           >
-            <Text>S&P 500<br></br>構成銘柄</Text>
+             <Text
+              fontSize={["40px","60px","70px"]}
+            >
+              🍯
+            </Text>
+            <Text>S&P500<br></br>500銘柄から
+            </Text>
           </Flex>
         </Link>
 
@@ -116,20 +129,56 @@ export default function Category (props) {
             w={["120px","200px","200px"]}
             p={["10px","20px","20px"]}
             m="2%"
-            bg="#e8f0fe"
+            bg="white"
+            direction="column"
             borderRadius="xl"
-            color="black"
+            color="#3f3455"
+            boxShadow="lg"
             fontWeight="bold"
             fontSize={["xs","sm","lg"]}
-            align="flex-end"
             transition="transform 450ms"
+            justify="center"
+            align="center"
             will-change="transform"
-            border="solid 2px #5759fb"
             _hover={{transform: "scale(1.03)", transition: "transform 150ms"}}
             cursor="pointer"
+          >
+            <Text
+              fontSize={["40px","60px","70px"]}
             >
-            <Text>ダウ平均 <br></br>
-              構成銘柄
+              🔩
+            </Text>
+            <Text>ダウ工業平均<br></br>30銘柄から
+            </Text>
+          </Flex>
+        </Link>
+
+        <Link href={`/`}>
+          <Flex
+            h={["120px","200px","200px"]}
+            w={["120px","200px","200px"]}
+            p={["10px","20px","20px"]}
+            m="2%"
+            bg="gray.200"
+            direction="column"
+            borderRadius="xl"
+            color="#3f3455"
+            boxShadow="lg"
+            fontWeight="bold"
+            fontSize={["xs","sm","lg"]}
+            transition="transform 450ms"
+            justify="center"
+            align="center"
+            will-change="transform"
+            _hover={{transform: "scale(1.03)", transition: "transform 150ms"}}
+            cursor="pointer"
+          >
+            <Text
+              fontSize={["40px","60px","70px"]}
+            >
+              🍟
+            </Text>
+            <Text>バフェット銘柄<br></br>(製作中)
             </Text>
           </Flex>
         </Link>

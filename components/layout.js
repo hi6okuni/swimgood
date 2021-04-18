@@ -19,11 +19,11 @@ export default function Layout({ children, home }) {
   }
 
   return (
-    <Box bg="#f7f8fd" color="#3f3356" minH="100vh" minW="100%">
+    <Box bg="#f5f7ff" color="#3f3356" minH="100vh" minW="100%">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.gstatic.com"/>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&family=Pacifico&display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&family=Pacifico&family=Noto+Sans+JP:wght@700&display=swap" rel="stylesheet"/>
         <meta
           name="description"
           content="Visualize U.S Stock. INSTANTLY. "
