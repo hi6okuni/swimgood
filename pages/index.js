@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import Head from 'next/head'
+import Image from 'next/image'
 import Layout, { siteTitle } from '../components/layout'
 import { getSortedPostsData } from '../lib/posts'
 import { useAppContext } from '../lib/context/state'
@@ -14,7 +15,6 @@ import {
   Flex,
   Text,
   Center,
-  Image,
   Link as ChakraLink
 } from "@chakra-ui/react"
 
@@ -60,9 +60,10 @@ export default function Home ({ allPostsData, hotStocks }) {
     }
   }
 
-  const goToHotStockPage = (e) => {
-    setValue(e.symbol);
+  const goToAmazon = () => {
+    setValue("AMZN");
     setMenu("pl");
+    router.push(`/AMZN/pl`);
   }
 
   return (
@@ -76,39 +77,92 @@ export default function Home ({ allPostsData, hotStocks }) {
         mx="3%"
       >
         <section>
-          <Box>
+          <Flex
+            bgColor="white"
+            borderRadius="3xl"
+            p={["6%","3%","3%"]}
+            h={["540px","320px","320px"]}
+            wrap="nowrap"
+            direction={["column", "row", "row"]}
+            justify="space-around"
+            align="center"
+          >
+            <Box
+              basis="35%"
+            >
+              <Image
+                src="/images/swimgood_top3.png"
+                alt="toppage"
+                width={375}
+                height={300}
+              />
+            </Box>
             <Flex 
+              basis="55%"
               wrap="wrap"
-              zIndex="2" 
-              bgImage="url(images/swimgood_top.png)"
-              bgRepeat="no-repeat"
-              bgSize="70%"
-              bgPosition="top right"
               direction="column"
-              py="8%"
+              justify="space-around"
+              w="100%"
             >
               <Box 
-                mt="10%"
-                w="35%" 
                 className="gradient"
+                fontFamily="Noto Sans JP"
+                w="100%"
               >
-                <span className="gradient-text">米国株の</span><br></br>
-                <span className="gradient-text">決算データを</span><br></br>
-                <span className="gradient-text">ビジュアル✨で分析</span>
+                <span className="gradient-text">米国企業をひと目で攻略。</span><br></br>
+                <Text
+                  my="2%"
+                  color="gray.400"
+                  fontSize="xs"
+                  w="100%"
+                >
+                  英語の決算書は読む気がしない？swimgood.ioはさまざまな決算情報を一瞬でチャートに変換。気になる企業を目で見てカンタンに理解しよう！
+                </Text>
               </Box>
-              <Box mt="3%" w={["80%", "70%", "60%"]} >
+
+              <Box align="center" mt="3%" w={["100%", "100%", "100%"]} >
                 <Search getSymbol={getSymbol}/>
+                <Text
+                  my="2%"
+                  color="gray.400"
+                  fontSize="xs"
+                  w="90%"
+                  align="center"
+                  fontFamily="Noto Sans JP"
+                >
+                or
+                </Text>
+                <Box
+                  position="inline"
+                  align="center"
+                  color="gray.400"
+                  fontSize="xs"
+                  fontFamily="Noto Sans JP"
+                >
+                  とりあえず試してみる 👉 
+                  <Box
+                    p="2%"
+                    display="inline"
+                    bgColor="#fd867a"
+                    borderRadius="3xl"
+                    color="white"
+                    cursor="pointer"
+                    onClick={() => goToAmazon()}
+                  >
+                    AMZN
+                  </Box>
+                </Box>
               </Box>
             </Flex>
-          </Box>
-        </section>
-
-        <section>
-          <Category/>
+          </Flex>
         </section>
 
         <section>
           <AdsCard/>
+        </section>
+
+        <section>
+          <Category/>
         </section>
 
         {/* <section>
