@@ -220,6 +220,9 @@ export default function CashFlowStatement ({ cfs, pl, historicalPrice, basicInfo
         direction="column"
         m="3%"
       >
+        <section>
+          <AdsCard/>
+        </section>
 
         <Flex direction={["column","column","row"]} align="center">
           <Flex fontSize={["xs", "sm"]} direction="row" my="1%" w="70%">

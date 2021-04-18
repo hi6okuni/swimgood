@@ -191,6 +191,10 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
         direction="column"
         m="3%"
       >
+        <section>
+          <AdsCard/>
+        </section>
+        
         <Flex direction={["column", "row"]}>
           <Center fontSize={["xs", "lg"]}  align="center" direction="row" m="2%">
             <Text>Annual&nbsp;</Text>

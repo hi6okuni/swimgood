@@ -111,7 +111,7 @@ export default function Home ({ allPostsData, hotStocks }) {
           <AdsCard/>
         </section>
 
-        <section>
+        {/* <section>
           <Box mt="10%">
           <Flex
               direction="column"
@@ -147,7 +147,7 @@ export default function Home ({ allPostsData, hotStocks }) {
               </Flex>
             </Flex>
           </Box>
-        </section>
+        </section> */}
 
         <section>
           <Box my="8%" mx="4%">
@@ -160,7 +160,7 @@ export default function Home ({ allPostsData, hotStocks }) {
             >
               <Box fontSize={["calc(6px + 2vmin)", "xs", "xs"]}>
                 <span>あなたのポートフォリオを1か所で管理</span><br></br>▶︎ 
-                <ChakraLink href='http://ju-ni.pocco.net' target='_blank'  isExternal>
+                <ChakraLink href='https://43juni.pocco.net/' target='_blank'  isExternal>
                   &nbsp;&nbsp;ju-ni  <ExternalLinkIcon mx="2px" />
                 </ChakraLink>
               </Box>
