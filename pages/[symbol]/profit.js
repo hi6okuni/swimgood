@@ -213,6 +213,10 @@ export default function Profitability ({ pl, bs, historicalPrice, basicInfo }) {
         direction="column"
         m="3%"
       >
+        <section>
+          <AdsCard/>
+        </section>
+        
         <Flex direction="row">
           <Text fontSize="xs" mx="2%">In Millions of USD except per share items</Text>
         </Flex>

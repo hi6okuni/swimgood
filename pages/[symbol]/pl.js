@@ -513,6 +513,10 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
           </Flex>
         </Flex>
 
+        <section>
+          <AdsCard/>
+        </section>
+
         <Flex direction="column" w="100%" mt="3%">
           <Flex fontSize={["xs", "sm"]} mx="4%" my="0.5%" w="80%" >
             <Switch size="md" colorScheme="pink"  onChange={() => setIsAnnual(!isAnnual)}/>
@@ -528,6 +532,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
         {profitData.length < 3 ? 
         <Text m="2%" color="#fb8fb9" fontSize="sm">⚠️Sorry, the number of data may not be plenty enough to research⚠️</Text>
           : null }
+      
 
         {/* Revenue and Income */}
         <Flex

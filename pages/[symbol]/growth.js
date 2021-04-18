@@ -180,6 +180,10 @@ export default function Growth ({ historicalPrice, basicInfo, growth }) {
         direction="column"
         m="3%"
       >
+        <section>
+          <AdsCard/>
+        </section>
+        
         <Flex direction={["column", "row"]}>
           {/* <Center fontSize={["xs", "lg"]}  align="center" direction="row" m="2%">
             <Text>Annual&nbsp;</Text>
