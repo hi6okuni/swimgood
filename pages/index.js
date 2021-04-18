@@ -86,7 +86,7 @@ export default function Home ({ allPostsData, hotStocks }) {
             direction={["column", "row", "row"]}
             justify="space-around"
             align="center"
-            mb="2%"
+            mb="4%"
           >
             <Box
               basis="35%"
@@ -117,7 +117,7 @@ export default function Home ({ allPostsData, hotStocks }) {
                   fontSize="xs"
                   w="100%"
                 >
-                  英語の決算書は読む気がしない？swimgood.ioはさまざまな決算情報を一瞬でチャートに変換。気になる企業を目で見てカンタンに理解しよう！
+                  英語の決算書は読む気がしない？swimgood.ioはさまざまな決算情報を一瞬でビジュアルに変換。気になる企業を目で見てカンタン分析！
                 </Text>
               </Box>
 
@@ -140,7 +140,7 @@ export default function Home ({ allPostsData, hotStocks }) {
                   fontSize="xs"
                   fontFamily="Noto Sans JP"
                 >
-                  とりあえず試してみる 👉 
+                  とりあえず試してみる 👉 &nbsp;
                   <Box
                     p="2%"
                     display="inline"
