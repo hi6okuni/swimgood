@@ -86,6 +86,7 @@ export default function Home ({ allPostsData, hotStocks }) {
             direction={["column", "row", "row"]}
             justify="space-around"
             align="center"
+            mb="2%"
           >
             <Box
               basis="35%"
