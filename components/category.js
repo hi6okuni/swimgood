@@ -118,7 +118,7 @@ export default function Category (props) {
             >
               🍯
             </Text>
-            <Text>S&P500<br></br>500銘柄から
+            <Text>S&P500<br></br>500銘柄
             </Text>
           </Flex>
         </Link>
@@ -148,13 +148,149 @@ export default function Category (props) {
             >
               🔩
             </Text>
-            <Text>ダウ工業平均<br></br>30銘柄から
+            <Text>ダウ工業平均<br></br>30銘柄
+            </Text>
+          </Flex>
+        </Link>
+
+        <Link href={`/buffett`}>
+          <Flex
+            position="relative"
+            h={["120px","200px","200px"]}
+            w={["120px","200px","200px"]}
+            p={["10px","20px","20px"]}
+            m="2%"
+            bg="white"
+            direction="column"
+            borderRadius="xl"
+            color="#3f3455"
+            boxShadow="lg"
+            fontWeight="bold"
+            fontSize={["xs","sm","lg"]}
+            transition="transform 450ms"
+            justify="center"
+            align="center"
+            will-change="transform"
+            _hover={{transform: "scale(1.03)", transition: "transform 150ms"}}
+            cursor="pointer"
+          >
+            <Flex
+              position="absolute"
+              right={["0px","-5px","-5px"]}
+              top={["0px","-10px","-10px"]}
+              bg="#626afb"
+              color="white"
+              w={["30px","40px","50px"]}
+              h={["30px","40px","50px"]}
+              borderRadius="50%"
+              alignItems="center"
+              justify="center"
+            >
+              new
+            </Flex>
+            <Text
+              fontSize={["40px","60px","70px"]}
+            >
+              🪤
+            </Text>
+            <Text>バフェット銘柄<br></br>
+            </Text>
+          </Flex>
+        </Link>
+
+        <Link href={`/gafam`}>
+          <Flex
+            position="relative"
+            h={["120px","200px","200px"]}
+            w={["120px","200px","200px"]}
+            p={["10px","20px","20px"]}
+            m="2%"
+            bg="white"
+            direction="column"
+            borderRadius="xl"
+            color="#3f3455"
+            boxShadow="lg"
+            fontWeight="bold"
+            fontSize={["xs","sm","lg"]}
+            transition="transform 450ms"
+            justify="center"
+            align="center"
+            will-change="transform"
+            _hover={{transform: "scale(1.03)", transition: "transform 150ms"}}
+            cursor="pointer"
+          >
+             <Flex
+              position="absolute"
+              right={["0px","-5px","-5px"]}
+              top={["0px","-10px","-10px"]}
+              bg="#626afb"
+              color="white"
+              w={["30px","40px","50px"]}
+              h={["30px","40px","50px"]}
+              borderRadius="50%"
+              alignItems="center"
+              justify="center"
+            >
+              new
+            </Flex>
+            <Text
+              fontSize={["40px","60px","70px"]}
+            >
+              🧘🏼‍♂️
+            </Text>
+            <Text>とりまGAFAM<br></br>
+            </Text>
+          </Flex>
+        </Link>
+
+        <Link href={`/me`}>
+          <Flex
+            position="relative"
+            h={["120px","200px","200px"]}
+            w={["120px","200px","200px"]}
+            p={["10px","20px","20px"]}
+            m="2%"
+            bg="white"
+            direction="column"
+            borderRadius="xl"
+            color="#3f3455"
+            boxShadow="lg"
+            fontWeight="bold"
+            fontSize={["xs","sm","lg"]}
+            transition="transform 450ms"
+            justify="center"
+            align="center"
+            will-change="transform"
+            _hover={{transform: "scale(1.03)", transition: "transform 150ms"}}
+            cursor="pointer"
+          >
+             <Flex
+              position="absolute"
+              right={["0px","-5px","-5px"]}
+              top={["0px","-10px","-10px"]}
+              bg="#626afb"
+              color="white"
+              w={["30px","40px","50px"]}
+              h={["30px","40px","50px"]}
+              borderRadius="50%"
+              alignItems="center"
+              justify="center"
+            >
+              new
+            </Flex>
+            <Text
+              fontSize={["40px","60px","70px"]}
+            >
+              🏜
+            </Text>
+            <Text>開発者の<br></br>保有銘柄
             </Text>
           </Flex>
         </Link>
 
         <Link href={`/`}>
           <Flex
+            position="relative"
             h={["120px","200px","200px"]}
             w={["120px","200px","200px"]}
             p={["10px","20px","20px"]}
@@ -173,58 +309,30 @@ export default function Category (props) {
             _hover={{transform: "scale(1.03)", transition: "transform 150ms"}}
             cursor="pointer"
           >
+             {/* <Flex
+              position="absolute"
+              right={["0px","-5px","-5px"]}
+              top={["0px","-10px","-10px"]}
+              bg="#626afb"
+              color="white"
+              w={["30px","40px","50px"]}
+              h={["30px","40px","50px"]}
+              borderRadius="50%"
+              alignItems="center"
+              justify="center"
+            >
+              new
+            </Flex> */}
             <Text
               fontSize={["40px","60px","70px"]}
             >
-              🍟
+             🔫
             </Text>
-            <Text>バフェット銘柄<br></br>(製作中)
+            <Text>期待のSaaS銘柄(製作中)
             </Text>
           </Flex>
         </Link>
 
-        {/* <Flex
-          h={["120px","200px","200px"]}
-          w={["120px","200px","200px"]}
-          p={["10px","20px","20px"]}
-          m="2%"
-          bg="#e8f0fe"
-          borderRadius="xl"
-          color="black"
-          fontWeight="bold"
-          fontSize={["xs","sm","lg"]}
-          align="flex-end"
-          transition="transform 450ms"
-          will-change="transform"
-          border="solid 2px #5759fb"
-          _hover={{transform: "scale(1.03)", transition: "transform 150ms"}}
-          cursor="pointer"
-        >
-          <Text>Dow Jones <br></br>
-            Industrial Average
-          </Text>
-        </Flex>
-
-        <Flex
-          h={["120px","200px","200px"]}
-          w={["120px","200px","200px"]}
-          p={["10px","20px","20px"]}
-          m="2%"
-          bg="#fd867a"
-          borderRadius="xl"
-          color="white"
-          fontWeight="bold"
-          fontSize={["xs","sm","lg"]}
-          align="flex-end"
-          transition="transform 450ms"
-          will-change="transform"
-          _hover={{transform: "scale(1.03)", transition: "transform 150ms"}}
-          cursor="pointer"
-        >
-          <Text>ダウ平均 <br></br>
-            構成銘柄
-          </Text>
-        </Flex> */}
       </Flex>
     </Box>
   )
