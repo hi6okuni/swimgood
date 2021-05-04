@@ -198,6 +198,51 @@ export default function Category (props) {
           </Flex>
         </Link>
 
+        <Link href={`/ark`}>
+          <Flex
+            position="relative"
+            h={["120px","200px","200px"]}
+            w={["120px","200px","200px"]}
+            p={["10px","20px","20px"]}
+            m="2%"
+            bg="white"
+            direction="column"
+            borderRadius="xl"
+            color="#3f3455"
+            boxShadow="lg"
+            fontWeight="bold"
+            fontSize={["xs","sm","lg"]}
+            transition="transform 450ms"
+            justify="center"
+            align="center"
+            will-change="transform"
+            _hover={{transform: "scale(1.03)", transition: "transform 150ms"}}
+            cursor="pointer"
+          >
+             <Flex
+              position="absolute"
+              right={["0px","-5px","-5px"]}
+              top={["0px","-10px","-10px"]}
+              bg="#626afb"
+              color="white"
+              w={["30px","40px","50px"]}
+              h={["30px","40px","50px"]}
+              borderRadius="50%"
+              alignItems="center"
+              justify="center"
+            >
+              new
+            </Flex>
+            <Text
+              fontSize={["40px","60px","70px"]}
+            >
+              🎮
+            </Text>
+            <Text>ARK銘柄
+            </Text>
+          </Flex>
+        </Link>
+
         <Link href={`/gafam`}>
           <Flex
             position="relative"
@@ -243,7 +288,7 @@ export default function Category (props) {
           </Flex>
         </Link>
 
-        <Link href={`/me`}>
+        <Link href={`/saas`}>
           <Flex
             position="relative"
             h={["120px","200px","200px"]}
@@ -281,21 +326,21 @@ export default function Category (props) {
             <Text
               fontSize={["40px","60px","70px"]}
             >
-              🏜
+             🔫
             </Text>
-            <Text>開発者の<br></br>保有銘柄
+            <Text>期待のSaaS銘柄
             </Text>
           </Flex>
         </Link>
 
-        <Link href={`/`}>
+        <Link href={`/me`}>
           <Flex
             position="relative"
             h={["120px","200px","200px"]}
             w={["120px","200px","200px"]}
             p={["10px","20px","20px"]}
             m="2%"
-            bg="gray.200"
+            bg="white"
             direction="column"
             borderRadius="xl"
             color="#3f3455"
@@ -309,7 +354,7 @@ export default function Category (props) {
             _hover={{transform: "scale(1.03)", transition: "transform 150ms"}}
             cursor="pointer"
           >
-             {/* <Flex
+            <Flex
               position="absolute"
               right={["0px","-5px","-5px"]}
               top={["0px","-10px","-10px"]}
@@ -322,13 +367,13 @@ export default function Category (props) {
               justify="center"
             >
               new
-            </Flex> */}
+            </Flex>
             <Text
               fontSize={["40px","60px","70px"]}
             >
-             🔫
+              🏜
             </Text>
-            <Text>期待のSaaS銘柄(製作中)
+            <Text>開発者の<br></br>保有銘柄
             </Text>
           </Flex>
         </Link>

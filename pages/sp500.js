@@ -31,7 +31,7 @@ export async function getStaticProps() {
         comparison = -1;
       }
       return comparison;
-    }
+  }
 
     const editedLists = Lists.sort(compare);
     const targetSector = [

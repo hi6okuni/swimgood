@@ -120,7 +120,7 @@ export default function Buffett () {
             <AdsCard/>
           </section>
           <Flex fontSize="xl" mb="5px" alignItems="center">
-            <Text fontSize="80px">🪤</Text>
+            <Text fontSize="80px">🪤&nbsp;</Text>
             <Text fontSize="lg">バフェット銘柄</Text>
           </Flex>
           <Flex fontSize="sm"  mb="50px" alignItems="center">
