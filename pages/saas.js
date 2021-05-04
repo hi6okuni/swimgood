@@ -7,37 +7,103 @@ import AdsCard from '../components/adscard'
 import Link from 'next/link'
 import Category from '../components/category'
 
-export default function Gafam () {
+export default function SaaS () {
 
   const { setMenu , setValue } = useAppContext();
 
-  const gafam = [
+  function compare(a, b) {
+    const stockA = a.name;
+    const stockB = b.name;
+  
+    let comparison = 0;
+      if (stockA > stockB) {
+        comparison = 1;
+      } else if (stockA < stockB) {
+        comparison = -1;
+      }
+      return comparison;
+  }
+
+  const saas = [
     {
-      name: "GOOG",
-      japanese: "アルファベット",
-      initial: "G"
+      name: "OKTA",
+      japanese: "オクタ | ID管理",
+      initial: "O"
     },
     {
-      name: "AAPL",
-      japanese: "アップル",
-      initial: "A"
+      name: "NOW",
+      japanese: "サービスナウ | ワークフロー管理",
+      initial: "N"
     },
     {
-      name: "FB",
-      japanese: "フェイスブック",
-      initial: "F"
+      name: "INTU",
+      japanese: "イントゥイット| 財務管理",
+      initial: "I"
     },
     {
-      name: "AMZN",
-      japanese: "アマゾン",
-      initial: "A"
+      name: "DDOG",
+      japanese: "データドッグ| 運用監視・分析",
+      initial: "D"
     },
     {
-      name: "MSFT",
-      japanese: "マイクロソフト",
+      name: "WDAY",
+      japanese: "ワークデイ | 人事と財務管理",
+      initial: "W"
+    },
+    {
+      name: "CRM",
+      japanese: "セールスフォース・ドットコム | 顧客関係管理",
+      initial: "C"
+    },
+    {
+      name: "VEEV",
+      japanese: "ヴィーヴァ・システムズ | 製薬業界向けCRM",
+      initial: "V"
+    },
+    {
+      name: "SHOP",
+      japanese: "ショッピファイ | 商取引・EC",
+      initial: "S"
+    },
+    {
+      name: "MDB",
+      japanese: "モンゴDB | データベース",
       initial: "M"
     },
+    {
+      name: "DOCU",
+      japanese: "ドキュサイン | 電子署名",
+      initial: "D"
+    },
+    {
+      name: "CRWD",
+      japanese: "クラウドストライク | セキュリティ",
+      initial: "C"
+    },
+    {
+      name: "ESTC",
+      japanese: "エラスティック | デ―タ検索・分析",
+      initial: "E"
+    },
+    {
+      name: "TWLO",
+      japanese: "トゥイリオ | コミュニケーション",
+      initial: "T"
+    },
+    {
+      name: "ZM",
+      japanese: "ズーム・ビデオ・コミュニケーションズ | ウェブ会議",
+      initial: "Z"
+    },
+    {
+      name: "ADBE",
+      japanese: "アドビ | 画像&映像編集",
+      initial: "A"
+    },
   ]
+
+  const editedSaas = saas.sort(compare);
+
 
   const jumpToPage = (e) => {
     setMenu("pl");
@@ -58,13 +124,16 @@ export default function Gafam () {
           <section>
             <AdsCard/>
           </section>
-          <Flex fontSize="xl" mb="50px" alignItems="center">
-            <Text fontSize="80px">🧘🏼‍♂️&nbsp;</Text>
-            <Text fontSize="lg">とりまGAFAM</Text>
+          <Flex fontSize="xl" mb="5px" alignItems="center">
+            <Text fontSize="80px">🔫&nbsp;</Text>
+            <Text fontSize="lg">期待のSaaS銘柄</Text>
+          </Flex>
+          <Flex fontSize="sm"  mb="50px" alignItems="center">
+            <Text>独断と偏見のセレクト。</Text>
           </Flex>
           <Flex wrap="wrap">
            {
-             gafam.map((e) => {
+             editedSaas.map((e) => {
                return (
                 <Link
                   href={`/${e.name}/pl`}

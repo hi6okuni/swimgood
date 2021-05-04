@@ -145,7 +145,7 @@ export default function Me () {
             <AdsCard/>
           </section>
           <Flex fontSize="xl" mb="50px" alignItems="center">
-            <Text fontSize="80px">🏜</Text>
+            <Text fontSize="80px">🏜&nbsp;</Text>
             <Text fontSize="lg">開発者の保有銘柄</Text>
           </Flex>
           <Flex wrap="wrap">

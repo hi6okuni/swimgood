@@ -7,35 +7,60 @@ import AdsCard from '../components/adscard'
 import Link from 'next/link'
 import Category from '../components/category'
 
-export default function Gafam () {
+export default function Ark () {
 
   const { setMenu , setValue } = useAppContext();
 
-  const gafam = [
+  const ark = [
     {
-      name: "GOOG",
-      japanese: "アルファベット",
-      initial: "G"
+      name: "TSLA",
+      japanese: "テスラ",
+      initial: "T"
     },
     {
-      name: "AAPL",
-      japanese: "アップル",
-      initial: "A"
+      name: "TDOC",
+      japanese: "テラドック",
+      initial: "T"
     },
     {
-      name: "FB",
-      japanese: "フェイスブック",
-      initial: "F"
+      name: "SQ",
+      japanese: "スクエア",
+      initial: "S"
     },
     {
-      name: "AMZN",
-      japanese: "アマゾン",
-      initial: "A"
+      name: "ROKU",
+      japanese: "ロク",
+      initial: "R"
     },
     {
-      name: "MSFT",
-      japanese: "マイクロソフト",
-      initial: "M"
+      name: "SHOP",
+      japanese: "ショッピファイ",
+      initial: "S"
+    },
+    {
+      name: "EXAS",
+      japanese: "イグザクト・サイエンシズ",
+      initial: "E"
+    },
+    {
+      name: "Z",
+      japanese: "ジロー・グループ",
+      initial: "Z"
+    },
+    {
+      name: "SPOT",
+      japanese: "スポティファイ・テクノロジー",
+      initial: "S"
+    },
+    {
+      name: "BIDU",
+      japanese: "バイドゥ",
+      initial: "B"
+    },
+    {
+      name: "ZM",
+      japanese: "ズーム・ビデオ・コミュニケーションズ",
+      initial: "Z"
     },
   ]
 
@@ -58,13 +83,16 @@ export default function Gafam () {
           <section>
             <AdsCard/>
           </section>
-          <Flex fontSize="xl" mb="50px" alignItems="center">
-            <Text fontSize="80px">🧘🏼‍♂️&nbsp;</Text>
-            <Text fontSize="lg">とりまGAFAM</Text>
+          <Flex fontSize="xl" mb="5px" alignItems="center">
+            <Text fontSize="80px">🎮&nbsp;</Text>
+            <Text fontSize="lg">ARK銘柄</Text>
+          </Flex>
+          <Flex fontSize="sm"  mb="50px" alignItems="center">
+            <Text>ARK Innovation ETF保有割合上位10銘柄 (2021.5.3時点)</Text>
           </Flex>
           <Flex wrap="wrap">
            {
-             gafam.map((e) => {
+             ark.map((e) => {
                return (
                 <Link
                   href={`/${e.name}/pl`}
