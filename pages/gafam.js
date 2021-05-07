@@ -55,13 +55,13 @@ export default function Gafam () {
           direction="column"
           m="3%"
         >
-          <section>
-            <AdsCard/>
-          </section>
           <Flex fontSize="xl" mb="50px" alignItems="center">
             <Text fontSize="80px">🧘🏼‍♂️&nbsp;</Text>
             <Text fontSize="lg">とりまGAFAM</Text>
           </Flex>
+          <section>
+            <AdsCard/>
+          </section>
           <Flex wrap="wrap">
            {
              gafam.map((e) => {
@@ -115,6 +115,9 @@ export default function Gafam () {
            }
           </Flex>
         </Flex>
+        <section>
+          <AdsCard/>
+        </section>
         <section>
           <Category/>
         </section>

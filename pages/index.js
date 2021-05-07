@@ -205,6 +205,10 @@ export default function Home ({ allPostsData, hotStocks }) {
         </section> */}
 
         <section>
+          <AdsCard/>
+        </section>
+
+        <section>
           <Box my="8%" mx="4%">
             <Box mb="2%">
               <Text fontWeight="bold" fontSize="calc(5px + 2vmin)">🎉 Special Thanks!</Text>

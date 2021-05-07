@@ -141,13 +141,13 @@ export default function Me () {
           direction="column"
           m="3%"
         >
-          <section>
-            <AdsCard/>
-          </section>
           <Flex fontSize="xl" mb="50px" alignItems="center">
             <Text fontSize="80px">🏜&nbsp;</Text>
             <Text fontSize="lg">開発者の保有銘柄</Text>
           </Flex>
+          <section>
+            <AdsCard/>
+          </section>
           <Flex wrap="wrap">
            {
              editedMyholdings.map((e) => {
@@ -201,6 +201,9 @@ export default function Me () {
            }
           </Flex>
         </Flex>
+        <section>
+          <AdsCard/>
+        </section>
         <section>
           <Category/>
         </section>

@@ -124,12 +124,12 @@ export default function Sp500 ({ sp500Stocks }) {
           direction="column"
           m="3%"
         >
-          <section>
-            <AdsCard/>
-          </section>
           <Flex fontSize="xl">
             <Text>S&P 500 List</Text>
           </Flex>
+          <section>
+            <AdsCard/>
+          </section>
           <Flex direction="column" >
             {sp500Stocks.map((stocks) => {
               return (
