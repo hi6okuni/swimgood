@@ -62,7 +62,7 @@ export default function Gafam () {
           <section>
             <AdsCard/>
           </section>
-          <Flex wrap="wrap">
+          <Flex wrap="wrap" mt="50px">
            {
              gafam.map((e) => {
                return (

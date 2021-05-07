@@ -148,7 +148,7 @@ export default function Me () {
           <section>
             <AdsCard/>
           </section>
-          <Flex wrap="wrap">
+          <Flex wrap="wrap" mt="50px">
            {
              editedMyholdings.map((e) => {
                return (
