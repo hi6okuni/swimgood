@@ -126,7 +126,7 @@ export default function Buffett () {
           <section>
             <AdsCard/>
           </section>
-          <Flex wrap="wrap">
+          <Flex wrap="wrap" mt="50px">
            {
              editedBuffett.map((e) => {
                return (

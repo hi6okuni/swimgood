@@ -90,7 +90,7 @@ export default function Ark () {
           <section>
             <AdsCard/>
           </section>
-          <Flex wrap="wrap">
+          <Flex wrap="wrap" mt="50px">
            {
              ark.map((e) => {
                return (
