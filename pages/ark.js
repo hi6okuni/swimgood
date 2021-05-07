@@ -80,9 +80,6 @@ export default function Ark () {
           direction="column"
           m="3%"
         >
-          <section>
-            <AdsCard/>
-          </section>
           <Flex fontSize="xl" mb="5px" alignItems="center">
             <Text fontSize="80px">🎮&nbsp;</Text>
             <Text fontSize="lg">ARK銘柄</Text>
@@ -90,6 +87,9 @@ export default function Ark () {
           <Flex fontSize="sm"  mb="50px" alignItems="center">
             <Text>ARK Innovation ETF保有割合上位10銘柄 (2021.5.3時点)</Text>
           </Flex>
+          <section>
+            <AdsCard/>
+          </section>
           <Flex wrap="wrap">
            {
              ark.map((e) => {
@@ -143,6 +143,9 @@ export default function Ark () {
            }
           </Flex>
         </Flex>
+        <section>
+          <AdsCard/>
+        </section>
         <section>
           <Category/>
         </section>

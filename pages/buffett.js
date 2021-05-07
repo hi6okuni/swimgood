@@ -116,9 +116,6 @@ export default function Buffett () {
           direction="column"
           m="3%"
         >
-          <section>
-            <AdsCard/>
-          </section>
           <Flex fontSize="xl" mb="5px" alignItems="center">
             <Text fontSize="80px">🪤&nbsp;</Text>
             <Text fontSize="lg">バフェット銘柄</Text>
@@ -126,6 +123,9 @@ export default function Buffett () {
           <Flex fontSize="sm"  mb="50px" alignItems="center">
             <Text>Warren Buffett's Letters to Berkshire Shareholders(2020)から抜粋</Text>
           </Flex>
+          <section>
+            <AdsCard/>
+          </section>
           <Flex wrap="wrap">
            {
              editedBuffett.map((e) => {
@@ -179,6 +179,9 @@ export default function Buffett () {
            }
           </Flex>
         </Flex>
+        <section>
+            <AdsCard/>
+        </section>
         <section>
           <Category/>
         </section>

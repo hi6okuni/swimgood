@@ -63,12 +63,12 @@ export default function Djia ({ editedLists }) {
           direction="column"
           m="3%"
         >
-          <section>
-            <AdsCard/>
-          </section>
           <Flex fontSize="xl">
             <Text>Dow Jones Industorial Average List</Text>
           </Flex>
+          <section>
+            <AdsCard/>
+          </section>
           <Flex direction="column" zIndex="2">
             <Box p="3%" mx="2%" my={["5%","4%","2%"]} borderRadius="2xl" bg="#e4eafb">
               <Flex justify="space-between" wrap="wrap">
