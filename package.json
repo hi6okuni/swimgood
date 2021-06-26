@@ -23,7 +23,7 @@
     "formik": "^2.2.6",
     "framer-motion": "^2.9.5",
     "gray-matter": "^4.0.2",
-    "next": "^10.0.7",
+    "next": "^10.2.3",
     "next-images": "^1.7.0",
     "react": "16.13.1",
     "react-chartjs-2": "^2.11.1",

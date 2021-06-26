@@ -1,5 +1,5 @@
 
-import { Box, Flex, Center, Text } from "@chakra-ui/react"
+import { Flex, Text } from "@chakra-ui/react"
 
 export default function Highlight( {highlightData} ) {
   return (

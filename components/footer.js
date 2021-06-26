@@ -1,5 +1,4 @@
-import Link from 'next/link'
-import { Box, Flex, Center, Image, Text } from "@chakra-ui/react"
+import { Box, Flex, Image, Text } from "@chakra-ui/react"
 
 export default function Footer() {
 

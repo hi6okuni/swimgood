@@ -8,14 +8,12 @@ import LineRechart from '../../components/line_rechart'
 import Highlight from '../../components/highlight'
 import AdsCard from '../../components/adscard'
 import ComposedRechart from '../../components/composed_rechart'
-
 import { 
   Box,
   Flex,
   Center,
   Text,
 } from "@chakra-ui/react"
-
 
 export async function getServerSideProps({params}) {
   // Fetch data from external API    

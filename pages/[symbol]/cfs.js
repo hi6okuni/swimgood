@@ -8,15 +8,12 @@ import LineRechart from '../../components/line_rechart'
 import AdsCard from '../../components/adscard'
 import Highlight from '../../components/highlight'
 import ComposedRechart from '../../components/composed_rechart'
-
 import { 
-  Box,
   Flex,
   Center,
   Text,
   Switch,
 } from "@chakra-ui/react"
-
 
 export async function getServerSideProps({params}) {
   // Fetch data from external API    
@@ -112,7 +109,6 @@ export async function getServerSideProps({params}) {
       } 
     }
   }
-
 
 export default function CashFlowStatement ({ cfs, pl, historicalPrice, basicInfo, cfsQ, plQ }) {
 

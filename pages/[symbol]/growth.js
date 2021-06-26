@@ -1,19 +1,15 @@
 import Head from 'next/head'
 import Layout, { siteTitle } from '../../components/layout'
 import colorPallet from '../../lib/color-pallet'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useAppContext } from '../../lib/context/state'
 import AdsCard from '../../components/adscard'
 import LineRechart from '../../components/line_rechart'
 import Highlight from '../../components/highlight'
-
-
 import { 
-  Box,
   Flex,
   Center,
   Text,
-  Switch,
 } from "@chakra-ui/react"
 
 
@@ -170,7 +166,6 @@ export default function Growth ({ historicalPrice, basicInfo, growth }) {
       ]
     } : null;
     
-
   return (
     <Layout>
       <Head>
@@ -296,11 +291,9 @@ export default function Growth ({ historicalPrice, basicInfo, growth }) {
             </Flex>
           </Flex>
         </Flex>
-
         <section>
           <AdsCard/>
         </section>
-
       </Flex>
     </Layout>
   )

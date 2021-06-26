@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { useAppContext } from '../../lib/context/state'
 import Layout, { siteTitle } from '../../components/layout'
@@ -9,13 +8,11 @@ import BarRechart from '../../components/bar_rechart'
 import LineRechart from '../../components/line_rechart'
 import Highlight from '../../components/highlight'
 import { 
-  Box,
   Flex,
   Center,
   Text,
   Switch,
 } from "@chakra-ui/react"
-
 
 export async function getServerSideProps({params}) {
   // Fetch data from external API

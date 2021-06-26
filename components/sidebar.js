@@ -1,11 +1,9 @@
 import {useState } from 'react'
 import { useRouter } from 'next/router'
 import { useAppContext } from '../lib/context/state'
-import { Box, Flex, Center, Text, Image } from "@chakra-ui/react"
+import { Box, Flex, Center, Text} from "@chakra-ui/react"
 import Link from 'next/link'
 import Search from './search'
-
-
 
 const menuTitles = 
   [
@@ -17,8 +15,7 @@ const menuTitles =
     { title: "Profitability", url: "profit"},
   ]
 
-
-export default function SideBar(props) {
+export default function SideBar() {
 
   const {value, setValue, menu, setMenu, setStockInfo} = useAppContext();
   const [ toggleMenuBar, setToggleMenuBar ] = useState(false);
@@ -718,7 +715,6 @@ export default function SideBar(props) {
           </Center>
           }
         </Center>
-
       </Flex>
     </Flex>
     </React.Fragment>

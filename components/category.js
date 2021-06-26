@@ -1,72 +1,9 @@
-import { useState } from 'react'
 import { 
   Box,
   Flex,
   Text,
 } from "@chakra-ui/react"
 import Link from 'next/link'
-import styled , { css } from "styled-components";
-import { motion, AnimateSharedLayout, AnimatePresence } from "framer-motion";
-
-// const Card = styled(motion.div)`
-//   background: pink;
-//   border-radius: 30px;
-//   width: 400px;
-//   height: 50px;
-
-//   ${props => props.big && css`
-//     background: blue;
-//     width: 300px;
-//     height: 300px;
-//   `}
-// `;
-
-// const items = [
-//     {
-//       id: 0,
-//       title: "S&P 500",
-//       description: "Go to the list of S&P 500"
-//     }, 
-//     {
-//       id: 1,
-//       title: "ダウ平均",
-//       description: "Go to the list of ダウ平均"
-//     }, 
-//     {
-//       id: 2,
-//       title: "Hot Stock",
-//       description: "Go to the list of Hot Stock"
-//     }
-//   ];
-
-//   function Item() {
-//     const [isOpen, setIsOpen] = useState(false);
-  
-//     const toggleOpen = () => setIsOpen(!isOpen);
-  
-//     return (
-//       <motion.li layout onClick={toggleOpen} initial={{ borderRadius: 10 }}>
-//         <motion.div className="avatar" layout />
-//         <AnimatePresence>{isOpen && <Content />}</AnimatePresence>
-//       </motion.li>
-//     );
-//   }
-  
-//   function Content() {
-//     return (
-//       <motion.div
-//         layout
-//         initial={{ opacity: 0 }}
-//         animate={{ opacity: 1 }}
-//         exit={{ opacity: 0 }}
-//       >
-//         <div className="row" />
-//         <div className="row" />
-//         <div className="row" />
-//       </motion.div>
-//     );
-//   }
-
 
 export default function Category (props) {
 
@@ -79,15 +16,6 @@ export default function Category (props) {
           🌀テーマ別に調べる
         </Text>
       </Box>
-
-      {/* <AnimateSharedLayout>
-        <motion.ul layout initial={{ borderRadius: 25 }}>
-          {items.map(item => (
-            <Item key={item.id} />
-          ))}
-        </motion.ul>
-      </AnimateSharedLayout> */}
-
       <Flex
         wrap="wrap"
         justify="space-around"
@@ -174,7 +102,7 @@ export default function Category (props) {
             _hover={{transform: "scale(1.03)", transition: "transform 150ms"}}
             cursor="pointer"
           >
-            <Flex
+            {/* <Flex
               position="absolute"
               right={["0px","-5px","-5px"]}
               top={["0px","-10px","-10px"]}
@@ -187,7 +115,7 @@ export default function Category (props) {
               justify="center"
             >
               new
-            </Flex>
+            </Flex> */}
             <Text
               fontSize={["40px","60px","70px"]}
             >
@@ -219,7 +147,7 @@ export default function Category (props) {
             _hover={{transform: "scale(1.03)", transition: "transform 150ms"}}
             cursor="pointer"
           >
-             <Flex
+             {/* <Flex
               position="absolute"
               right={["0px","-5px","-5px"]}
               top={["0px","-10px","-10px"]}
@@ -232,7 +160,7 @@ export default function Category (props) {
               justify="center"
             >
               new
-            </Flex>
+            </Flex> */}
             <Text
               fontSize={["40px","60px","70px"]}
             >
@@ -264,7 +192,7 @@ export default function Category (props) {
             _hover={{transform: "scale(1.03)", transition: "transform 150ms"}}
             cursor="pointer"
           >
-             <Flex
+             {/* <Flex
               position="absolute"
               right={["0px","-5px","-5px"]}
               top={["0px","-10px","-10px"]}
@@ -277,7 +205,7 @@ export default function Category (props) {
               justify="center"
             >
               new
-            </Flex>
+            </Flex> */}
             <Text
               fontSize={["40px","60px","70px"]}
             >
@@ -309,7 +237,7 @@ export default function Category (props) {
             _hover={{transform: "scale(1.03)", transition: "transform 150ms"}}
             cursor="pointer"
           >
-             <Flex
+            {/* <Flex
               position="absolute"
               right={["0px","-5px","-5px"]}
               top={["0px","-10px","-10px"]}
@@ -322,7 +250,7 @@ export default function Category (props) {
               justify="center"
             >
               new
-            </Flex>
+            </Flex> */}
             <Text
               fontSize={["40px","60px","70px"]}
             >

@@ -9,7 +9,6 @@ import AdsCard from '../../components/adscard'
 import LineRechart from '../../components/line_rechart'
 import ComposedRechart from '../../components/composed_rechart'
 import { 
-  Box,
   Flex,
   Center,
   Text,
@@ -75,7 +74,6 @@ export async function getServerSideProps({params}) {
       costOfRevenue: each.costOfRevenue /1000000,
     })) : null;
 
-
     const basicInfo = res4.length && res3.length ? res3.map((Info) => ({
       symbol: Info.symbol,
       name: Info.name,
@@ -127,7 +125,6 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
       </Layout>
     )
   } else {
-
   const bsData = 
   (bs.length) ? 
   bs.map((each) => {
@@ -180,13 +177,11 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
   (isPercent === true) 
   ? "bsDebitR" : "bsDebit";
 
-
   return (
     <Layout>
       <Head>
         <title>{siteTitle}</title>
       </Head>
-
       <Flex
         direction="column"
         m="3%"
@@ -487,7 +482,6 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
             </Flex>
           </Flex>
         </Flex>
-
       </Flex>
     </Layout>
   )
