@@ -1,11 +1,8 @@
 import Layout, { siteTitle } from '../components/layout'
 import Head from 'next/head'
 import { 
-  Box,
   Flex,
-  Center,
   Text,
-  Switch,
 } from "@chakra-ui/react"
 
 
