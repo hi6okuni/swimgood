@@ -344,25 +344,25 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
     period: profitData[profitData.length - 1].date,
     data: [
       {
-        title: "Revenue",
+        title: "売上高",
         value: profitData[profitData.length - 1].revenue.toLocaleString(),
         unit_forth: "$",
         unit_back: ""
       },
       {
-        title: "Gross Profit",
+        title: "粗利益",
         value: profitData[profitData.length - 1].grossProfit.toLocaleString(),
         unit_forth: "$",
         unit_back: ""
       },
       {
-        title: "Operating Income",
+        title: "営業利益",
         value: profitData[profitData.length - 1].operatingIncome.toLocaleString(),
         unit_forth: "$",
         unit_back: ""
       },
       {
-        title: "Net Income",
+        title: "純利益",
         value: profitData[profitData.length - 1].netIncome.toLocaleString(),
         unit_forth: "$",
         unit_back: ""
@@ -381,13 +381,13 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
         unit_back: ""
       },
       {
-        title: "EBITDA Margin",
+        title: "EBITDA利益率",
         value: profitData[profitData.length - 1].ebitdaR.toLocaleString(),
         unit_forth: "",
         unit_back: "%"
       },
       {
-        title: "D&A",
+        title: "減価償却",
         value: profitData[profitData.length - 1].da.toLocaleString(),
         unit_forth: "$",
         unit_back: ""
@@ -411,25 +411,25 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
     period: profitData[profitData.length - 1].date,
     data: [
       {
-        title: "EPS",
+        title: "1株当たり純利益",
         value: profitData[profitData.length - 1].eps.toLocaleString(),
         unit_forth: "$",
         unit_back: ""
       },
       {
-        title: "Revenue",
+        title: "1株当たり売上高",
         value: profitData[profitData.length - 1].revenuePerShare.toLocaleString(),
         unit_forth: "$",
         unit_back: ""
       },
       {
-        title: "Operating Cash Flow",
+        title: "1株当たり営業キャッシュフロー",
         value: operatingCashFlowPerShare_highlight,
         unit_forth: "$",
         unit_back: ""
       },
       {
-        title: "Free Cash Flow",
+        title: "1株当たりフリーキャッシュフロー",
         value: freeCashFlowPerShare_highlight,
         unit_forth: "$",
         unit_back: ""
@@ -517,7 +517,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
         <Flex direction="column" w="100%" mt="3%">
           <Flex fontSize={["xs", "sm"]} mx="4%" my="0.5%" w="80%" >
             <Switch size="md" colorScheme="pink"  onChange={() => setIsAnnual(!isAnnual)}/>
-            <Text px="2%">Annual ⇄ Quarterly</Text>
+            <Text px="2%">年間 ⇄ 四半期</Text>
           </Flex>
           <Flex fontSize={["xs", "sm"]} mx="4%" my="0.5%" w="80%" >
             <Switch size="md" colorScheme="green" onChange={() => setIsPercent(!isPercent)}/>
@@ -527,7 +527,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
         </Flex>
 
         {profitData.length < 3 ? 
-        <Text m="2%" color="#fb8fb9" fontSize="sm">⚠️Sorry, the number of data may not be plenty enough to research⚠️</Text>
+        <Text m="2%" color="#fb8fb9" fontSize="sm">⚠️十分なデータが揃っていない可能性があります⚠️</Text>
           : null }
       
 
@@ -546,7 +546,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
           z-index="5"
         >
           <Flex textAlign="center" fontSize="sm">
-            <Text>&nbsp;&nbsp;■ Revenue and Income</Text>
+            <Text>&nbsp;&nbsp;■ 売上高&利益</Text>
           </Flex>
           <Flex
             h={["96%","96%","95%"]} 
@@ -566,7 +566,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 bg="#ffffff"
                 color="#000000"
               >
-                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Profit Structure</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;収益構造</Text></Center>
                 <AreaRechart data={profitData} keyword={profitStructureKeyword} color={chartColor.rev}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -588,7 +588,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 bg="#ffffff"
                 color="#000000"
               >
-                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Revenue</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;売上高</Text></Center>
                 <BarRechart data={profitData} title={["revenue"]} color={[chartColor.rev[0]]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -601,7 +601,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 borderRadius="2xl"
                 boxShadow="xl"
               >
-                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Gross Profit</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;粗利益</Text></Center>
                 { isPercent === true ? 
                   <LineRechart data={profitData} title={["grossProfitR"]} color={[chartColor.rev[1]]}/> 
                   : 
@@ -618,7 +618,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 borderRadius="2xl"
                 boxShadow="xl"
               >
-                 <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Operating Income</Text></Center>
+                 <Center pt="2%"><Text fontSize="12px">${value}&nbsp;営業利益</Text></Center>
                 { isPercent === true ? 
                   <LineRechart data={profitData} title={["operatingIncomeR"]} color={[chartColor.rev[2]]}/> 
                   : 
@@ -635,7 +635,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 borderRadius="2xl"
                 boxShadow="xl"
               >
-                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Net Income</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;純利益</Text></Center>
                 { isPercent === true ? 
                   <LineRechart data={profitData} title={["netIncomeR"]} color={[chartColor.rev[3]]}/> 
                   : 
@@ -790,7 +790,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 bg="#ffffff"
                 color="#000000"
               >
-                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;From Net Income to EBITDA</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;純利益からEBITDAまで</Text></Center>
                 <AreaRechart data={profitData} keyword="ebitda" color={chartColor.ebitda}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -812,7 +812,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 bg="#ffffff"
                 color="#000000"
               >
-                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;EBITDA Margin</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;EBITDAマージン</Text></Center>
                 <LineRechart data={profitData} title={["ebitdaR"]} color={[chartColor.ebitda[0]]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -825,7 +825,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 borderRadius="2xl"
                 boxShadow="xl"
               >
-                <Center pt="2%"><Text fontSize="12px" ml="4%">${value}&nbsp;Depreciation and Amortization</Text></Center>
+                <Center pt="2%"><Text fontSize="12px" ml="4%">${value}&nbsp;減価償却</Text></Center>
                 <BarRechart data={profitData} title={["da"]} color={[chartColor.ebitda[0]]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -838,7 +838,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 borderRadius="2xl"
                 boxShadow="xl"
               >
-                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Interest Expense</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;支払利息</Text></Center>
                 <BarRechart data={profitData} title={["interestExpense"]} color={[chartColor.ebitda[1]]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -851,7 +851,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 borderRadius="2xl"
                 boxShadow="xl"
               >
-                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Income Tax Expense</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;税金費用</Text></Center>
                 <BarRechart data={profitData} title={["incomeTaxExpense"]} color={[chartColor.ebitda[2]]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -874,7 +874,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
           z-index="5"
         >
           <Flex textAlign="center" fontSize="sm">
-            <Text>&nbsp;&nbsp;■ EPS & other Per Share items</Text>
+            <Text>&nbsp;&nbsp;■ 1株当たりの指標</Text>
           </Flex>
           <Flex
             h={["96%","96%","95%"]} 
@@ -894,7 +894,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 bg="#ffffff"
                 color="#000000"
               >
-                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Diluted Weighted Average Shares Outst.</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;発行済株式数(希薄化後/加重平均)</Text></Center>
                 <BarRechart data={profitData} title={["weightedAverageShsOutDil"]} color={[chartColor.perShare[0]]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -916,7 +916,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 bg="#ffffff"
                 color="#000000"
               >
-                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;EPS</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;1株当たり純利益 EPS</Text></Center>
                 <BarRechart data={profitData} title={["eps"]} color={[chartColor.perShare[0]]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -929,7 +929,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 borderRadius="2xl"
                 boxShadow="xl"
               >
-                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Revenue Per Share</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;1株当たり売上高</Text></Center>
                 <BarRechart data={profitData} title={["revenuePerShare"]} color={[chartColor.perShare[1]]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -942,7 +942,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 borderRadius="2xl"
                 boxShadow="xl"
               >
-                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Operating Cash Flow Per Share</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;1株当たり営業キャッシュフロー</Text></Center>
                 <BarRechart data={profitData} title={["operatingCashFlowPerShare"]} color={[chartColor.perShare[2]]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -955,7 +955,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 borderRadius="2xl"
                 boxShadow="xl"
               >
-                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Free Cash Flow Per Share</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;1株当たりフリーキャッシュフロー</Text></Center>
                 <BarRechart data={profitData} title={["freeCashFlowPerShare"]} color={[chartColor.perShare[3]]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>

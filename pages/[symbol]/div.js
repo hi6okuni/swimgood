@@ -200,7 +200,7 @@ export default function Dividends ({ div, keyMetrics, historicalPrice, basicInfo
             z-index="5"
           >
             <Flex textAlign="center" fontSize="sm">
-              <Text>&nbsp;&nbsp;■ Dividends</Text>
+              <Text>&nbsp;&nbsp;■ 配当</Text>
             </Flex>
             <Flex
               h={["96%","96%","95%"]} 
@@ -220,7 +220,7 @@ export default function Dividends ({ div, keyMetrics, historicalPrice, basicInfo
                   bg="#ffffff"
                   color="#000000"
                 >
-                  <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Dividends History</Text></Center>
+                  <Center pt="2%"><Text fontSize="12px">${value}&nbsp;配当実績</Text></Center>
                   <BarRechart data={divHistory} title={["adjDividend"]} color={[colorPallet.profit.green]}/>
                   <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
                 </Flex>
@@ -242,7 +242,7 @@ export default function Dividends ({ div, keyMetrics, historicalPrice, basicInfo
                   bg="#ffffff"
                   color="#000000"
                 >
-                  <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Dividends Yield</Text></Center>
+                  <Center pt="2%"><Text fontSize="12px">${value}&nbsp;配当利回り</Text></Center>
                   <LineRechart data={divData} title={["dividendYield"]} color={[colorPallet.profit.pink]}/>
                   <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
                 </Flex>
@@ -255,7 +255,7 @@ export default function Dividends ({ div, keyMetrics, historicalPrice, basicInfo
                   borderRadius="2xl"
                   boxShadow="xl"
                 >
-                  <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Payout Ratio</Text></Center>
+                  <Center pt="2%"><Text fontSize="12px">${value}&nbsp;配当性向</Text></Center>
                   <LineRechart data={divData} title={["payoutRatio"]} color={[colorPallet.profit.green]}/>
                   <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
                 </Flex>
@@ -308,7 +308,7 @@ export default function Dividends ({ div, keyMetrics, historicalPrice, basicInfo
             <Text fontSize="xs" mx="2%">In Millions of USD except per share items</Text>
           </Flex>
           <Flex direction="column" mx ="2%" my="8%">
-            <Text fontWeight="bold" fontSize="calc(6px + 3vmin)"> ${value} pay no dividends</Text>
+            <Text fontWeight="bold" fontSize="calc(6px + 3vmin)"> ${value} 配当実績なし</Text>
           </Flex>
           <section>
             <AdsCard/>

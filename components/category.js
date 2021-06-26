@@ -119,7 +119,7 @@ export default function Category (props) {
             <Text
               fontSize={["40px","60px","70px"]}
             >
-              🪤
+              🍭
             </Text>
             <Text>バフェット銘柄<br></br>
             </Text>

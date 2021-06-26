@@ -223,7 +223,7 @@ export default function CashFlowStatement ({ cfs, pl, historicalPrice, basicInfo
         <Flex direction={["column","column","row"]} align="center">
           <Flex fontSize={["xs", "sm"]} direction="row" my="1%" w="70%">
             <Switch size="md" colorScheme="pink"  onChange={() => setIsAnnual(!isAnnual)}/>
-            <Text px="2%">Annual ⇄ Quarterly</Text>
+            <Text px="2%">年間 ⇄ 四半期</Text>
           </Flex>
           <Text fontSize="10px">In Millions of USD except per share items</Text>
         </Flex>
@@ -243,7 +243,7 @@ export default function CashFlowStatement ({ cfs, pl, historicalPrice, basicInfo
           z-index="5"
         >
           <Flex textAlign="center" fontSize="sm">
-            <Text>&nbsp;&nbsp;■ Capital Allocation</Text>
+            <Text>&nbsp;&nbsp;■ 資本配分</Text>
           </Flex>
           <Flex
             h={["96%","96%","95%"]} 
@@ -263,7 +263,7 @@ export default function CashFlowStatement ({ cfs, pl, historicalPrice, basicInfo
                 bg="#ffffff"
                 color="#000000"
               >
-                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;How to Use Cash</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;キャッシュの使い道</Text></Center>
                 <ComposedRechart data={cfsData} color={colorPallet.cfs} keyword="cfs" />
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -285,7 +285,7 @@ export default function CashFlowStatement ({ cfs, pl, historicalPrice, basicInfo
                 bg="#ffffff"
                 color="#000000"
               >
-                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Margins</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;マージン</Text></Center>
                 <LineRechart data={cfsData} title={["operatingCashFlowRatio", "netIncomeRatio"]} color={[colorPallet.cfs.yellow, colorPallet.cfs.blue]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -298,7 +298,7 @@ export default function CashFlowStatement ({ cfs, pl, historicalPrice, basicInfo
                 borderRadius="2xl"
                 boxShadow="xl"
               >
-                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Cash from Operations</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;営業キャッシュフロー</Text></Center>
                 <BarRechart data={cfsData} title={["capitalExpenditure", "freeCashFlow"]} color={[colorPallet.cfs.pink3, colorPallet.cfs.blue]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -311,7 +311,7 @@ export default function CashFlowStatement ({ cfs, pl, historicalPrice, basicInfo
                 borderRadius="2xl"
                 boxShadow="xl"
               >
-                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Return to Shareholders</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;株主還元</Text></Center>
                 <BarRechart data={cfsData} title={["dividendsPaid", "commonStockRepurchased"]} color={[colorPallet.cfs.white_blue, colorPallet.cfs.blue]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -324,7 +324,7 @@ export default function CashFlowStatement ({ cfs, pl, historicalPrice, basicInfo
                 borderRadius="2xl"
                 boxShadow="xl"
               >
-                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Long-Term Debt Repaid</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;借入金返済</Text></Center>
                 <BarRechart data={cfsData} title={["debtRepayment"]} color={[colorPallet.cfs.pink1]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>

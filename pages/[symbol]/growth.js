@@ -140,25 +140,25 @@ export default function Growth ({ historicalPrice, basicInfo, growth }) {
       period: growthData[growthData.length - 1].date,
       data: [
         {
-          title: "Revenue",
+          title: "売上高",
           value: growthData[growthData.length - 1].revenueGrowth.toLocaleString(),
           unit_forth: "",
           unit_back: "%"
         },
         {
-          title: "Operating Income",
+          title: "営業利益",
           value: growthData[growthData.length - 1].operatingIncomeGrowth.toLocaleString(),
           unit_forth: "",
           unit_back: "%"
         },
         {
-          title: "Net Income",
+          title: "純利益",
           value: growthData[growthData.length - 1].netIncomeGrowth.toLocaleString(),
           unit_forth: "",
           unit_back: "%"
         },
         {
-          title: "Operating Cash Flow",
+          title: "営業キャッシュフロー",
           value: growthData[growthData.length - 1].operatingCashFlowGrowth.toLocaleString(),
           unit_forth: "",
           unit_back: "%"
@@ -203,7 +203,7 @@ export default function Growth ({ historicalPrice, basicInfo, growth }) {
           z-index="5"
         >
           <Flex textAlign="center" fontSize="sm">
-            <Text>&nbsp;&nbsp;■ Growth (YoY)</Text>
+            <Text>&nbsp;&nbsp;■ 成長率 (対前年比)</Text>
           </Flex>
           <Flex
             h={["96%","96%","95%"]} 
@@ -223,7 +223,7 @@ export default function Growth ({ historicalPrice, basicInfo, growth }) {
                 bg="#ffffff"
                 color="#000000"
               >
-                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Revenue & Gross Profit</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;売上高と粗利益</Text></Center>
                 <LineRechart data={growthData} title={["revenueGrowth", "grossProfitGrowth"]} color={[colorPallet.profit.green, colorPallet.profit.pink]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -245,7 +245,7 @@ export default function Growth ({ historicalPrice, basicInfo, growth }) {
                 bg="#ffffff"
                 color="#000000"
               >
-                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Operating Income & Net Income</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;営業利益と純利益</Text></Center>
                 <LineRechart data={growthData} title={["operatingIncomeGrowth", "netIncomeGrowth"]} color={[colorPallet.profit.blue, colorPallet.profit.orange]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -258,7 +258,7 @@ export default function Growth ({ historicalPrice, basicInfo, growth }) {
                 borderRadius="2xl"
                 boxShadow="xl"
               >
-                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Cash Flow</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;キャッシュフロー関連</Text></Center>
                 <LineRechart data={growthData} title={["operatingCashFlowGrowth", "freeCashFlowGrowth"]} color={[colorPallet.profit.blue, colorPallet.profit.pink]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>

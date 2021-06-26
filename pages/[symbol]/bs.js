@@ -192,9 +192,9 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
         
         <Flex direction={["column", "row"]}>
           <Center fontSize={["xs", "lg"]}  align="center" direction="row" m="2%">
-            <Text>Annual&nbsp;</Text>
+            <Text>年間&nbsp;</Text>
             <Switch size="md" colorScheme="teal"  onChange={() => setIsAnnual(!isAnnual)}/>
-            <Text>&nbsp;Quarterly</Text>
+            <Text>&nbsp;四半期</Text>
           </Center>
           <Center fontSize={["xs", "lg"]}  align="center" direction="row" m="2%">
             <Text>$&nbsp;</Text>
@@ -219,7 +219,7 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
           z-index="5"
         >
           <Flex textAlign="center" fontSize="sm">
-            <Text>&nbsp;&nbsp;■ Debit Side</Text>
+            <Text>&nbsp;&nbsp;■ 借方</Text>
           </Flex>
           <Flex
             h={["96%","96%","95%"]} 
@@ -250,7 +250,7 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
                 bg="#ffffff"
                 color="#000000"
               >
-                <Center><Text fontSize="xs" mt="2%">B/S Overview</Text></Center>
+                <Center><Text fontSize="xs" mt="2%">まとめ</Text></Center>
                 <ComposedRechart data={bsData} keyword={bsDebitKeyword} color={colorPallet.bs}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -272,7 +272,7 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
                 bg="#ffffff"
                 color="#000000"
               >
-                <Center><Text fontSize="xs" mt="2%">Cash & Cash Equivalents </Text></Center>
+                <Center><Text fontSize="xs" mt="2%">現金及び現金同等物</Text></Center>
                 { isPercent === true ? 
                   <LineRechart  data={bsData} title={["cashAndCashEquivalentsR"]} color={[colorPallet.bs.debit1]}/> 
                   : 
@@ -289,7 +289,7 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
                 borderRadius="2xl"
                 boxShadow="xl"
               >
-                <Center><Text fontSize="xs" mt="2%">Account Receivables</Text></Center>
+                <Center><Text fontSize="xs" mt="2%">売掛金</Text></Center>
                 { isPercent === true ? 
                   <LineRechart  data={bsData} title={["netReceivablesR"]} color={[colorPallet.bs.debit2]}/> 
                   : 
@@ -306,7 +306,7 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
                 borderRadius="2xl"
                 boxShadow="xl"
               >
-                <Center><Text fontSize="xs" mt="2%">Inventory</Text></Center>
+                <Center><Text fontSize="xs" mt="2%">棚卸資産</Text></Center>
                 { isPercent === true ? 
                   <LineRechart  data={bsData} title={["inventoryR"]} color={[colorPallet.bs.debit3]}/> 
                   : 
@@ -323,7 +323,7 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
                 borderRadius="2xl"
                 boxShadow="xl"
               >
-                <Center><Text fontSize="xs" mt="2%">PP&E</Text></Center>
+                <Center><Text fontSize="xs" mt="2%">有形固定資産</Text></Center>
                 { isPercent === true ? 
                   <LineRechart  data={bsData} title={["propertyPlantEquipmentNetR"]} color={[colorPallet.bs.debit5]}/> 
                   : 
@@ -354,7 +354,7 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
           z-index="5"
         >
           <Flex textAlign="center" fontSize="sm">
-            <Text>&nbsp;&nbsp;■ Debit Side</Text>
+            <Text>&nbsp;&nbsp;■ 貸方</Text>
           </Flex>
           <Flex
             h={["96%","96%","92.5%"]} 
@@ -383,7 +383,7 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
           z-index="5"
         >
           <Flex textAlign="center" fontSize="sm">
-            <Text>&nbsp;&nbsp;■ Cash Conversion Cycle</Text>
+            <Text>&nbsp;&nbsp;■ キャッシュ・コンバージョン・サイクル</Text>
           </Flex>
           <Flex
             h={["96%","96%","95%"]} 
@@ -414,7 +414,7 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
                 bg="#ffffff"
                 color="#000000"
               >
-                <Center><Text fontSize="xs" mt="2%"> Sales Cycle</Text></Center>
+                <Center><Text fontSize="xs" mt="2%">売上サイクル</Text></Center>
                 <VerticalBarRechart data={cccData} color={[colorPallet.bs.pink, colorPallet.bs.orange, colorPallet.bs.purple, colorPallet.bs.green]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -436,7 +436,7 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
                 bg="#ffffff"
                 color="#000000"
               >
-                <Center><Text fontSize="xs" mt="2%">DIO/棚卸資産回転日数 </Text></Center>
+                <Center><Text fontSize="xs" mt="2%">棚卸資産回転日数 </Text></Center>
                 <BarRechart data={cccData} title={["dio"]} color={[colorPallet.bs.pink]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -449,7 +449,7 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
                 borderRadius="2xl"
                 boxShadow="xl"
               >
-                <Center><Text fontSize="xs" mt="2%">DSO/売上債権回転日数</Text></Center>
+                <Center><Text fontSize="xs" mt="2%">売上債権回転日数</Text></Center>
                 <BarRechart data={cccData} title={["dso"]} color={[colorPallet.bs.orange]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -462,7 +462,7 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
                 borderRadius="2xl"
                 boxShadow="xl"
               >
-                <Center><Text fontSize="xs" mt="2%">DPO/支払債務回転日数</Text></Center>
+                <Center><Text fontSize="xs" mt="2%">支払債務回転日数</Text></Center>
                 <BarRechart data={cccData} title={["dpo"]} color={[colorPallet.bs.purple]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -475,7 +475,7 @@ export default function BalanceSheet ({ bs, historicalPrice, basicInfo, pl }) {
                 borderRadius="2xl"
                 boxShadow="xl"
               >
-                <Center><Text fontSize="xs" mt="2%">CCC</Text></Center>
+                <Center><Text fontSize="xs" mt="2%">キャッシュ・コンバージョン・サイクル</Text></Center>
                 <BarRechart data={cccData} title={["ccc"]} color={[colorPallet.bs.green]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>

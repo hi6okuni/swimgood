@@ -245,26 +245,26 @@ export default function Profitability ({ pl, bs, historicalPrice, basicInfo }) {
             >
             <Flex w={["100%", "30%", "30%"]} justify={["flex-start", "space-between", "space-between"]} p="2%" direction={["row", "column", "column"]}>
               <Flex justify="center" align="center" mr={["5%",0,0]} w={["40%", "100%", "100%"]}>
-                <Text fontWeight="bold">Margin</Text>
+                <Text fontWeight="bold">利益率</Text>
               </Flex>
               <Flex direction="column" w={["60%", "100%", "100%"]}>
                 <Flex justify="space-between">
-                  <Text>Gross Profit Margin</Text>
+                  <Text>粗利益率</Text>
                   <Text>{`${profitData[profitData.length - 1].grossProfitR}%`}</Text>
                 </Flex>
                 <Flex justify="space-between">
-                  <Text>EBITDA Margin</Text>
+                  <Text>EBITDA利益率</Text>
                   <Text>{`${profitData[profitData.length - 1].ebitdaR}%`}</Text>
                 </Flex>
                 <Flex justify="space-between">
-                  <Text>Net Profit Margin</Text>
+                  <Text>純利益率</Text>
                   <Text>{`${profitData[profitData.length - 1].netIncomeR}%`}</Text>
                 </Flex>
               </Flex>
             </Flex>
             <Flex w={["100%", "30%", "30%"]} justify={["flex-start", "space-between", "space-between"]} p="2%" direction={["row", "column", "column"]}>
               <Flex justify="center" align="center" mr={["5%",0,0]} w={["40%", "100%", "100%"]}>
-                <Text fontWeight="bold" >Return</Text>
+                <Text fontWeight="bold" >収益の指標</Text>
               </Flex>
               <Flex direction="column" w={["60%", "100%", "100%"]}>
                 <Flex justify="space-between">
@@ -283,19 +283,19 @@ export default function Profitability ({ pl, bs, historicalPrice, basicInfo }) {
             </Flex>
             <Flex w={["100%", "30%", "30%"]} justify={["flex-start", "space-between", "space-between"]} p="2%" direction={["row", "column", "column"]}>
               <Flex justify="center" align="center" mr={["5%",0,0]} w={["40%", "100%", "100%"]}>
-                <Text fontWeight="bold" >DuPont Analysis</Text>
+                <Text fontWeight="bold" >ROEの分解(デュポン分析)</Text>
               </Flex>
               <Flex direction="column" w={["60%", "100%", "100%"]}>
                 <Flex justify="space-between">
-                  <Text>Net Profit Margin</Text>
+                  <Text>純利益率</Text>
                   <Text>{`${profitData[profitData.length - 1].netIncomeR}%`}</Text>
                 </Flex>
                 <Flex justify="space-between">
-                  <Text>Asset Turnover</Text>
+                  <Text>総資産回転率</Text>
                   <Text>{`${profitData[profitData.length - 1].totalAssetTurnover}%`}</Text>
                 </Flex>
                 <Flex justify="space-between">
-                  <Text>Equity Multiplier</Text>
+                  <Text>財務レバレッジ比率</Text>
                   <Text>{`x${profitData[profitData.length - 1].equityMultiplier}`}</Text>
                 </Flex>
               </Flex>
@@ -318,7 +318,7 @@ export default function Profitability ({ pl, bs, historicalPrice, basicInfo }) {
           z-index="5"
         >
           <Flex textAlign="center" fontSize="sm">
-            <Text>&nbsp;&nbsp;■ Profitability</Text>
+            <Text>&nbsp;&nbsp;■ 収益性</Text>
           </Flex>
           <Flex
             h={["96%","96%","95%"]} 
@@ -338,7 +338,7 @@ export default function Profitability ({ pl, bs, historicalPrice, basicInfo }) {
                 bg="#ffffff"
                 color="#000000"
               >
-                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Comparison Equity with Net Income</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;株主資本と純利益の比較</Text></Center>
                 <ComposedRechart data={profitData} color={colorPallet.profit} keyword="profit"/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -373,7 +373,7 @@ export default function Profitability ({ pl, bs, historicalPrice, basicInfo }) {
                 borderRadius="2xl"
                 boxShadow="xl"
               >
-                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Net Profit Margin</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;純利益率</Text></Center>
                 <LineRechart data={profitData} title={["netIncomeR"]} color={[colorPallet.profit.pink]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -386,7 +386,7 @@ export default function Profitability ({ pl, bs, historicalPrice, basicInfo }) {
                 borderRadius="2xl"
                 boxShadow="xl"
               >
-                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Asset Turnover</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;総資産回転率</Text></Center>
                 <LineRechart data={profitData} title={["totalAssetTurnover"]} color={[colorPallet.profit.orange]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -399,7 +399,7 @@ export default function Profitability ({ pl, bs, historicalPrice, basicInfo }) {
                 borderRadius="2xl"
                 boxShadow="xl"
               >
-                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;Equity Multiplier</Text></Center>
+                <Center pt="2%"><Text fontSize="12px">${value}&nbsp;財務レバレッジ比率</Text></Center>
                 <BarRechart data={profitData} title={["equityMultiplier"]} color={[colorPallet.profit.green]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>

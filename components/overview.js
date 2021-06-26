@@ -69,18 +69,18 @@ export default function Overview() {
           <Flex flexBasis="50%" fontSize="calc(4px + 2vmin)">
             <Flex flexBasis="50%" direction="column" mx="3%">
               <Flex justify="space-between">
-                <Text>year-high</Text><Text>${stockInfoData[0].yearHigh}</Text>
+                <Text>年初来高値</Text><Text>${stockInfoData[0].yearHigh}</Text>
               </Flex>
               <Flex justify="space-between">
-                <Text>year-low</Text><Text>${stockInfoData[0].yearLow}</Text>
+                <Text>年初来底値</Text><Text>${stockInfoData[0].yearLow}</Text>
               </Flex>
               <Flex justify="space-between">
-                <Text>Market Cap</Text><Text>${Math.round((stockInfoData[0].marketCap/ 1000000000) * 100) / 100}B</Text>
+                <Text>時価総額</Text><Text>${Math.round((stockInfoData[0].marketCap/ 1000000000) * 100) / 100}B</Text>
               </Flex>
             </Flex>
             <Flex flexBasis="50%" direction="column" mx="3%">
               <Flex justify="space-between">
-                <Text>EPS</Text><Text>${stockInfoData[0].eps}</Text>
+                <Text>1株当たり利益 EPS</Text><Text>${stockInfoData[0].eps}</Text>
               </Flex>
               <Flex justify="space-between">
                 <Text>PER</Text><Text>×{stockInfoData[0].pe}</Text>

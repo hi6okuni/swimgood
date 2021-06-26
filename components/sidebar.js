@@ -7,12 +7,12 @@ import Search from './search'
 
 const menuTitles = 
   [
-    { title: "Income Statement", url: "pl"},
-    { title: "Balance Sheet", url: "bs"},
-    { title: "Cash Flow Statement", url: "cfs"},
-    { title: "Dividends", url: "div"},
-    { title: "Growth", url: "growth"},
-    { title: "Profitability", url: "profit"},
+    { title: "損益計算書 P/L", url: "pl"},
+    { title: "貸借対照表 B/S", url: "bs"},
+    { title: "キャッシュフロー計算書", url: "cfs"},
+    { title: "配当", url: "div"},
+    { title: "成長率", url: "growth"},
+    { title: "収益性", url: "profit"},
   ]
 
 export default function SideBar() {
