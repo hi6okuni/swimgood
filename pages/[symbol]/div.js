@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useAppContext } from '../../lib/context/state'
 import colorPallet from '../../lib/color-pallet'
 import Layout, { siteTitle } from '../../components/layout'
@@ -7,8 +7,6 @@ import BarRechart from '../../components/bar_rechart'
 import LineRechart from '../../components/line_rechart'
 import Highlight from '../../components/highlight'
 import AdsCard from '../../components/adscard'
-
-
 import { 
   Box,
   Flex,
@@ -115,7 +113,6 @@ export async function getServerSideProps({params}) {
       }
     }
 }
-
 
 export default function Dividends ({ div, keyMetrics, historicalPrice, basicInfo }) {
 

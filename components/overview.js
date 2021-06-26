@@ -2,8 +2,7 @@ import {
   AreaChart, Area, XAxis, YAxis, Tooltip, Brush, ResponsiveContainer
 } from 'recharts';
 import { useAppContext } from '../lib/context/state'
-import { Box, Flex, Center, Text } from "@chakra-ui/react"
-
+import { Box, Flex, Text } from "@chakra-ui/react"
 
 export default function Overview() {
 

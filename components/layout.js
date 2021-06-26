@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { Box, Heading, Flex } from "@chakra-ui/react"
+import { Box, Flex } from "@chakra-ui/react"
 import { useAppContext } from '../lib/context/state'
 import SideBar from './sidebar'
 import Overview from './overview'
@@ -10,7 +10,7 @@ export const siteTitle = 'Swimgood🏊‍| U.S. Stock Visualizer'
 
 export default function Layout({ children, home }) {
 
-  const {setValue, menu, setMenu, setStockInfo, stockPrice} = useAppContext();
+  const {setValue, setMenu, setStockInfo} = useAppContext();
 
   const resetSymbol = () => {
     setValue("");

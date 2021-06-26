@@ -1,8 +1,7 @@
 import Head from 'next/head'
-import { useEffect } from 'react'
 import Layout, { siteTitle } from '../components/layout'
 import { useAppContext } from '../lib/context/state'
-import { Box, Flex, Center, Text} from "@chakra-ui/react"
+import { Flex, Text} from "@chakra-ui/react"
 import AdsCard from '../components/adscard'
 import Link from 'next/link'
 import Category from '../components/category'
@@ -99,12 +98,10 @@ export default function Buffett () {
 
   const editedBuffett = buffett.sort(compare);
 
-
   const jumpToPage = (e) => {
     setMenu("pl");
     setValue(e);
   }
-
 
   return (
     <Layout>

@@ -4,11 +4,9 @@ import { Box, Text } from "@chakra-ui/react"
 import { useAppContext } from '../lib/context/state'
 import Search from '../components/search'
 
-
-
 export default function About () {
 
-  const {value, setValue, menu, setMenu, setStockInfo} = useAppContext();
+  const {setValue, menu, setMenu} = useAppContext();
 
   const router = useRouter()
 
@@ -23,6 +21,7 @@ export default function About () {
       router.push(`/${e}/${menu}`);
     }
   }
+  
   return (
     <Layout>
       <Box position="relative" zIndex="2" my="8%">

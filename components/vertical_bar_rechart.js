@@ -2,7 +2,6 @@ import {
   XAxis, YAxis, BarChart, Bar, Tooltip, Legend, ResponsiveContainer
 } from 'recharts'
 
-
 export default function VerticalBarRechart({ data, color}) {
   return (
     <ResponsiveContainer width="95%" height="95%">

@@ -2,7 +2,6 @@ import {
   ComposedChart, Brush, XAxis, YAxis, BarChart, Bar, Area, Tooltip, Legend, ResponsiveContainer
 } from 'recharts'
 
-
 export default function ComposedRechart({ data, color, keyword}) {
   return (
   <React.Fragment>

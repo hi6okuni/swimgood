@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
 import AdsCard from '../components/adscard'
 import { useAppContext } from '../lib/context/state'
-import { Box, Flex, Center, Text} from "@chakra-ui/react"
+import { Box, Flex, Text} from "@chakra-ui/react"
 import Link from 'next/link'
 
 export async function getStaticProps() {
@@ -34,6 +34,7 @@ export async function getStaticProps() {
   }
 
     const editedLists = Lists.sort(compare);
+
     const targetSector = [
       "Communication Services", 
       "Consumer Staples", 
@@ -95,7 +96,6 @@ export async function getStaticProps() {
       reStocks,
       uStocks
     ]
-
 
   // Pass data to the page via props
   return { 

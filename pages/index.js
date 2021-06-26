@@ -7,21 +7,17 @@ import { useAppContext } from '../lib/context/state'
 import Search from '../components/search'
 import Category from '../components/category'
 import AdsCard from '../components/adscard'
-import Link from 'next/link'
-import Toppicture from '../public/images/swimgood_top.png'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { 
   Box,
   Flex,
   Text,
-  Center,
   Link as ChakraLink
 } from "@chakra-ui/react"
 
 
 export async function getStaticProps() {
   const apikey = process.env.FMP_API_KEY;
-
   const allPostsData = getSortedPostsData()
   const [res1] = await Promise.all([
     fetch(`https://financialmodelingprep.com/api/v3/actives?apikey=${apikey}`).then(response => response.json()),
@@ -39,14 +35,13 @@ export async function getStaticProps() {
   }
 }
 
-
 export default function Home ({ allPostsData, hotStocks }) {
 
   const { setValue, menu, setMenu } = useAppContext();
 
   const router = useRouter()
 
-  const hotStocks_15 = hotStocks.slice(0,15);
+  // const hotStocks_15 = hotStocks.slice(0,15);
 
   const getSymbol = (e) => {
     setValue(e);

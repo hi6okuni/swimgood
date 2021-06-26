@@ -1,17 +1,14 @@
 import { useState } from 'react'
 import { 
   Box,
-  Flex,
   Input,
   InputGroup,
-  InputLeftElement,
   InputRightElement,
-  Text,
   Button,
   FormControl,
   FormErrorMessage,
 } from "@chakra-ui/react"
-import { Search2Icon, ArrowRightIcon } from '@chakra-ui/icons'
+import { Search2Icon } from '@chakra-ui/icons'
 import { Formik, Field, Form} from 'formik'
 
 export default function Search (props) {

@@ -4,16 +4,10 @@ import Head from 'next/head'
 import Date from '../../components/date'
 import ReactMarkdown from 'react-markdown'
 import ChakraUIRenderer from 'chakra-ui-markdown-renderer';
-
 import { 
   Box,
-  Flex,
-  Center,
   Text,
-  Switch,
 } from "@chakra-ui/react"
-
-
 
 export async function getStaticProps({ params }) {
   const postData = await getPostData(params.id)

@@ -1,8 +1,7 @@
 import Head from 'next/head'
-import { useEffect } from 'react'
 import Layout, { siteTitle } from '../components/layout'
 import { useAppContext } from '../lib/context/state'
-import { Box, Flex, Center, Text} from "@chakra-ui/react"
+import { Flex, Text} from "@chakra-ui/react"
 import AdsCard from '../components/adscard'
 import Link from 'next/link'
 import Category from '../components/category'
@@ -104,12 +103,10 @@ export default function SaaS () {
 
   const editedSaas = saas.sort(compare);
 
-
   const jumpToPage = (e) => {
     setMenu("pl");
     setValue(e);
   }
-
 
   return (
     <Layout>
@@ -121,12 +118,11 @@ export default function SaaS () {
           direction="column"
           m="3%"
         >
-
           <Flex fontSize="xl" mb="5px" alignItems="center">
             <Text fontSize="80px">🔫&nbsp;</Text>
             <Text fontSize="lg">期待のSaaS銘柄</Text>
           </Flex>
-          <Flex fontSize="sm"  mb="50px" alignItems="center">
+          <Flex fontSize="sm" mb="50px" alignItems="center">
             <Text>独断と偏見のセレクト。</Text>
           </Flex>
           <section>

@@ -2,7 +2,6 @@ import {
    AreaChart, Area, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer
 } from 'recharts'
 
-
 export default function AreaRechart({ data, keyword, color }) {
   return (
       <React.Fragment>
