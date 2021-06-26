@@ -180,25 +180,25 @@ export default function CashFlowStatement ({ cfs, pl, historicalPrice, basicInfo
       period: cfsData[cfsData.length - 1].date,
       data: [
         {
-          title: "Operating Cash Flow",
+          title: "営業キャッシュフロー",
           value: cfsData[cfsData.length - 1].operatingCashFlow.toLocaleString(),
           unit_forth: "$",
           unit_back: ""
         },
         {
-          title: "Free Cash Flow",
+          title: "フリーキャッシュフロー",
           value: cfsData[cfsData.length - 1].freeCashFlow.toLocaleString(),
           unit_forth: "$",
           unit_back: ""
         },
         {
-          title: "Share Buy-back",
+          title: "自社株買い",
           value: cfsData[cfsData.length - 1].commonStockRepurchased.toLocaleString(),
           unit_forth: "$",
           unit_back: ""
         },
         {
-          title: "Dividend Paid",
+          title: "支払配当金",
           value: cfsData[cfsData.length - 1].dividendsPaid.toLocaleString(),
           unit_forth: "$",
           unit_back: ""

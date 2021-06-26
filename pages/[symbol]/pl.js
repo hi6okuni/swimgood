@@ -221,31 +221,31 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
       return(
         {
           date: each.date[0],
-          revenue: Math.round((each.revenue/1000000) * 10) / 10,
-          grossProfit: Math.round((each.grossProfit/1000000) * 10) / 10,
-          grossProfitR: Math.round(each.grossProfitR * 10) / 10,
-          operatingIncome: Math.round((each.operatingIncome/1000000) * 10) / 10,
-          operatingIncomeR: Math.round(each.operatingIncomeR * 10) / 10,
-          costOfRevenue: each.costOfRevenue/1000000,
-          costOfRevenueR: Math.round(each.costOfRevenueR * 10) / 10,
-          operatingExpense: each.operatingExpense/1000000,
-          operatingExpenseR: Math.round(each.operatingExpenseR * 10) / 10,
-          nonOperatingExpense: each.nonOperatingExpense/1000000,
-          nonOperatingExpenseR: Math.round(each.nonOperatingExpenseR * 10) / 10,
-          netIncome: Math.round((each.netIncome/1000000) * 10) / 10,
-          netIncomeR: Math.round(each.netIncomeR * 10) / 10,
-          rd: each.rd/1000000,
-          sga: each.sga/1000000,
-          incomeTaxExpense: each.incomeTaxExpense/1000000,
-          interestExpense: each.interestExpense/1000000,
-          da: each.da/1000000,
-          ebitda: each.ebitda/1000000,
-          ebitdaR: each.ebitdaR,
-          weightedAverageShsOutDil: each.weightedAverageShsOutDil/1000000,
-          eps: Math.round((each.eps) * 100) / 100,
-          revenuePerShare: Math.round((each.revenuePerShare) * 100) / 100,
-          operatingCashFlowPerShare: Math.round((keyMetrics[index].operatingCashFlowPerShare) * 100) / 100,
-          freeCashFlowPerShare: Math.round((keyMetrics[index].freeCashFlowPerShare) * 100) / 100,
+          売上高: Math.round((each.revenue/1000000) * 10) / 10,
+          粗利益: Math.round((each.grossProfit/1000000) * 10) / 10,
+          粗利益率: Math.round(each.grossProfitR * 10) / 10,
+          営業利益: Math.round((each.operatingIncome/1000000) * 10) / 10,
+          営業利益率: Math.round(each.operatingIncomeR * 10) / 10,
+          原価: Math.round((each.costOfRevenue/1000000) * 10) / 10,
+          原価率: Math.round(each.costOfRevenueR * 10) / 10,
+          営業費用: each.operatingExpense/1000000,
+          営業費用率: Math.round(each.operatingExpenseR * 10) / 10,
+          非営業費用: each.nonOperatingExpense/1000000,
+          非営業費用率: Math.round(each.nonOperatingExpenseR * 10) / 10,
+          純利益: Math.round((each.netIncome/1000000) * 10) / 10,
+          純利益率: Math.round(each.netIncomeR * 10) / 10,
+          研究開発費: each.rd/1000000,
+          販管費: each.sga/1000000,
+          税金費用: each.incomeTaxExpense/1000000,
+          支払利息: each.interestExpense/1000000,
+          減価償却: each.da/1000000,
+          EBITDA: each.ebitda/1000000,
+          EBITDA利益率: each.ebitdaR,
+          発行済み株式数: each.weightedAverageShsOutDil/1000000,
+          EPS: Math.round((each.eps) * 100) / 100,
+          "1株当たり売上高": Math.round((each.revenuePerShare) * 100) / 100,
+          "1株当たり営業キャッシュフロー": Math.round((keyMetrics[index].operatingCashFlowPerShare) * 100) / 100,
+          "1株当たりフリーキャッシュフロー": Math.round((keyMetrics[index].freeCashFlowPerShare) * 100) / 100,
         }
       )
     }).reverse(): 
@@ -254,59 +254,59 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
       return(
         {
           date: each.date[1] + "-" + each.date[0],
-          revenue: Math.round((each.revenue/1000000) * 10) / 10,
-          grossProfit: Math.round((each.grossProfit/1000000) * 10) / 10,
-          grossProfitR: Math.round(each.grossProfitR * 10) / 10,
-          operatingIncome: Math.round((each.operatingIncome/1000000) * 10) / 10,
-          operatingIncomeR: Math.round(each.operatingIncomeR * 10) / 10,
-          costOfRevenue: Math.round((each.costOfRevenue/1000000) * 10) / 10,
-          costOfRevenueR: Math.round(each.costOfRevenueR * 10) / 10,
-          operatingExpense: each.operatingExpense/1000000,
-          operatingExpenseR: Math.round(each.operatingExpenseR * 10) / 10,
-          nonOperatingExpense: each.nonOperatingExpense/1000000,
-          nonOperatingExpenseR: Math.round(each.nonOperatingExpenseR * 10) / 10,
-          netIncome: Math.round((each.netIncome/1000000) * 10) / 10,
-          netIncomeR: Math.round(each.netIncomeR * 10) / 10,
-          rd: each.rd/1000000,
-          sga: each.sga/1000000,
-          incomeTaxExpense: each.incomeTaxExpense/1000000,
-          interestExpense: each.interestExpense/1000000,
-          da: each.da/1000000,
-          ebitda: each.ebitda/1000000,
-          ebitdaR: each.ebitdaR,
-          weightedAverageShsOutDil: each.weightedAverageShsOutDil/1000000,
-          eps: Math.round((each.eps) * 100) / 100,
-          revenuePerShare: Math.round((each.revenuePerShare) * 100) / 100,
-          operatingCashFlowPerShare: Math.round((keyMetricsQ[index].operatingCashFlowPerShare) * 100) / 100,
-          freeCashFlowPerShare: Math.round((keyMetricsQ[index].freeCashFlowPerShare) * 100) / 100,
+          売上高: Math.round((each.revenue/1000000) * 10) / 10,
+          粗利益: Math.round((each.grossProfit/1000000) * 10) / 10,
+          粗利益率: Math.round(each.grossProfitR * 10) / 10,
+          営業利益: Math.round((each.operatingIncome/1000000) * 10) / 10,
+          営業利益率: Math.round(each.operatingIncomeR * 10) / 10,
+          原価: Math.round((each.costOfRevenue/1000000) * 10) / 10,
+          原価率: Math.round(each.costOfRevenueR * 10) / 10,
+          営業費用: each.operatingExpense/1000000,
+          営業費用率: Math.round(each.operatingExpenseR * 10) / 10,
+          非営業費用: each.nonOperatingExpense/1000000,
+          非営業費用率: Math.round(each.nonOperatingExpenseR * 10) / 10,
+          純利益: Math.round((each.netIncome/1000000) * 10) / 10,
+          純利益率: Math.round(each.netIncomeR * 10) / 10,
+          研究開発費: each.rd/1000000,
+          販管費: each.sga/1000000,
+          税金費用: each.incomeTaxExpense/1000000,
+          支払利息: each.interestExpense/1000000,
+          減価償却: each.da/1000000,
+          EBITDA: each.ebitda/1000000,
+          EBITDA利益率: each.ebitdaR,
+          発行済み株式数: each.weightedAverageShsOutDil/1000000,
+          EPS: Math.round((each.eps) * 100) / 100,
+          "1株当たり売上高": Math.round((each.revenuePerShare) * 100) / 100,
+          "1株当たり営業キャッシュフロー": Math.round((keyMetricsQ[index].operatingCashFlowPerShare) * 100) / 100,
+          "1株当たりフリーキャッシュフロー": Math.round((keyMetricsQ[index].freeCashFlowPerShare) * 100) / 100,
         }
       ) } else {
         return(
           {
             date: each.date[1] + "-" + each.date[0],
-            revenue: each.revenue/1000000,
-            grossProfit: each.grossProfit/1000000,
-            grossProfitR: Math.round(each.grossProfitR * 10) / 10,
-            operatingIncome: each.operatingIncome/1000000,
-            operatingIncomeR: Math.round(each.operatingIncomeR * 10) / 10,
-            costOfRevenue: each.costOfRevenue/1000000,
-            costOfRevenueR: Math.round(each.costOfRevenueR * 10) / 10,
-            operatingExpense: each.operatingExpense/1000000,
-            operatingExpenseR: Math.round(each.operatingExpenseR * 10) / 10,
-            nonOperatingExpense: each.nonOperatingExpense/1000000,
-            nonOperatingExpenseR: Math.round(each.nonOperatingExpenseR * 10) / 10,
-            netIncome: each.netIncome/1000000,
-            netIncomeR: Math.round(each.netIncomeR * 10) / 10,
-            rd: each.rd/1000000,
-            sga: each.sga/1000000,
-            incomeTaxExpense: each.incomeTaxExpense/1000000,
-            interestExpense: each.interestExpense/1000000,
-            da: each.da/1000000,
-            ebitda: each.ebitda/1000000,
-            ebitdaR: each.ebitdaR,
-            weightedAverageShsOutDil: each.weightedAverageShsOutDil/1000000,
-            eps: each.eps,
-            revenuePerShare: each.revenuePerShare,
+            売上高: Math.round((each.revenue/1000000) * 10) / 10,
+            粗利益: Math.round((each.grossProfit/1000000) * 10) / 10,
+            粗利益率: Math.round(each.grossProfitR * 10) / 10,
+            営業利益: Math.round((each.operatingIncome/1000000) * 10) / 10,
+            営業利益率: Math.round(each.operatingIncomeR * 10) / 10,
+            原価: Math.round((each.costOfRevenue/1000000) * 10) / 10,
+            原価率: Math.round(each.costOfRevenueR * 10) / 10,
+            営業費用: each.operatingExpense/1000000,
+            営業費用率: Math.round(each.operatingExpenseR * 10) / 10,
+            非営業費用: each.nonOperatingExpense/1000000,
+            非営業費用率: Math.round(each.nonOperatingExpenseR * 10) / 10,
+            純利益: Math.round((each.netIncome/1000000) * 10) / 10,
+            純利益率: Math.round(each.netIncomeR * 10) / 10,
+            研究開発費: each.rd/1000000,
+            販管費: each.sga/1000000,
+            税金費用: each.incomeTaxExpense/1000000,
+            支払利息: each.interestExpense/1000000,
+            減価償却: each.da/1000000,
+            EBITDA: each.ebitda/1000000,
+            EBITDA利益率: each.ebitdaR,
+            発行済み株式数: each.weightedAverageShsOutDil/1000000,
+            EPS: Math.round((each.eps) * 100) / 100,
+            "1株当たり売上高": Math.round((each.revenuePerShare) * 100) / 100,
           }
         )
       }
@@ -589,7 +589,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 color="#000000"
               >
                 <Center pt="2%"><Text fontSize="12px">${value}&nbsp;売上高</Text></Center>
-                <BarRechart data={profitData} title={["revenue"]} color={[chartColor.rev[0]]}/>
+                <BarRechart data={profitData} title={["売上高"]} color={[chartColor.rev[0]]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
               <Flex
@@ -603,9 +603,9 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
               >
                 <Center pt="2%"><Text fontSize="12px">${value}&nbsp;粗利益</Text></Center>
                 { isPercent === true ? 
-                  <LineRechart data={profitData} title={["grossProfitR"]} color={[chartColor.rev[1]]}/> 
+                  <LineRechart data={profitData} title={["粗利益率"]} color={[chartColor.rev[1]]}/> 
                   : 
-                  <BarRechart data={profitData} title={["grossProfit"]} color={[chartColor.rev[1]]}/>
+                  <BarRechart data={profitData} title={["粗利益"]} color={[chartColor.rev[1]]}/>
                 }
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -620,9 +620,9 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
               >
                  <Center pt="2%"><Text fontSize="12px">${value}&nbsp;営業利益</Text></Center>
                 { isPercent === true ? 
-                  <LineRechart data={profitData} title={["operatingIncomeR"]} color={[chartColor.rev[2]]}/> 
+                  <LineRechart data={profitData} title={["営業利益率"]} color={[chartColor.rev[2]]}/> 
                   : 
-                  <BarRechart data={profitData} title={["operatingIncome"]} color={[chartColor.rev[2]]}/>
+                  <BarRechart data={profitData} title={["営業利益"]} color={[chartColor.rev[2]]}/>
                 }
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -637,9 +637,9 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
               >
                 <Center pt="2%"><Text fontSize="12px">${value}&nbsp;純利益</Text></Center>
                 { isPercent === true ? 
-                  <LineRechart data={profitData} title={["netIncomeR"]} color={[chartColor.rev[3]]}/> 
+                  <LineRechart data={profitData} title={["純利益率"]} color={[chartColor.rev[3]]}/> 
                   : 
-                  <BarRechart data={profitData} title={["netIncome"]} color={[chartColor.rev[3]]}/>
+                  <BarRechart data={profitData} title={["純利益"]} color={[chartColor.rev[3]]}/>
                 }
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
@@ -813,7 +813,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 color="#000000"
               >
                 <Center pt="2%"><Text fontSize="12px">${value}&nbsp;EBITDAマージン</Text></Center>
-                <LineRechart data={profitData} title={["ebitdaR"]} color={[chartColor.ebitda[0]]}/>
+                <LineRechart data={profitData} title={["EBITDA利益率"]} color={[chartColor.ebitda[0]]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
               <Flex
@@ -826,7 +826,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 boxShadow="xl"
               >
                 <Center pt="2%"><Text fontSize="12px" ml="4%">${value}&nbsp;減価償却</Text></Center>
-                <BarRechart data={profitData} title={["da"]} color={[chartColor.ebitda[0]]}/>
+                <BarRechart data={profitData} title={["減価償却"]} color={[chartColor.ebitda[0]]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
               <Flex
@@ -839,7 +839,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 boxShadow="xl"
               >
                 <Center pt="2%"><Text fontSize="12px">${value}&nbsp;支払利息</Text></Center>
-                <BarRechart data={profitData} title={["interestExpense"]} color={[chartColor.ebitda[1]]}/>
+                <BarRechart data={profitData} title={["支払利息"]} color={[chartColor.ebitda[1]]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
               <Flex
@@ -852,7 +852,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 boxShadow="xl"
               >
                 <Center pt="2%"><Text fontSize="12px">${value}&nbsp;税金費用</Text></Center>
-                <BarRechart data={profitData} title={["incomeTaxExpense"]} color={[chartColor.ebitda[2]]}/>
+                <BarRechart data={profitData} title={["税金費用"]} color={[chartColor.ebitda[2]]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
             </Flex>
@@ -895,7 +895,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 color="#000000"
               >
                 <Center pt="2%"><Text fontSize="12px">${value}&nbsp;発行済株式数(希薄化後/加重平均)</Text></Center>
-                <BarRechart data={profitData} title={["weightedAverageShsOutDil"]} color={[chartColor.perShare[0]]}/>
+                <BarRechart data={profitData} title={["発行済み株式数"]} color={[chartColor.perShare[0]]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
             </Flex>
@@ -917,7 +917,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 color="#000000"
               >
                 <Center pt="2%"><Text fontSize="12px">${value}&nbsp;1株当たり純利益 EPS</Text></Center>
-                <BarRechart data={profitData} title={["eps"]} color={[chartColor.perShare[0]]}/>
+                <BarRechart data={profitData} title={["1株当たり純利益"]} color={[chartColor.perShare[0]]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
               <Flex
@@ -930,7 +930,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 boxShadow="xl"
               >
                 <Center pt="2%"><Text fontSize="12px">${value}&nbsp;1株当たり売上高</Text></Center>
-                <BarRechart data={profitData} title={["revenuePerShare"]} color={[chartColor.perShare[1]]}/>
+                <BarRechart data={profitData} title={["1株当たり売上高"]} color={[chartColor.perShare[1]]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
               <Flex
@@ -943,7 +943,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 boxShadow="xl"
               >
                 <Center pt="2%"><Text fontSize="12px">${value}&nbsp;1株当たり営業キャッシュフロー</Text></Center>
-                <BarRechart data={profitData} title={["operatingCashFlowPerShare"]} color={[chartColor.perShare[2]]}/>
+                <BarRechart data={profitData} title={["1株当たり営業キャッシュフロー"]} color={[chartColor.perShare[2]]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
               <Flex
@@ -956,7 +956,7 @@ export default function IncomeStatement ({ plData, keyMetrics, basicInfo, histor
                 boxShadow="xl"
               >
                 <Center pt="2%"><Text fontSize="12px">${value}&nbsp;1株当たりフリーキャッシュフロー</Text></Center>
-                <BarRechart data={profitData} title={["freeCashFlowPerShare"]} color={[chartColor.perShare[3]]}/>
+                <BarRechart data={profitData} title={["1株当たりフリーキャッシュフロー"]} color={[chartColor.perShare[3]]}/>
                 <Text fontSize="calc(2px + 1vmin)" align="right" pr="5%" pb="3%"color="gray.400">swimgood.io</Text>
               </Flex>
             </Flex>

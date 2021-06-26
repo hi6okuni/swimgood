@@ -7,8 +7,8 @@ import Search from './search'
 
 const menuTitles = 
   [
-    { title: "損益計算書 P/L", url: "pl"},
-    { title: "貸借対照表 B/S", url: "bs"},
+    { title: "損益計算書", url: "pl"},
+    { title: "貸借対照表", url: "bs"},
     { title: "キャッシュフロー計算書", url: "cfs"},
     { title: "配当", url: "div"},
     { title: "成長率", url: "growth"},

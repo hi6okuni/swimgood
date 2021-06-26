@@ -20,10 +20,10 @@ export default function AreaRechart({ data, keyword, color }) {
                       <XAxis dataKey="date" tick={{ fontSize: 11}}/>
                       <YAxis tick={{ fontSize: 11}} tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
                       <Tooltip formatter={(value) => new Intl.NumberFormat('en').format(value)} />
-                      <Area type="monotone" fillOpacity="0.8" dataKey="netIncome" stackId="1" stroke={color[3]} fill={color[3]} />
-                      <Area type="monotone" fillOpacity="0.8" dataKey="nonOperatingExpense" stackId="1" stroke={color[2]} fill={color[2]} />
-                      <Area type="monotone" fillOpacity="0.8" dataKey="operatingExpense" stackId="1" stroke={color[1]} fill={color[1]} />
-                      <Area type="monotone" fillOpacity="0.8" dataKey="costOfRevenue" stackId="1" stroke={color[0]} fill={color[0]} />
+                      <Area type="monotone" fillOpacity="0.8" dataKey="純利益" stackId="1" stroke={color[3]} fill={color[3]} />
+                      <Area type="monotone" fillOpacity="0.8" dataKey="非営業費用" stackId="1" stroke={color[2]} fill={color[2]} />
+                      <Area type="monotone" fillOpacity="0.8" dataKey="営業費用" stackId="1" stroke={color[1]} fill={color[1]} />
+                      <Area type="monotone" fillOpacity="0.8" dataKey="原価" stackId="1" stroke={color[0]} fill={color[0]} />
                     </AreaChart>
                   </ResponsiveContainer>
                 </React.Fragment>
@@ -38,10 +38,10 @@ export default function AreaRechart({ data, keyword, color }) {
                     <XAxis dataKey="date" tick={{ fontSize: 11}}/>
                     <YAxis unit="%" tick={{ fontSize: 11}} tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
                     <Tooltip formatter={(value) => new Intl.NumberFormat('en').format(value)} />
-                    <Area type="monotone" fillOpacity="0.8" dataKey="netIncomeR" stackId="1" stroke={color[3]} fill={color[3]} />
-                    <Area type="monotone" fillOpacity="0.8" dataKey="nonOperatingExpenseR" stackId="1" stroke={color[2]} fill={color[2]} />
-                    <Area type="monotone" fillOpacity="0.8" dataKey="operatingExpenseR" stackId="1" stroke={color[1]} fill={color[1]} />
-                    <Area type="monotone" fillOpacity="0.8" dataKey="costOfRevenueR" stackId="1" stroke={color[0]} fill={color[0]} />
+                    <Area type="monotone" fillOpacity="0.8" dataKey="純利益率" stackId="1" stroke={color[3]} fill={color[3]} />
+                    <Area type="monotone" fillOpacity="0.8" dataKey="非営業費用率" stackId="1" stroke={color[2]} fill={color[2]} />
+                    <Area type="monotone" fillOpacity="0.8" dataKey="営業費用率" stackId="1" stroke={color[1]} fill={color[1]} />
+                    <Area type="monotone" fillOpacity="0.8" dataKey="原価率" stackId="1" stroke={color[0]} fill={color[0]} />
                   </AreaChart>
                 </ResponsiveContainer>
               );
@@ -55,8 +55,8 @@ export default function AreaRechart({ data, keyword, color }) {
                     <XAxis dataKey="date" tick={{ fontSize: 11}}/>
                     <YAxis tick={{ fontSize: 11}} tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
                     <Tooltip formatter={(value) => new Intl.NumberFormat('en').format(value)} />
-                    <Area type="monotone" fillOpacity="0.8" dataKey="sga" stackId="1" stroke={color[1]} fill={color[1]} />
-                    <Area type="monotone" fillOpacity="0.8" dataKey="rd" stackId="1" stroke={color[0]} fill={color[0]} />
+                    <Area type="monotone" fillOpacity="0.8" dataKey="販管費" stackId="1" stroke={color[1]} fill={color[1]} />
+                    <Area type="monotone" fillOpacity="0.8" dataKey="研究開発費" stackId="1" stroke={color[0]} fill={color[0]} />
                   </AreaChart>
                 </ResponsiveContainer>
               );
@@ -72,10 +72,10 @@ export default function AreaRechart({ data, keyword, color }) {
                     <XAxis dataKey="date" tick={{ fontSize: 11}}/>
                     <YAxis tick={{ fontSize: 11}} tickFormatter={(value) => new Intl.NumberFormat('en').format(value)}/>
                     <Tooltip formatter={(value) => new Intl.NumberFormat('en').format(value)} />
-                    <Area type="monotone" fillOpacity="0.8" dataKey="netIncome" stackId="1" stroke={color[3]} fill={color[3]} />
-                    <Area type="monotone" fillOpacity="0.8" dataKey="incomeTaxExpense" stackId="1" stroke={color[2]} fill={color[2]} />
-                    <Area type="monotone" fillOpacity="0.8" dataKey="interestExpense" stackId="1" stroke={color[1]} fill={color[1]} />
-                    <Area type="monotone" fillOpacity="0.8" dataKey="da" stackId="1" stroke={color[0]} fill={color[0]} />
+                    <Area type="monotone" fillOpacity="0.8" dataKey="純利益" stackId="1" stroke={color[3]} fill={color[3]} />
+                    <Area type="monotone" fillOpacity="0.8" dataKey="税金費用" stackId="1" stroke={color[2]} fill={color[2]} />
+                    <Area type="monotone" fillOpacity="0.8" dataKey="支払利息" stackId="1" stroke={color[1]} fill={color[1]} />
+                    <Area type="monotone" fillOpacity="0.8" dataKey="減価償却" stackId="1" stroke={color[0]} fill={color[0]} />
                   </AreaChart>
                 </ResponsiveContainer>
               );
