@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Image from 'next/image'
 import Layout, { siteTitle } from '../components/layout'
+import Sparkles from '../components/sparkles'
 import { getSortedPostsData } from '../lib/posts'
 import { useAppContext } from '../lib/context/state'
 import Search from '../components/search'
@@ -30,12 +31,12 @@ export async function getStaticProps() {
   return {
     props: {
       allPostsData,
-      hotStocks
+      // hotStocks
     }
   }
 }
 
-export default function Home ({ allPostsData, hotStocks }) {
+export default function Home ({ allPostsData }) {
 
   const { setValue, menu, setMenu } = useAppContext();
 
@@ -105,7 +106,7 @@ export default function Home ({ allPostsData, hotStocks }) {
                 fontFamily="Noto Sans JP"
                 w="100%"
               >
-                <span className="gradient-text">米国企業をひと目で攻略。</span><br></br>
+                <span className="gradient-text">米国企業をひと目で<Sparkles>攻略</Sparkles>。</span><br></br>
                 <Text
                   my="2%"
                   color="gray.400"
