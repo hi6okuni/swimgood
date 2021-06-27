@@ -106,7 +106,7 @@ export default function Home ({ allPostsData }) {
                 fontFamily="Noto Sans JP"
                 w="100%"
               >
-                <span className="gradient-text">米国企業をひと目で攻略。</span><br></br>
+                <span className="gradient-text">米国企業をひと目で<Sparkles>攻略</Sparkles>。</span><br></br>
                 <Text
                   my="2%"
                   color="gray.400"
@@ -146,7 +146,7 @@ export default function Home ({ allPostsData }) {
                     cursor="pointer"
                     onClick={() => goToAmazon()}
                   >
-                    <Sparkles>AMZN</Sparkles>
+                    AMZN
                   </Box>
                 </Box>
               </Box>
