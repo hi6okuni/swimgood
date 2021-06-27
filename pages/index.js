@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Image from 'next/image'
 import Layout, { siteTitle } from '../components/layout'
+import Sparkles from '../components/sparkles'
 import { getSortedPostsData } from '../lib/posts'
 import { useAppContext } from '../lib/context/state'
 import Search from '../components/search'
@@ -30,12 +31,12 @@ export async function getStaticProps() {
   return {
     props: {
       allPostsData,
-      hotStocks
+      // hotStocks
     }
   }
 }
 
-export default function Home ({ allPostsData, hotStocks }) {
+export default function Home ({ allPostsData }) {
 
   const { setValue, menu, setMenu } = useAppContext();
 
@@ -145,7 +146,7 @@ export default function Home ({ allPostsData, hotStocks }) {
                     cursor="pointer"
                     onClick={() => goToAmazon()}
                   >
-                    AMZN
+                    <Sparkles>AMZN</Sparkles>
                   </Box>
                 </Box>
               </Box>

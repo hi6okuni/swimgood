@@ -4,6 +4,8 @@ import {
   Text,
 } from "@chakra-ui/react"
 import Link from 'next/link'
+import Sparkles from './sparkles'
+
 
 export default function Category (props) {
 
@@ -119,7 +121,7 @@ export default function Category (props) {
             <Text
               fontSize={["40px","60px","70px"]}
             >
-              🪤
+              🍭
             </Text>
             <Text>バフェット銘柄<br></br>
             </Text>
@@ -294,7 +296,7 @@ export default function Category (props) {
               alignItems="center"
               justify="center"
             >
-              new
+              <Sparkles>new</Sparkles>
             </Flex>
             <Text
               fontSize={["40px","60px","70px"]}
