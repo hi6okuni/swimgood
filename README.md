@@ -1,7 +1,7 @@
 
 <p align="center">
   <a href="">
-    <img alt="Vocamy" src="./public/images/forreadme.gif" width="480" />
+    <img alt="Vocamy" src="./public/images/github-swimgood.gif" width="640" />
   </a>
 </p>
 <h1 align="center">
@@ -11,7 +11,7 @@
 ## [🏊‍♂️Swimgood.io](https://swimgood.io/)
 ### 米国株の決算情報APIから情報を取得・加工し、洗練されたビジュアルに変換する株分析サービス(🎉ユーザー数6000人以上を獲得🎉)
 
-## 🌞 主な実装機能
+## 🌞 主な実装
 - React Hooksの利用
 - Promise, async/await を使った非同期処理
 - 銘柄検索のフォーム作成
