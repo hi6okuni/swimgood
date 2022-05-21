@@ -1,8 +1,9 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { keyframes } from "styled-components";
+import React from "react";
 
 const range = (start, end, step = 1) => {
   let output = [];
-  if (typeof end === 'undefined') {
+  if (typeof end === "undefined") {
     end = start;
     start = 0;
   }
@@ -25,7 +26,7 @@ const useRandomInterval = (callback, minDelay, maxDelay) => {
 
   React.useEffect(() => {
     let isEnabled =
-      typeof minDelay === 'number' && typeof maxDelay === 'number';
+      typeof minDelay === "number" && typeof maxDelay === "number";
     if (isEnabled) {
       const handleTick = () => {
         const nextTickAt = random(minDelay, maxDelay);
@@ -44,16 +45,15 @@ const useRandomInterval = (callback, minDelay, maxDelay) => {
   return cancel;
 };
 
-const QUERY = '(prefers-reduced-motion: no-preference)';
-const isRenderingOnServer = typeof window === 'undefined';
+const QUERY = "(prefers-reduced-motion: no-preference)";
+const isRenderingOnServer = typeof window === "undefined";
 const getInitialState = () => {
   return isRenderingOnServer ? true : !window.matchMedia(QUERY).matches;
 };
 
 function usePrefersReducedMotion() {
-  const [prefersReducedMotion, setPrefersReducedMotion] = React.useState(
-    getInitialState
-  );
+  const [prefersReducedMotion, setPrefersReducedMotion] =
+    React.useState(getInitialState);
   React.useEffect(() => {
     const mediaQueryList = window.matchMedia(QUERY);
     const listener = (event) => {
@@ -67,17 +67,16 @@ function usePrefersReducedMotion() {
   return prefersReducedMotion;
 }
 
-
-const DEFAULT_COLOR = '#FFC700';
-const generateSparkle = color => {
+const DEFAULT_COLOR = "#FFC700";
+const generateSparkle = (color) => {
   const sparkle = {
     id: String(random(10000, 99999)),
     createdAt: Date.now(),
     color,
     size: random(10, 20),
     style: {
-      top: random(0, 100) + '%',
-      left: random(0, 100) + '%',
+      top: random(0, 100) + "%",
+      left: random(0, 100) + "%",
     },
   };
   return sparkle;
@@ -92,7 +91,7 @@ const Sparkles = ({ color = DEFAULT_COLOR, children, ...delegated }) => {
     () => {
       const sparkle = generateSparkle(color);
       const now = Date.now();
-      const nextSparkles = sparkles.filter(sp => {
+      const nextSparkles = sparkles.filter((sp) => {
         const delta = now - sp.createdAt;
         return delta < 800;
       });
@@ -105,7 +104,7 @@ const Sparkles = ({ color = DEFAULT_COLOR, children, ...delegated }) => {
 
   return (
     <Wrapper {...delegated}>
-      {sparkles.map(sparkle => (
+      {sparkles.map((sparkle) => (
         <Sparkle
           key={sparkle.id}
           color={sparkle.color}
@@ -120,7 +119,7 @@ const Sparkles = ({ color = DEFAULT_COLOR, children, ...delegated }) => {
 
 const Sparkle = ({ size, color, style }) => {
   const path =
-    'M26.5 25.5C19.0043 33.3697 0 34 0 34C0 34 19.1013 35.3684 26.5 43.5C33.234 50.901 34 68 34 68C34 68 36.9884 50.7065 44.5 43.5C51.6431 36.647 68 34 68 34C68 34 51.6947 32.0939 44.5 25.5C36.5605 18.2235 34 0 34 0C34 0 33.6591 17.9837 26.5 25.5Z';
+    "M26.5 25.5C19.0043 33.3697 0 34 0 34C0 34 19.1013 35.3684 26.5 43.5C33.234 50.901 34 68 34 68C34 68 36.9884 50.7065 44.5 43.5C51.6431 36.647 68 34 68 34C68 34 51.6947 32.0939 44.5 25.5C36.5605 18.2235 34 0 34 0C34 0 33.6591 17.9837 26.5 25.5Z";
   return (
     <SparkleWrapper style={style}>
       <SparkleSvg width={size} height={size} viewBox="0 0 68 68" fill="none">

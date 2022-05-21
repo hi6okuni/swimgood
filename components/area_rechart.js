@@ -4,12 +4,12 @@ import {
 
 export default function AreaRechart({ data, keyword, color }) {
   return (
-      <React.Fragment>
+      <>
         {
           (() => {
             if ( keyword.length && keyword === "profit") {
               return(
-                <React.Fragment>
+                <>
                   <ResponsiveContainer width="95%" height="95%">
                     <AreaChart
                       data={data}
@@ -26,7 +26,7 @@ export default function AreaRechart({ data, keyword, color }) {
                       <Area type="monotone" fillOpacity="0.8" dataKey="costOfRevenue" stackId="1" stroke={color[0]} fill={color[0]} />
                     </AreaChart>
                   </ResponsiveContainer>
-                </React.Fragment>
+                </>
               );
             } else if ( keyword.length && keyword === "profitR") {
               return(
@@ -82,7 +82,7 @@ export default function AreaRechart({ data, keyword, color }) {
             } 
           })()
         }
-      </React.Fragment>
+      </>
       )
     }
 
