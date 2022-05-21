@@ -1,163 +1,156 @@
-import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
-import { useAppContext } from '../lib/context/state'
-import { Flex, Text} from "@chakra-ui/react"
-import AdsCard from '../components/adscard'
-import Link from 'next/link'
-import Category from '../components/category'
+import Head from "next/head";
+import Layout, { siteTitle } from "../components/layout";
+import { useAppContext } from "../lib/context/state";
+import { Flex, Text } from "@chakra-ui/react";
+import AdsCard from "../components/adscard";
+import Link from "next/link";
+import Category from "../components/category";
 
-export default function Me () {
-
-  const { setMenu , setValue } = useAppContext();
+export default function Me() {
+  const { setMenu, setValue } = useAppContext();
 
   function compare(a, b) {
     const stockA = a.name;
     const stockB = b.name;
-  
+
     let comparison = 0;
-      if (stockA > stockB) {
-        comparison = 1;
-      } else if (stockA < stockB) {
-        comparison = -1;
-      }
-      return comparison;
+    if (stockA > stockB) {
+      comparison = 1;
+    } else if (stockA < stockB) {
+      comparison = -1;
+    }
+    return comparison;
   }
 
   const myholdings = [
     {
       name: "CRM",
       japanese: "セールスフォース",
-      initial: "C"
+      initial: "C",
     },
     {
       name: "RH",
       japanese: "リストレーション・ハードウェア",
-      initial: "R"
+      initial: "R",
     },
     {
       name: "LW",
       japanese: "ラム・ウェストン",
-      initial: "L"
+      initial: "L",
     },
     {
       name: "AAPL",
       japanese: "アップル",
-      initial: "A"
+      initial: "A",
     },
     {
       name: "FB",
       japanese: "フェイスブック",
-      initial: "F"
+      initial: "F",
     },
     {
       name: "ZTS",
       japanese: "ゾエティス",
-      initial: "Z"
+      initial: "Z",
     },
     {
       name: "UI",
       japanese: "ユビキティ・ネットワークス",
-      initial: "U"
+      initial: "U",
     },
     {
       name: "CHWY",
       japanese: "チューイ",
-      initial: "C"
+      initial: "C",
     },
     {
       name: "ZM",
       japanese: "ズーム・ビデオ・コミュニケーションズ",
-      initial: "Z"
+      initial: "Z",
     },
     {
       name: "ILMN",
       japanese: "イルミナ",
-      initial: "I"
+      initial: "I",
     },
     {
       name: "COST",
       japanese: "コストコ・ホールセール",
-      initial: "C"
+      initial: "C",
     },
     {
       name: "OKTA",
       japanese: "オクタ",
-      initial: "O"
+      initial: "O",
     },
     {
       name: "SHW",
       japanese: "シャーウィン・ウィリアムズ",
-      initial: "S"
+      initial: "S",
     },
     {
       name: "AMGN",
       japanese: "アムジェン",
-      initial: "A"
+      initial: "A",
     },
     {
       name: "SMG",
       japanese: "スコッツ・ミラクルグロー",
-      initial: "S"
+      initial: "S",
     },
     {
       name: "IDXX",
       japanese: "アイデックス・ラボラトリーズ",
-      initial: "I"
+      initial: "I",
     },
     {
       name: "POOL",
       japanese: "プール",
-      initial: "P"
+      initial: "P",
     },
     {
       name: "VRSK",
       japanese: "ベリスク・アナリティックス",
-      initial: "V"
+      initial: "V",
     },
     {
       name: "NOW",
       japanese: "サービスナウ",
-      initial: "N"
+      initial: "N",
     },
     {
       name: "AMZN",
       japanese: "アマゾン・ドット・コム",
-      initial: "A"
+      initial: "A",
     },
-  ]
+  ];
 
   const editedMyholdings = myholdings.sort(compare);
 
   const jumpToPage = (e) => {
     setMenu("pl");
     setValue(e);
-  }
+  };
 
   return (
     <Layout>
-      <React.Fragment>
+      <>
         <Head>
           <title>{siteTitle}</title>
         </Head>
-        <Flex
-          direction="column"
-          m="3%"
-        >
+        <Flex direction="column" m="3%">
           <Flex fontSize="xl" mb="50px" alignItems="center">
             <Text fontSize="80px">🏜&nbsp;</Text>
             <Text fontSize="lg">開発者の保有銘柄</Text>
           </Flex>
           <section>
-            <AdsCard/>
+            <AdsCard />
           </section>
           <Flex wrap="wrap" mt="50px">
-           {
-             editedMyholdings.map((e) => {
-               return (
-                <Link
-                  href={`/${e.name}/pl`}
-                >
-                  <Flex 
+            {editedMyholdings.map((e) => {
+              return (
+                <Link href={`/${e.name}/pl`}>
+                  <Flex
                     mb="40px"
                     mr="15px"
                     p="8px"
@@ -167,49 +160,42 @@ export default function Me () {
                     alignItems="center"
                     cursor="pointer"
                     border="solid 1px #CBD5E0"
-                    _hover={{ boxShadow:"lg" }}
+                    _hover={{ boxShadow: "lg" }}
                     transition="all .2s ease-in-out"
                     onClick={() => jumpToPage(e.name)}
                   >
-                      <Flex
-                        bg="#626afb" 
-                        color="white"
-                        h="50px"
-                        w="50px"
-                        borderRadius="50%"
-                        mr="15px"
-                        alignItems="center"
-                        justify="center"
-                        fontWeight="800"
-                      >
-                        {e.initial}
-                      </Flex>
-                      <Flex 
-                        display="column" 
-                        w="150px"
-                        mr="30px"
-                      >
-                        <Text>
-                          {e.name}
-                        </Text>
-                        <Text color="gray.400" fontSize="11px">
-                          {e.japanese}
-                        </Text>
-                      </Flex>
+                    <Flex
+                      bg="#626afb"
+                      color="white"
+                      h="50px"
+                      w="50px"
+                      borderRadius="50%"
+                      mr="15px"
+                      alignItems="center"
+                      justify="center"
+                      fontWeight="800"
+                    >
+                      {e.initial}
+                    </Flex>
+                    <Flex display="column" w="150px" mr="30px">
+                      <Text>{e.name}</Text>
+                      <Text color="gray.400" fontSize="11px">
+                        {e.japanese}
+                      </Text>
+                    </Flex>
                   </Flex>
                 </Link>
-               )
-             })
-           }
+              );
+            })}
           </Flex>
         </Flex>
         <section>
-          <AdsCard/>
+          <AdsCard />
         </section>
         <section>
-          <Category/>
+          <Category />
         </section>
-      </React.Fragment>
+      </>
     </Layout>
-  )
+  );
 }

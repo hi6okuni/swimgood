@@ -1,46 +1,37 @@
-import { useRouter } from 'next/router'
-import Head from 'next/head'
-import Image from 'next/image'
-import Layout, { siteTitle } from '../components/layout'
-import Sparkles from '../components/sparkles'
-import { getSortedPostsData } from '../lib/posts'
-import { useAppContext } from '../lib/context/state'
-import Search from '../components/search'
-import Category from '../components/category'
-import AdsCard from '../components/adscard'
-import { ExternalLinkIcon } from '@chakra-ui/icons'
-import { 
-  Box,
-  Flex,
-  Text,
-  Link as ChakraLink
-} from "@chakra-ui/react"
-
+import { useRouter } from "next/router";
+import Head from "next/head";
+import Image from "next/image";
+import Layout, { siteTitle } from "../components/layout";
+import Sparkles from "../components/sparkles";
+import { getSortedPostsData } from "../lib/posts";
+import { useAppContext } from "../lib/context/state";
+import Search from "../components/search";
+import Category from "../components/category";
+import AdsCard from "../components/adscard";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
+import { Box, Flex, Text, Link as ChakraLink } from "@chakra-ui/react";
 
 export async function getStaticProps() {
   const apikey = process.env.FMP_API_KEY;
-  const allPostsData = getSortedPostsData()
+  const allPostsData = getSortedPostsData();
   const [res1] = await Promise.all([
-    fetch(`https://financialmodelingprep.com/api/v3/actives?apikey=${apikey}`).then(response => response.json()),
+    fetch(
+      `https://financialmodelingprep.com/api/v3/actives?apikey=${apikey}`
+    ).then((response) => response.json()),
   ]);
-  const hotStocks = res1.map((stock) => ({
-    symbol: stock.ticker,
-    changesPercentage: stock.changesPercentage,
-  }));
 
   return {
     props: {
       allPostsData,
       // hotStocks
-    }
-  }
+    },
+  };
 }
 
-export default function Home ({ allPostsData }) {
-
+export default function Home({ allPostsData }) {
   const { setValue, menu, setMenu } = useAppContext();
 
-  const router = useRouter()
+  const router = useRouter();
 
   // const hotStocks_15 = hotStocks.slice(0,15);
 
@@ -54,39 +45,33 @@ export default function Home ({ allPostsData }) {
       setValue(e);
       router.push(`/${e}/${menu}`);
     }
-  }
+  };
 
   const goToAmazon = () => {
     setValue("AMZN");
     setMenu("pl");
     router.push(`/AMZN/pl`);
-  }
+  };
 
   return (
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <Flex
-        direction="column"
-        my="2%"
-        mx="3%"
-      >
+      <Flex direction="column" my="2%" mx="3%">
         <section>
           <Flex
             bgColor="white"
             borderRadius="3xl"
-            p={["6%","3%","3%"]}
-            h={["540px","320px","320px"]}
+            p={["6%", "3%", "3%"]}
+            h={["540px", "320px", "320px"]}
             wrap="nowrap"
             direction={["column", "row", "row"]}
             justify="space-around"
             align="center"
             mb="4%"
           >
-            <Box
-              basis="35%"
-            >
+            <Box basis="35%">
               <Image
                 src="/images/swimgood_top3.png"
                 alt="toppage"
@@ -94,31 +79,25 @@ export default function Home ({ allPostsData }) {
                 height={300}
               />
             </Box>
-            <Flex 
+            <Flex
               basis="55%"
               wrap="wrap"
               direction="column"
               justify="space-around"
               w="100%"
             >
-              <Box 
-                className="gradient"
-                fontFamily="Noto Sans JP"
-                w="100%"
-              >
-                <span className="gradient-text">米国企業をひと目で<Sparkles>攻略</Sparkles>。</span><br></br>
-                <Text
-                  my="2%"
-                  color="gray.400"
-                  fontSize="xs"
-                  w="100%"
-                >
+              <Box className="gradient" fontFamily="Noto Sans JP" w="100%">
+                <span className="gradient-text">
+                  米国企業をひと目で<Sparkles>攻略</Sparkles>。
+                </span>
+                <br></br>
+                <Text my="2%" color="gray.400" fontSize="xs" w="100%">
                   英語の決算書は読む気がしない？swimgood.ioはさまざまな決算情報を一瞬でビジュアルに変換。気になる企業を目で見てカンタン分析！
                 </Text>
               </Box>
 
-              <Box align="center" mt="3%" w={["100%", "100%", "100%"]} >
-                <Search getSymbol={getSymbol}/>
+              <Box align="center" mt="3%" w={["100%", "100%", "100%"]}>
+                <Search getSymbol={getSymbol} />
                 <Text
                   my="2%"
                   color="gray.400"
@@ -127,7 +106,7 @@ export default function Home ({ allPostsData }) {
                   align="center"
                   fontFamily="Noto Sans JP"
                 >
-                or
+                  or
                 </Text>
                 <Box
                   position="inline"
@@ -155,11 +134,11 @@ export default function Home ({ allPostsData }) {
         </section>
 
         <section>
-          <AdsCard/>
+          <AdsCard />
         </section>
 
         <section>
-          <Category/>
+          <Category />
         </section>
 
         {/* <section>
@@ -201,22 +180,26 @@ export default function Home ({ allPostsData }) {
         </section> */}
 
         <section>
-          <AdsCard/>
+          <AdsCard />
         </section>
 
         <section>
           <Box my="8%" mx="4%">
             <Box mb="2%">
-              <Text fontWeight="bold" fontSize="calc(5px + 2vmin)">🎉 Special Thanks!</Text>
+              <Text fontWeight="bold" fontSize="calc(5px + 2vmin)">
+                🎉 Special Thanks!
+              </Text>
             </Box>
-            <Flex
-              direction="column"
-              justify="space-around"
-            >
+            <Flex direction="column" justify="space-around">
               <Box fontSize={["calc(6px + 2vmin)", "xs", "xs"]}>
-                <span>あなたのポートフォリオを1か所で管理</span><br></br>▶︎ 
-                <ChakraLink href='https://43juni.pocco.net/' target='_blank'  isExternal>
-                  &nbsp;&nbsp;ju-ni  <ExternalLinkIcon mx="2px" />
+                <span>あなたのポートフォリオを1か所で管理</span>
+                <br></br>▶︎
+                <ChakraLink
+                  href="https://43juni.pocco.net/"
+                  target="_blank"
+                  isExternal
+                >
+                  &nbsp;&nbsp;ju-ni <ExternalLinkIcon mx="2px" />
                 </ChakraLink>
               </Box>
             </Flex>
@@ -224,5 +207,5 @@ export default function Home ({ allPostsData }) {
         </section>
       </Flex>
     </Layout>
-  )
+  );
 }
