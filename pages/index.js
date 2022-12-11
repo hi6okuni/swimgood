@@ -8,7 +8,6 @@ import { useAppContext } from "../lib/context/state";
 import Search from "../components/search";
 import Category from "../components/category";
 import AdsCard from "../components/adscard";
-import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { Box, Flex, Text, Link as ChakraLink } from "@chakra-ui/react";
 
 export async function getStaticProps() {
