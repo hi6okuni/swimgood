@@ -8,7 +8,7 @@ import { useAppContext } from "../lib/context/state";
 import Search from "../components/search";
 import Category from "../components/category";
 import AdsCard from "../components/adscard";
-import { Box, Flex, Text, Link as ChakraLink } from "@chakra-ui/react";
+import { Box, Flex, Text, Link as ChakraLink, Button } from "@chakra-ui/react";
 
 export async function getStaticProps() {
   const apikey = process.env.FMP_API_KEY;
@@ -53,7 +53,7 @@ export default function Home({ allPostsData }) {
   };
 
   return (
-    <Layout home>
+    <Layout isHome={true}>
       <Head>
         <title>{siteTitle}</title>
       </Head>
@@ -70,14 +70,14 @@ export default function Home({ allPostsData }) {
             align="center"
             mb="4%"
           >
-            <Box basis="35%">
+            <Flex basis="35%">
               <Image
                 src="/images/swimgood_top3.png"
                 alt="toppage"
                 width={375}
                 height={300}
               />
-            </Box>
+            </Flex>
             <Flex
               basis="55%"
               wrap="wrap"
@@ -94,8 +94,12 @@ export default function Home({ allPostsData }) {
                   英語の決算書は読む気がしない？swimgood.ioはさまざまな決算情報を一瞬でビジュアルに変換。気になる企業を目で見てカンタン分析！
                 </Text>
               </Box>
-
-              <Box align="center" mt="3%" w={["100%", "100%", "100%"]}>
+              <Flex
+                align="center"
+                direction="column"
+                mt="3%"
+                w={["100%", "100%", "100%"]}
+              >
                 <Search getSymbol={getSymbol} />
                 <Text
                   my="2%"
@@ -107,27 +111,25 @@ export default function Home({ allPostsData }) {
                 >
                   or
                 </Text>
-                <Box
-                  position="inline"
-                  align="center"
+                <Flex
+                  alignItems="center"
                   color="gray.400"
                   fontSize="xs"
                   fontFamily="Noto Sans JP"
                 >
-                  とりあえず試してみる 👉 &nbsp;
-                  <Box
-                    p="2%"
-                    display="inline"
+                  <Box mr="2">とりあえず試してみる 👉</Box>
+                  <Button
+                    size="sm"
                     bgColor="#fd867a"
-                    borderRadius="3xl"
+                    borderRadius="xl"
                     color="white"
                     cursor="pointer"
                     onClick={() => goToAmazon()}
                   >
                     AMZN
-                  </Box>
-                </Box>
-              </Box>
+                  </Button>
+                </Flex>
+              </Flex>
             </Flex>
           </Flex>
         </section>

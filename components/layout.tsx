@@ -8,7 +8,12 @@ import Footer from "./footer";
 
 export const siteTitle = "Swimgood🏊‍| U.S. Stock Visualizer";
 
-export default function Layout({ children, home }) {
+type PropsType = {
+  children: React.ReactNode;
+  isHome?: boolean;
+};
+
+export default function Layout({ children, isHome }: PropsType) {
   const { setValue, setMenu, setStockInfo } = useAppContext();
 
   const resetSymbol = () => {
@@ -43,7 +48,7 @@ export default function Layout({ children, home }) {
           <SideBar />
         </Box>
         <Box flexBasis="80%" p="3%">
-          {!home && (
+          {!isHome && (
             <Box>
               <Box onClick={() => resetSymbol()}>
                 <Link href="/">← Back to home</Link>
