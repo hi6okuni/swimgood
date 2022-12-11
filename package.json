@@ -1,6 +1,6 @@
 {
-  "name": "learn-starter",
-  "version": "0.1.0",
+  "name": "swimgood",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,25 +10,24 @@
   "dependencies": {
     "@chakra-ui/icons": "^2.0.0",
     "@chakra-ui/react": "^2.0.0",
-    "chart.js": "^2.9.4",
     "classnames": "^2.3.1",
     "date-fns": "^2.28.0",
+    "eslint-config-next": "^13.0.6",
     "file-loader": "^6.2.0",
     "formik": "^2.2.9",
     "framer-motion": "^5.6.0",
     "gray-matter": "^4.0.3",
-    "next": "^12.0.8",
+    "next": "^13.0.6",
     "next-images": "^1.8.4",
-    "react": "^18.0.0",
-    "react-chartjs-2": "^2.11.2",
-    "react-dom": "^18.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-markdown": "^5.0.3",
-    "recharts": "^1.8.5",
+    "recharts": "^2.0.0",
     "remark": "^13.0.0",
     "remark-html": "^13.0.2",
     "sass": "^1.48.0",
     "styled-components": "^5.3.3",
     "url-loader": "^4.1.1",
-    "vercel": "^23.1.2"
+    "vercel": "^19.1.2"
   }
 }

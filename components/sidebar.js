@@ -90,9 +90,7 @@ export default function SideBar() {
             fontFamily="Pacifico, cursive"
             onClick={() => resetSymbol()}
           >
-            <Link href="/">
-              <a>Swimgood 🏊‍</a>
-            </Link>
+            <Link href="/">Swimgood 🏊‍</Link>
           </Box>
           <Box fontSize="calc(6px + 1vmin)">
             <Text>Visuals instantly inspire you</Text>
@@ -142,15 +140,11 @@ export default function SideBar() {
                     >
                       {value ? (
                         <Center>
-                          <Link href={`/${value}/${e.url}`}>
-                            <a>{e.title}</a>
-                          </Link>
+                          <Link href={`/${value}/${e.url}`}>{e.title}</Link>
                         </Center>
                       ) : (
                         <Center>
-                          <Link href={`/about`}>
-                            <a>{e.title}</a>
-                          </Link>
+                          <Link href={`/about`}>{e.title}</Link>
                         </Center>
                       )}
                     </Center>
@@ -170,15 +164,11 @@ export default function SideBar() {
                     >
                       {value ? (
                         <Center>
-                          <Link href={`/${value}/${e.url}`}>
-                            <a>{e.title}</a>
-                          </Link>
+                          <Link href={`/${value}/${e.url}`}>{e.title}</Link>
                         </Center>
                       ) : (
                         <Center>
-                          <Link href={`/about`}>
-                            <a>{e.title}</a>
-                          </Link>
+                          <Link href={`/about`}>{e.title}</Link>
                         </Center>
                       )}
                     </Center>
@@ -205,9 +195,7 @@ export default function SideBar() {
                   onClick={() => setMenuSp500()}
                 >
                   <Center w="100%">
-                    <Link href={`/sp500`}>
-                      <a>S&P500 List</a>
-                    </Link>
+                    <Link href={`/sp500`}>S&P500 List</Link>
                   </Center>
                 </Center>
               ) : (
@@ -226,9 +214,7 @@ export default function SideBar() {
                   onClick={() => setMenuSp500()}
                 >
                   <Center w="100%">
-                    <Link href={`/sp500`}>
-                      <a>S&P500 List</a>
-                    </Link>
+                    <Link href={`/sp500`}>S&P500 List</Link>
                   </Center>
                 </Center>
               )}
@@ -248,9 +234,7 @@ export default function SideBar() {
                   onClick={() => setMenuDjia()}
                 >
                   <Center w="100%">
-                    <Link href={`/djia`}>
-                      <a>DJIA List</a>
-                    </Link>
+                    <Link href={`/djia`}>DJIA List</Link>
                   </Center>
                 </Center>
               ) : (
@@ -269,9 +253,7 @@ export default function SideBar() {
                   onClick={() => setMenuDjia()}
                 >
                   <Center w="100%">
-                    <Link href={`/djia`}>
-                      <a>DJIA List</a>
-                    </Link>
+                    <Link href={`/djia`}>DJIA List</Link>
                   </Center>
                 </Center>
               )}
@@ -291,9 +273,7 @@ export default function SideBar() {
                   onClick={() => setMenuIntro()}
                 >
                   <Center w="100%">
-                    <Link href={`/posts/introduction`}>
-                      <a>使い方</a>
-                    </Link>
+                    <Link href={`/posts/introduction`}>使い方</Link>
                   </Center>
                 </Center>
               ) : (
@@ -312,9 +292,7 @@ export default function SideBar() {
                   onClick={() => setMenuIntro()}
                 >
                   <Center w="100%">
-                    <Link href={`/posts/introduction`}>
-                      <a>使い方</a>
-                    </Link>
+                    <Link href={`/posts/introduction`}>使い方</Link>
                   </Center>
                 </Center>
               )}
@@ -342,9 +320,7 @@ export default function SideBar() {
             fontFamily="Pacifico"
             onClick={() => resetSymbol()}
           >
-            <Link href="/">
-              <a>Swimgood 🏊‍</a>
-            </Link>
+            <Link href="/">Swimgood 🏊‍</Link>
           </Box>
           <Box fontSize="calc(4px + 1vmin)">
             <Text>Visuals instantly inspire you</Text>
@@ -382,15 +358,11 @@ export default function SideBar() {
                   >
                     {value ? (
                       <Center w="100%">
-                        <Link href={`/${value}/${e.url}`}>
-                          <a>{e.title}</a>
-                        </Link>
+                        <Link href={`/${value}/${e.url}`}>{e.title}</Link>
                       </Center>
                     ) : (
                       <Center w="100%">
-                        <Link href={`/about`}>
-                          <a>{e.title}</a>
-                        </Link>
+                        <Link href={`/about`}>{e.title}</Link>
                       </Center>
                     )}
                   </Center>
@@ -408,15 +380,11 @@ export default function SideBar() {
                   >
                     {value ? (
                       <Center w="100%">
-                        <Link href={`/${value}/${e.url}`}>
-                          <a>{e.title}</a>
-                        </Link>
+                        <Link href={`/${value}/${e.url}`}>{e.title}</Link>
                       </Center>
                     ) : (
                       <Center w="100%">
-                        <Link href={`/about`}>
-                          <a>{e.title}</a>
-                        </Link>
+                        <Link href={`/about`}>{e.title}</Link>
                       </Center>
                     )}
                   </Center>
@@ -440,9 +408,7 @@ export default function SideBar() {
                 onClick={() => setMenuSp500()}
               >
                 <Center w="100%">
-                  <Link href={`/sp500`}>
-                    <a>S&P500 List</a>
-                  </Link>
+                  <Link href={`/sp500`}>S&P500 List</Link>
                 </Center>
               </Center>
             ) : (
@@ -458,9 +424,7 @@ export default function SideBar() {
                 onClick={() => setMenuSp500()}
               >
                 <Center w="100%">
-                  <Link href={`/sp500`}>
-                    <a>S&P500 List</a>
-                  </Link>
+                  <Link href={`/sp500`}>S&P500 List</Link>
                 </Center>
               </Center>
             )}
@@ -480,9 +444,7 @@ export default function SideBar() {
                 onClick={() => setMenuDjia()}
               >
                 <Center w="100%">
-                  <Link href={`/djia`}>
-                    <a>DJIA List</a>
-                  </Link>
+                  <Link href={`/djia`}>DJIA List</Link>
                 </Center>
               </Center>
             ) : (
@@ -498,9 +460,7 @@ export default function SideBar() {
                 onClick={() => setMenuDjia()}
               >
                 <Center w="100%">
-                  <Link href={`/djia`}>
-                    <a>DJIA List</a>
-                  </Link>
+                  <Link href={`/djia`}>DJIA List</Link>
                 </Center>
               </Center>
             )}
@@ -522,9 +482,7 @@ export default function SideBar() {
                 onClick={() => setMenuIntro()}
               >
                 <Center w="100%">
-                  <Link href={`/posts/introduction`}>
-                    <a>使い方</a>
-                  </Link>
+                  <Link href={`/posts/introduction`}>使い方</Link>
                 </Center>
               </Center>
             ) : (
@@ -540,9 +498,7 @@ export default function SideBar() {
                 onClick={() => setMenuIntro()}
               >
                 <Center w="100%">
-                  <Link href={`/posts/introduction`}>
-                    <a>使い方</a>
-                  </Link>
+                  <Link href={`/posts/introduction`}>使い方</Link>
                 </Center>
               </Center>
             )}
@@ -563,9 +519,7 @@ export default function SideBar() {
                 onClick={() => setMenuContact()}
               >
                 <Center w="100%">
-                  <Link href={`/contact`}>
-                    <a>Contact</a>
-                  </Link>
+                  <Link href={`/contact`}>Contact</Link>
                 </Center>
               </Center>
             ) : (
@@ -581,9 +535,7 @@ export default function SideBar() {
                 onClick={() => setMenuContact()}
               >
                 <Center w="100%">
-                  <Link href={`/contact`}>
-                    <a>Contact</a>
-                  </Link>
+                  <Link href={`/contact`}>Contact</Link>
                 </Center>
               </Center>
             )}
@@ -604,9 +556,7 @@ export default function SideBar() {
                 onClick={() => setMenuTerms()}
               >
                 <Center w="100%">
-                  <Link href={`/terms`}>
-                    <a>Terms of Use</a>
-                  </Link>
+                  <Link href={`/terms`}>Terms of Use</Link>
                 </Center>
               </Center>
             ) : (
@@ -622,9 +572,7 @@ export default function SideBar() {
                 onClick={() => setMenuTerms()}
               >
                 <Center w="100%">
-                  <Link href={`/terms`}>
-                    <a>Terms of Use</a>
-                  </Link>
+                  <Link href={`/terms`}>Terms of Use</Link>
                 </Center>
               </Center>
             )}

@@ -182,29 +182,6 @@ export default function Home({ allPostsData }) {
         <section>
           <AdsCard />
         </section>
-
-        <section>
-          <Box my="8%" mx="4%">
-            <Box mb="2%">
-              <Text fontWeight="bold" fontSize="calc(5px + 2vmin)">
-                🎉 Special Thanks!
-              </Text>
-            </Box>
-            <Flex direction="column" justify="space-around">
-              <Box fontSize={["calc(6px + 2vmin)", "xs", "xs"]}>
-                <span>あなたのポートフォリオを1か所で管理</span>
-                <br></br>▶︎
-                <ChakraLink
-                  href="https://43juni.pocco.net/"
-                  target="_blank"
-                  isExternal
-                >
-                  &nbsp;&nbsp;ju-ni <ExternalLinkIcon mx="2px" />
-                </ChakraLink>
-              </Box>
-            </Flex>
-          </Box>
-        </section>
       </Flex>
     </Layout>
   );
