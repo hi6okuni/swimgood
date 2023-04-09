@@ -2,7 +2,17 @@ import Head from "next/head";
 import Layout, { siteTitle } from "../components/layout";
 import AdsCard from "../components/adscard";
 import { useAppContext } from "../lib/context/state";
-import { Box, Flex, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Card,
+  CardBody,
+  CardHeader,
+  Flex,
+  Heading,
+  Stack,
+  StackDivider,
+  Text,
+} from "@chakra-ui/react";
 import Link from "next/link";
 
 export async function getStaticProps() {
@@ -141,47 +151,83 @@ export default function Sp500({ sp500Stocks }) {
                   <Text fontSize={["xs", "md", "lg"]} fontWeight="bold">
                     ■&nbsp;{stocks[0].sector}
                   </Text>
-                  <Flex justify="space-between" wrap="wrap">
+                  <Flex justify="space-around" wrap="wrap">
                     {stocks.map((e) => {
                       return (
                         <Link href={`/${e.symbol}/pl`}>
-                          <Flex
-                            bg="#6369f7"
-                            color="white"
-                            m={["2%", "2%", "1%"]}
-                            px={["5%", "3%", "1.5%"]}
-                            py={["1%", "2%", "0.5%"]}
-                            w={["92%", "46%", "46%"]}
+                          <Box mx="4" mb="3">
+                            <Card
+                              variant="outline"
+                              bg="gray.50"
+                              w="240px"
+                              h="full"
+                              onClick={() => jumpToPage(e.symbol)}
+                            >
+                              <CardBody>
+                                <Stack divider={<StackDivider />} spacing="2">
+                                  <Box>
+                                    <Heading size="xs">{e.symbol}</Heading>
+                                    <Text
+                                      fontSize={[
+                                        "calc(4px + 2vmin)",
+                                        "11px",
+                                        "11px",
+                                      ]}
+                                      wordBreak="break-all"
+                                      color="gray.500"
+                                    >
+                                      {e.name}
+                                    </Text>
+                                  </Box>
+                                  <Text
+                                    fontSize={[
+                                      "calc(4px + 2vmin)",
+                                      "11px",
+                                      "11px",
+                                    ]}
+                                    wordBreak="break-all"
+                                  >
+                                    {e.subSector}
+                                  </Text>
+                                </Stack>
+                              </CardBody>
+                            </Card>
+                            {/* <Flex
+                            bg="white"
+                            border="medium double pink"
+                            mb="4"
+                            p="3"
+                            w="180px"
+                            h="100px"
                             align="baseline"
-                            borderRadius="md"
-                            _hover={{ bg: "#fd8db9" }}
+                            borderRadius="sm"
+                            _hover={{ bg: "gray.200" }}
                             transition="all 0.3s ease-in-out"
-                            boxShadow="xl"
                             direction="column"
                             onClick={() => jumpToPage(e.symbol)}
                             cursor="pointer"
                           >
-                            <Box>
-                              <Text
-                                fontWeight="bold"
-                                fontSize={["xs", "xs", "sm"]}
-                              >
-                                {e.symbol}&nbsp;
-                              </Text>
-                              <Text
-                                fontSize={["calc(4px + 2vmin)", "xs", "xs"]}
-                              >
-                                {e.name}
-                              </Text>
-                            </Box>
-                            <Box>
-                              <Text
-                                fontSize={["calc(4px + 2vmin)", "xs", "xs"]}
-                              >
-                                ‐&nbsp;{e.subSector}
-                              </Text>
-                            </Box>
-                          </Flex>
+                            <Text
+                              fontWeight="bold"
+                              fontSize={["xs", "xs", "sm"]}
+                            >
+                              {e.symbol}&nbsp;
+                            </Text>
+                            <Text
+                              fontSize={["calc(4px + 2vmin)", "11px", "11px"]}
+                              wordBreak="break-all"
+                            >
+                              {e.name}
+                            </Text>
+                            <Text
+                              fontSize={["calc(4px + 2vmin)", "11px", "11px"]}
+                              color="gray.500"
+                              wordBreak="break-all"
+                            >
+                              {e.subSector}
+                            </Text>
+                          </Flex> */}
+                          </Box>
                         </Link>
                       );
                     })}
