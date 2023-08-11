@@ -36,7 +36,7 @@ const Symbol = async ({ params: { symbol } }) => {
 
   return (
     <div>
-      <h1>{baseInfo.earningsAnnouncement}</h1>
+      <h1>{baseInfo?.earningsAnnouncement}</h1>
       <Overview baseInfo={baseInfo} />
     </div>
   );
