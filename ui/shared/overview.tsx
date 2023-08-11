@@ -16,7 +16,7 @@ import {
   SliderMark,
 } from "@chakra-ui/react";
 
-export interface BaseInfo {
+export type BaseInfo = {
   symbol: string;
   name: string;
   price: number;
@@ -29,13 +29,17 @@ export interface BaseInfo {
   eps: number;
   pe: number;
   earningsAnnouncement: string;
-}
+} | null;
 
 interface OverviewProps {
   baseInfo: BaseInfo;
 }
 
 export const Overview = ({ baseInfo }: OverviewProps) => {
+  if (!baseInfo) {
+    return null;
+  }
+
   return (
     <Box
       display="inline-block"
