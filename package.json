@@ -41,6 +41,7 @@
     "vercel": "^19.1.2"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.5.3",
     "@chakra-ui/storybook-addon": "^4.0.16",
     "@storybook/addon-essentials": "^7.0.2",
     "@storybook/addon-interactions": "^7.0.2",
