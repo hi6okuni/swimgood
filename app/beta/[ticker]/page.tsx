@@ -1,9 +1,9 @@
 type SymbolPageProps = {
 	params: {
-		symbol: string
+		ticker: string
 	}
 }
 
 export default function SymbolPage({ params }: SymbolPageProps) {
-	return <div className='text-cyan-300'>aaa</div>
+	return <div className='text-zinc-900'>{params.ticker}</div>
 }
