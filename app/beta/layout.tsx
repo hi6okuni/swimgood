@@ -1,10 +1,10 @@
-import Sidemenu from "./Sidemenu";
+import Sidemenu from './Sidemenu'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
 	return (
-		<div>
+		<div className='flex'>
 			<Sidemenu />
 			{children}
 		</div>
-	);
+	)
 }
