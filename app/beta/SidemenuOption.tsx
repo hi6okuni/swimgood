@@ -1,4 +1,8 @@
+'use client'
+
 import Link from 'next/link'
+import { memo, useState } from 'react'
+import { Tooltip } from './Tooltip'
 
 type PropsType = {
 	value: string
@@ -9,39 +13,56 @@ type PropsType = {
 	}
 }
 
-export const SidemenuOption = ({ value, isSelected, iconPath }: PropsType) => {
-	// searchはページ遷移せず、モーダル表示になる
+export const SidemenuOption = memo(
+	({ value, isSelected, iconPath }: PropsType) => {
+		const [isHovered, setIsHovered] = useState(false)
+		return (
+			<OptionWrapper value={value}>
+				<>
+					<li
+						key={value}
+						className={'cursor-pointer'}
+						onMouseEnter={() => setIsHovered(true)}
+						onMouseLeave={() => setIsHovered(false)}
+					>
+						<svg
+							xmlns='http://www.w3.org/2000/svg'
+							fill={'none'}
+							viewBox='0 0 24 24'
+							strokeWidth={1.5}
+							className={
+								isSelected ? 'w-6 h-6 fill-zinc-50' : 'w-6 h-6 stroke-zinc-400'
+							}
+							role='img'
+							aria-label={value}
+						>
+							{isSelected && value !== 'search'
+								? iconPath.solid
+								: iconPath.outline}
+						</svg>
+					</li>
+					<Tooltip isHovered={isHovered} value={value} />
+				</>
+			</OptionWrapper>
+		)
+	},
+)
+
+type OptionWrapperProps = {
+	children: JSX.Element
+	value: string
+}
+
+// searchはページ遷移せず、モーダル表示になる
+const OptionWrapper = memo(({ children, value }: OptionWrapperProps) => {
 	return value === 'search' ? (
-		<li key={value} className={'cursor-pointer'}>
-			<svg
-				xmlns='http://www.w3.org/2000/svg'
-				fill={'none'}
-				viewBox='0 0 24 24'
-				strokeWidth={1.5}
-				className='w-6 h-6 stroke-zinc-50'
-				role='img'
-				aria-label={value}
-			>
-				{iconPath.outline}
-			</svg>
-		</li>
+		<div className='relative flex items-center'>{children}</div>
 	) : (
-		<Link href={`/beta/${value.toLowerCase()}`}>
-			<li key={value} className={''}>
-				<svg
-					xmlns='http://www.w3.org/2000/svg'
-					fill={'none'}
-					viewBox='0 0 24 24'
-					strokeWidth={1.5}
-					className={
-						isSelected ? 'w-6 h-6 fill-zinc-50' : 'w-6 h-6 stroke-zinc-50'
-					}
-					role='img'
-					aria-label={value}
-				>
-					{isSelected ? iconPath.solid : iconPath.outline}
-				</svg>
-			</li>
+		<Link
+			href={`/beta/${value.toLowerCase()}`}
+			className='relative flex items-center cursor-pointer' // `cursor-auto`ではなく`cursor-pointer`が適切かもしれません
+		>
+			{children}
 		</Link>
 	)
-}
+})
