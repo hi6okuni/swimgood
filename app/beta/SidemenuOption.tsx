@@ -60,7 +60,7 @@ const OptionWrapper = memo(({ children, value }: OptionWrapperProps) => {
 	) : (
 		<Link
 			href={`/beta/${value.toLowerCase()}`}
-			className='relative flex items-center cursor-pointer' // `cursor-auto`ではなく`cursor-pointer`が適切かもしれません
+			className='relative flex items-center cursor-auto'
 		>
 			{children}
 		</Link>
